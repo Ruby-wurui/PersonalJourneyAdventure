@@ -1,12 +1,12 @@
 import { getDictionary, type Locale } from '@/i18n'
-import InteractiveHomepageWrapper from '@/components/InteractiveHomepageWrapper'
+import GalaxyUniverseWrapper from '@/components/GalaxyUniverseWrapper'
 
-export default async function Home({
+export default async function UniversePage({
     params: { locale }
 }: {
     params: { locale: Locale }
 }) {
     const dict = await getDictionary(locale)
 
-    return <InteractiveHomepageWrapper locale={locale} dict={dict} />
+    return <GalaxyUniverseWrapper locale={locale} dict={dict} />
 }

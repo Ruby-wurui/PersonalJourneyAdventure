@@ -98,7 +98,7 @@ const NavigationBarI18n: React.FC<NavigationBarI18nProps> = ({
                         <div className="flex items-center space-x-3">
                             <div className="flex items-center space-x-2">
                                 <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-                                    <span className="text-white text-lg font-bold">A</span>
+                                    <span className="text-white text-lg font-bold">R</span>
                                 </div>
                                 <div className="hidden sm:block">
                                     <h1 className="text-white font-bold text-lg">{dict.brand.title}</h1>

@@ -1,13 +1,12 @@
-'use client'
+import { getDictionary, type Locale } from '@/i18n'
+import InteractiveHomepageWrapper from '@/components/InteractiveHomepageWrapper'
 
-import React from 'react'
-import dynamic from 'next/dynamic'
+export default async function LaboratoryPage({
+    params: { locale }
+}: {
+    params: { locale: Locale }
+}) {
+    const dict = await getDictionary(locale)
 
-const LaboratoryPageContent = dynamic(
-    () => import('@/app/laboratory/page'),
-    { ssr: false }
-)
-
-export default function LaboratoryPage() {
-    return <LaboratoryPageContent />
+    return <InteractiveHomepageWrapper locale={locale} dict={dict} />
 }

@@ -446,7 +446,7 @@ export default function SimpleGalaxyVisualization(props: GalaxyVisualizationProp
                             Ruby&apos;s Universe
                         </h1>
                         <p className="text-sm text-gray-300 mt-1 font-medium tracking-wide">
-                            ✨ Explore Skills & Experience
+                            ✨ Explore Skills & Experience 111
                         </p>
                     </div>
                 </div>

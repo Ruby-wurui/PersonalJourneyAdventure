@@ -1,14 +1,16 @@
-'use client'
-
 import React from 'react'
-import dynamic from 'next/dynamic'
+import { getDictionary } from '@/i18n/get-dictionary'
+import { Locale } from '@/i18n/config'
+import AboutPageClient from './AboutPageClient'
 
-// Import the existing AboutPage component
-const AboutPageContent = dynamic(
-    () => import('@/app/about/page'),
-    { ssr: false }
-)
+interface AboutPageProps {
+    params: {
+        locale: Locale
+    }
+}
 
-export default function AboutPage() {
-    return <AboutPageContent />
+export default async function AboutPage({ params: { locale } }: AboutPageProps) {
+    const dict = await getDictionary(locale)
+
+    return <AboutPageClient dict={dict} />
 }

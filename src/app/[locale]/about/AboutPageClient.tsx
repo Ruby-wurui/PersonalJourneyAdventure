@@ -6,11 +6,11 @@ import { SkillPlanet, ExperienceEntry } from '@/types/3d'
 import PlanetDetailModal from '@/components/3d/PlanetDetailModal'
 import Scene3DErrorBoundaryWrapper from '@/components/3d/Scene3DErrorBoundaryWrapper'
 import NavigationBar from '@/components/layout/NavigationBar'
-import QuickNavigation from '@/components/layout/QuickNavigation'
 import { useAuth } from '@/lib/auth-context'
 import { LoginModal } from '@/components/auth/LoginModal'
 import RegisterModal from '@/components/auth/RegisterModal'
 import avatarImg from '@/assets/imgs/avatar.png'
+import { Dictionary } from '@/i18n/get-dictionary'
 
 // Dynamically import 3D components to avoid SSR issues
 const SimpleGalaxyVisualization = dynamic(
@@ -25,7 +25,11 @@ const SimpleGalaxyVisualization = dynamic(
     }
 )
 
-export default function AboutPage() {
+interface AboutPageClientProps {
+    dict: Dictionary
+}
+
+export default function AboutPageClient({ dict }: AboutPageClientProps) {
     const { isAuthenticated, user, logout } = useAuth()
     const [selectedPlanet, setSelectedPlanet] = useState<SkillPlanet | null>(null)
     const [selectedExperience, setSelectedExperience] = useState<ExperienceEntry | null>(null)
@@ -237,15 +241,15 @@ export default function AboutPage() {
                         {/* Basic Info */}
                         <div className="flex-1 text-center md:text-left">
                             <h1 className="text-4xl md:text-5xl font-bold text-white mb-2">
-                                Ruby Wu
+                                {dict.about.title}
                             </h1>
                             <p className="text-xl md:text-2xl text-blue-400 mb-4">
-                                Full Stack Software Engineer
+                                {dict.about.subtitle}
                             </p>
                             <div className="flex flex-wrap gap-4 justify-center md:justify-start text-gray-300">
                                 <div className="flex items-center gap-2">
                                     <span>👤</span>
-                                    <span>女</span>
+                                    <span>{dict.about.gender}</span>
                                 </div>
                                 <div className="flex items-center gap-2">
                                     <span>📧</span>
@@ -253,11 +257,11 @@ export default function AboutPage() {
                                 </div>
                                 <div className="flex items-center gap-2">
                                     <span>📍</span>
-                                    <span>北京昌平</span>
+                                    <span>{dict.about.location}</span>
                                 </div>
                                 <div className="flex items-center gap-2">
                                     <span>📍</span>
-                                    <span>gitHub: <a href="https://github.com/Ruby-wurui">https://github.com/Ruby-wurui</a></span>
+                                    <span>{dict.about.github}: <a href="https://github.com/Ruby-wurui">https://github.com/Ruby-wurui</a></span>
                                 </div>
 
                             </div>
@@ -269,10 +273,10 @@ export default function AboutPage() {
                 <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 mb-8 border border-gray-700">
                     <h2 className="text-3xl font-bold text-white mb-4 flex items-center gap-3">
                         <span className="text-3xl">💼</span>
-                        Professional Summary
+                        {dict.about.professional_summary}
                     </h2>
                     <p className="text-gray-300 leading-relaxed text-lg">
-                        Senior Frontend Architect and AI Solutions Specialist with <strong className="text-blue-400">7 years of experience</strong> designing and implementing high-performance, scalable B2B enterprise solutions. Proven expertise in frontend engineering, performance optimization, and team leadership. A passionate innovator in AI-driven development, specializing in <strong className="text-purple-400">&ldquo;Low-Code + LLM + AI Agent&rdquo;</strong> solutions. Successfully built intelligent workflows using Dify, RAG, and MCP technologies to automate processes, enhance risk control, and reduce operational costs.
+                        {dict.about.professional_summary_text}
                     </p>
                 </div>
 
@@ -280,11 +284,11 @@ export default function AboutPage() {
                 <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 mb-8 border border-gray-700">
                     <h2 className="text-3xl font-bold text-white mb-6 flex items-center gap-3">
                         <span className="text-3xl">🚀</span>
-                        Core Competencies
+                        {dict.about.core_competencies}
                     </h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div className="bg-gray-900/50 rounded-lg p-5 border border-gray-700/50">
-                            <h3 className="text-xl font-semibold text-blue-400 mb-3">Frontend Architecture</h3>
+                            <h3 className="text-xl font-semibold text-blue-400 mb-3">{dict.about.frontend_architecture}</h3>
                             <div className="flex flex-wrap gap-2">
                                 {['Vue.js', 'VuePress', 'WebRTC', 'Socket.IO Client', 'Element UI'].map(tech => (
                                     <span key={tech} className="bg-blue-900/30 text-blue-300 px-3 py-1 rounded-full text-sm border border-blue-700/50">
@@ -294,7 +298,7 @@ export default function AboutPage() {
                             </div>
                         </div>
                         <div className="bg-gray-900/50 rounded-lg p-5 border border-gray-700/50">
-                            <h3 className="text-xl font-semibold text-green-400 mb-3">Backend & Full-Stack</h3>
+                            <h3 className="text-xl font-semibold text-green-400 mb-3">{dict.about.backend_fullstack}</h3>
                             <div className="flex flex-wrap gap-2">
                                 {['Node.js', 'Express.js', 'Socket.IO', 'Sequelize ORM'].map(tech => (
                                     <span key={tech} className="bg-green-900/30 text-green-300 px-3 py-1 rounded-full text-sm border border-green-700/50">
@@ -304,7 +308,7 @@ export default function AboutPage() {
                             </div>
                         </div>
                         <div className="bg-gray-900/50 rounded-lg p-5 border border-gray-700/50">
-                            <h3 className="text-xl font-semibold text-purple-400 mb-3">Databases & Caching</h3>
+                            <h3 className="text-xl font-semibold text-purple-400 mb-3">{dict.about.databases_caching}</h3>
                             <div className="flex flex-wrap gap-2">
                                 {['PostgreSQL', 'MySQL', 'Redis'].map(tech => (
                                     <span key={tech} className="bg-purple-900/30 text-purple-300 px-3 py-1 rounded-full text-sm border border-purple-700/50">
@@ -314,7 +318,7 @@ export default function AboutPage() {
                             </div>
                         </div>
                         <div className="bg-gray-900/50 rounded-lg p-5 border border-gray-700/50">
-                            <h3 className="text-xl font-semibold text-yellow-400 mb-3">DevOps & Monorepo</h3>
+                            <h3 className="text-xl font-semibold text-yellow-400 mb-3">{dict.about.devops_monorepo}</h3>
                             <div className="flex flex-wrap gap-2">
                                 {['Turborepo', 'Changeset', 'Jenkins', 'PM2', 'Microservices'].map(tech => (
                                     <span key={tech} className="bg-yellow-900/30 text-yellow-300 px-3 py-1 rounded-full text-sm border border-yellow-700/50">
@@ -324,10 +328,10 @@ export default function AboutPage() {
                             </div>
                         </div>
                         <div className="bg-gray-900/50 rounded-lg p-5 border border-gray-700/50 md:col-span-2">
-                            <h3 className="text-xl font-semibold text-pink-400 mb-3">AI & LLMs</h3>
+                            <h3 className="text-xl font-semibold text-pink-400 mb-3">{dict.about.ai_llms}</h3>
                             <div className="space-y-3">
                                 <div>
-                                    <p className="text-gray-400 text-sm mb-2">Models:</p>
+                                    <p className="text-gray-400 text-sm mb-2">{dict.about.ai_models}</p>
                                     <div className="flex flex-wrap gap-2">
                                         {['ChatGPT', 'Gemini', 'Claude', 'Qwen', 'Nomic-embed-text'].map(tech => (
                                             <span key={tech} className="bg-pink-900/30 text-pink-300 px-3 py-1 rounded-full text-sm border border-pink-700/50">
@@ -337,7 +341,7 @@ export default function AboutPage() {
                                     </div>
                                 </div>
                                 <div>
-                                    <p className="text-gray-400 text-sm mb-2">Workflows & Techniques:</p>
+                                    <p className="text-gray-400 text-sm mb-2">{dict.about.ai_workflows}</p>
                                     <div className="flex flex-wrap gap-2">
                                         {['n8n', 'Dify', 'RAG', 'Prompt Engineering', 'Vector Databases', 'AI Agent'].map(tech => (
                                             <span key={tech} className="bg-pink-900/30 text-pink-300 px-3 py-1 rounded-full text-sm border border-pink-700/50">
@@ -347,7 +351,7 @@ export default function AboutPage() {
                                     </div>
                                 </div>
                                 <div>
-                                    <p className="text-gray-400 text-sm mb-2">AI-Assisted Coding:</p>
+                                    <p className="text-gray-400 text-sm mb-2">{dict.about.ai_coding}</p>
                                     <div className="flex flex-wrap gap-2">
                                         {['Cursor', 'Windsurf', 'Kiro', 'Gemini Code'].map(tech => (
                                             <span key={tech} className="bg-pink-900/30 text-pink-300 px-3 py-1 rounded-full text-sm border border-pink-700/50">
@@ -359,7 +363,7 @@ export default function AboutPage() {
                             </div>
                         </div>
                         <div className="bg-gray-900/50 rounded-lg p-5 border border-gray-700/50 md:col-span-2">
-                            <h3 className="text-xl font-semibold text-cyan-400 mb-3">Web Automation & Testing</h3>
+                            <h3 className="text-xl font-semibold text-cyan-400 mb-3">{dict.about.web_automation}</h3>
                             <div className="flex flex-wrap gap-2">
                                 {['Puppeteer', 'Playwright', 'Firecrawl'].map(tech => (
                                     <span key={tech} className="bg-cyan-900/30 text-cyan-300 px-3 py-1 rounded-full text-sm border border-cyan-700/50">
@@ -375,149 +379,149 @@ export default function AboutPage() {
                 <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 mb-8 border border-gray-700">
                     <h2 className="text-3xl font-bold text-white mb-6 flex items-center gap-3">
                         <span className="text-3xl">💻</span>
-                        Work Experience
+                        {dict.about.work_experience}
                     </h2>
                     <div className="space-y-6">
                         {/* Position Title */}
                         <div className="border-l-4 border-blue-500 pl-6">
                             <h3 className="text-2xl font-bold text-white mb-2">
-                                Senior Frontend Engineer / AI Solutions Architect
+                                {dict.about.position_title}
                             </h3>
-                            <p className="text-gray-400 mb-4">Enterprise Company | 2015 - Present</p>
+                            <p className="text-gray-400 mb-4">{dict.about.company_duration}</p>
 
                             {/* Project 1 */}
                             <div className="mb-6 bg-gray-900/50 rounded-lg p-5 border border-gray-700/50">
-                                <h4 className="text-xl font-semibold text-blue-400 mb-3">🏗️ Micro-Frontend Architecture</h4>
+                                <h4 className="text-xl font-semibold text-blue-400 mb-3">🏗️ {dict.about.project_micro_frontend}</h4>
                                 <ul className="space-y-2 text-gray-300">
                                     <li className="flex gap-2">
                                         <span className="text-blue-400 flex-shrink-0">•</span>
-                                        <span>Architected and led the 0-to-1 development of a large-scale enterprise cloud platform using a <strong>Wujie-based micro-frontend architecture</strong></span>
+                                        <span>{dict.about.project_micro_frontend_1}</span>
                                     </li>
                                     <li className="flex gap-2">
                                         <span className="text-blue-400 flex-shrink-0">•</span>
-                                        <span>Successfully integrated over <strong>12 subsystems</strong>, ensuring stable and high-performance operation for <strong>1,000+ DAU</strong> and tens of thousands of total users</span>
+                                        <span>{dict.about.project_micro_frontend_2}</span>
                                     </li>
                                     <li className="flex gap-2">
                                         <span className="text-blue-400 flex-shrink-0">•</span>
-                                        <span>Resolved critical pain points of the original monolithic application, including code-base bloat, inefficient team collaboration, and difficulties in technology upgrades</span>
+                                        <span>{dict.about.project_micro_frontend_3}</span>
                                     </li>
                                 </ul>
                             </div>
 
                             {/* Project 2 */}
                             <div className="mb-6 bg-gray-900/50 rounded-lg p-5 border border-gray-700/50">
-                                <h4 className="text-xl font-semibold text-green-400 mb-3">📦 Enterprise Component Library & Monorepo</h4>
+                                <h4 className="text-xl font-semibold text-green-400 mb-3">📦 {dict.about.project_component_library}</h4>
                                 <ul className="space-y-2 text-gray-300">
                                     <li className="flex gap-2">
                                         <span className="text-green-400 flex-shrink-0">•</span>
-                                        <span>Spearheaded the design and implementation of an enterprise-grade <strong>Monorepo (Turborepo)</strong>, centralizing 3 core packages and 2 applications</span>
+                                        <span>{dict.about.project_component_library_1}</span>
                                     </li>
                                     <li className="flex gap-2">
                                         <span className="text-green-400 flex-shrink-0">•</span>
-                                        <span>Significantly improved team development efficiency and reduced cross-project maintenance costs</span>
+                                        <span>{dict.about.project_component_library_2}</span>
                                     </li>
                                     <li className="flex gap-2">
                                         <span className="text-green-400 flex-shrink-0">•</span>
-                                        <span>Implemented <strong>Changeset</strong> for automated version management, changelog generation, and npm publishing</span>
+                                        <span>{dict.about.project_component_library_3}</span>
                                     </li>
                                     <li className="flex gap-2">
                                         <span className="text-green-400 flex-shrink-0">•</span>
-                                        <span>Established a complete CI/CD pipeline using Jenkins, automating the entire workflow from development to deployment</span>
+                                        <span>{dict.about.project_component_library_4}</span>
                                     </li>
                                 </ul>
                             </div>
 
                             {/* Project 3 */}
                             <div className="mb-6 bg-gray-900/50 rounded-lg p-5 border border-gray-700/50">
-                                <h4 className="text-xl font-semibold text-purple-400 mb-3">🤖 AI Automation & RAG Implementation</h4>
+                                <h4 className="text-xl font-semibold text-purple-400 mb-3">🤖 {dict.about.project_ai_automation}</h4>
                                 <ul className="space-y-2 text-gray-300">
                                     <li className="flex gap-2">
                                         <span className="text-purple-400 flex-shrink-0">•</span>
-                                        <span>Built and championed a <strong>low-code AI solution stack (N8n, LLMs, AI Agents, MCP)</strong> for secure, on-premise workflow automation</span>
+                                        <span>{dict.about.project_ai_automation_1}</span>
                                     </li>
                                     <li className="flex gap-2">
                                         <span className="text-purple-400 flex-shrink-0">•</span>
-                                        <span>Led the development of an internal intelligent Q&A system using <strong>Dify</strong>, providing instant, knowledge-base-aware responses</span>
+                                        <span>{dict.about.project_ai_automation_2}</span>
                                     </li>
                                     <li className="flex gap-2">
                                         <span className="text-purple-400 flex-shrink-0">•</span>
-                                        <span>Applied advanced <strong>RAG techniques</strong> by vectorizing documents into a vector database, dynamically feeding relevant context to LLMs</span>
+                                        <span>{dict.about.project_ai_automation_3}</span>
                                     </li>
                                     <li className="flex gap-2">
                                         <span className="text-purple-400 flex-shrink-0">•</span>
-                                        <span>Engineered AI Agents to understand complex user intent and automate multi-step, cross-system business processes</span>
+                                        <span>{dict.about.project_ai_automation_4}</span>
                                     </li>
                                 </ul>
                             </div>
 
                             {/* Project 4 */}
                             <div className="mb-6 bg-gray-900/50 rounded-lg p-5 border border-gray-700/50">
-                                <h4 className="text-xl font-semibold text-pink-400 mb-3">⚡ AI-Assisted Development & Workflow Optimization</h4>
+                                <h4 className="text-xl font-semibold text-pink-400 mb-3">⚡ {dict.about.project_ai_development}</h4>
                                 <ul className="space-y-2 text-gray-300">
                                     <li className="flex gap-2">
                                         <span className="text-pink-400 flex-shrink-0">•</span>
-                                        <span>Pioneered a high-efficiency workflow <strong>(Cursor + Figma + MCP)</strong>, drastically reducing the design-to-delivery cycle</span>
+                                        <span>{dict.about.project_ai_development_1}</span>
                                     </li>
                                     <li className="flex gap-2">
                                         <span className="text-pink-400 flex-shrink-0">•</span>
-                                        <span>Leveraged AI-powered coding tools and advanced prompt engineering to enhance development speed and code quality</span>
+                                        <span>{dict.about.project_ai_development_2}</span>
                                     </li>
                                 </ul>
                             </div>
 
                             {/* Project 5 */}
                             <div className="mb-6 bg-gray-900/50 rounded-lg p-5 border border-gray-700/50">
-                                <h4 className="text-xl font-semibold text-yellow-400 mb-3">🎯 AI Solution Deployment (Enterprise Use Cases)</h4>
+                                <h4 className="text-xl font-semibold text-yellow-400 mb-3">🎯 {dict.about.project_ai_deployment}</h4>
                                 <ul className="space-y-2 text-gray-300">
                                     <li className="flex gap-2">
                                         <span className="text-yellow-400 flex-shrink-0">•</span>
-                                        <span>Designed an automated transaction monitoring workflow for risk control with real-time anomaly detection and alerts</span>
+                                        <span>{dict.about.project_ai_deployment_1}</span>
                                     </li>
                                     <li className="flex gap-2">
                                         <span className="text-yellow-400 flex-shrink-0">•</span>
-                                        <span>Developed an intelligent voice assistant to automate customer intake and data submission, providing <strong>24/7 service</strong></span>
+                                        <span>{dict.about.project_ai_deployment_2}</span>
                                     </li>
                                     <li className="flex gap-2">
                                         <span className="text-yellow-400 flex-shrink-0">•</span>
-                                        <span>Automated repetitive tasks including financial reconciliation and report generation, integrating with core business systems</span>
+                                        <span>{dict.about.project_ai_deployment_3}</span>
                                     </li>
                                 </ul>
                             </div>
 
                             {/* Project 6 */}
                             <div className="mb-6 bg-gray-900/50 rounded-lg p-5 border border-gray-700/50">
-                                <h4 className="text-xl font-semibold text-cyan-400 mb-3">💬 Full-Stack Real-Time Communication System</h4>
+                                <h4 className="text-xl font-semibold text-cyan-400 mb-3">💬 {dict.about.project_realtime_communication}</h4>
                                 <ul className="space-y-2 text-gray-300">
                                     <li className="flex gap-2">
                                         <span className="text-cyan-400 flex-shrink-0">•</span>
-                                        <span>Developed a full-stack real-time chat and co-browsing system, extending an existing screen-sharing service</span>
+                                        <span>{dict.about.project_realtime_communication_1}</span>
                                     </li>
                                     <li className="flex gap-2">
                                         <span className="text-cyan-400 flex-shrink-0">•</span>
-                                        <span>Built the backend using <strong>Node.js, Express, and Socket.IO</strong> for real-time events, with Sequelize (MySQL) for persistence and Redis for session caching</span>
+                                        <span>{dict.about.project_realtime_communication_2}</span>
                                     </li>
                                     <li className="flex gap-2">
                                         <span className="text-cyan-400 flex-shrink-0">•</span>
-                                        <span>Ensured high availability and concurrency handling by deploying the Node.js application in cluster mode using PM2</span>
+                                        <span>{dict.about.project_realtime_communication_3}</span>
                                     </li>
                                 </ul>
                             </div>
 
                             {/* Project 7 */}
                             <div className="bg-gray-900/50 rounded-lg p-5 border border-gray-700/50">
-                                <h4 className="text-xl font-semibold text-orange-400 mb-3">📊 Frontend Monitoring SDK Development</h4>
+                                <h4 className="text-xl font-semibold text-orange-400 mb-3">📊 {dict.about.project_monitoring_sdk}</h4>
                                 <ul className="space-y-2 text-gray-300">
                                     <li className="flex gap-2">
                                         <span className="text-orange-400 flex-shrink-0">•</span>
-                                        <span>Developed a custom in-house frontend monitoring SDK for error tracking and performance analysis</span>
+                                        <span>{dict.about.project_monitoring_sdk_1}</span>
                                     </li>
                                     <li className="flex gap-2">
                                         <span className="text-orange-400 flex-shrink-0">•</span>
-                                        <span>Implemented non-intrusive logging using <strong>Babel</strong> for automated code instrumentation</span>
+                                        <span>{dict.about.project_monitoring_sdk_2}</span>
                                     </li>
                                     <li className="flex gap-2">
                                         <span className="text-orange-400 flex-shrink-0">•</span>
-                                        <span>Integrated user behavior analytics, including session recording/replay and heatmaps</span>
+                                        <span>{dict.about.project_monitoring_sdk_3}</span>
                                     </li>
                                 </ul>
                             </div>
@@ -528,10 +532,10 @@ export default function AboutPage() {
                 {/* Interactive Galaxy Section */}
                 {/* <div className="text-center mb-8">
                     <h2 className="text-4xl font-bold text-white mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                        🌌 Interactive Skills Galaxy
+                        🌌 {dict.about.interactive_galaxy}
                     </h2>
                     <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-                        Explore my skills and experience through an interactive 3D galaxy visualization
+                        {dict.about.interactive_galaxy_subtitle}
                     </p>
                 </div> */}
 
@@ -542,8 +546,8 @@ export default function AboutPage() {
                             <div className="w-full h-full flex items-center justify-center bg-gradient-to-b from-purple-900 via-blue-900 to-black rounded-lg">
                                 <div className="text-center text-white p-6">
                                     <div className="text-6xl mb-4">🪐</div>
-                                    <h2 className="text-2xl font-bold mb-4">Personal Universe</h2>
-                                    <p className="text-gray-300 mb-6">3D visualization is not available on this device</p>
+                                    <h2 className="text-2xl font-bold mb-4">{dict.about.personal_universe}</h2>
+                                    <p className="text-gray-300 mb-6">{dict.about['3d_unavailable']}</p>
                                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl">
                                         {skillPlanets.map(planet => (
                                             <div
@@ -588,19 +592,19 @@ export default function AboutPage() {
 
                 {/* Instructions */}
                 {/* <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 border border-gray-700">
-                    <h2 className="text-2xl font-bold text-white mb-4">How to Navigate</h2>
+                    <h2 className="text-2xl font-bold text-white mb-4">{dict.about.how_to_navigate}</h2>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
                         <div className="flex items-center space-x-3">
                             <div className="w-4 h-4 bg-blue-500 rounded-full"></div>
-                            <span className="text-gray-300">Click planets to explore skills in detail</span>
+                            <span className="text-gray-300">{dict.about.nav_instruction_1}</span>
                         </div>
                         <div className="flex items-center space-x-3">
                             <div className="w-4 h-4 bg-purple-500 rounded-full"></div>
-                            <span className="text-gray-300">Drag to rotate and zoom the galaxy</span>
+                            <span className="text-gray-300">{dict.about.nav_instruction_2}</span>
                         </div>
                         <div className="flex items-center space-x-3">
                             <div className="w-4 h-4 bg-yellow-500 rounded-full"></div>
-                            <span className="text-gray-300">Experience timeline orbits around the center</span>
+                            <span className="text-gray-300">{dict.about.nav_instruction_3}</span>
                         </div>
                     </div>
                 </div> */}
@@ -633,7 +637,7 @@ export default function AboutPage() {
                             </div>
                             <p className="text-gray-300">{selectedExperience.description}</p>
                             <div>
-                                <h4 className="font-medium text-white mb-2">Technologies Used</h4>
+                                <h4 className="font-medium text-white mb-2">{dict.about.technologies_used}</h4>
                                 <div className="flex flex-wrap gap-2">
                                     {selectedExperience.technologies.map((tech, index) => (
                                         <span
