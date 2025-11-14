@@ -6,13 +6,22 @@ import { OrbitControls, Html } from '@react-three/drei'
 import * as THREE from 'three'
 import { GalaxyVisualizationProps, SkillPlanet } from '@/types/3d'
 
-// Planet texture URLs mapping
-const PLANET_TEXTURES: Record<string, string> = {
-    frontend: 'https://images.unsplash.com/photo-1614730321146-b6fa6a46bcb4?w=800&q=80', // 蓝紫色星球
-    backend: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80', // 地球风格
-    mobile: 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=800&q=80', // 橙色星球
-    devops: 'https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=800&q=80', // 土星风格
-    'ai-ml': 'https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?w=800&q=80', // 红色星球
+// Import local planet textures
+import planet1 from '@/assets/planet/image.png'
+import planet2 from '@/assets/planet/image copy.png'
+import planet3 from '@/assets/planet/image copy 2.png'
+import planet4 from '@/assets/planet/image copy 3.png'
+import planet5 from '@/assets/planet/image copy 4.png'
+import planet6 from '@/assets/planet/image copy 5.png'
+import planet7 from '@/assets/planet/image34.png'
+
+// Planet texture mapping using local images
+const PLANET_TEXTURES: Record<string, any> = {
+    frontend: planet1,      // Frontend Architecture
+    backend: planet2,       // Backend & Full-Stack
+    devops: planet3,        // DevOps & Monorepo
+    'ai-ml': planet4,       // AI & LLM Solutions
+    mobile: planet5,        // AI-Assisted Development
 }
 
 // Enhanced Planet Component with Texture
@@ -30,13 +39,18 @@ function EnhancedPlanet({
     const [hovered, setHovered] = useState(false)
     const [labelPosition, setLabelPosition] = useState<[number, number, number]>([0, 0, 0])
 
-    // Load texture
+    // Load texture from local images
     const texture = useMemo(() => {
-        const textureUrl = PLANET_TEXTURES[planet.id]
-        if (textureUrl) {
+        const planetImage = PLANET_TEXTURES[planet.id]
+        if (planetImage) {
             const loader = new THREE.TextureLoader()
             try {
-                return loader.load(textureUrl)
+                const tex = loader.load(planetImage.src)
+                // Enhance texture quality
+                tex.anisotropy = 16
+                tex.minFilter = THREE.LinearMipmapLinearFilter
+                tex.magFilter = THREE.LinearFilter
+                return tex
             } catch (error) {
                 console.warn(`Failed to load texture for ${planet.id}`)
                 return null
@@ -88,13 +102,24 @@ function EnhancedPlanet({
 
     return (
         <group>
-            {/* Outer glow */}
+            {/* Outer glow - multiple layers for better effect */}
             <mesh ref={glowRef}>
-                <sphereGeometry args={[planet.size * 1.2, 32, 32]} />
+                <sphereGeometry args={[planet.size * 1.15, 32, 32]} />
                 <meshBasicMaterial
                     color={planet.color}
                     transparent
-                    opacity={hovered || isSelected ? 0.3 : 0.15}
+                    opacity={hovered || isSelected ? 0.4 : 0.2}
+                    side={THREE.BackSide}
+                />
+            </mesh>
+
+            {/* Additional glow layer */}
+            <mesh>
+                <sphereGeometry args={[planet.size * 1.25, 32, 32]} />
+                <meshBasicMaterial
+                    color={planet.color}
+                    transparent
+                    opacity={hovered || isSelected ? 0.2 : 0.1}
                     side={THREE.BackSide}
                 />
             </mesh>
@@ -105,23 +130,26 @@ function EnhancedPlanet({
                 onClick={() => onClick(planet)}
                 onPointerOver={() => setHovered(true)}
                 onPointerOut={() => setHovered(false)}
+                castShadow
+                receiveShadow
             >
-                <sphereGeometry args={[planet.size, 64, 64]} />
+                <sphereGeometry args={[planet.size, 128, 128]} />
                 {texture ? (
                     <meshStandardMaterial
                         map={texture}
                         emissive={planet.color}
-                        emissiveIntensity={isSelected ? 0.4 : hovered ? 0.3 : 0.15}
-                        roughness={0.7}
-                        metalness={0.2}
+                        emissiveIntensity={isSelected ? 0.5 : hovered ? 0.4 : 0.2}
+                        roughness={0.6}
+                        metalness={0.3}
+                        envMapIntensity={1.5}
                     />
                 ) : (
                     <meshStandardMaterial
                         color={planet.color}
                         emissive={planet.color}
-                        emissiveIntensity={isSelected ? 0.4 : hovered ? 0.3 : 0.15}
-                        roughness={0.7}
-                        metalness={0.2}
+                        emissiveIntensity={isSelected ? 0.5 : hovered ? 0.4 : 0.2}
+                        roughness={0.6}
+                        metalness={0.3}
                     />
                 )}
             </mesh>
@@ -157,20 +185,34 @@ function EnhancedPlanet({
                 </div>
             </Html>
 
-            {/* Ring for selected/hovered planet */}
+            {/* Ring for selected/hovered planet - enhanced */}
             {(hovered || isSelected) && meshRef.current && (
-                <mesh
-                    position={[meshRef.current.position.x, meshRef.current.position.y, meshRef.current.position.z]}
-                    rotation={[Math.PI / 2, 0, 0]}
-                >
-                    <ringGeometry args={[planet.size * 1.5, planet.size * 1.6, 32]} />
-                    <meshBasicMaterial
-                        color={planet.color}
-                        transparent
-                        opacity={0.6}
-                        side={THREE.DoubleSide}
-                    />
-                </mesh>
+                <>
+                    <mesh
+                        position={[meshRef.current.position.x, meshRef.current.position.y, meshRef.current.position.z]}
+                        rotation={[Math.PI / 2, 0, 0]}
+                    >
+                        <ringGeometry args={[planet.size * 1.5, planet.size * 1.55, 64]} />
+                        <meshBasicMaterial
+                            color={planet.color}
+                            transparent
+                            opacity={0.8}
+                            side={THREE.DoubleSide}
+                        />
+                    </mesh>
+                    <mesh
+                        position={[meshRef.current.position.x, meshRef.current.position.y, meshRef.current.position.z]}
+                        rotation={[Math.PI / 2, 0, 0]}
+                    >
+                        <ringGeometry args={[planet.size * 1.6, planet.size * 1.65, 64]} />
+                        <meshBasicMaterial
+                            color={planet.color}
+                            transparent
+                            opacity={0.4}
+                            side={THREE.DoubleSide}
+                        />
+                    </mesh>
+                </>
             )}
         </group>
     )
@@ -292,30 +334,59 @@ function EnhancedGalaxyScene({
             {/* Starfield background */}
             <Starfield />
 
-            {/* Lighting */}
-            <ambientLight intensity={0.3} />
-            <pointLight position={[0, 0, 0]} intensity={2} color="#ffd700" distance={50} />
-            <pointLight position={[10, 10, 10]} intensity={0.5} color="#ffffff" />
-            <pointLight position={[-10, -10, -10]} intensity={0.3} color="#4488ff" />
+            {/* Enhanced Lighting System */}
+            <ambientLight intensity={0.4} />
 
-            {/* Galaxy center (Sun) */}
+            {/* Sun light from center */}
+            <pointLight position={[0, 0, 0]} intensity={3} color="#ffd700" distance={60} decay={2} />
+
+            {/* Fill lights for better planet visibility */}
+            <pointLight position={[15, 15, 15]} intensity={0.8} color="#ffffff" distance={50} />
+            <pointLight position={[-15, -15, -15]} intensity={0.5} color="#6688ff" distance={50} />
+            <pointLight position={[0, 20, 0]} intensity={0.6} color="#ff88ff" distance={50} />
+
+            {/* Directional light for depth */}
+            <directionalLight position={[10, 10, 5]} intensity={0.5} color="#ffffff" />
+
+            {/* Galaxy center (Sun) - Enhanced */}
             <mesh ref={sunRef}>
-                <sphereGeometry args={[0.8, 32, 32]} />
+                <sphereGeometry args={[0.9, 64, 64]} />
                 <meshStandardMaterial
-                    color="#ffaa00"
-                    emissive="#ff6600"
-                    emissiveIntensity={1}
-                    roughness={0.5}
+                    color="#ffcc00"
+                    emissive="#ff8800"
+                    emissiveIntensity={2}
+                    roughness={0.3}
+                    metalness={0.1}
                 />
             </mesh>
 
-            {/* Sun glow */}
-            <mesh scale={1.3}>
-                <sphereGeometry args={[0.8, 32, 32]} />
+            {/* Sun glow - multiple layers */}
+            <mesh scale={1.2}>
+                <sphereGeometry args={[0.9, 32, 32]} />
                 <meshBasicMaterial
                     color="#ffaa00"
                     transparent
+                    opacity={0.5}
+                    side={THREE.BackSide}
+                />
+            </mesh>
+
+            <mesh scale={1.5}>
+                <sphereGeometry args={[0.9, 32, 32]} />
+                <meshBasicMaterial
+                    color="#ff8800"
+                    transparent
                     opacity={0.3}
+                    side={THREE.BackSide}
+                />
+            </mesh>
+
+            <mesh scale={1.8}>
+                <sphereGeometry args={[0.9, 32, 32]} />
+                <meshBasicMaterial
+                    color="#ff6600"
+                    transparent
+                    opacity={0.15}
                     side={THREE.BackSide}
                 />
             </mesh>
