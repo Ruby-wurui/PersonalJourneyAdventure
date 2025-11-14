@@ -160,94 +160,176 @@ export const useAdventureMapStore = create<AdventureMapState>()(
                             isLoading: false
                         })
 
-                        // Set fallback data for development
+                        // Set real project data based on Ruby's experience
                         const fallbackIslands: ProjectIsland[] = [
                             {
-                                id: 'portfolio-website',
-                                name: 'Portfolio Website',
-                                description: 'Interactive portfolio website with 3D elements and real-time features',
-                                shortDescription: 'Interactive portfolio with 3D elements',
+                                id: 'micro-frontend-platform',
+                                name: 'Enterprise Cloud Platform',
+                                description: 'Architected and led 0-to-1 development of large-scale enterprise cloud platform using Wujie-based micro-frontend architecture. Successfully integrated 12+ subsystems with 1,000+ DAU and tens of thousands of total users. Resolved critical pain points of monolithic application including code bloat and team collaboration issues.',
+                                shortDescription: 'Micro-frontend architecture with 12+ subsystems',
                                 position: { x: 0, y: 0, size: 'large', theme: 'tech' },
                                 techStack: [
-                                    { name: 'Next.js', category: 'frontend', proficiency: 'advanced', color: '#000000' },
-                                    { name: 'React Three Fiber', category: 'frontend', proficiency: 'intermediate', color: '#61DAFB' },
-                                    { name: 'Node.js', category: 'backend', proficiency: 'advanced', color: '#339933' }
+                                    { name: 'Vue.js', category: 'frontend', proficiency: 'expert', color: '#42b883' },
+                                    { name: 'Wujie', category: 'frontend', proficiency: 'expert', color: '#00d8ff' },
+                                    { name: 'Micro-Frontend', category: 'frontend', proficiency: 'expert', color: '#ff6b6b' },
+                                    { name: 'VuePress', category: 'frontend', proficiency: 'advanced', color: '#3eaf7c' }
                                 ],
-                                category: 'web-app',
-                                status: 'in-development',
-                                githubUrl: 'https://github.com/example/portfolio',
+                                category: 'Enterprise Platform',
+                                status: 'maintained',
                                 featured: true,
-                                color: '#00FFFF',
-                                demoConfig: {
-                                    type: 'interactive-component',
-                                    interactiveFeatures: [
-                                        { name: 'Particle System', description: 'Interactive 3D particles', action: 'particle-demo' },
-                                        { name: 'Performance Test', description: 'Test system performance', action: 'performance-test' }
-                                    ]
-                                },
-                                achievements: [
-                                    {
-                                        id: 'first-visit',
-                                        name: 'Explorer',
-                                        description: 'Visit your first project island',
-                                        icon: '🗺️',
-                                        condition: 'Visit any project island',
-                                        points: 10,
-                                        rarity: 'common'
-                                    }
-                                ]
-                            },
-                            {
-                                id: 'e-commerce-app',
-                                name: 'E-commerce Platform',
-                                description: 'Full-stack e-commerce application with real-time inventory',
-                                shortDescription: 'E-commerce platform with real-time features',
-                                position: { x: 3, y: -2, size: 'medium', theme: 'tropical' },
-                                techStack: [
-                                    { name: 'React', category: 'frontend', proficiency: 'advanced', color: '#61DAFB' },
-                                    { name: 'Express.js', category: 'backend', proficiency: 'advanced', color: '#000000' },
-                                    { name: 'MongoDB', category: 'database', proficiency: 'intermediate', color: '#47A248' }
-                                ],
-                                category: 'web-app',
-                                status: 'completed',
-                                githubUrl: 'https://github.com/example/ecommerce',
-                                liveUrl: 'https://example-ecommerce.com',
-                                featured: false,
-                                color: '#22C55E',
-                                demoConfig: {
-                                    type: 'interactive-component',
-                                    interactiveFeatures: [
-                                        { name: 'Shopping Cart', description: 'Add items to cart with real-time inventory', action: 'shopping-cart' },
-                                        { name: 'Payment Flow', description: 'Simulate payment processing', action: 'payment-demo' }
-                                    ]
-                                },
+                                color: '#00d8ff',
                                 metrics: {
-                                    githubStars: 42,
-                                    githubForks: 12,
-                                    githubWatchers: 8,
-                                    commits: 156,
-                                    contributors: 3,
-                                    linesOfCode: 8500,
+                                    githubStars: 0,
+                                    githubForks: 0,
+                                    githubWatchers: 0,
+                                    commits: 500,
+                                    contributors: 8,
+                                    linesOfCode: 50000,
                                     deploymentStatus: 'deployed',
-                                    uptime: 99.8,
-                                    performanceScore: 92
+                                    uptime: 99.9,
+                                    performanceScore: 95
                                 }
                             },
                             {
-                                id: 'mobile-game',
-                                name: 'Mobile Puzzle Game',
-                                description: 'Cross-platform mobile game built with React Native',
-                                shortDescription: 'Cross-platform mobile puzzle game',
-                                position: { x: -2, y: 3, size: 'small', theme: 'mystical' },
+                                id: 'monorepo-component-library',
+                                name: 'Enterprise Component Library',
+                                description: 'Spearheaded design and implementation of enterprise-grade Monorepo (Turborepo), centralizing 3 core packages and 2 applications. Significantly improved team development efficiency and reduced cross-project maintenance costs. Implemented Changeset for automated version management, changelog generation, and npm publishing. Established complete CI/CD pipeline using Jenkins.',
+                                shortDescription: 'Monorepo with Turborepo & automated CI/CD',
+                                position: { x: 4, y: -2, size: 'large', theme: 'tech' },
                                 techStack: [
-                                    { name: 'React Native', category: 'mobile', proficiency: 'intermediate', color: '#61DAFB' },
-                                    { name: 'Expo', category: 'mobile', proficiency: 'intermediate', color: '#000020' }
+                                    { name: 'Turborepo', category: 'devops', proficiency: 'expert', color: '#ef4444' },
+                                    { name: 'Changeset', category: 'devops', proficiency: 'expert', color: '#8b5cf6' },
+                                    { name: 'Jenkins', category: 'devops', proficiency: 'advanced', color: '#d24939' },
+                                    { name: 'Storybook', category: 'frontend', proficiency: 'advanced', color: '#ff4785' },
+                                    { name: 'Element UI', category: 'frontend', proficiency: 'expert', color: '#409eff' }
                                 ],
-                                category: 'mobile-app',
+                                category: 'DevOps & Infrastructure',
+                                status: 'maintained',
+                                featured: true,
+                                color: '#ef4444',
+                                metrics: {
+                                    githubStars: 0,
+                                    githubForks: 0,
+                                    githubWatchers: 0,
+                                    commits: 300,
+                                    contributors: 5,
+                                    linesOfCode: 25000,
+                                    deploymentStatus: 'deployed',
+                                    uptime: 99.5,
+                                    performanceScore: 93
+                                }
+                            },
+                            {
+                                id: 'ai-automation-rag',
+                                name: 'AI Automation & RAG System',
+                                description: 'Built and championed low-code AI solution stack (N8n, LLMs, AI Agents, MCP) for secure, on-premise workflow automation. Led development of intelligent Q&A system using Dify with RAG techniques. Applied advanced RAG by vectorizing documents into vector database, dynamically feeding context to LLMs. Engineered AI Agents for multi-step, cross-system automation.',
+                                shortDescription: 'AI-powered automation with RAG & vector DB',
+                                position: { x: -4, y: 2, size: 'large', theme: 'mystical' },
+                                techStack: [
+                                    { name: 'Dify', category: 'ai-ml', proficiency: 'expert', color: '#ff6b6b' },
+                                    { name: 'n8n', category: 'ai-ml', proficiency: 'expert', color: '#ea4b71' },
+                                    { name: 'RAG', category: 'ai-ml', proficiency: 'expert', color: '#8b5cf6' },
+                                    { name: 'Vector DB', category: 'ai-ml', proficiency: 'advanced', color: '#06d6a0' },
+                                    { name: 'ChatGPT', category: 'ai-ml', proficiency: 'expert', color: '#10a37f' },
+                                    { name: 'Claude', category: 'ai-ml', proficiency: 'expert', color: '#d97706' }
+                                ],
+                                category: 'AI & Machine Learning',
+                                status: 'maintained',
+                                featured: true,
+                                color: '#8b5cf6',
+                                metrics: {
+                                    githubStars: 0,
+                                    githubForks: 0,
+                                    githubWatchers: 0,
+                                    commits: 250,
+                                    contributors: 3,
+                                    linesOfCode: 15000,
+                                    deploymentStatus: 'deployed',
+                                    uptime: 99.7,
+                                    performanceScore: 91
+                                }
+                            },
+                            {
+                                id: 'realtime-communication',
+                                name: 'Real-Time Communication System',
+                                description: 'Developed full-stack real-time chat and co-browsing system, extending existing screen-sharing service. Built backend using Node.js, Express, and Socket.IO for real-time events, with Sequelize (MySQL) for persistence and Redis for session caching. Ensured high availability and concurrency handling by deploying in cluster mode using PM2.',
+                                shortDescription: 'Real-time chat with WebRTC & Socket.IO',
+                                position: { x: 2, y: 4, size: 'medium', theme: 'tech' },
+                                techStack: [
+                                    { name: 'Node.js', category: 'backend', proficiency: 'expert', color: '#339933' },
+                                    { name: 'Socket.IO', category: 'backend', proficiency: 'expert', color: '#010101' },
+                                    { name: 'WebRTC', category: 'frontend', proficiency: 'advanced', color: '#333333' },
+                                    { name: 'Express.js', category: 'backend', proficiency: 'expert', color: '#000000' },
+                                    { name: 'MySQL', category: 'database', proficiency: 'advanced', color: '#4479a1' },
+                                    { name: 'Redis', category: 'database', proficiency: 'advanced', color: '#dc382d' },
+                                    { name: 'PM2', category: 'devops', proficiency: 'advanced', color: '#2b037a' }
+                                ],
+                                category: 'Real-Time Systems',
                                 status: 'completed',
-                                githubUrl: 'https://github.com/example/mobile-game',
+                                featured: true,
+                                color: '#339933',
+                                metrics: {
+                                    githubStars: 0,
+                                    githubForks: 0,
+                                    githubWatchers: 0,
+                                    commits: 200,
+                                    contributors: 2,
+                                    linesOfCode: 12000,
+                                    deploymentStatus: 'deployed',
+                                    uptime: 99.8,
+                                    performanceScore: 94
+                                }
+                            },
+                            {
+                                id: 'ai-assisted-development',
+                                name: 'AI-Assisted Development Workflow',
+                                description: 'Pioneered high-efficiency workflow (Cursor + Figma + MCP), drastically reducing design-to-delivery cycle. Intelligently parsed designs into code with automated validation. Leveraged AI-powered coding tools and advanced prompt engineering to enhance development speed, code quality, and refactoring processes.',
+                                shortDescription: 'AI-powered development with Cursor & MCP',
+                                position: { x: -2, y: -4, size: 'medium', theme: 'mystical' },
+                                techStack: [
+                                    { name: 'Cursor', category: 'ai-ml', proficiency: 'expert', color: '#000000' },
+                                    { name: 'Windsurf', category: 'ai-ml', proficiency: 'expert', color: '#06d6a0' },
+                                    { name: 'Kiro', category: 'ai-ml', proficiency: 'expert', color: '#3b82f6' },
+                                    { name: 'MCP', category: 'ai-ml', proficiency: 'expert', color: '#8b5cf6' },
+                                    { name: 'Figma', category: 'other', proficiency: 'advanced', color: '#f24e1e' }
+                                ],
+                                category: 'Development Tools',
+                                status: 'maintained',
                                 featured: false,
-                                color: '#9370DB'
+                                color: '#06d6a0'
+                            },
+                            {
+                                id: 'frontend-monitoring-sdk',
+                                name: 'Frontend Monitoring SDK',
+                                description: 'Developed custom in-house frontend monitoring SDK for error tracking and performance analysis. Implemented non-intrusive logging using Babel for automated code instrumentation. Integrated user behavior analytics, including session recording/replay and heatmaps.',
+                                shortDescription: 'Custom monitoring SDK with session replay',
+                                position: { x: 4, y: 3, size: 'medium', theme: 'tech' },
+                                techStack: [
+                                    { name: 'Babel', category: 'frontend', proficiency: 'advanced', color: '#f9dc3e' },
+                                    { name: 'TypeScript', category: 'frontend', proficiency: 'expert', color: '#3178c6' },
+                                    { name: 'Puppeteer', category: 'other', proficiency: 'advanced', color: '#40b5a4' },
+                                    { name: 'Playwright', category: 'other', proficiency: 'advanced', color: '#2ead33' }
+                                ],
+                                category: 'Monitoring & Analytics',
+                                status: 'completed',
+                                featured: false,
+                                color: '#f9dc3e'
+                            },
+                            {
+                                id: 'ai-voice-assistant',
+                                name: 'Intelligent Voice Assistant',
+                                description: 'Developed intelligent voice assistant (Dify + AI Agent + MCP) to automate customer intake and data submission. Provides 24/7 service and significantly reduced manual customer service workload. Integrated with core business systems for seamless data flow.',
+                                shortDescription: '24/7 AI voice assistant with automation',
+                                position: { x: -4, y: -2, size: 'small', theme: 'mystical' },
+                                techStack: [
+                                    { name: 'Dify', category: 'ai-ml', proficiency: 'expert', color: '#ff6b6b' },
+                                    { name: 'AI Agent', category: 'ai-ml', proficiency: 'expert', color: '#8b5cf6' },
+                                    { name: 'MCP', category: 'ai-ml', proficiency: 'expert', color: '#06d6a0' }
+                                ],
+                                category: 'AI Solutions',
+                                status: 'completed',
+                                featured: false,
+                                color: '#ff6b6b'
                             }
                         ]
 

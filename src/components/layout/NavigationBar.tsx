@@ -40,13 +40,19 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
 
   const navigationItems = [
     {
-      name: 'Laboratory',
+      name: 'Universe',
       href: '/',
+      icon: '🌌',
+      description: 'Skills Galaxy'
+    },
+    {
+      name: 'Laboratory',
+      href: '/laboratory',
       icon: '🧪',
       description: 'Interactive 3D Skills'
     },
     {
-      name: 'Universe',
+      name: 'About',
       href: '/about',
       icon: '🪐',
       description: 'Personal Universe'

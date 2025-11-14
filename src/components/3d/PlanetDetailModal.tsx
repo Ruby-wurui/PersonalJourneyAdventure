@@ -425,7 +425,7 @@ export default function PlanetDetailModal({ planet, isOpen, onClose }: PlanetDet
                         </div>
                         <div className="bg-gray-800/30 rounded-lg p-3">
                             <div className="text-2xl font-bold" style={{ color: planet.color }}>
-                                10+
+                                7+
                             </div>
                             <div className="text-xs text-gray-400 mt-1">Years Experience</div>
                         </div>

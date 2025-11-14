@@ -15,7 +15,7 @@ const ProjectsPage: React.FC = () => {
   const [showModal, setShowModal] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
   const [showLoginModal, setShowLoginModal] = useState(false)
-  
+
   const { isAuthenticated, user, logout } = useAuth()
 
   const {
@@ -139,33 +139,58 @@ const ProjectsPage: React.FC = () => {
 
       {/* Page Header */}
       <motion.div
-        className="relative z-10 bg-black/10 backdrop-blur-sm border-b border-white/5"
+        className="relative z-10 bg-gradient-to-r from-purple-900/20 via-blue-900/20 to-pink-900/20 backdrop-blur-md border-b border-purple-500/20"
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.2 }}
       >
-        <div className="container mx-auto px-6 py-6">
-          <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-4xl font-bold text-white mb-2 flex items-center gap-3">
-                🗺️ Adventure Map
-                <span className="text-2xl text-purple-400 font-normal">Explore My Projects</span>
-              </h1>
-              <p className="text-purple-300 text-lg">
-                Navigate through interactive islands showcasing my development journey
-              </p>
-            </div>
-
-            <div className="flex items-center space-x-6">
-              <div className="text-right">
-                <div className="text-white font-bold text-xl">
-                  {islands.length} Projects
+        <div className="container mx-auto px-6 py-0">
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+            <div className="flex-1">
+              <div className="flex items-center gap-4 mb-3">
+                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-purple-500 via-pink-500 to-orange-500 flex items-center justify-center animate-pulse">
+                  <span className="text-3xl">🗺️</span>
                 </div>
-                <div className="text-purple-300 text-sm">
-                  {islands.filter(i => i.featured).length} Featured
+                <div>
+                  <h4 className="text-2xl md:text-3xl font-bold text-white mb-1">
+                    Project Map
+                  </h4>
+                  <p className="text-xl text-purple-300">
+                    Explore my journey through enterprise-scale projects
+                  </p>
                 </div>
               </div>
+              {/* <p className="text-gray-300 text-lg max-w-3xl">
+                Explore my journey through enterprise-scale projects
+              </p> */}
             </div>
+
+            {/* <div className="flex flex-wrap gap-4">
+              <div className="bg-gradient-to-br from-blue-500/20 to-blue-600/20 backdrop-blur-sm rounded-xl p-4 border border-blue-500/30 min-w-[120px]">
+                <div className="text-3xl font-bold text-blue-400 mb-1">
+                  {islands.length}
+                </div>
+                <div className="text-blue-200 text-sm font-medium">
+                  Major Projects
+                </div>
+              </div>
+              <div className="bg-gradient-to-br from-purple-500/20 to-purple-600/20 backdrop-blur-sm rounded-xl p-4 border border-purple-500/30 min-w-[120px]">
+                <div className="text-3xl font-bold text-purple-400 mb-1">
+                  {islands.filter(i => i.featured).length}
+                </div>
+                <div className="text-purple-200 text-sm font-medium">
+                  Featured
+                </div>
+              </div>
+              <div className="bg-gradient-to-br from-green-500/20 to-green-600/20 backdrop-blur-sm rounded-xl p-4 border border-green-500/30 min-w-[120px]">
+                <div className="text-3xl font-bold text-green-400 mb-1">
+                  7+
+                </div>
+                <div className="text-green-200 text-sm font-medium">
+                  Years Exp
+                </div>
+              </div>
+            </div> */}
           </div>
         </div>
       </motion.div>
@@ -236,41 +261,67 @@ const ProjectsPage: React.FC = () => {
         onClose={() => setShowLoginModal(false)}
       />
 
-      {/* Stats Panel */}
+      {/* Enhanced Stats Panel */}
       <motion.div
-        className="absolute bottom-6 left-6 z-10 bg-gradient-to-br from-purple-900/40 via-blue-900/40 to-black/40 backdrop-blur-md rounded-xl p-5 border border-purple-500/20 shadow-2xl shadow-purple-500/10"
+        className="absolute bottom-6 left-6 z-10 bg-gradient-to-br from-gray-900/90 via-purple-900/80 to-blue-900/90 backdrop-blur-xl rounded-2xl p-6 border-2 border-purple-500/30 shadow-2xl max-w-sm"
+        style={{
+          boxShadow: '0 0 60px rgba(168, 85, 247, 0.3), 0 20px 80px rgba(0,0,0,0.5)'
+        }}
         initial={{ y: 100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.7 }}
       >
-        <h3 className="text-white font-bold mb-3 flex items-center gap-2 text-lg">
-          <span className="text-2xl">📊</span>
-          Portfolio Stats
+        <h3 className="text-white font-bold mb-4 flex items-center gap-3 text-xl">
+          <span className="text-3xl">📊</span>
+          <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+            Portfolio Impact
+          </span>
         </h3>
-        <div className="grid grid-cols-2 gap-4 text-sm">
-          <div className="text-center p-3 bg-blue-500/10 rounded-lg border border-blue-500/20">
-            <div className="text-2xl font-bold text-blue-400">
-              {islands.length}
+
+        <div className="space-y-3 mb-4">
+          <div className="flex items-center justify-between p-3 bg-gradient-to-r from-blue-500/20 to-blue-600/10 rounded-lg border border-blue-500/30">
+            <div className="flex items-center gap-3">
+              <span className="text-2xl">🏗️</span>
+              <span className="text-gray-200 font-medium">Total Projects</span>
             </div>
-            <div className="text-gray-200 font-medium">Projects</div>
+            <div className="text-2xl font-bold text-blue-400">{islands.length}</div>
           </div>
-          <div className="text-center p-3 bg-green-500/10 rounded-lg border border-green-500/20">
+
+          <div className="flex items-center justify-between p-3 bg-gradient-to-r from-green-500/20 to-green-600/10 rounded-lg border border-green-500/30">
+            <div className="flex items-center gap-3">
+              <span className="text-2xl">✅</span>
+              <span className="text-gray-200 font-medium">Completed</span>
+            </div>
             <div className="text-2xl font-bold text-green-400">
-              {islands.filter(i => i.status === 'completed').length}
+              {islands.filter(i => i.status === 'completed' || i.status === 'maintained').length}
             </div>
-            <div className="text-gray-200 font-medium">Completed</div>
           </div>
-          <div className="text-center p-3 bg-purple-500/10 rounded-lg border border-purple-500/20">
+
+          <div className="flex items-center justify-between p-3 bg-gradient-to-r from-purple-500/20 to-purple-600/10 rounded-lg border border-purple-500/30">
+            <div className="flex items-center gap-3">
+              <span className="text-2xl">🛠️</span>
+              <span className="text-gray-200 font-medium">Tech Stack</span>
+            </div>
             <div className="text-2xl font-bold text-purple-400">
-              {new Set(islands.flatMap(i => i.techStack.map(t => t.name))).size}
+              {new Set(islands.flatMap(i => i.techStack.map(t => t.name))).size}+
             </div>
-            <div className="text-gray-200 font-medium">Technologies</div>
           </div>
-          <div className="text-center p-3 bg-yellow-500/10 rounded-lg border border-yellow-500/20">
-            <div className="text-2xl font-bold text-yellow-400">
-              {islands.filter(i => i.demoConfig).length}
+
+          <div className="flex items-center justify-between p-3 bg-gradient-to-r from-yellow-500/20 to-yellow-600/10 rounded-lg border border-yellow-500/30">
+            <div className="flex items-center gap-3">
+              <span className="text-2xl">👥</span>
+              <span className="text-gray-200 font-medium">Users Served</span>
             </div>
-            <div className="text-gray-200 font-medium">Demos</div>
+            <div className="text-2xl font-bold text-yellow-400">1000+</div>
+          </div>
+        </div>
+
+        <div className="pt-4 border-t border-purple-500/20">
+          <div className="text-center">
+            <div className="text-sm text-gray-400 mb-1">Achievement Score</div>
+            <div className="text-3xl font-bold bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 bg-clip-text text-transparent">
+              🏆 Expert Level
+            </div>
           </div>
         </div>
       </motion.div>

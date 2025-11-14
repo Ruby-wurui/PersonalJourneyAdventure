@@ -20,23 +20,23 @@ export const MapNavigation: React.FC<MapNavigationProps> = ({
   className = ''
 }) => {
   const zoomPercentage = Math.round(viewport.zoom * 100)
-  
+
   const handleZoomIn = () => {
     controls.zoom(1.2)
   }
-  
+
   const handleZoomOut = () => {
     controls.zoom(0.8)
   }
-  
+
   const handleReset = () => {
     controls.resetView()
   }
-  
+
   const handleFitToContent = () => {
     controls.fitToContent()
   }
-  
+
   const handleIslandSelect = (island: ProjectIsland) => {
     controls.zoomToIsland(island)
   }
@@ -44,7 +44,7 @@ export const MapNavigation: React.FC<MapNavigationProps> = ({
   return (
     <div className={`flex flex-col gap-2 ${className}`}>
       {/* Zoom Controls */}
-      <motion.div 
+      {/* <motion.div
         className="bg-white/90 backdrop-blur-sm rounded-lg p-2 shadow-lg"
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
@@ -60,11 +60,11 @@ export const MapNavigation: React.FC<MapNavigationProps> = ({
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
             </svg>
           </button>
-          
+
           <div className="px-2 py-1 text-xs text-center text-gray-700 font-medium">
             {zoomPercentage}%
           </div>
-          
+
           <button
             onClick={handleZoomOut}
             className="w-10 h-10 flex items-center justify-center bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors"
@@ -75,10 +75,10 @@ export const MapNavigation: React.FC<MapNavigationProps> = ({
             </svg>
           </button>
         </div>
-      </motion.div>
-      
+      </motion.div> */}
+
       {/* View Controls */}
-      <motion.div 
+      {/* <motion.div 
         className="bg-white/90 backdrop-blur-sm rounded-lg p-2 shadow-lg"
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
@@ -105,12 +105,13 @@ export const MapNavigation: React.FC<MapNavigationProps> = ({
             </svg>
           </button>
         </div>
-      </motion.div>
-      
+      </motion.div> */}
+
       {/* Island Quick Navigation */}
       {islands.length > 0 && (
-        <motion.div 
+        <motion.div
           className="bg-white/90 backdrop-blur-sm rounded-lg p-3 shadow-lg max-w-xs"
+          style={{ marginTop: '100px' }}
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.3, delay: 0.2 }}
@@ -124,11 +125,10 @@ export const MapNavigation: React.FC<MapNavigationProps> = ({
                 <button
                   key={island.id}
                   onClick={() => handleIslandSelect(island)}
-                  className={`w-full text-left p-2 rounded-lg text-xs transition-colors mb-1 ${
-                    selectedIsland?.id === island.id
-                      ? 'bg-blue-100 text-blue-800'
-                      : 'hover:bg-gray-100 text-gray-700'
-                  }`}
+                  className={`w-full text-left p-2 rounded-lg text-xs transition-colors mb-1 ${selectedIsland?.id === island.id
+                    ? 'bg-blue-100 text-blue-800'
+                    : 'hover:bg-gray-100 text-gray-700'
+                    }`}
                 >
                   <div className="flex items-center gap-2">
                     {island.featured && (
@@ -137,13 +137,12 @@ export const MapNavigation: React.FC<MapNavigationProps> = ({
                     <span className="font-medium truncate">{island.name}</span>
                   </div>
                   <div className="flex items-center gap-1 mt-1">
-                    <span 
-                      className={`w-2 h-2 rounded-full ${
-                        island.status === 'completed' ? 'bg-green-500' :
+                    <span
+                      className={`w-2 h-2 rounded-full ${island.status === 'completed' ? 'bg-green-500' :
                         island.status === 'in-development' ? 'bg-yellow-500' :
-                        island.status === 'maintained' ? 'bg-blue-500' :
-                        'bg-gray-400'
-                      }`}
+                          island.status === 'maintained' ? 'bg-blue-500' :
+                            'bg-gray-400'
+                        }`}
                     />
                     <span className="text-gray-500 capitalize">{island.status}</span>
                   </div>
@@ -152,9 +151,9 @@ export const MapNavigation: React.FC<MapNavigationProps> = ({
           </div>
         </motion.div>
       )}
-      
+
       {/* Legend */}
-      <motion.div 
+      <motion.div
         className="bg-white/90 backdrop-blur-sm rounded-lg p-3 shadow-lg"
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
@@ -180,9 +179,9 @@ export const MapNavigation: React.FC<MapNavigationProps> = ({
           </div>
         </div>
       </motion.div>
-      
+
       {/* Keyboard Shortcuts */}
-      <motion.div 
+      <motion.div
         className="bg-white/90 backdrop-blur-sm rounded-lg p-3 shadow-lg"
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}

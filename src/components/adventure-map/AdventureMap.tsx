@@ -30,10 +30,10 @@ export const AdventureMap: React.FC<AdventureMapProps> = ({
   const [isDragging, setIsDragging] = useState(false)
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 })
   const [hoveredIsland, setHoveredIsland] = useState<ProjectIsland | null>(null)
-  
+
   const mapRef = useRef<SVGSVGElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
-  
+
   const { setSelectedIsland, setHoveredIsland: setStoreHoveredIsland } = useAdventureMapStore()
 
   // Update container size on mount and resize
@@ -67,13 +67,13 @@ export const AdventureMap: React.FC<AdventureMapProps> = ({
     zoom: (factor: number, centerX?: number, centerY?: number) => {
       setViewport(prev => {
         const newZoom = Math.max(MIN_ZOOM, Math.min(MAX_ZOOM, prev.zoom * factor))
-        
+
         if (centerX !== undefined && centerY !== undefined) {
           // Zoom towards a specific point
           const zoomFactor = newZoom / prev.zoom
           const newX = centerX - (centerX - prev.x) * zoomFactor
           const newY = centerY - (centerY - prev.y) * zoomFactor
-          
+
           return {
             ...prev,
             x: newX,
@@ -81,7 +81,7 @@ export const AdventureMap: React.FC<AdventureMapProps> = ({
             zoom: newZoom
           }
         }
-        
+
         return { ...prev, zoom: newZoom }
       })
     },
@@ -90,7 +90,7 @@ export const AdventureMap: React.FC<AdventureMapProps> = ({
       const targetX = -island.position.x * 100 + viewport.width / 2
       const targetY = -island.position.y * 100 + viewport.height / 2
       const targetZoom = island.position.size === 'large' ? 1.5 : island.position.size === 'medium' ? 1.8 : 2.2
-      
+
       setViewport(prev => ({
         ...prev,
         x: targetX,
@@ -105,23 +105,23 @@ export const AdventureMap: React.FC<AdventureMapProps> = ({
 
     fitToContent: () => {
       if (islands.length === 0) return
-      
+
       const padding = 100
       const minX = Math.min(...islands.map(i => i.position.x)) * 100 - padding
       const maxX = Math.max(...islands.map(i => i.position.x)) * 100 + padding
       const minY = Math.min(...islands.map(i => i.position.y)) * 100 - padding
       const maxY = Math.max(...islands.map(i => i.position.y)) * 100 + padding
-      
+
       const contentWidth = maxX - minX
       const contentHeight = maxY - minY
-      
+
       const scaleX = viewport.width / contentWidth
       const scaleY = viewport.height / contentHeight
       const scale = Math.min(scaleX, scaleY, MAX_ZOOM)
-      
+
       const centerX = (minX + maxX) / 2
       const centerY = (minY + maxY) / 2
-      
+
       setViewport(prev => ({
         ...prev,
         x: viewport.width / 2 - centerX * scale,
@@ -130,6 +130,17 @@ export const AdventureMap: React.FC<AdventureMapProps> = ({
       }))
     }
   }), [islands, viewport.width, viewport.height])
+
+  // Center map content on initial load
+  useEffect(() => {
+    if (islands.length > 0 && viewport.width > 0 && viewport.height > 0) {
+      // Small delay to ensure viewport dimensions are set
+      const timer = setTimeout(() => {
+        mapControls.fitToContent()
+      }, 100)
+      return () => clearTimeout(timer)
+    }
+  }, [islands.length, viewport.width, viewport.height, mapControls])
 
   // Mouse event handlers
   const handleMouseDown = useCallback((e: React.MouseEvent) => {
@@ -155,11 +166,11 @@ export const AdventureMap: React.FC<AdventureMapProps> = ({
     e.preventDefault()
     const rect = containerRef.current?.getBoundingClientRect()
     if (!rect) return
-    
+
     const centerX = e.clientX - rect.left
     const centerY = e.clientY - rect.top
     const factor = e.deltaY > 0 ? 0.9 : 1.1
-    
+
     mapControls.zoom(factor, centerX, centerY)
   }, [mapControls])
 
@@ -192,32 +203,32 @@ export const AdventureMap: React.FC<AdventureMapProps> = ({
           opacity="0.2"
         />
       </pattern>
-      
+
       <filter id="island-glow">
-        <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-        <feMerge> 
-          <feMergeNode in="coloredBlur"/>
-          <feMergeNode in="SourceGraphic"/>
+        <feGaussianBlur stdDeviation="3" result="coloredBlur" />
+        <feMerge>
+          <feMergeNode in="coloredBlur" />
+          <feMergeNode in="SourceGraphic" />
         </feMerge>
       </filter>
     </defs>
   )
 
   return (
-    <div 
+    <div
       ref={containerRef}
-      className={`relative w-full h-full overflow-hidden bg-gradient-to-b from-sky-200 to-blue-400 ${className}`}
+      className={`relative w-screen h-screen overflow-hidden bg-gradient-to-b from-sky-200 to-blue-400 ${className}`}
       style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
     >
       {/* Map Navigation Controls */}
-      <MapNavigation 
+      <MapNavigation
         controls={mapControls}
         viewport={viewport}
         islands={islands}
         selectedIsland={selectedIsland}
         className="absolute top-4 right-4 z-10"
       />
-      
+
       {/* SVG Map */}
       <motion.svg
         ref={mapRef}
@@ -234,14 +245,14 @@ export const AdventureMap: React.FC<AdventureMapProps> = ({
         transition={{ duration: 0.5 }}
       >
         {oceanPattern}
-        
+
         {/* Ocean Background */}
-        <rect 
-          width="100%" 
-          height="100%" 
+        <rect
+          width="100%"
+          height="100%"
           fill="url(#ocean-waves)"
         />
-        
+
         {/* Map Content Group */}
         <g
           transform={`translate(${viewport.x}, ${viewport.y}) scale(${viewport.zoom})`}
@@ -260,16 +271,16 @@ export const AdventureMap: React.FC<AdventureMapProps> = ({
               />
             ))}
           </AnimatePresence>
-          
+
           {/* Connection lines between related projects */}
           {islands.map((island) => {
-            const relatedIslands = islands.filter(other => 
-              other.id !== island.id && 
-              island.techStack.some(tech => 
+            const relatedIslands = islands.filter(other =>
+              other.id !== island.id &&
+              island.techStack.some(tech =>
                 other.techStack.some(otherTech => otherTech.name === tech.name)
               )
             )
-            
+
             return relatedIslands.map((related) => (
               <motion.line
                 key={`${island.id}-${related.id}`}
@@ -289,7 +300,7 @@ export const AdventureMap: React.FC<AdventureMapProps> = ({
           })}
         </g>
       </motion.svg>
-      
+
       {/* Floating Island Info */}
       <AnimatePresence>
         {hoveredIsland && (
