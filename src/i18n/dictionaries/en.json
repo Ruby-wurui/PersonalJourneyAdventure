@@ -1,0 +1,46 @@
+{
+    "nav": {
+        "universe": "Universe",
+        "home": "Home",
+        "about": "About",
+        "projects": "Projects",
+        "blog": "Blog",
+        "universe_desc": "Skills Galaxy",
+        "home_desc": "Interactive 3D Skills",
+        "about_desc": "Personal Universe",
+        "projects_desc": "Project Islands",
+        "blog_desc": "Tech Blog & Timeline"
+    },
+    "auth": {
+        "login": "Login",
+        "register": "Register",
+        "logout": "Logout",
+        "admin_login": "Admin Login",
+        "user_registration": "User Registration",
+        "admin": "Admin"
+    },
+    "blog": {
+        "manage": "Manage",
+        "new_post": "New Post",
+        "manage_posts": "Manage Posts",
+        "create_new_post": "Create New Post",
+        "edit_organize": "Edit and organize blog content",
+        "write_publish": "Write and publish new content"
+    },
+    "common": {
+        "loading": "Loading...",
+        "error": "Error",
+        "success": "Success",
+        "cancel": "Cancel",
+        "save": "Save",
+        "delete": "Delete",
+        "edit": "Edit",
+        "back": "Back",
+        "next": "Next",
+        "previous": "Previous"
+    },
+    "brand": {
+        "title": "Quadrant Ruby",
+        "subtitle": "Quadrant Ruby Digital Universe"
+    }
+}

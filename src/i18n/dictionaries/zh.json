@@ -1,0 +1,46 @@
+{
+    "nav": {
+        "universe": "宇宙",
+        "home": "主页",
+        "about": "关于",
+        "projects": "项目",
+        "blog": "博客",
+        "universe_desc": "技能星系",
+        "home_desc": "交互式3D技能",
+        "about_desc": "个人宇宙",
+        "projects_desc": "项目岛屿",
+        "blog_desc": "技术博客与时间线"
+    },
+    "auth": {
+        "login": "登录",
+        "register": "注册",
+        "logout": "退出",
+        "admin_login": "管理员登录",
+        "user_registration": "用户注册",
+        "admin": "管理员"
+    },
+    "blog": {
+        "manage": "管理",
+        "new_post": "新文章",
+        "manage_posts": "管理文章",
+        "create_new_post": "创建新文章",
+        "edit_organize": "编辑和组织博客内容",
+        "write_publish": "撰写和发布新内容"
+    },
+    "common": {
+        "loading": "加载中...",
+        "error": "错误",
+        "success": "成功",
+        "cancel": "取消",
+        "save": "保存",
+        "delete": "删除",
+        "edit": "编辑",
+        "back": "返回",
+        "next": "下一个",
+        "previous": "上一个"
+    },
+    "brand": {
+        "title": "第Ruby象限",
+        "subtitle": "第Ruby象限数字宇宙"
+    }
+}

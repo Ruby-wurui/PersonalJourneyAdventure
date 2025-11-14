@@ -46,9 +46,9 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
       description: 'Skills Galaxy'
     },
     {
-      name: 'Laboratory',
+      name: 'Home',
       href: '/laboratory',
-      icon: '🧪',
+      icon: '🏠',
       description: 'Interactive 3D Skills'
     },
     {
@@ -98,7 +98,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
                 </div>
                 <div className="hidden sm:block">
                   <h1 className="text-white font-bold text-lg">第Ruby象限</h1>
-                  <p className="text-gray-400 text-xs">Quadrant Aryse Digital Universe</p>
+                  <p className="text-gray-400 text-xs">Quadrant Ruby Digital Universe</p>
                 </div>
               </div>
             </div>
