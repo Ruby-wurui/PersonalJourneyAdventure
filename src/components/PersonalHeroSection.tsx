@@ -60,7 +60,7 @@ const PersonalHeroSection: React.FC<PersonalHeroSectionProps> = ({
                                 transition={{ duration: 0.6, delay: 0.2 }}
                                 className="text-3xl md:text-4xl font-bold text-white mb-2"
                             >
-                                Ruby-wu
+                                Ruby.wu
                             </motion.h1>
                             <motion.p
                                 initial={{ y: 20, opacity: 0 }}

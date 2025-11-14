@@ -425,8 +425,8 @@ export default function SimpleGalaxyVisualization(props: GalaxyVisualizationProp
     return (
         <div className="w-full h-full relative">
             {/* Ruby's Universe Logo - Top Left */}
-            <div className="absolute top-6 left-6 z-10 pointer-events-none">
-                <div className="flex items-center gap-4">
+            <div className="absolute top-40 left-6 z-10 pointer-events-none">
+                <div className="flex item-center gap-4">
                     {/* Animated Planet Logo */}
                     <div className="relative">
                         <div className="w-16 h-16 rounded-full bg-gradient-to-br from-purple-500 via-pink-500 to-orange-500 animate-pulse shadow-2xl flex items-center justify-center">

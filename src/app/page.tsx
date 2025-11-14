@@ -199,106 +199,67 @@ export default function Home() {
   }
 
   return (
-    <div className="relative w-full min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-black overflow-hidden">
-      {/* Navigation Bar */}
-      <NavigationBar
-        isAuthenticated={isAuthenticated}
-        user={user}
-        onLogin={() => setShowLoginModal(true)}
-        onRegister={() => setShowRegisterModal(true)}
-        onLogout={logout}
-      />
-
-      {/* Background stars effect */}
-      <div className="absolute inset-0 opacity-30">
-        <div className="stars-small"></div>
-        <div className="stars-medium"></div>
-        <div className="stars-large"></div>
-      </div>
-
-      <div className="relative z-10 container mx-auto px-4 py-8">
-        {/* Hero Section */}
-        <div className="text-center mb-8">
-          {/* <h1 className="text-5xl md:text-6xl font-bold text-white mb-4 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-            🌌 Welcome to My Universe
-          </h1>
-          <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-2">
-            Explore my skills and experience through an interactive 3D galaxy
-          </p> */}
-          {/* <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-            Click on planets to discover technologies, drag to rotate, and zoom to explore
-          </p> */}
-        </div>
-
-        {/* Galaxy Visualization */}
-        <div className="h-[70vh] relative mb-8">
-          <Scene3DErrorBoundaryWrapper
-            fallback={
-              <div className="w-full h-full flex items-center justify-center bg-gradient-to-b from-purple-900 via-blue-900 to-black rounded-lg">
-                <div className="text-center text-white p-6">
-                  <div className="text-6xl mb-4">🪐</div>
-                  <h2 className="text-2xl font-bold mb-4">Personal Universe</h2>
-                  <p className="text-gray-300 mb-6">3D visualization is not available on this device</p>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl">
-                    {skillPlanets.map(planet => (
-                      <div
-                        key={planet.id}
-                        className="bg-gray-800/50 backdrop-blur-sm p-4 rounded-lg border border-gray-700 hover:border-blue-500 transition-colors cursor-pointer"
-                        onClick={() => handlePlanetSelect(planet)}
-                      >
-                        <div className="flex items-center space-x-3 mb-2">
-                          <div
-                            className="w-4 h-4 rounded-full"
-                            style={{ backgroundColor: planet.color }}
-                          />
-                          <h3 className="font-semibold text-white">{planet.name}</h3>
-                        </div>
-                        <p className="text-sm text-gray-400 mb-2">{planet.category}</p>
-                        <div className="w-full bg-gray-700 rounded-full h-2">
-                          <div
-                            className="h-2 rounded-full transition-all duration-300"
-                            style={{
-                              width: `${planet.proficiencyLevel}%`,
-                              backgroundColor: planet.color
-                            }}
-                          />
-                        </div>
-                        <span className="text-xs text-gray-500">{planet.proficiencyLevel}%</span>
+    <div className="relative w-full min-h-screen overflow-hidden">
+      {/* Galaxy Visualization - Full Screen Background */}
+      <div className="fixed inset-0 w-full h-full">
+        <Scene3DErrorBoundaryWrapper
+          fallback={
+            <div className="w-full h-full flex items-center justify-center bg-gradient-to-b from-purple-900 via-blue-900 to-black">
+              <div className="text-center text-white p-6">
+                <div className="text-6xl mb-4">🪐</div>
+                <h2 className="text-2xl font-bold mb-4">Personal Universe</h2>
+                <p className="text-gray-300 mb-6">3D visualization is not available on this device</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl">
+                  {skillPlanets.map(planet => (
+                    <div
+                      key={planet.id}
+                      className="bg-gray-800/50 backdrop-blur-sm p-4 rounded-lg border border-gray-700 hover:border-blue-500 transition-colors cursor-pointer"
+                      onClick={() => handlePlanetSelect(planet)}
+                    >
+                      <div className="flex items-center space-x-3 mb-2">
+                        <div
+                          className="w-4 h-4 rounded-full"
+                          style={{ backgroundColor: planet.color }}
+                        />
+                        <h3 className="font-semibold text-white">{planet.name}</h3>
                       </div>
-                    ))}
-                  </div>
+                      <p className="text-sm text-gray-400 mb-2">{planet.category}</p>
+                      <div className="w-full bg-gray-700 rounded-full h-2">
+                        <div
+                          className="h-2 rounded-full transition-all duration-300"
+                          style={{
+                            width: `${planet.proficiencyLevel}%`,
+                            backgroundColor: planet.color
+                          }}
+                        />
+                      </div>
+                      <span className="text-xs text-gray-500">{planet.proficiencyLevel}%</span>
+                    </div>
+                  ))}
                 </div>
               </div>
-            }
-          >
-            <SimpleGalaxyVisualization
-              skillPlanets={skillPlanets}
-              experiences={experiences}
-              onPlanetSelect={handlePlanetSelect}
-              onExperienceSelect={handleExperienceSelect}
-              autoRotate={true}
-            />
-          </Scene3DErrorBoundaryWrapper>
-        </div>
+            </div>
+          }
+        >
+          <SimpleGalaxyVisualization
+            skillPlanets={skillPlanets}
+            experiences={experiences}
+            onPlanetSelect={handlePlanetSelect}
+            onExperienceSelect={handleExperienceSelect}
+            autoRotate={true}
+          />
+        </Scene3DErrorBoundaryWrapper>
+      </div>
 
-        {/* Instructions */}
-        {/* <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 border border-gray-700">
-          <h2 className="text-2xl font-bold text-white mb-4">How to Navigate</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
-            <div className="flex items-center space-x-3">
-              <div className="w-4 h-4 bg-blue-500 rounded-full"></div>
-              <span className="text-gray-300">Click planets to explore skills in detail</span>
-            </div>
-            <div className="flex items-center space-x-3">
-              <div className="w-4 h-4 bg-purple-500 rounded-full"></div>
-              <span className="text-gray-300">Drag to rotate and zoom the galaxy</span>
-            </div>
-            <div className="flex items-center space-x-3">
-              <div className="w-4 h-4 bg-yellow-500 rounded-full"></div>
-              <span className="text-gray-300">Experience timeline orbits around the center</span>
-            </div>
-          </div>
-        </div> */}
+      {/* Navigation Bar - Floating on top */}
+      <div className="relative z-20">
+        <NavigationBar
+          isAuthenticated={isAuthenticated}
+          user={user}
+          onLogin={() => setShowLoginModal(true)}
+          onRegister={() => setShowRegisterModal(true)}
+          onLogout={logout}
+        />
       </div>
 
       {/* Planet Detail Modal */}
