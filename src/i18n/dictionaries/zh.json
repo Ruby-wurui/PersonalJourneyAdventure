@@ -25,7 +25,9 @@
         "manage_posts": "管理文章",
         "create_new_post": "创建新文章",
         "edit_organize": "编辑和组织博客内容",
-        "write_publish": "撰写和发布新内容"
+        "write_publish": "撰写和发布新内容",
+        "title": "技术时光机",
+        "subtitle": "探索我的技术冒险、发现和见解之旅。每篇文章都是一次互动体验，包含代码沙盒和挑战。"
     },
     "common": {
         "loading": "加载中...",
@@ -74,6 +76,71 @@
         "subtitle": "探索技术与技能的宇宙",
         "loading": "正在加载宇宙...",
         "loading_galaxy": "正在加载星系宇宙..."
+    },
+    "projects": {
+        "title": "项目地图",
+        "subtitle": "探索我在企业级项目中的旅程",
+        "loading": "正在加载冒险地图...",
+        "loading_subtitle": "准备交互式项目展示"
+    },
+    "map_navigation": {
+        "quick_navigation": "快速导航",
+        "legend": "图例",
+        "completed": "已完成",
+        "in_development": "开发中",
+        "maintained": "维护中",
+        "featured_project": "精选项目",
+        "controls": "控制",
+        "drag_to_pan": "🖱️ 拖动平移",
+        "scroll_to_zoom": "🔍 滚动缩放",
+        "click_island": "🖱️ 点击岛屿选择",
+        "hover_details": "👆 悬停查看详情"
+    },
+    "achievements": {
+        "title": "成就",
+        "unlocked": "成就解锁！",
+        "progress": "进度",
+        "total_points": "总积分",
+        "points": "积分",
+        "unlocked_status": "✓ 已解锁",
+        "explorer": {
+            "name": "探索者",
+            "description": "访问你的第一个项目岛屿"
+        },
+        "demo_master": {
+            "name": "演示大师",
+            "description": "完成3个交互式演示"
+        },
+        "tech_enthusiast": {
+            "name": "技术爱好者",
+            "description": "探索使用10种以上不同技术的项目"
+        },
+        "interaction_champion": {
+            "name": "互动冠军",
+            "description": "在作品集中执行50次互动"
+        },
+        "completionist": {
+            "name": "完美主义者",
+            "description": "访问所有项目岛屿并完成所有演示"
+        },
+        "speed_runner": {
+            "name": "速通者",
+            "description": "在30秒内完成一个演示"
+        },
+        "social_butterfly": {
+            "name": "社交达人",
+            "description": "使用实时聊天功能"
+        },
+        "code_collaborator": {
+            "name": "代码协作者",
+            "description": "参与协作编码会话"
+        },
+        "rarity": {
+            "common": "普通",
+            "rare": "稀有",
+            "epic": "史诗",
+            "legendary": "传奇"
+        }
     },
     "about": {
         "title": "Ruby Wu",

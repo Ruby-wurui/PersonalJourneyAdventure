@@ -8,16 +8,19 @@ import { useSocket } from '@/hooks/useSocket'
 
 interface AchievementSystemProps {
   className?: string
+  dict: any
 }
 
 interface AchievementNotificationProps {
   achievement: Achievement
   onClose: () => void
+  dict: any
 }
 
 const AchievementNotification: React.FC<AchievementNotificationProps> = ({
   achievement,
-  onClose
+  onClose,
+  dict
 }) => {
   useEffect(() => {
     const timer = setTimeout(onClose, 5000) // Auto-close after 5 seconds
@@ -35,16 +38,16 @@ const AchievementNotification: React.FC<AchievementNotificationProps> = ({
         <div className="text-4xl">{achievement.icon}</div>
         <div className="flex-1">
           <div className="flex items-center gap-2 mb-1">
-            <h3 className="font-bold text-lg">Achievement Unlocked!</h3>
+            <h3 className="font-bold text-lg">{dict.achievements.unlocked}</h3>
             <span className="text-xs bg-white/20 px-2 py-1 rounded-full uppercase">
-              {achievement.rarity}
+              {dict.achievements.rarity[achievement.rarity]}
             </span>
           </div>
           <h4 className="font-semibold text-yellow-100">{achievement.name}</h4>
           <p className="text-sm text-yellow-100/90 mt-1">{achievement.description}</p>
           <div className="flex items-center gap-2 mt-2">
             <span className="text-xs bg-white/20 px-2 py-1 rounded-full">
-              +{achievement.points} points
+              +{achievement.points} {dict.achievements.points}
             </span>
           </div>
         </div>
@@ -61,7 +64,7 @@ const AchievementNotification: React.FC<AchievementNotificationProps> = ({
   )
 }
 
-export const AchievementSystem: React.FC<AchievementSystemProps> = ({ className }) => {
+export const AchievementSystem: React.FC<AchievementSystemProps> = ({ className, dict }) => {
   const [showPanel, setShowPanel] = useState(false)
   const [notifications, setNotifications] = useState<Achievement[]>([])
   const { userProgress, islands, unlockAchievement } = useAdventureMapStore()
@@ -71,8 +74,8 @@ export const AchievementSystem: React.FC<AchievementSystemProps> = ({ className 
   const allAchievements: Achievement[] = [
     {
       id: 'first-visit',
-      name: 'Explorer',
-      description: 'Visit your first project island',
+      name: dict.achievements.explorer.name,
+      description: dict.achievements.explorer.description,
       icon: '🗺️',
       condition: 'Visit any project island',
       points: 10,
@@ -80,8 +83,8 @@ export const AchievementSystem: React.FC<AchievementSystemProps> = ({ className 
     },
     {
       id: 'demo-master',
-      name: 'Demo Master',
-      description: 'Complete 3 interactive demos',
+      name: dict.achievements.demo_master.name,
+      description: dict.achievements.demo_master.description,
       icon: '🎮',
       condition: 'Complete 3 demos',
       points: 50,
@@ -89,8 +92,8 @@ export const AchievementSystem: React.FC<AchievementSystemProps> = ({ className 
     },
     {
       id: 'tech-enthusiast',
-      name: 'Tech Enthusiast',
-      description: 'Explore projects with 10+ different technologies',
+      name: dict.achievements.tech_enthusiast.name,
+      description: dict.achievements.tech_enthusiast.description,
       icon: '🛠️',
       condition: 'View 10+ tech stack items',
       points: 30,
@@ -98,8 +101,8 @@ export const AchievementSystem: React.FC<AchievementSystemProps> = ({ className 
     },
     {
       id: 'interaction-champion',
-      name: 'Interaction Champion',
-      description: 'Perform 50 interactions across the portfolio',
+      name: dict.achievements.interaction_champion.name,
+      description: dict.achievements.interaction_champion.description,
       icon: '⚡',
       condition: 'Reach 50 interactions',
       points: 75,
@@ -107,8 +110,8 @@ export const AchievementSystem: React.FC<AchievementSystemProps> = ({ className 
     },
     {
       id: 'completionist',
-      name: 'Completionist',
-      description: 'Visit all project islands and complete all demos',
+      name: dict.achievements.completionist.name,
+      description: dict.achievements.completionist.description,
       icon: '🏆',
       condition: 'Complete everything',
       points: 200,
@@ -116,8 +119,8 @@ export const AchievementSystem: React.FC<AchievementSystemProps> = ({ className 
     },
     {
       id: 'speed-runner',
-      name: 'Speed Runner',
-      description: 'Complete a demo in under 30 seconds',
+      name: dict.achievements.speed_runner.name,
+      description: dict.achievements.speed_runner.description,
       icon: '🏃‍♂️',
       condition: 'Fast demo completion',
       points: 25,
@@ -125,8 +128,8 @@ export const AchievementSystem: React.FC<AchievementSystemProps> = ({ className 
     },
     {
       id: 'social-butterfly',
-      name: 'Social Butterfly',
-      description: 'Use the real-time chat feature',
+      name: dict.achievements.social_butterfly.name,
+      description: dict.achievements.social_butterfly.description,
       icon: '💬',
       condition: 'Send a chat message',
       points: 15,
@@ -134,8 +137,8 @@ export const AchievementSystem: React.FC<AchievementSystemProps> = ({ className 
     },
     {
       id: 'code-collaborator',
-      name: 'Code Collaborator',
-      description: 'Participate in collaborative coding session',
+      name: dict.achievements.code_collaborator.name,
+      description: dict.achievements.code_collaborator.description,
       icon: '👥',
       condition: 'Join code collaboration',
       points: 40,
@@ -159,7 +162,7 @@ export const AchievementSystem: React.FC<AchievementSystemProps> = ({ className 
         socket.off('achievement-unlocked')
       }
     }
-  }, [socket])
+  }, [socket]) // eslint-disable-line react-hooks/exhaustive-deps
 
   const checkAchievements = () => {
     allAchievements.forEach(achievement => {
@@ -167,7 +170,7 @@ export const AchievementSystem: React.FC<AchievementSystemProps> = ({ className 
         if (shouldUnlockAchievement(achievement)) {
           unlockAchievement(achievement)
           showAchievementNotification(achievement)
-          
+
           // Emit to socket for real-time sharing
           if (socket) {
             socket.emit('achievement-unlock', achievement)
@@ -181,35 +184,35 @@ export const AchievementSystem: React.FC<AchievementSystemProps> = ({ className 
     switch (achievement.id) {
       case 'first-visit':
         return userProgress.visitedIslands.length >= 1
-      
+
       case 'demo-master':
         return userProgress.completedDemos.length >= 3
-      
+
       case 'tech-enthusiast':
         const uniqueTechCount = new Set(
           islands.flatMap(island => island.techStack.map(tech => tech.name))
         ).size
         return uniqueTechCount >= 10
-      
+
       case 'interaction-champion':
         return userProgress.interactionCount >= 50
-      
+
       case 'completionist':
         return userProgress.visitedIslands.length === islands.length &&
-               userProgress.completedDemos.length === islands.filter(i => i.demoConfig).length
-      
+          userProgress.completedDemos.length === islands.filter(i => i.demoConfig).length
+
       case 'speed-runner':
         // This would be tracked separately with timing data
         return false // Implement timing logic as needed
-      
+
       case 'social-butterfly':
         // This would be tracked when chat is used
         return false // Implement chat tracking as needed
-      
+
       case 'code-collaborator':
         // This would be tracked when code collaboration is used
         return false // Implement collaboration tracking as needed
-      
+
       default:
         return false
     }
@@ -271,7 +274,7 @@ export const AchievementSystem: React.FC<AchievementSystemProps> = ({ className 
           >
             <div className="bg-gradient-to-r from-yellow-500 to-orange-500 text-white p-6">
               <div className="flex justify-between items-center mb-4">
-                <h2 className="text-2xl font-bold">Achievements</h2>
+                <h2 className="text-2xl font-bold">{dict.achievements.title}</h2>
                 <button
                   onClick={() => setShowPanel(false)}
                   className="text-white/70 hover:text-white transition-colors"
@@ -281,20 +284,20 @@ export const AchievementSystem: React.FC<AchievementSystemProps> = ({ className 
                   </svg>
                 </button>
               </div>
-              
+
               <div className="space-y-2">
                 <div className="flex justify-between text-sm">
-                  <span>Progress</span>
+                  <span>{dict.achievements.progress}</span>
                   <span>{userProgress.unlockedAchievements.length}/{allAchievements.length}</span>
                 </div>
                 <div className="w-full bg-white/20 rounded-full h-2">
-                  <div 
+                  <div
                     className="bg-white rounded-full h-2 transition-all duration-500"
                     style={{ width: `${getProgressPercentage()}%` }}
                   />
                 </div>
                 <div className="text-center text-sm">
-                  <span className="font-semibold">{userProgress.totalPoints}</span> total points
+                  <span className="font-semibold">{userProgress.totalPoints}</span> {dict.achievements.total_points}
                 </div>
               </div>
             </div>
@@ -303,15 +306,14 @@ export const AchievementSystem: React.FC<AchievementSystemProps> = ({ className 
               <div className="space-y-3">
                 {allAchievements.map(achievement => {
                   const isUnlocked = userProgress.unlockedAchievements.includes(achievement.id)
-                  
+
                   return (
                     <motion.div
                       key={achievement.id}
-                      className={`p-4 rounded-lg border-2 transition-all ${
-                        isUnlocked 
-                          ? 'bg-yellow-50 border-yellow-300 shadow-md' 
-                          : 'bg-gray-50 border-gray-200'
-                      }`}
+                      className={`p-4 rounded-lg border-2 transition-all ${isUnlocked
+                        ? 'bg-yellow-50 border-yellow-300 shadow-md'
+                        : 'bg-gray-50 border-gray-200'
+                        }`}
                       whileHover={{ scale: 1.02 }}
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -326,7 +328,7 @@ export const AchievementSystem: React.FC<AchievementSystemProps> = ({ className 
                               {achievement.name}
                             </h3>
                             <span className={`text-xs px-2 py-1 rounded-full uppercase ${getRarityColor(achievement.rarity)}`}>
-                              {achievement.rarity}
+                              {dict.achievements.rarity[achievement.rarity]}
                             </span>
                           </div>
                           <p className={`text-sm ${isUnlocked ? 'text-gray-600' : 'text-gray-400'}`}>
@@ -334,11 +336,11 @@ export const AchievementSystem: React.FC<AchievementSystemProps> = ({ className 
                           </p>
                           <div className="flex items-center justify-between mt-2">
                             <span className={`text-xs ${isUnlocked ? 'text-green-600' : 'text-gray-400'}`}>
-                              {achievement.points} points
+                              {achievement.points} {dict.achievements.points}
                             </span>
                             {isUnlocked && (
                               <span className="text-xs text-green-600 font-medium">
-                                ✓ Unlocked
+                                {dict.achievements.unlocked_status}
                               </span>
                             )}
                           </div>
@@ -364,6 +366,7 @@ export const AchievementSystem: React.FC<AchievementSystemProps> = ({ className 
             <AchievementNotification
               achievement={achievement}
               onClose={() => removeNotification(achievement.id)}
+              dict={dict}
             />
           </motion.div>
         ))}

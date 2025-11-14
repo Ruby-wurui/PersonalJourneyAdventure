@@ -25,7 +25,9 @@
         "manage_posts": "Manage Posts",
         "create_new_post": "Create New Post",
         "edit_organize": "Edit and organize blog content",
-        "write_publish": "Write and publish new content"
+        "write_publish": "Write and publish new content",
+        "title": "Tech Time Machine",
+        "subtitle": "Journey through my technical adventures, discoveries, and insights. Each post is an interactive experience with code sandboxes and challenges."
     },
     "common": {
         "loading": "Loading...",
@@ -74,6 +76,71 @@
         "subtitle": "Explore the universe of technologies and skills",
         "loading": "Loading Universe...",
         "loading_galaxy": "Loading Galaxy Universe..."
+    },
+    "projects": {
+        "title": "Project Map",
+        "subtitle": "Explore my journey through enterprise-scale projects",
+        "loading": "Loading Adventure Map...",
+        "loading_subtitle": "Preparing interactive project showcase"
+    },
+    "map_navigation": {
+        "quick_navigation": "Quick Navigation",
+        "legend": "Legend",
+        "completed": "Completed",
+        "in_development": "In Development",
+        "maintained": "Maintained",
+        "featured_project": "Featured Project",
+        "controls": "Controls",
+        "drag_to_pan": "🖱️ Drag to pan",
+        "scroll_to_zoom": "🔍 Scroll to zoom",
+        "click_island": "🖱️ Click island to select",
+        "hover_details": "👆 Hover for details"
+    },
+    "achievements": {
+        "title": "Achievements",
+        "unlocked": "Achievement Unlocked!",
+        "progress": "Progress",
+        "total_points": "total points",
+        "points": "points",
+        "unlocked_status": "✓ Unlocked",
+        "explorer": {
+            "name": "Explorer",
+            "description": "Visit your first project island"
+        },
+        "demo_master": {
+            "name": "Demo Master",
+            "description": "Complete 3 interactive demos"
+        },
+        "tech_enthusiast": {
+            "name": "Tech Enthusiast",
+            "description": "Explore projects with 10+ different technologies"
+        },
+        "interaction_champion": {
+            "name": "Interaction Champion",
+            "description": "Perform 50 interactions across the portfolio"
+        },
+        "completionist": {
+            "name": "Completionist",
+            "description": "Visit all project islands and complete all demos"
+        },
+        "speed_runner": {
+            "name": "Speed Runner",
+            "description": "Complete a demo in under 30 seconds"
+        },
+        "social_butterfly": {
+            "name": "Social Butterfly",
+            "description": "Use the real-time chat feature"
+        },
+        "code_collaborator": {
+            "name": "Code Collaborator",
+            "description": "Participate in collaborative coding session"
+        },
+        "rarity": {
+            "common": "common",
+            "rare": "rare",
+            "epic": "epic",
+            "legendary": "legendary"
+        }
     },
     "about": {
         "title": "Ruby Wu",

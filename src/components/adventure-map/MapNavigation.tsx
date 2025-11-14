@@ -10,6 +10,7 @@ interface MapNavigationProps {
   islands: ProjectIsland[]
   selectedIsland?: ProjectIsland | null
   className?: string
+  dict: any
 }
 
 export const MapNavigation: React.FC<MapNavigationProps> = ({
@@ -17,7 +18,8 @@ export const MapNavigation: React.FC<MapNavigationProps> = ({
   viewport,
   islands,
   selectedIsland,
-  className = ''
+  className = '',
+  dict
 }) => {
   const zoomPercentage = Math.round(viewport.zoom * 100)
 
@@ -116,8 +118,8 @@ export const MapNavigation: React.FC<MapNavigationProps> = ({
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.3, delay: 0.2 }}
         >
-          <h3 className="text-sm font-semibold text-gray-800 mb-2">Quick Navigation</h3>
-          <div className="max-h-48 overflow-y-auto">
+          <h3 className="text-sm font-semibold text-gray-800 mb-2">{dict.map_navigation.quick_navigation}</h3>
+          <div className="max-h-78 overflow-y-auto">
             {islands
               .filter(island => island.featured)
               .concat(islands.filter(island => !island.featured))
@@ -144,7 +146,12 @@ export const MapNavigation: React.FC<MapNavigationProps> = ({
                             'bg-gray-400'
                         }`}
                     />
-                    <span className="text-gray-500 capitalize">{island.status}</span>
+                    <span className="text-gray-500 capitalize">
+                      {island.status === 'completed' ? dict.map_navigation.completed :
+                        island.status === 'in-development' ? dict.map_navigation.in_development :
+                          island.status === 'maintained' ? dict.map_navigation.maintained :
+                            island.status}
+                    </span>
                   </div>
                 </button>
               ))}
@@ -153,32 +160,32 @@ export const MapNavigation: React.FC<MapNavigationProps> = ({
       )}
 
       {/* Legend */}
-      <motion.div
+      {/* <motion.div
         className="bg-white/90 backdrop-blur-sm rounded-lg p-3 shadow-lg"
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.3, delay: 0.3 }}
       >
-        <h3 className="text-sm font-semibold text-gray-800 mb-2">Legend</h3>
+        <h3 className="text-sm font-semibold text-gray-800 mb-2">{dict.map_navigation.legend}</h3>
         <div className="space-y-1 text-xs">
           <div className="flex items-center gap-2">
             <div className="w-3 h-3 rounded-full bg-green-500"></div>
-            <span className="text-gray-700">Completed</span>
+            <span className="text-gray-700">{dict.map_navigation.completed}</span>
           </div>
           <div className="flex items-center gap-2">
             <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-            <span className="text-gray-700">In Development</span>
+            <span className="text-gray-700">{dict.map_navigation.in_development}</span>
           </div>
           <div className="flex items-center gap-2">
             <div className="w-3 h-3 rounded-full bg-blue-500"></div>
-            <span className="text-gray-700">Maintained</span>
+            <span className="text-gray-700">{dict.map_navigation.maintained}</span>
           </div>
           <div className="flex items-center gap-2">
             <span className="text-yellow-500">⭐</span>
-            <span className="text-gray-700">Featured Project</span>
+            <span className="text-gray-700">{dict.map_navigation.featured_project}</span>
           </div>
         </div>
-      </motion.div>
+      </motion.div> */}
 
       {/* Keyboard Shortcuts */}
       <motion.div
@@ -187,12 +194,12 @@ export const MapNavigation: React.FC<MapNavigationProps> = ({
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.3, delay: 0.4 }}
       >
-        <h3 className="text-sm font-semibold text-gray-800 mb-2">Controls</h3>
+        <h3 className="text-sm font-semibold text-gray-800 mb-2">{dict.map_navigation.controls}</h3>
         <div className="space-y-1 text-xs text-gray-600">
-          <div>🖱️ Drag to pan</div>
-          <div>🔍 Scroll to zoom</div>
-          <div>🖱️ Click island to select</div>
-          <div>👆 Hover for details</div>
+          <div>{dict.map_navigation.drag_to_pan}</div>
+          <div>{dict.map_navigation.scroll_to_zoom}</div>
+          <div>{dict.map_navigation.click_island}</div>
+          <div>{dict.map_navigation.hover_details}</div>
         </div>
       </motion.div>
     </div>

@@ -24,7 +24,8 @@ export const AdventureMap: React.FC<AdventureMapProps> = ({
   onIslandClick,
   onIslandHover,
   selectedIsland,
-  className = ''
+  className = '',
+  dict
 }) => {
   const [viewport, setViewport] = useState<MapViewport>(INITIAL_VIEWPORT)
   const [isDragging, setIsDragging] = useState(false)
@@ -227,6 +228,7 @@ export const AdventureMap: React.FC<AdventureMapProps> = ({
         islands={islands}
         selectedIsland={selectedIsland}
         className="absolute top-4 right-4 z-10"
+        dict={dict}
       />
 
       {/* SVG Map */}
@@ -337,7 +339,7 @@ export const AdventureMap: React.FC<AdventureMapProps> = ({
       </AnimatePresence>
 
       {/* Achievement System */}
-      <AchievementSystem />
+      <AchievementSystem dict={dict} />
     </div>
   )
 }

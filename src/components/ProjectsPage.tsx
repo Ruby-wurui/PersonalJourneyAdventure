@@ -10,6 +10,7 @@ import { ProjectIsland } from '@/types/adventure-map'
 import NavigationBar from './layout/NavigationBar'
 import { useAuth } from '@/lib/auth-context'
 import { LoginModal } from './auth/LoginModal'
+import enDict from '@/i18n/dictionaries/en.json'
 
 const ProjectsPage: React.FC = () => {
   const [showModal, setShowModal] = useState(false)
@@ -239,6 +240,7 @@ const ProjectsPage: React.FC = () => {
           onIslandHover={handleIslandHover}
           selectedIsland={selectedIsland}
           className="w-full h-full"
+          dict={enDict}
         />
       </motion.div>
 
@@ -253,7 +255,7 @@ const ProjectsPage: React.FC = () => {
       />
 
       {/* Achievement System */}
-      <AchievementSystem />
+      <AchievementSystem dict={enDict} />
 
       {/* Login Modal */}
       <LoginModal

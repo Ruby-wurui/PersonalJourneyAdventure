@@ -40,11 +40,10 @@ export default function BlogPageClient({ dict }: BlogPageClientProps) {
       <div className="container mx-auto px-4 pt-24">
         <div className="text-center mb-12">
           <h1 className="text-5xl font-bold text-white mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-            Tech Time Machine
+            {dict.blog.title}
           </h1>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            Journey through my technical adventures, discoveries, and insights.
-            Each post is an interactive experience with code sandboxes and challenges.
+            {dict.blog.subtitle}
           </p>
         </div>
 

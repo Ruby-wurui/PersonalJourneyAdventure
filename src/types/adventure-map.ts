@@ -80,6 +80,7 @@ export interface AdventureMapProps {
     onIslandHover: (island: ProjectIsland | null) => void
     selectedIsland?: ProjectIsland | null
     className?: string
+    dict: any
 }
 
 export interface ProjectIslandComponentProps {

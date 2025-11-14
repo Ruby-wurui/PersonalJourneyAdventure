@@ -103,7 +103,7 @@ const ProjectsPageClient: React.FC<ProjectsPageClientProps> = ({ dict }) => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
           >
-            Loading Adventure Map...
+            {dict.projects.loading}
           </motion.p>
           <motion.p
             className="text-purple-300 text-sm mt-2"
@@ -111,7 +111,7 @@ const ProjectsPageClient: React.FC<ProjectsPageClientProps> = ({ dict }) => {
             animate={{ opacity: 1 }}
             transition={{ delay: 1 }}
           >
-            Preparing interactive project showcase
+            {dict.projects.loading_subtitle}
           </motion.p>
         </div>
       </div>
@@ -165,10 +165,10 @@ const ProjectsPageClient: React.FC<ProjectsPageClientProps> = ({ dict }) => {
                 </div>
                 <div>
                   <h4 className="text-2xl md:text-3xl font-bold text-white mb-1">
-                    Project Map
+                    {dict.projects.title}
                   </h4>
                   <p className="text-xl text-purple-300">
-                    Explore my journey through enterprise-scale projects
+                    {dict.projects.subtitle}
                   </p>
                 </div>
               </div>
@@ -251,6 +251,7 @@ const ProjectsPageClient: React.FC<ProjectsPageClientProps> = ({ dict }) => {
           onIslandHover={handleIslandHover}
           selectedIsland={selectedIsland}
           className="w-full h-full"
+          dict={dict}
         />
       </motion.div>
 
@@ -265,7 +266,7 @@ const ProjectsPageClient: React.FC<ProjectsPageClientProps> = ({ dict }) => {
       />
 
       {/* Achievement System */}
-      <AchievementSystem />
+      <AchievementSystem dict={dict} />
 
       {/* Login Modal */}
       <LoginModal

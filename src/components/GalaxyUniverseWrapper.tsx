@@ -10,6 +10,7 @@ import type { Locale } from '@/i18n/config'
 import type { Dictionary } from '@/i18n/get-dictionary'
 import type { SkillPlanet } from '@/types/3d'
 import { skillPlanetsData, experiencesData } from '@/data/skillPlanets'
+import PlanetDetailModal from '@/components/3d/PlanetDetailModal'
 
 const SimpleGalaxyVisualization = dynamic(
     () => import('@/components/3d/SimpleGalaxyVisualization'),
@@ -35,8 +36,8 @@ export default function GalaxyUniverseWrapper({ locale, dict }: GalaxyUniverseWr
     const { isAuthenticated, user, logout } = useAuth()
     const [showLoginModal, setShowLoginModal] = useState(false)
     const [showRegisterModal, setShowRegisterModal] = useState(false)
-
-
+    const [selectedPlanet, setSelectedPlanet] = useState<SkillPlanet | null>(null)
+    const [showPlanetModal, setShowPlanetModal] = useState(false)
 
     if (!dict) {
         return (
@@ -51,6 +52,8 @@ export default function GalaxyUniverseWrapper({ locale, dict }: GalaxyUniverseWr
 
     const handleSkillClick = (skill: SkillPlanet) => {
         console.log('Skill clicked:', skill)
+        setSelectedPlanet(skill)
+        setShowPlanetModal(true)
     }
 
     return (
@@ -118,6 +121,16 @@ export default function GalaxyUniverseWrapper({ locale, dict }: GalaxyUniverseWr
                     }}
                 />
             )}
+
+            {/* Planet Detail Modal */}
+            <PlanetDetailModal
+                planet={selectedPlanet}
+                isOpen={showPlanetModal}
+                onClose={() => {
+                    setShowPlanetModal(false)
+                    setSelectedPlanet(null)
+                }}
+            />
         </div>
     )
 }
