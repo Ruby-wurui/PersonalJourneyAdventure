@@ -55,9 +55,25 @@ module.exports = {
         },
       },
       colors: {
-        'cyber-blue': '#00f5ff',
-        'cyber-purple': '#8b5cf6',
-        'cyber-green': '#00ff88',
+        // 莫兰迪色系 - 清新自然、柔和舒适
+        'morandi': {
+          'blue': '#A8C5D8',      // 清新天蓝 - 更明亮柔和
+          'purple': '#C4B5D5',    // 淡雅薰衣草紫
+          'pink': '#E5D3D1',      // 温柔粉 - 更淡雅
+          'green': '#B8D4C0',     // 清新薄荷绿
+          'yellow': '#E8DCC8',    // 柔和米黄
+          'gray': '#C8C3BD',      // 柔和灰
+          'beige': '#E0D8CC',     // 温暖米色
+          'sage': '#A8BFA8',      // 清新鼠尾草绿
+          'mauve': '#D5C8C8',     // 柔和紫灰
+          'terracotta': '#DCC8C0', // 温柔陶土色
+          'cream': '#F5F1EB',     // 奶油白
+          'sand': '#E8E0D5',      // 沙色
+        },
+        // 保留原有颜色作为备用
+        'cyber-blue': '#A8C5D8',
+        'cyber-purple': '#C4B5D5',
+        'cyber-green': '#B8D4C0',
       },
     },
   },

@@ -9,7 +9,7 @@ import RegisterModal from '@/components/auth/RegisterModal'
 import type { Locale } from '@/i18n/config'
 import type { Dictionary } from '@/i18n/get-dictionary'
 import type { SkillPlanet } from '@/types/3d'
-import { skillPlanetsData, experiencesData } from '@/data/skillPlanets'
+import { getSkillPlanetsData, getExperiencesData } from '@/data/skillPlanets.i18n'
 import PlanetDetailModal from '@/components/3d/PlanetDetailModal'
 
 const SimpleGalaxyVisualization = dynamic(
@@ -38,6 +38,10 @@ export default function GalaxyUniverseWrapper({ locale, dict }: GalaxyUniverseWr
     const [showRegisterModal, setShowRegisterModal] = useState(false)
     const [selectedPlanet, setSelectedPlanet] = useState<SkillPlanet | null>(null)
     const [showPlanetModal, setShowPlanetModal] = useState(false)
+
+    // Get localized data
+    const skillPlanetsData = getSkillPlanetsData(locale)
+    const experiencesData = getExperiencesData(locale)
 
     if (!dict) {
         return (
