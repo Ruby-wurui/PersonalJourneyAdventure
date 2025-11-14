@@ -1,10 +1,7 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import { AuthProvider } from '@/lib/auth-context'
 import { locales, type Locale } from '@/i18n/config'
 import '../globals.css'
-
-const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
     title: 'Interactive Portfolio - Tech Adventure Journey',
@@ -24,7 +21,7 @@ export default function RootLayout({
 }) {
     return (
         <html lang={locale}>
-            <body className={inter.className}>
+            <body className="font-sans">
                 <AuthProvider>
                     {children}
                 </AuthProvider>
