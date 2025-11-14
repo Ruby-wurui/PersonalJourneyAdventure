@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic'
 import { SkillPlanet, ExperienceEntry } from '@/types/3d'
 import PlanetDetailModal from '@/components/3d/PlanetDetailModal'
 import Scene3DErrorBoundaryWrapper from '@/components/3d/Scene3DErrorBoundaryWrapper'
-import NavigationBar from '@/components/layout/NavigationBar'
+import NavigationBarI18n from '@/components/layout/NavigationBarI18n'
 import { useAuth } from '@/lib/auth-context'
 import { LoginModal } from '@/components/auth/LoginModal'
 import RegisterModal from '@/components/auth/RegisterModal'
@@ -25,11 +25,16 @@ const SimpleGalaxyVisualization = dynamic(
     }
 )
 
+import { usePathname } from 'next/navigation'
+import { Locale } from '@/i18n/config'
+
 interface AboutPageClientProps {
     dict: Dictionary
 }
 
 export default function AboutPageClient({ dict }: AboutPageClientProps) {
+    const pathname = usePathname()
+    const locale = pathname.split('/')[1] as Locale
     const { isAuthenticated, user, logout } = useAuth()
     const [selectedPlanet, setSelectedPlanet] = useState<SkillPlanet | null>(null)
     const [selectedExperience, setSelectedExperience] = useState<ExperienceEntry | null>(null)
@@ -204,7 +209,9 @@ export default function AboutPageClient({ dict }: AboutPageClientProps) {
     return (
         <div className="relative w-full min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-black overflow-hidden">
             {/* Navigation Bar */}
-            <NavigationBar
+            <NavigationBarI18n
+                locale={locale}
+                dict={dict}
                 isAuthenticated={isAuthenticated}
                 user={user}
                 onLogin={() => setShowLoginModal(true)}

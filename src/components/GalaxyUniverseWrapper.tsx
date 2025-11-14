@@ -90,9 +90,9 @@ export default function GalaxyUniverseWrapper({ locale, dict }: GalaxyUniverseWr
             {/* Welcome Overlay */}
             <div className="absolute bottom-0 md:bottom-0 left-1/2 transform -translate-x-1/2 z-50 text-center w-[90%] md:w-auto max-w-4xl">
                 <div className="bg-black/50 backdrop-blur-md px-4 py-3 md:px-8 md:py-0 rounded-2xl border border-purple-500/30">
-                    <h1 className="text-2xl md:text-5xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent mb-1 md:mb-2">
+                    {/* <h1 className="text-2xl md:text-5xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent mb-1 md:mb-2">
                         {dict.universe.welcome}
-                    </h1>
+                    </h1> */}
                     {/* <p className="text-gray-300 text-xs md:text-base">
                         {dict.universe.subtitle}
                     </p> */}

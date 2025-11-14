@@ -1,13 +1,16 @@
-'use client'
-
 import React from 'react'
-import dynamic from 'next/dynamic'
+import { getDictionary } from '@/i18n/get-dictionary'
+import { Locale } from '@/i18n/config'
+import ProjectsPageClient from './ProjectsPageClient'
 
-const ProjectsPageContent = dynamic(
-    () => import('@/app/projects/page'),
-    { ssr: false }
-)
+interface ProjectsPageProps {
+    params: {
+        locale: Locale
+    }
+}
 
-export default function ProjectsPage() {
-    return <ProjectsPageContent />
+export default async function ProjectsPage({ params: { locale } }: ProjectsPageProps) {
+    const dict = await getDictionary(locale)
+
+    return <ProjectsPageClient dict={dict} />
 }

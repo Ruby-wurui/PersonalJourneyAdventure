@@ -20,9 +20,9 @@ export default async function TestDictPage({
                 <div>
                     <strong>Homepage exists:</strong> {dict?.homepage ? 'Yes' : 'No'}
                 </div>
-                <div>
+                {/* <div>
                     <strong>Homepage.welcome:</strong> {dict?.homepage?.welcome || 'undefined'}
-                </div>
+                </div> */}
                 <div>
                     <strong>Nav.home:</strong> {dict?.nav?.home || 'undefined'}
                 </div>
