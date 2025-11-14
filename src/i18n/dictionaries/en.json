@@ -37,10 +37,36 @@
         "edit": "Edit",
         "back": "Back",
         "next": "Next",
-        "previous": "Previous"
+        "previous": "Previous",
+        "close": "Close",
+        "view_details": "View Details"
     },
     "brand": {
         "title": "Quadrant Ruby",
         "subtitle": "Quadrant Ruby Digital Universe"
+    },
+    "homepage": {
+        "welcome": "Welcome to Ruby's Universe",
+        "intro_text": "Welcome to the Interactive Laboratory",
+        "loading_text": "Initializing Interactive Laboratory...",
+        "unlock_placeholder": "Enter skill keyword...",
+        "unlock_hint": "Try a popular frontend framework (starts with 'r')",
+        "unlock_button": "Unlock",
+        "3d_unavailable": "3D visualization unavailable",
+        "click_to_continue": "Click anywhere to continue",
+        "explore_skills": "Explore Skills",
+        "view_projects": "View Projects",
+        "read_blog": "Read Blog"
+    },
+    "skills": {
+        "category": "Category",
+        "proficiency": "Proficiency",
+        "description": "Description",
+        "code_example": "Code Example",
+        "frontend": "Frontend",
+        "backend": "Backend",
+        "language": "Language",
+        "tools": "Tools",
+        "database": "Database"
     }
 }

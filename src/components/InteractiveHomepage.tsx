@@ -7,15 +7,22 @@ import Globe3D from './3d/Globe3D'
 import ParticleSystem from './3d/ParticleSystem'
 import SimpleTypewriter from './ui/SimpleTypewriter'
 import PasswordUnlock from './ui/PasswordUnlock'
-import NavigationBar from './layout/NavigationBar'
+import NavigationBarI18n from './layout/NavigationBarI18n'
 import { LoginModal } from './auth/LoginModal'
 import RegisterModal from './auth/RegisterModal'
 import PersonalHeroSection from './PersonalHeroSection'
 import { SkillPoint, ParticleData } from '@/types/3d'
 import { skillService } from '@/services/skillService'
 import { useAuth } from '@/lib/auth-context'
+import type { Locale } from '@/i18n/config'
+import type { Dictionary } from '@/i18n/get-dictionary'
 
 import { socketManager } from '@/lib/socket'
+
+interface InteractiveHomepageProps {
+  locale: Locale
+  dict: Dictionary
+}
 
 // Sample skill data - this would come from API in task 4.2
 const sampleSkills: SkillPoint[] = [
@@ -85,8 +92,20 @@ const generateParticles = (count: number): ParticleData[] => {
   }))
 }
 
-const InteractiveHomepage: React.FC = () => {
+const InteractiveHomepage: React.FC<InteractiveHomepageProps> = ({ locale, dict }) => {
   const { isAuthenticated, user, logout } = useAuth()
+
+  // Safety check for dict
+  if (!dict) {
+    return (
+      <div className="flex items-center justify-center min-h-screen bg-gradient-to-b from-gray-900 via-blue-900 to-black">
+        <div className="text-white text-center">
+          <div className="text-2xl mb-4">⚠️</div>
+          <p>Loading translations...</p>
+        </div>
+      </div>
+    )
+  }
   const [selectedSkill, setSelectedSkill] = useState<SkillPoint | null>(null)
   const [particles, setParticles] = useState<ParticleData[]>(() => generateParticles(50))
   const [skills, setSkills] = useState<SkillPoint[]>(sampleSkills)
@@ -272,7 +291,9 @@ const InteractiveHomepage: React.FC = () => {
   return (
     <div className="relative w-full min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-black overflow-hidden">
       {/* Navigation Bar */}
-      <NavigationBar
+      <NavigationBarI18n
+        locale={locale}
+        dict={dict}
         isAuthenticated={isAuthenticated}
         user={user}
         onLogin={() => setShowLoginModal(true)}
@@ -299,7 +320,7 @@ const InteractiveHomepage: React.FC = () => {
             <div className="w-full h-full flex items-center justify-center bg-black/20">
               <div className="text-center text-white">
                 <div className="text-2xl mb-4">🌍</div>
-                <p className="text-sm opacity-80">3D visualization unavailable</p>
+                <p className="text-sm opacity-80">{dict.homepage['3d_unavailable']}</p>
                 <p className="text-xs opacity-60 mt-2">Falling back to 2D mode</p>
               </div>
             </div>
@@ -347,7 +368,7 @@ const InteractiveHomepage: React.FC = () => {
           <div className="text-center">
             <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mb-4 mx-auto" />
             <SimpleTypewriter
-              text="Initializing Interactive Laboratory..."
+              text={dict.homepage.loading_text}
               speed={50}
               className="text-blue-400 text-lg"
             />
@@ -361,8 +382,7 @@ const InteractiveHomepage: React.FC = () => {
           <div className="text-center max-w-2xl px-8">
             <div className="mb-8">
               <SimpleTypewriter
-                // text="Welcome to the Interactive Laboratory"
-                text="欢迎进入Ruby的宇宙空间"
+                text={dict.homepage.intro_text}
                 speed={80}
                 className="text-4xl font-bold text-white mb-4 block"
                 onComplete={handleIntroComplete}
@@ -386,8 +406,8 @@ const InteractiveHomepage: React.FC = () => {
           <PasswordUnlock
             onUnlock={handleUnlock}
             correctPassword="react"
-            placeholder="Enter skill keyword..."
-            hint="Try a popular frontend framework (starts with 'r')"
+            placeholder={dict.homepage.unlock_placeholder}
+            hint={dict.homepage.unlock_hint}
           />
         </div>
       )}
