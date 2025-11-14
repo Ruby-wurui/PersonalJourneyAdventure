@@ -5,15 +5,16 @@ import { motion } from 'framer-motion'
 import { useAuth } from '@/lib/auth-context'
 import { LoginModal } from '@/components/auth/LoginModal'
 import RegisterModal from '@/components/auth/RegisterModal'
+import avatarImg from '@/assets/imgs/avatar.png'
 
 interface PersonalHeroSectionProps {
     className?: string
     showActions?: boolean
 }
 
-const PersonalHeroSection: React.FC<PersonalHeroSectionProps> = ({ 
+const PersonalHeroSection: React.FC<PersonalHeroSectionProps> = ({
     className = '',
-    showActions = true 
+    showActions = true
 }) => {
     const { isAuthenticated, logout } = useAuth()
     const [showLoginModal, setShowLoginModal] = useState(false)
@@ -25,7 +26,7 @@ const PersonalHeroSection: React.FC<PersonalHeroSectionProps> = ({
         <div className={`relative ${className}`}>
             {/* Background decoration */}
             <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-purple-900/20 to-pink-900/20 rounded-2xl blur-xl"></div>
-            
+
             <div className="relative bg-gray-900/60 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-8 md:p-12 overflow-hidden">
                 {/* Animated background particles */}
                 <div className="absolute inset-0 opacity-30">
@@ -44,14 +45,14 @@ const PersonalHeroSection: React.FC<PersonalHeroSectionProps> = ({
                         className="flex items-center space-x-6 mb-8"
                     >
                         <div className="relative">
-                            <div className="w-24 h-24 md:w-32 md:h-32 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white text-3xl font-bold shadow-2xl">
-                                AY
+                            <div className="w-24 h-24 md:w-32 md:h-32 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white text-3xl font-bold shadow-2xl overflow-hidden">
+                                <img src={avatarImg.src} alt="Avatar" className='w-34 h-34 md:w-34 md:h-34 object-cover' />
                             </div>
                             <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-green-500 rounded-full border-4 border-gray-900 flex items-center justify-center">
                                 <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
                             </div>
                         </div>
-                        
+
                         <div className="flex-1">
                             <motion.h1
                                 initial={{ y: 20, opacity: 0 }}
@@ -59,7 +60,7 @@ const PersonalHeroSection: React.FC<PersonalHeroSectionProps> = ({
                                 transition={{ duration: 0.6, delay: 0.2 }}
                                 className="text-3xl md:text-4xl font-bold text-white mb-2"
                             >
-                                Aryse Yang
+                                Ruby-wu
                             </motion.h1>
                             <motion.p
                                 initial={{ y: 20, opacity: 0 }}
@@ -87,6 +88,19 @@ const PersonalHeroSection: React.FC<PersonalHeroSectionProps> = ({
                                 <span className="px-3 py-1 bg-pink-900/50 text-pink-300 rounded-full text-sm border border-pink-700/50">
                                     3D Graphics
                                 </span>
+                                <span className="px-3 py-1 bg-green-900/50 text-green-300 rounded-full text-sm border border-green-700/50">
+                                    Express.js
+                                </span>
+                                <span className="px-3 py-1 bg-purple-900/50 text-purple-300 rounded-full text-sm border border-purple-700/50">
+                                    MySQL
+                                </span>
+                                <span className="px-3 py-1 bg-blue-900/50 text-blue-300 rounded-full text-sm border border-blue-700/50">
+                                    Vue.js
+                                </span>
+                                <span className="px-3 py-1 bg-pink-900/50 text-pink-300 rounded-full text-sm border border-pink-700/50">
+                                    Python
+                                </span>
+
                             </motion.div>
                         </div>
                     </motion.div>
@@ -200,11 +214,11 @@ const PersonalHeroSection: React.FC<PersonalHeroSectionProps> = ({
                         <div className="flex flex-wrap gap-6 text-sm text-gray-400">
                             <div className="flex items-center space-x-2">
                                 <span>📧</span>
-                                <span>contact@aryse.dev</span>
+                                <span>contact@Ruby.dev</span>
                             </div>
                             <div className="flex items-center space-x-2">
                                 <span>🌐</span>
-                                <span>aryse.dev</span>
+                                <span>Ruby.dev</span>
                             </div>
                             <div className="flex items-center space-x-2">
                                 <span>📍</span>

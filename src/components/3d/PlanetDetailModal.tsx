@@ -58,13 +58,34 @@ export default function PlanetDetailModal({ planet, isOpen, onClose }: PlanetDet
     if (!isOpen || !planet) return null
 
     return (
-        <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
-            <div className="bg-gray-900 rounded-lg p-6 max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto">
-                <div className="flex justify-between items-center mb-4">
-                    <h2 className="text-2xl font-bold text-white">{planet.name}</h2>
+        <div className="fixed inset-0 bg-black/90 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+            <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-2xl p-6 max-w-5xl w-full max-h-[90vh] overflow-y-auto border border-gray-700 shadow-2xl">
+                {/* Header */}
+                <div className="flex justify-between items-start mb-6">
+                    <div>
+                        <h2 className="text-3xl font-bold text-white mb-2 flex items-center gap-3">
+                            <span className="text-4xl">🪐</span>
+                            {planet.name}
+                        </h2>
+                        <div className="flex items-center gap-3">
+                            <span
+                                className="inline-block px-4 py-1 rounded-full text-sm font-medium"
+                                style={{
+                                    backgroundColor: `${planet.color}20`,
+                                    color: planet.color,
+                                    border: `1px solid ${planet.color}40`
+                                }}
+                            >
+                                {planet.category}
+                            </span>
+                            <span className="text-gray-400 text-sm">
+                                ⭐ {planet.proficiencyLevel}% Mastery
+                            </span>
+                        </div>
+                    </div>
                     <button
                         onClick={onClose}
-                        className="text-gray-400 hover:text-white text-xl"
+                        className="text-gray-400 hover:text-white text-2xl transition-colors hover:rotate-90 duration-300"
                     >
                         ✕
                     </button>
@@ -72,46 +93,74 @@ export default function PlanetDetailModal({ planet, isOpen, onClose }: PlanetDet
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                     {/* 3D Planet View */}
-                    <div className="h-64 bg-black rounded-lg overflow-hidden">
-                        <Canvas camera={{ position: [0, 0, 8], fov: 45 }}>
-                            <DetailedPlanetModel planet={planet} />
-                            <OrbitControls enableZoom={true} enablePan={false} />
-                        </Canvas>
+                    <div className="space-y-4">
+                        <div className="h-72 bg-black/50 rounded-xl overflow-hidden border border-gray-700 shadow-inner">
+                            <Canvas camera={{ position: [0, 0, 8], fov: 45 }}>
+                                <DetailedPlanetModel planet={planet} />
+                                <OrbitControls enableZoom={true} enablePan={false} autoRotate autoRotateSpeed={2} />
+                            </Canvas>
+                        </div>
+
+                        {/* Proficiency Level */}
+                        <div className="bg-gray-800/50 rounded-xl p-4 border border-gray-700">
+                            <h3 className="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+                                <span>📊</span>
+                                Proficiency Level
+                            </h3>
+                            <div className="relative">
+                                <div className="w-full bg-gray-700 rounded-full h-4 overflow-hidden">
+                                    <div
+                                        className="h-4 rounded-full transition-all duration-1000 ease-out"
+                                        style={{
+                                            width: `${planet.proficiencyLevel}%`,
+                                            background: `linear-gradient(90deg, ${planet.color}, ${planet.color}dd)`
+                                        }}
+                                    />
+                                </div>
+                                <span
+                                    className="absolute right-2 top-0 text-sm font-bold"
+                                    style={{ color: planet.color }}
+                                >
+                                    {planet.proficiencyLevel}%
+                                </span>
+                            </div>
+                            <div className="mt-2 text-xs text-gray-400">
+                                {planet.proficiencyLevel >= 90 && '🏆 Expert Level - Industry Leading'}
+                                {planet.proficiencyLevel >= 80 && planet.proficiencyLevel < 90 && '⭐ Advanced Level - Production Ready'}
+                                {planet.proficiencyLevel >= 70 && planet.proficiencyLevel < 80 && '✨ Intermediate Level - Solid Foundation'}
+                                {planet.proficiencyLevel < 70 && '🌱 Growing Level - Continuous Learning'}
+                            </div>
+                        </div>
                     </div>
 
                     {/* Planet Information */}
                     <div className="space-y-4">
-                        <div>
-                            <h3 className="text-lg font-semibold text-white mb-2">Description</h3>
-                            <p className="text-gray-300">{planet.description}</p>
+                        {/* Description */}
+                        <div className="bg-gray-800/50 rounded-xl p-4 border border-gray-700">
+                            <h3 className="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+                                <span>📝</span>
+                                Overview
+                            </h3>
+                            <p className="text-gray-300 leading-relaxed">{planet.description}</p>
                         </div>
 
-                        <div>
-                            <h3 className="text-lg font-semibold text-white mb-2">Category</h3>
-                            <span className="inline-block bg-blue-600 text-white px-3 py-1 rounded-full text-sm">
-                                {planet.category}
-                            </span>
-                        </div>
-
-                        <div>
-                            <h3 className="text-lg font-semibold text-white mb-2">Proficiency Level</h3>
-                            <div className="w-full bg-gray-700 rounded-full h-2">
-                                <div
-                                    className="bg-gradient-to-r from-blue-500 to-purple-500 h-2 rounded-full transition-all duration-300"
-                                    style={{ width: `${planet.proficiencyLevel}%` }}
-                                />
-                            </div>
-                            <span className="text-sm text-gray-400 mt-1">{planet.proficiencyLevel}%</span>
-                        </div>
-
+                        {/* Technologies */}
                         {planet.technologies.length > 0 && (
-                            <div>
-                                <h3 className="text-lg font-semibold text-white mb-2">Technologies</h3>
+                            <div className="bg-gray-800/50 rounded-xl p-4 border border-gray-700">
+                                <h3 className="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+                                    <span>🛠️</span>
+                                    Tech Stack ({planet.technologies.length})
+                                </h3>
                                 <div className="flex flex-wrap gap-2">
                                     {planet.technologies.map((tech, index) => (
                                         <span
                                             key={index}
-                                            className="bg-gray-700 text-gray-300 px-2 py-1 rounded text-sm"
+                                            className="px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-200 hover:scale-105"
+                                            style={{
+                                                backgroundColor: `${planet.color}15`,
+                                                color: planet.color,
+                                                border: `1px solid ${planet.color}30`
+                                            }}
                                         >
                                             {tech}
                                         </span>
@@ -120,19 +169,70 @@ export default function PlanetDetailModal({ planet, isOpen, onClose }: PlanetDet
                             </div>
                         )}
 
+                        {/* Related Experience */}
                         {planet.experience.length > 0 && (
-                            <div>
-                                <h3 className="text-lg font-semibold text-white mb-2">Related Experience</h3>
-                                <div className="space-y-2">
+                            <div className="bg-gray-800/50 rounded-xl p-4 border border-gray-700">
+                                <h3 className="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+                                    <span>💼</span>
+                                    Key Projects & Experience
+                                </h3>
+                                <div className="space-y-3">
                                     {planet.experience.map((exp, index) => (
-                                        <div key={index} className="bg-gray-800 p-3 rounded">
-                                            <h4 className="font-medium text-white">{exp.title}</h4>
-                                            <p className="text-sm text-gray-400">{exp.company} • {exp.duration}</p>
+                                        <div
+                                            key={index}
+                                            className="bg-gray-900/50 p-4 rounded-lg border border-gray-700/50 hover:border-gray-600 transition-colors"
+                                        >
+                                            <h4 className="font-semibold text-white mb-1 flex items-center gap-2">
+                                                <span style={{ color: planet.color }}>▸</span>
+                                                {exp.title}
+                                            </h4>
+                                            <p className="text-sm text-gray-400 mb-2">
+                                                🏢 {exp.company} • 📅 {exp.duration}
+                                            </p>
+                                            <p className="text-sm text-gray-300 leading-relaxed mb-2">
+                                                {exp.description}
+                                            </p>
+                                            {exp.technologies && exp.technologies.length > 0 && (
+                                                <div className="flex flex-wrap gap-1.5 mt-2">
+                                                    {exp.technologies.map((tech, techIndex) => (
+                                                        <span
+                                                            key={techIndex}
+                                                            className="text-xs px-2 py-0.5 rounded bg-gray-800 text-gray-400 border border-gray-700"
+                                                        >
+                                                            {tech}
+                                                        </span>
+                                                    ))}
+                                                </div>
+                                            )}
                                         </div>
                                     ))}
                                 </div>
                             </div>
                         )}
+                    </div>
+                </div>
+
+                {/* Footer Stats */}
+                <div className="mt-6 pt-4 border-t border-gray-700">
+                    <div className="grid grid-cols-3 gap-4 text-center">
+                        <div className="bg-gray-800/30 rounded-lg p-3">
+                            <div className="text-2xl font-bold" style={{ color: planet.color }}>
+                                {planet.technologies.length}+
+                            </div>
+                            <div className="text-xs text-gray-400 mt-1">Technologies</div>
+                        </div>
+                        <div className="bg-gray-800/30 rounded-lg p-3">
+                            <div className="text-2xl font-bold" style={{ color: planet.color }}>
+                                {planet.experience.length}
+                            </div>
+                            <div className="text-xs text-gray-400 mt-1">Major Projects</div>
+                        </div>
+                        <div className="bg-gray-800/30 rounded-lg p-3">
+                            <div className="text-2xl font-bold" style={{ color: planet.color }}>
+                                10+
+                            </div>
+                            <div className="text-xs text-gray-400 mt-1">Years Experience</div>
+                        </div>
                     </div>
                 </div>
             </div>

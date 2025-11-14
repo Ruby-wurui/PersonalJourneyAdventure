@@ -307,7 +307,7 @@ const InteractiveHomepage: React.FC = () => {
         >
           <SafeCanvas
             className="w-full h-full"
-            style={{ height: '80vh'}}
+            style={{ height: '80vh' }}
             camera={{ position: [0, 0, 8], fov: 60 }}
             gl={{
               antialias: true,
@@ -362,7 +362,7 @@ const InteractiveHomepage: React.FC = () => {
             <div className="mb-8">
               <SimpleTypewriter
                 // text="Welcome to the Interactive Laboratory"
-                text="欢迎进入Aryse的宇宙空间"
+                text="欢迎进入Ruby的宇宙空间"
                 speed={80}
                 className="text-4xl font-bold text-white mb-4 block"
                 onComplete={handleIntroComplete}

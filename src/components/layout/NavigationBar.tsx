@@ -12,12 +12,12 @@ interface NavigationBarProps {
   onLogout?: () => void;
 }
 
-const NavigationBar: React.FC<NavigationBarProps> = ({ 
-  isAuthenticated = false, 
-  user, 
-  onLogin, 
-  onRegister, 
-  onLogout 
+const NavigationBar: React.FC<NavigationBarProps> = ({
+  isAuthenticated = false,
+  user,
+  onLogin,
+  onRegister,
+  onLogout
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -39,27 +39,27 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
   }, [pathname]);
 
   const navigationItems = [
-    { 
-      name: 'Laboratory', 
-      href: '/', 
+    {
+      name: 'Laboratory',
+      href: '/',
       icon: '🧪',
       description: 'Interactive 3D Skills'
     },
-    { 
-      name: 'Universe', 
-      href: '/about', 
+    {
+      name: 'Universe',
+      href: '/about',
       icon: '🪐',
       description: 'Personal Universe'
     },
-    { 
-      name: 'Projects', 
-      href: '/projects', 
+    {
+      name: 'Projects',
+      href: '/projects',
       icon: '🗺️',
       description: 'Project Islands'
     },
-    { 
-      name: 'Blog', 
-      href: '/blog', 
+    {
+      name: 'Blog',
+      href: '/blog',
       icon: '📚',
       description: 'Tech Blog & Timeline'
     }
@@ -77,8 +77,8 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
       {/* Navigation Bar */}
       <nav className={`
         fixed top-0 left-0 right-0 z-50 transition-all duration-300
-        ${isScrolled 
-          ? 'bg-gray-900/98 backdrop-blur-md border-b border-blue-500/30 shadow-xl shadow-blue-500/10' 
+        ${isScrolled
+          ? 'bg-gray-900/98 backdrop-blur-md border-b border-blue-500/30 shadow-xl shadow-blue-500/10'
           : 'bg-gradient-to-b from-gray-900/90 via-gray-900/70 to-transparent backdrop-blur-sm border-b border-blue-500/20'
         }
       `}>
@@ -91,7 +91,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
                   <span className="text-white text-lg font-bold">A</span>
                 </div>
                 <div className="hidden sm:block">
-                  <h1 className="text-white font-bold text-lg">第Aryse象限</h1>
+                  <h1 className="text-white font-bold text-lg">第Ruby象限</h1>
                   <p className="text-gray-400 text-xs">Quadrant Aryse Digital Universe</p>
                 </div>
               </div>
@@ -115,7 +115,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
                     <span className="text-lg">{item.icon}</span>
                     <span className="font-medium">{item.name}</span>
                   </div>
-                  
+
                   {/* Hover Description */}
                   <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 px-3 py-1 bg-gray-800 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-10">
                     {item.description}
@@ -223,7 +223,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
                   </div>
                 </a>
               ))}
-              
+
               {/* Mobile Admin Section - Only show on blog pages */}
               {isAuthenticated && user?.role === 'admin' && pathname.startsWith('/blog') && (
                 <div className="border-t border-gray-700/50 pt-4 mt-4">
@@ -251,7 +251,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
                   </div>
                 </div>
               )}
-              
+
               {/* Mobile Auth Section */}
               <div className="border-t border-gray-700/50 pt-4 mt-4">
                 {isAuthenticated ? (
