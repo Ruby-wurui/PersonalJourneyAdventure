@@ -50,6 +50,8 @@
     "homepage": {
         "welcome": "欢迎来到Ruby的宇宙",
         "intro_text": "欢迎进入Ruby的宇宙空间",
+        "intro_subtitle": "代码在三维空间中邂逅创意的地方",
+        "preparing_experience": "准备沉浸式体验中……",
         "loading_text": "正在初始化交互实验室...",
         "unlock_placeholder": "输入技能关键词...",
         "unlock_hint": "试试一个流行的前端框架（以'r'开头）",
@@ -58,7 +60,25 @@
         "click_to_continue": "点击任意位置继续",
         "explore_skills": "探索技能",
         "view_projects": "查看项目",
-        "read_blog": "阅读博客"
+        "read_blog": "阅读博客",
+        "status_active": "活跃"
+    },
+    "hero": {
+        "title": "全栈开发者 & 创意技术专家",
+        "bio1": "创新的全栈开发者，专注于构建沉浸式的Web体验和交互式3D应用。",
+        "bio2": "热衷于创造美观、实用的数字体验，突破Web技术边界的创意技术专家。",
+        "bio3": "擅长将复杂的技术概念转化为直观、优雅的用户界面，热爱探索前沿技术并将其应用到实际项目中。",
+        "stats_experience": "年工作经验",
+        "stats_projects": "项目经验",
+        "stats_technologies": "技术栈",
+        "stats_creativity": "创造力",
+        "btn_write_article": "撰写文章",
+        "btn_explore_universe": "探索宇宙",
+        "btn_logout": "退出登录",
+        "btn_admin_login": "管理员登录",
+        "btn_tech_blog": "技术博客",
+        "location": "中国，上海",
+        "availability": "接受自由职业"
     },
     "skills": {
         "category": "分类",

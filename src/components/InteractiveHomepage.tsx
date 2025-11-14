@@ -94,18 +94,6 @@ const generateParticles = (count: number): ParticleData[] => {
 
 const InteractiveHomepage: React.FC<InteractiveHomepageProps> = ({ locale, dict }) => {
   const { isAuthenticated, user, logout } = useAuth()
-
-  // Safety check for dict
-  if (!dict) {
-    return (
-      <div className="flex items-center justify-center min-h-screen bg-gradient-to-b from-gray-900 via-blue-900 to-black">
-        <div className="text-white text-center">
-          <div className="text-2xl mb-4">⚠️</div>
-          <p>Loading translations...</p>
-        </div>
-      </div>
-    )
-  }
   const [selectedSkill, setSelectedSkill] = useState<SkillPoint | null>(null)
   const [particles, setParticles] = useState<ParticleData[]>(() => generateParticles(50))
   const [skills, setSkills] = useState<SkillPoint[]>(sampleSkills)
@@ -288,6 +276,18 @@ const InteractiveHomepage: React.FC<InteractiveHomepageProps> = ({ locale, dict 
     }
   }, [isUnlocked, generateRandomParticles])
 
+  // Safety check for dict
+  if (!dict) {
+    return (
+      <div className="flex items-center justify-center min-h-screen bg-gradient-to-b from-gray-900 via-blue-900 to-black">
+        <div className="text-white text-center">
+          <div className="text-2xl mb-4">⚠️</div>
+          <p>Loading translations...</p>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="relative w-full min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-black overflow-hidden">
       {/* Navigation Bar */}
@@ -310,7 +310,7 @@ const InteractiveHomepage: React.FC<InteractiveHomepageProps> = ({ locale, dict 
 
       {/* Personal Hero Section - Always visible */}
       <div className="relative z-10 container mx-auto px-4 pt-24 pb-8">
-        <PersonalHeroSection showActions={true} />
+        <PersonalHeroSection showActions={true} dict={dict} />
       </div>
 
       {/* 3D Scene - Only render when unlocked */}
@@ -388,13 +388,11 @@ const InteractiveHomepage: React.FC<InteractiveHomepageProps> = ({ locale, dict 
                 onComplete={handleIntroComplete}
               />
               <div className="text-xl text-blue-300 mt-4">
-                {/* Where code meets creativity in three-dimensional space */}
-                代码在三维空间中邂逅创意的地方
+                {dict.homepage.intro_subtitle || 'Where code meets creativity in three-dimensional space'}
               </div>
             </div>
             <div className="text-gray-400 text-sm mt-8">
-              {/* Preparing immersive experience... */}
-              准备沉浸式体验中……
+              {dict.homepage.preparing_experience || 'Preparing immersive experience...'}
             </div>
           </div>
         </div>
@@ -457,7 +455,7 @@ const InteractiveHomepage: React.FC<InteractiveHomepageProps> = ({ locale, dict 
             {/* Proficiency */}
             <div className="relative mb-4">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-xs text-gray-400">Proficiency</span>
+                <span className="text-xs text-gray-400">{dict.skills?.proficiency || 'Proficiency'}</span>
                 <span className="text-xs text-gray-300 font-mono">
                   {selectedSkill.proficiencyLevel}%
                 </span>
@@ -554,7 +552,7 @@ const InteractiveHomepage: React.FC<InteractiveHomepageProps> = ({ locale, dict 
           <div className="bg-black/60 backdrop-blur-sm rounded-lg p-2 text-white text-xs border border-gray-700/50">
             <div className="flex items-center space-x-2">
               <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" />
-              <span className="opacity-80">Active</span>
+              <span className="opacity-80">{dict.homepage?.status_active || 'Active'}</span>
             </div>
           </div>
         </div>

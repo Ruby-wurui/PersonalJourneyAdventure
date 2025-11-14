@@ -50,6 +50,8 @@
     "homepage": {
         "welcome": "Welcome to Ruby's Universe",
         "intro_text": "Welcome to the Interactive Laboratory",
+        "intro_subtitle": "Where code meets creativity in three-dimensional space",
+        "preparing_experience": "Preparing immersive experience...",
         "loading_text": "Initializing Interactive Laboratory...",
         "unlock_placeholder": "Enter skill keyword...",
         "unlock_hint": "Try a popular frontend framework (starts with 'r')",
@@ -58,7 +60,25 @@
         "click_to_continue": "Click anywhere to continue",
         "explore_skills": "Explore Skills",
         "view_projects": "View Projects",
-        "read_blog": "Read Blog"
+        "read_blog": "Read Blog",
+        "status_active": "Active"
+    },
+    "hero": {
+        "title": "Full Stack Developer & Creative Technologist",
+        "bio1": "Innovative full-stack developer focused on building immersive web experiences and interactive 3D applications.",
+        "bio2": "Creative Technologist passionate about creating beautiful, functional digital experiences that push the boundaries of web technology.",
+        "bio3": "Skilled at transforming complex technical concepts into intuitive, elegant user interfaces, passionate about exploring cutting-edge technologies and applying them to real-world projects.",
+        "stats_experience": "Years Experience",
+        "stats_projects": "Projects",
+        "stats_technologies": "Technologies",
+        "stats_creativity": "Creativity",
+        "btn_write_article": "Write Article",
+        "btn_explore_universe": "Explore Universe",
+        "btn_logout": "Logout",
+        "btn_admin_login": "Admin Login",
+        "btn_tech_blog": "Tech Blog",
+        "location": "Shanghai, China",
+        "availability": "Available for freelance"
     },
     "skills": {
         "category": "Category",

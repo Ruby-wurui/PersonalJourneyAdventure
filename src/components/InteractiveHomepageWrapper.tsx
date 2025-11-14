@@ -11,10 +11,6 @@ interface InteractiveHomepageWrapperProps {
 }
 
 export default function InteractiveHomepageWrapper({ locale, dict }: InteractiveHomepageWrapperProps) {
-    // Debug: Check if props are received
-    console.log('InteractiveHomepageWrapper - locale:', locale)
-    console.log('InteractiveHomepageWrapper - dict:', dict ? 'loaded' : 'undefined')
-
     if (!dict) {
         return (
             <div className="flex items-center justify-center min-h-screen bg-gradient-to-b from-gray-900 via-blue-900 to-black">
@@ -33,7 +29,7 @@ export default function InteractiveHomepageWrapper({ locale, dict }: Interactive
                 <div className="flex items-center justify-center min-h-screen bg-gradient-to-b from-gray-900 via-blue-900 to-black">
                     <div className="text-white text-center">
                         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto mb-4"></div>
-                        <p>Loading Interactive Laboratory...</p>
+                        <p>{dict.homepage?.loading_text || 'Loading Interactive Laboratory...'}</p>
                     </div>
                 </div>
             }

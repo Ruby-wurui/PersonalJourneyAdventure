@@ -6,15 +6,18 @@ import { useAuth } from '@/lib/auth-context'
 import { LoginModal } from '@/components/auth/LoginModal'
 import RegisterModal from '@/components/auth/RegisterModal'
 import avatarImg from '@/assets/imgs/avatar.png'
+import type { Dictionary } from '@/i18n/get-dictionary'
 
 interface PersonalHeroSectionProps {
     className?: string
     showActions?: boolean
+    dict?: Dictionary
 }
 
 const PersonalHeroSection: React.FC<PersonalHeroSectionProps> = ({
     className = '',
-    showActions = true
+    showActions = true,
+    dict
 }) => {
     const { isAuthenticated, logout } = useAuth()
     const [showLoginModal, setShowLoginModal] = useState(false)
@@ -68,7 +71,7 @@ const PersonalHeroSection: React.FC<PersonalHeroSectionProps> = ({
                                 transition={{ duration: 0.6, delay: 0.3 }}
                                 className="text-lg text-blue-400 mb-3"
                             >
-                                Full Stack Developer & Creative Technologist
+                                {dict?.hero?.title || 'Full Stack Developer & Creative Technologist'}
                             </motion.p>
                             <motion.div
                                 initial={{ y: 20, opacity: 0 }}
@@ -114,13 +117,13 @@ const PersonalHeroSection: React.FC<PersonalHeroSectionProps> = ({
                     >
                         <div className="text-gray-300 leading-relaxed">
                             <p className="mb-3">
-                                🚀 <strong className="text-white">创新的全栈开发者</strong>，专注于构建沉浸式的Web体验和交互式3D应用。
+                                🚀 {dict?.hero?.bio1 || '创新的全栈开发者，专注于构建沉浸式的Web体验和交互式3D应用。'}
                             </p>
                             <p className="mb-3">
-                                💡 <strong className="text-white">Creative Technologist</strong> passionate about creating beautiful, functional digital experiences that push the boundaries of web technology.
+                                💡 {dict?.hero?.bio2 || 'Creative Technologist passionate about creating beautiful, functional digital experiences that push the boundaries of web technology.'}
                             </p>
                             <p>
-                                🌟 擅长将复杂的技术概念转化为直观、优雅的用户界面，热爱探索前沿技术并将其应用到实际项目中。
+                                🌟 {dict?.hero?.bio3 || '擅长将复杂的技术概念转化为直观、优雅的用户界面，热爱探索前沿技术并将其应用到实际项目中。'}
                             </p>
                         </div>
                     </motion.div>
@@ -134,19 +137,19 @@ const PersonalHeroSection: React.FC<PersonalHeroSectionProps> = ({
                     >
                         <div className="text-center p-4 bg-gray-800/50 rounded-lg border border-gray-700/50">
                             <div className="text-2xl font-bold text-blue-400 mb-1">5+</div>
-                            <div className="text-sm text-gray-400">Years Experience</div>
+                            <div className="text-sm text-gray-400">{dict?.hero?.stats_experience || 'Years Experience'}</div>
                         </div>
                         <div className="text-center p-4 bg-gray-800/50 rounded-lg border border-gray-700/50">
                             <div className="text-2xl font-bold text-green-400 mb-1">50+</div>
-                            <div className="text-sm text-gray-400">Projects</div>
+                            <div className="text-sm text-gray-400">{dict?.hero?.stats_projects || 'Projects'}</div>
                         </div>
                         <div className="text-center p-4 bg-gray-800/50 rounded-lg border border-gray-700/50">
                             <div className="text-2xl font-bold text-purple-400 mb-1">15+</div>
-                            <div className="text-sm text-gray-400">Technologies</div>
+                            <div className="text-sm text-gray-400">{dict?.hero?.stats_technologies || 'Technologies'}</div>
                         </div>
                         <div className="text-center p-4 bg-gray-800/50 rounded-lg border border-gray-700/50">
                             <div className="text-2xl font-bold text-pink-400 mb-1">∞</div>
-                            <div className="text-sm text-gray-400">Creativity</div>
+                            <div className="text-sm text-gray-400">{dict?.hero?.stats_creativity || 'Creativity'}</div>
                         </div>
                     </motion.div>
 
@@ -164,19 +167,19 @@ const PersonalHeroSection: React.FC<PersonalHeroSectionProps> = ({
                                         onClick={() => window.location.href = '/blog/create'}
                                         className="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg font-medium hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
                                     >
-                                        ✍️ Write Article
+                                        ✍️ {dict?.hero?.btn_write_article || 'Write Article'}
                                     </button>
                                     <button
                                         onClick={() => window.location.href = '/about'}
                                         className="px-6 py-3 bg-gray-800 text-white rounded-lg font-medium hover:bg-gray-700 transition-all duration-300 border border-gray-700"
                                     >
-                                        🚀 Explore Universe
+                                        🚀 {dict?.hero?.btn_explore_universe || 'Explore Universe'}
                                     </button>
                                     <button
                                         onClick={logout}
                                         className="px-6 py-3 bg-gray-800 text-gray-300 rounded-lg font-medium hover:bg-gray-700 transition-all duration-300 border border-gray-700"
                                     >
-                                        👋 Logout
+                                        👋 {dict?.hero?.btn_logout || 'Logout'}
                                     </button>
                                 </>
                             ) : (
@@ -185,19 +188,19 @@ const PersonalHeroSection: React.FC<PersonalHeroSectionProps> = ({
                                         onClick={handleLogin}
                                         className="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg font-medium hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
                                     >
-                                        🔐 Admin Login
+                                        🔐 {dict?.hero?.btn_admin_login || 'Admin Login'}
                                     </button>
                                     <button
                                         onClick={() => window.location.href = '/about'}
                                         className="px-6 py-3 bg-gray-800 text-white rounded-lg font-medium hover:bg-gray-700 transition-all duration-300 border border-gray-700"
                                     >
-                                        🚀 Explore Universe
+                                        🚀 {dict?.hero?.btn_explore_universe || 'Explore Universe'}
                                     </button>
                                     <button
                                         onClick={() => window.location.href = '/blog'}
                                         className="px-6 py-3 bg-gray-800 text-white rounded-lg font-medium hover:bg-gray-700 transition-all duration-300 border border-gray-700"
                                     >
-                                        📚 Tech Blog
+                                        📚 {dict?.hero?.btn_tech_blog || 'Tech Blog'}
                                     </button>
                                 </>
                             )}
@@ -222,11 +225,11 @@ const PersonalHeroSection: React.FC<PersonalHeroSectionProps> = ({
                             </div>
                             <div className="flex items-center space-x-2">
                                 <span>📍</span>
-                                <span>Shanghai, China</span>
+                                <span>{dict?.hero?.location || 'Shanghai, China'}</span>
                             </div>
                             <div className="flex items-center space-x-2">
                                 <span>🎯</span>
-                                <span>Available for freelance</span>
+                                <span>{dict?.hero?.availability || 'Available for freelance'}</span>
                             </div>
                         </div>
                     </motion.div>
