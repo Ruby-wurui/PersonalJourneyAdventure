@@ -142,6 +142,20 @@
             "legendary": "legendary"
         }
     },
+    "planet_modal": {
+        "proficiency_level": "Proficiency Level",
+        "overview": "Overview",
+        "tech_stack": "Tech Stack",
+        "key_projects": "Key Projects & Experience",
+        "technologies": "Technologies",
+        "major_projects": "Major Projects",
+        "years_experience": "Years Experience",
+        "mastery": "Mastery",
+        "expert_level": "Expert Level - Industry Leading",
+        "advanced_level": "Advanced Level - Production Ready",
+        "intermediate_level": "Intermediate Level - Solid Foundation",
+        "growing_level": "Growing Level - Continuous Learning"
+    },
     "about": {
         "title": "Ruby Wu",
         "subtitle": "Full Stack Software Engineer",

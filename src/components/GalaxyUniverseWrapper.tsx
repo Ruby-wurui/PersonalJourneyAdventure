@@ -130,6 +130,7 @@ export default function GalaxyUniverseWrapper({ locale, dict }: GalaxyUniverseWr
                     setShowPlanetModal(false)
                     setSelectedPlanet(null)
                 }}
+                dict={dict}
             />
         </div>
     )

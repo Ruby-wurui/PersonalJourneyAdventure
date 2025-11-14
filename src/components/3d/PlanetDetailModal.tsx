@@ -26,6 +26,7 @@ interface PlanetDetailModalProps {
     planet: SkillPlanet | null
     isOpen: boolean
     onClose: () => void
+    dict?: any
 }
 
 // Enhanced 3D Planet Model for detailed view
@@ -204,8 +205,24 @@ function ParticleRing({ planet }: { planet: SkillPlanet }) {
     )
 }
 
-export default function PlanetDetailModal({ planet, isOpen, onClose }: PlanetDetailModalProps) {
+export default function PlanetDetailModal({ planet, isOpen, onClose, dict }: PlanetDetailModalProps) {
     if (!isOpen || !planet) return null
+
+    // Default to English if dict is not provided
+    const t = dict?.planet_modal || {
+        proficiency_level: "Proficiency Level",
+        overview: "Overview",
+        tech_stack: "Tech Stack",
+        key_projects: "Key Projects & Experience",
+        technologies: "Technologies",
+        major_projects: "Major Projects",
+        years_experience: "Years Experience",
+        mastery: "Mastery",
+        expert_level: "Expert Level - Industry Leading",
+        advanced_level: "Advanced Level - Production Ready",
+        intermediate_level: "Intermediate Level - Solid Foundation",
+        growing_level: "Growing Level - Continuous Learning"
+    }
 
     return (
         <div className="fixed inset-0 bg-black/90 backdrop-blur-sm flex items-center justify-center z-50 p-4">
@@ -240,7 +257,7 @@ export default function PlanetDetailModal({ planet, isOpen, onClose }: PlanetDet
                                 {planet.category}
                             </span>
                             <span className="text-gray-400 text-sm">
-                                ⭐ {planet.proficiencyLevel}% Mastery
+                                ⭐ {planet.proficiencyLevel}% {t.mastery}
                             </span>
                         </div>
                     </div>
@@ -301,7 +318,7 @@ export default function PlanetDetailModal({ planet, isOpen, onClose }: PlanetDet
                         <div className="bg-gray-800/50 rounded-xl p-4 border border-gray-700">
                             <h3 className="text-lg font-semibold text-white mb-3 flex items-center gap-2">
                                 <span>📊</span>
-                                Proficiency Level
+                                {t.proficiency_level}
                             </h3>
                             <div className="relative">
                                 <div className="w-full bg-gray-700 rounded-full h-4 overflow-hidden">
@@ -321,10 +338,10 @@ export default function PlanetDetailModal({ planet, isOpen, onClose }: PlanetDet
                                 </span>
                             </div>
                             <div className="mt-2 text-xs text-gray-400">
-                                {planet.proficiencyLevel >= 90 && '🏆 Expert Level - Industry Leading'}
-                                {planet.proficiencyLevel >= 80 && planet.proficiencyLevel < 90 && '⭐ Advanced Level - Production Ready'}
-                                {planet.proficiencyLevel >= 70 && planet.proficiencyLevel < 80 && '✨ Intermediate Level - Solid Foundation'}
-                                {planet.proficiencyLevel < 70 && '🌱 Growing Level - Continuous Learning'}
+                                {planet.proficiencyLevel >= 90 && `🏆 ${t.expert_level}`}
+                                {planet.proficiencyLevel >= 80 && planet.proficiencyLevel < 90 && `⭐ ${t.advanced_level}`}
+                                {planet.proficiencyLevel >= 70 && planet.proficiencyLevel < 80 && `✨ ${t.intermediate_level}`}
+                                {planet.proficiencyLevel < 70 && `🌱 ${t.growing_level}`}
                             </div>
                         </div>
                     </div>
@@ -335,7 +352,7 @@ export default function PlanetDetailModal({ planet, isOpen, onClose }: PlanetDet
                         <div className="bg-gray-800/50 rounded-xl p-4 border border-gray-700">
                             <h3 className="text-lg font-semibold text-white mb-3 flex items-center gap-2">
                                 <span>📝</span>
-                                Overview
+                                {t.overview}
                             </h3>
                             <p className="text-gray-300 leading-relaxed">{planet.description}</p>
                         </div>
@@ -345,7 +362,7 @@ export default function PlanetDetailModal({ planet, isOpen, onClose }: PlanetDet
                             <div className="bg-gray-800/50 rounded-xl p-4 border border-gray-700">
                                 <h3 className="text-lg font-semibold text-white mb-3 flex items-center gap-2">
                                     <span>🛠️</span>
-                                    Tech Stack ({planet.technologies.length})
+                                    {t.tech_stack} ({planet.technologies.length})
                                 </h3>
                                 <div className="flex flex-wrap gap-2">
                                     {planet.technologies.map((tech, index) => (
@@ -370,7 +387,7 @@ export default function PlanetDetailModal({ planet, isOpen, onClose }: PlanetDet
                             <div className="bg-gray-800/50 rounded-xl p-4 border border-gray-700">
                                 <h3 className="text-lg font-semibold text-white mb-3 flex items-center gap-2">
                                     <span>💼</span>
-                                    Key Projects & Experience
+                                    {t.key_projects}
                                 </h3>
                                 <div className="space-y-3">
                                     {planet.experience.map((exp, index) => (
@@ -415,19 +432,19 @@ export default function PlanetDetailModal({ planet, isOpen, onClose }: PlanetDet
                             <div className="text-2xl font-bold" style={{ color: planet.color }}>
                                 {planet.technologies.length}+
                             </div>
-                            <div className="text-xs text-gray-400 mt-1">Technologies</div>
+                            <div className="text-xs text-gray-400 mt-1">{t.technologies}</div>
                         </div>
                         <div className="bg-gray-800/30 rounded-lg p-3">
                             <div className="text-2xl font-bold" style={{ color: planet.color }}>
                                 {planet.experience.length}
                             </div>
-                            <div className="text-xs text-gray-400 mt-1">Major Projects</div>
+                            <div className="text-xs text-gray-400 mt-1">{t.major_projects}</div>
                         </div>
                         <div className="bg-gray-800/30 rounded-lg p-3">
                             <div className="text-2xl font-bold" style={{ color: planet.color }}>
                                 7+
                             </div>
-                            <div className="text-xs text-gray-400 mt-1">Years Experience</div>
+                            <div className="text-xs text-gray-400 mt-1">{t.years_experience}</div>
                         </div>
                     </div>
                 </div>

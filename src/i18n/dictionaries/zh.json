@@ -142,6 +142,20 @@
             "legendary": "传奇"
         }
     },
+    "planet_modal": {
+        "proficiency_level": "熟练度",
+        "overview": "概述",
+        "tech_stack": "技术栈",
+        "key_projects": "关键项目与经验",
+        "technologies": "技术",
+        "major_projects": "主要项目",
+        "years_experience": "年经验",
+        "mastery": "掌握度",
+        "expert_level": "专家级 - 行业领先",
+        "advanced_level": "高级 - 生产就绪",
+        "intermediate_level": "中级 - 扎实基础",
+        "growing_level": "成长级 - 持续学习"
+    },
     "about": {
         "title": "Ruby Wu",
         "subtitle": "全栈软件工程师",
