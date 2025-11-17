@@ -279,7 +279,7 @@ export default function AboutPageClient({ dict }: AboutPageClientProps) {
                 {/* Professional Summary */}
                 <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 mb-8 border border-gray-700">
                     <h2 className="text-3xl font-bold text-white mb-4 flex items-center gap-3">
-                        <span className="text-3xl">💼</span>
+                        {/* <span className="text-3xl">💼</span> */}
                         {dict.about.professional_summary}
                     </h2>
                     <p className="text-gray-300 leading-relaxed text-lg">
@@ -290,7 +290,7 @@ export default function AboutPageClient({ dict }: AboutPageClientProps) {
                 {/* Core Competencies */}
                 <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 mb-8 border border-gray-700">
                     <h2 className="text-3xl font-bold text-white mb-6 flex items-center gap-3">
-                        <span className="text-3xl">🚀</span>
+                        {/* <span className="text-3xl">🚀</span> */}
                         {dict.about.core_competencies}
                     </h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -385,7 +385,7 @@ export default function AboutPageClient({ dict }: AboutPageClientProps) {
                 {/* Work Experience */}
                 <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 mb-8 border border-gray-700">
                     <h2 className="text-3xl font-bold text-white mb-6 flex items-center gap-3">
-                        <span className="text-3xl">💻</span>
+                        {/* <span className="text-3xl">💻</span> */}
                         {dict.about.work_experience}
                     </h2>
                     <div className="space-y-6">
@@ -398,7 +398,7 @@ export default function AboutPageClient({ dict }: AboutPageClientProps) {
 
                             {/* Project 1 */}
                             <div className="mb-6 bg-gray-900/50 rounded-lg p-5 border border-gray-700/50">
-                                <h4 className="text-xl font-semibold text-blue-400 mb-3">🏗️ {dict.about.project_micro_frontend}</h4>
+                                <h4 className="text-xl font-semibold text-blue-400 mb-3"> {dict.about.project_micro_frontend}</h4>
                                 <ul className="space-y-2 text-gray-300">
                                     <li className="flex gap-2">
                                         <span className="text-blue-400 flex-shrink-0">•</span>
@@ -417,7 +417,7 @@ export default function AboutPageClient({ dict }: AboutPageClientProps) {
 
                             {/* Project 2 */}
                             <div className="mb-6 bg-gray-900/50 rounded-lg p-5 border border-gray-700/50">
-                                <h4 className="text-xl font-semibold text-green-400 mb-3">📦 {dict.about.project_component_library}</h4>
+                                <h4 className="text-xl font-semibold text-green-400 mb-3"> {dict.about.project_component_library}</h4>
                                 <ul className="space-y-2 text-gray-300">
                                     <li className="flex gap-2">
                                         <span className="text-green-400 flex-shrink-0">•</span>
@@ -440,7 +440,7 @@ export default function AboutPageClient({ dict }: AboutPageClientProps) {
 
                             {/* Project 3 */}
                             <div className="mb-6 bg-gray-900/50 rounded-lg p-5 border border-gray-700/50">
-                                <h4 className="text-xl font-semibold text-purple-400 mb-3">🤖 {dict.about.project_ai_automation}</h4>
+                                <h4 className="text-xl font-semibold text-purple-400 mb-3"> {dict.about.project_ai_automation}</h4>
                                 <ul className="space-y-2 text-gray-300">
                                     <li className="flex gap-2">
                                         <span className="text-purple-400 flex-shrink-0">•</span>
@@ -463,7 +463,7 @@ export default function AboutPageClient({ dict }: AboutPageClientProps) {
 
                             {/* Project 4 */}
                             <div className="mb-6 bg-gray-900/50 rounded-lg p-5 border border-gray-700/50">
-                                <h4 className="text-xl font-semibold text-pink-400 mb-3">⚡ {dict.about.project_ai_development}</h4>
+                                <h4 className="text-xl font-semibold text-pink-400 mb-3">{dict.about.project_ai_development}</h4>
                                 <ul className="space-y-2 text-gray-300">
                                     <li className="flex gap-2">
                                         <span className="text-pink-400 flex-shrink-0">•</span>
@@ -478,7 +478,7 @@ export default function AboutPageClient({ dict }: AboutPageClientProps) {
 
                             {/* Project 5 */}
                             <div className="mb-6 bg-gray-900/50 rounded-lg p-5 border border-gray-700/50">
-                                <h4 className="text-xl font-semibold text-yellow-400 mb-3">🎯 {dict.about.project_ai_deployment}</h4>
+                                <h4 className="text-xl font-semibold text-yellow-400 mb-3"> {dict.about.project_ai_deployment}</h4>
                                 <ul className="space-y-2 text-gray-300">
                                     <li className="flex gap-2">
                                         <span className="text-yellow-400 flex-shrink-0">•</span>
@@ -497,7 +497,7 @@ export default function AboutPageClient({ dict }: AboutPageClientProps) {
 
                             {/* Project 6 */}
                             <div className="mb-6 bg-gray-900/50 rounded-lg p-5 border border-gray-700/50">
-                                <h4 className="text-xl font-semibold text-cyan-400 mb-3">💬 {dict.about.project_realtime_communication}</h4>
+                                <h4 className="text-xl font-semibold text-cyan-400 mb-3"> {dict.about.project_realtime_communication}</h4>
                                 <ul className="space-y-2 text-gray-300">
                                     <li className="flex gap-2">
                                         <span className="text-cyan-400 flex-shrink-0">•</span>
@@ -516,7 +516,7 @@ export default function AboutPageClient({ dict }: AboutPageClientProps) {
 
                             {/* Project 7 */}
                             <div className="bg-gray-900/50 rounded-lg p-5 border border-gray-700/50">
-                                <h4 className="text-xl font-semibold text-orange-400 mb-3">📊 {dict.about.project_monitoring_sdk}</h4>
+                                <h4 className="text-xl font-semibold text-orange-400 mb-3"> {dict.about.project_monitoring_sdk}</h4>
                                 <ul className="space-y-2 text-gray-300">
                                     <li className="flex gap-2">
                                         <span className="text-orange-400 flex-shrink-0">•</span>

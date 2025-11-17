@@ -118,7 +118,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
                   `}
                 >
                   <div className="flex items-center space-x-2">
-                    <span className="text-lg">{item.icon}</span>
+                    {/* <span className="text-lg">{item.icon}</span> */}
                     <span className="font-medium">{item.name}</span>
                   </div>
 

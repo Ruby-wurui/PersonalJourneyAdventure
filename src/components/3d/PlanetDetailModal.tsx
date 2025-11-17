@@ -386,7 +386,7 @@ export default function PlanetDetailModal({ planet, isOpen, onClose, dict }: Pla
                         {planet.experience.length > 0 && (
                             <div className="bg-gray-800/50 rounded-xl p-4 border border-gray-700">
                                 <h3 className="text-lg font-semibold text-white mb-3 flex items-center gap-2">
-                                    <span>💼</span>
+                                    {/* <span>💼</span> */}
                                     {t.key_projects}
                                 </h3>
                                 <div className="space-y-3">

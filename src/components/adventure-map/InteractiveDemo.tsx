@@ -87,7 +87,7 @@ export const InteractiveDemo: React.FC<InteractiveDemoProps> = ({
       if (result.success) {
         // Update local state based on interaction result
         updateDemoState(interaction, result.data)
-        
+
         // Emit real-time event
         if (socket) {
           socket.emit('project-demo-interaction', {
@@ -118,7 +118,7 @@ export const InteractiveDemo: React.FC<InteractiveDemoProps> = ({
           ...prev,
           cart: result.cartItems || prev.cart,
           totalPrice: result.total || prev.totalPrice,
-          inventory: prev.inventory.map((item: any) => 
+          inventory: prev.inventory.map((item: any) =>
             result.cartItems?.find((cartItem: any) => cartItem.id === item.id)
               ? { ...item, stock: Math.max(0, item.stock - 1) }
               : item
@@ -157,11 +157,11 @@ export const InteractiveDemo: React.FC<InteractiveDemoProps> = ({
               <h4 className="font-semibold text-gray-800">{item.name}</h4>
               <p className="text-lg font-bold text-green-600">${item.price}</p>
               <p className="text-sm text-gray-500">Stock: {item.stock}</p>
-              
+
               <button
                 onClick={() => handleDemoInteraction({
                   type: 'shopping-cart',
-                  data: { 
+                  data: {
                     action: 'add',
                     items: [...(demoState.cart || []), { ...item, quantity: 1 }]
                   }
@@ -219,7 +219,7 @@ export const InteractiveDemo: React.FC<InteractiveDemoProps> = ({
           disabled={isLoading}
           className="p-6 bg-blue-50 rounded-lg border border-blue-200 hover:bg-blue-100 transition-colors"
         >
-          <div className="text-3xl mb-2">🚀</div>
+          {/* <div className="text-3xl mb-2">🚀</div> */}
           <div className="font-semibold">API Speed Test</div>
           <div className="text-sm text-gray-600">Test response times</div>
         </button>
@@ -318,7 +318,7 @@ export const InteractiveDemo: React.FC<InteractiveDemoProps> = ({
     >
       {/* Backdrop */}
       <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={onClose} />
-      
+
       {/* Demo Content */}
       <motion.div
         className="relative bg-white rounded-2xl shadow-2xl max-w-6xl w-full max-h-[90vh] overflow-hidden"

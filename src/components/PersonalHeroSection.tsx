@@ -117,13 +117,13 @@ const PersonalHeroSection: React.FC<PersonalHeroSectionProps> = ({
                     >
                         <div className="text-gray-300 leading-relaxed">
                             <p className="mb-3">
-                                🚀 {dict?.hero?.bio1 || '创新的全栈开发者，专注于构建沉浸式的Web体验和交互式3D应用。'}
+                                {dict?.hero?.bio1 || '创新的全栈开发者，专注于构建沉浸式的Web体验和交互式3D应用。'}
                             </p>
                             <p className="mb-3">
-                                💡 {dict?.hero?.bio2 || 'Creative Technologist passionate about creating beautiful, functional digital experiences that push the boundaries of web technology.'}
+                                {dict?.hero?.bio2 || 'Creative Technologist passionate about creating beautiful, functional digital experiences that push the boundaries of web technology.'}
                             </p>
                             <p>
-                                🌟 {dict?.hero?.bio3 || '擅长将复杂的技术概念转化为直观、优雅的用户界面，热爱探索前沿技术并将其应用到实际项目中。'}
+                                {dict?.hero?.bio3 || '擅长将复杂的技术概念转化为直观、优雅的用户界面，热爱探索前沿技术并将其应用到实际项目中。'}
                             </p>
                         </div>
                     </motion.div>
@@ -167,19 +167,19 @@ const PersonalHeroSection: React.FC<PersonalHeroSectionProps> = ({
                                         onClick={() => window.location.href = '/blog/create'}
                                         className="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg font-medium hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
                                     >
-                                        ✍️ {dict?.hero?.btn_write_article || 'Write Article'}
+                                        {dict?.hero?.btn_write_article || 'Write Article'}
                                     </button>
                                     <button
                                         onClick={() => window.location.href = '/about'}
                                         className="px-6 py-3 bg-gray-800 text-white rounded-lg font-medium hover:bg-gray-700 transition-all duration-300 border border-gray-700"
                                     >
-                                        🚀 {dict?.hero?.btn_explore_universe || 'Explore Universe'}
+                                        {dict?.hero?.btn_explore_universe || 'Explore Universe'}
                                     </button>
                                     <button
                                         onClick={logout}
                                         className="px-6 py-3 bg-gray-800 text-gray-300 rounded-lg font-medium hover:bg-gray-700 transition-all duration-300 border border-gray-700"
                                     >
-                                        👋 {dict?.hero?.btn_logout || 'Logout'}
+                                        {dict?.hero?.btn_logout || 'Logout'}
                                     </button>
                                 </>
                             ) : (
@@ -188,19 +188,19 @@ const PersonalHeroSection: React.FC<PersonalHeroSectionProps> = ({
                                         onClick={handleLogin}
                                         className="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg font-medium hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
                                     >
-                                        🔐 {dict?.hero?.btn_admin_login || 'Admin Login'}
+                                        {dict?.hero?.btn_admin_login || 'Admin Login'}
                                     </button>
                                     <button
                                         onClick={() => window.location.href = '/about'}
                                         className="px-6 py-3 bg-gray-800 text-white rounded-lg font-medium hover:bg-gray-700 transition-all duration-300 border border-gray-700"
                                     >
-                                        🚀 {dict?.hero?.btn_explore_universe || 'Explore Universe'}
+                                        {dict?.hero?.btn_explore_universe || 'Explore Universe'}
                                     </button>
                                     <button
                                         onClick={() => window.location.href = '/blog'}
                                         className="px-6 py-3 bg-gray-800 text-white rounded-lg font-medium hover:bg-gray-700 transition-all duration-300 border border-gray-700"
                                     >
-                                        📚 {dict?.hero?.btn_tech_blog || 'Tech Blog'}
+                                        {dict?.hero?.btn_tech_blog || 'Tech Blog'}
                                     </button>
                                 </>
                             )}
