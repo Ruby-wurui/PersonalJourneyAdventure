@@ -17,7 +17,39 @@
         "logout": "退出",
         "admin_login": "管理员登录",
         "user_registration": "用户注册",
-        "admin": "管理员"
+        "admin": "管理员",
+        "login_modal": {
+            "title": "管理员访问",
+            "subtitle": "输入您的凭据以访问控制面板",
+            "username_placeholder": "用户名",
+            "password_placeholder": "密码",
+            "authenticate_button": "验证身份",
+            "authenticating": "正在验证...",
+            "access_granted": "访问已授权。欢迎回来。",
+            "initializing_session": "正在初始化会话...",
+            "access_denied": "访问被拒绝。凭据无效。",
+            "demo_credentials": "演示账号：admin / admin123",
+            "need_access": "需要访问权限？申请凭据 →",
+            "cancel_login": "取消登录"
+        },
+        "register_modal": {
+            "title": "身份注册",
+            "subtitle": "创建您的凭据以访问实验室",
+            "username_placeholder": "用户名",
+            "email_placeholder": "电子邮箱",
+            "password_placeholder": "密码",
+            "confirm_password_placeholder": "确认密码",
+            "create_identity_button": "创建身份",
+            "creating_identity": "正在创建身份...",
+            "registration_complete": "注册完成。欢迎来到实验室。",
+            "creating_your_identity": "正在创建您的身份...",
+            "password_mismatch": "密码确认不匹配",
+            "password_too_short": "密码必须至少6个字符",
+            "registration_failed": "注册失败",
+            "minimum_characters": "最少6个字符",
+            "existing_identity": "已有身份？在此登录 →",
+            "cancel_registration": "取消注册"
+        }
     },
     "blog": {
         "manage": "管理",

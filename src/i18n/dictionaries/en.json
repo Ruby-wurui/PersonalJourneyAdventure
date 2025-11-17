@@ -17,7 +17,39 @@
         "logout": "Logout",
         "admin_login": "Admin Login",
         "user_registration": "User Registration",
-        "admin": "Admin"
+        "admin": "Admin",
+        "login_modal": {
+            "title": "ADMINISTRATOR ACCESS",
+            "subtitle": "Enter your credentials to access the control panel",
+            "username_placeholder": "Username",
+            "password_placeholder": "Password",
+            "authenticate_button": "AUTHENTICATE",
+            "authenticating": "AUTHENTICATING...",
+            "access_granted": "Access Granted. Welcome back.",
+            "initializing_session": "Initializing session...",
+            "access_denied": "Access Denied. Invalid credentials.",
+            "demo_credentials": "DEMO: admin / admin123",
+            "need_access": "Need access? Request credentials →",
+            "cancel_login": "Cancel Login"
+        },
+        "register_modal": {
+            "title": "IDENTITY REGISTRATION",
+            "subtitle": "Create your credentials to access the laboratory",
+            "username_placeholder": "Username",
+            "email_placeholder": "Email Address",
+            "password_placeholder": "Password",
+            "confirm_password_placeholder": "Confirm Password",
+            "create_identity_button": "CREATE IDENTITY",
+            "creating_identity": "CREATING IDENTITY...",
+            "registration_complete": "Registration Complete. Welcome to the Lab.",
+            "creating_your_identity": "Creating your identity...",
+            "password_mismatch": "Password confirmation does not match",
+            "password_too_short": "Password must be at least 6 characters",
+            "registration_failed": "Registration failed",
+            "minimum_characters": "MINIMUM 6 CHARACTERS",
+            "existing_identity": "Existing identity? Sign in here →",
+            "cancel_registration": "Cancel Registration"
+        }
     },
     "blog": {
         "manage": "Manage",
