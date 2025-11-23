@@ -1,0 +1,271 @@
+{
+    "nav": {
+        "universe": "宇宙",
+        "home": "主页",
+        "about": "关于",
+        "projects": "项目",
+        "blog": "博客",
+        "universe_desc": "技能星系",
+        "home_desc": "交互式3D技能",
+        "about_desc": "个人宇宙",
+        "projects_desc": "项目岛屿",
+        "blog_desc": "技术博客与时间线"
+    },
+    "auth": {
+        "login": "登录",
+        "register": "注册",
+        "logout": "退出",
+        "admin_login": "管理员登录",
+        "user_registration": "用户注册",
+        "admin": "管理员",
+        "login_modal": {
+            "title": "管理员访问",
+            "subtitle": "输入您的凭据以访问控制面板",
+            "username_placeholder": "用户名",
+            "password_placeholder": "密码",
+            "authenticate_button": "验证身份",
+            "authenticating": "正在验证...",
+            "access_granted": "访问已授权。欢迎回来。",
+            "initializing_session": "正在初始化会话...",
+            "access_denied": "访问被拒绝。凭据无效。",
+            "demo_credentials": "演示账号：admin / admin123",
+            "need_access": "需要访问权限？申请凭据 →",
+            "cancel_login": "取消登录"
+        },
+        "register_modal": {
+            "title": "身份注册",
+            "subtitle": "创建您的凭据以访问实验室",
+            "username_placeholder": "用户名",
+            "email_placeholder": "电子邮箱",
+            "password_placeholder": "密码",
+            "confirm_password_placeholder": "确认密码",
+            "create_identity_button": "创建身份",
+            "creating_identity": "正在创建身份...",
+            "registration_complete": "注册完成。欢迎来到实验室。",
+            "creating_your_identity": "正在创建您的身份...",
+            "password_mismatch": "密码确认不匹配",
+            "password_too_short": "密码必须至少6个字符",
+            "registration_failed": "注册失败",
+            "minimum_characters": "最少6个字符",
+            "existing_identity": "已有身份？在此登录 →",
+            "cancel_registration": "取消注册"
+        }
+    },
+    "blog": {
+        "manage": "管理",
+        "new_post": "新文章",
+        "manage_posts": "管理文章",
+        "create_new_post": "创建新文章",
+        "edit_organize": "编辑和组织博客内容",
+        "write_publish": "撰写和发布新内容",
+        "title": "技术时光机",
+        "subtitle": "探索我的技术冒险、发现和见解之旅。每篇文章都是一次互动体验，包含代码沙盒和挑战。"
+    },
+    "common": {
+        "loading": "加载中...",
+        "error": "错误",
+        "success": "成功",
+        "cancel": "取消",
+        "save": "保存",
+        "delete": "删除",
+        "edit": "编辑",
+        "back": "返回",
+        "next": "下一个",
+        "previous": "上一个",
+        "close": "关闭",
+        "view_details": "查看详情"
+    },
+    "brand": {
+        "title": "第Ruby象限",
+        "subtitle": "第Ruby象限数字宇宙"
+    },
+    "homepage": {
+        "welcome": "欢迎来到Ruby的宇宙",
+        "intro_text": "欢迎进入Ruby的宇宙空间",
+        "intro_subtitle": "代码在三维空间中邂逅创意的地方",
+        "preparing_experience": "准备沉浸式体验中……",
+        "loading_text": "正在初始化交互实验室...",
+        "unlock_placeholder": "输入技能关键词...",
+        "unlock_hint": "试试一个流行的前端框架（以'r'开头）",
+        "unlock_button": "解锁",
+        "3d_unavailable": "3D可视化不可用",
+        "click_to_continue": "点击任意位置继续",
+        "explore_skills": "探索技能",
+        "view_projects": "查看项目",
+        "read_blog": "阅读博客",
+        "status_active": "活跃"
+    },
+    "hero": {
+        "title": "全栈开发者 & 创意技术专家",
+        "bio1": "创新的全栈开发者，专注于构建沉浸式的Web体验和交互式3D应用。",
+        "bio2": "热衷于创造美观、实用的数字体验，突破Web技术边界的创意技术专家。",
+        "bio3": "擅长将复杂的技术概念转化为直观、优雅的用户界面，热爱探索前沿技术并将其应用到实际项目中。",
+        "stats_experience": "年工作经验",
+        "stats_projects": "项目经验",
+        "stats_technologies": "技术栈",
+        "stats_creativity": "创造力",
+        "btn_write_article": "撰写文章",
+        "btn_explore_universe": "探索宇宙",
+        "btn_logout": "退出登录",
+        "btn_admin_login": "管理员登录",
+        "btn_tech_blog": "技术博客",
+        "location": "中国，上海",
+        "availability": "接受自由职业"
+    },
+    "skills": {
+        "category": "分类",
+        "proficiency": "熟练度",
+        "description": "描述",
+        "code_example": "代码示例",
+        "frontend": "前端",
+        "backend": "后端",
+        "language": "编程语言",
+        "tools": "工具",
+        "database": "数据库"
+    },
+    "universe": {
+        "welcome": "欢迎来到技能星系",
+        "subtitle": "探索技术与技能的宇宙",
+        "loading": "正在加载宇宙...",
+        "loading_galaxy": "正在加载星系宇宙..."
+    },
+    "projects": {
+        "title": "项目地图",
+        "subtitle": "探索我在企业级项目中的旅程",
+        "loading": "正在加载冒险地图...",
+        "loading_subtitle": "准备交互式项目展示"
+    },
+    "map_navigation": {
+        "quick_navigation": "快速导航",
+        "legend": "图例",
+        "completed": "已完成",
+        "in_development": "开发中",
+        "maintained": "维护中",
+        "featured_project": "精选项目",
+        "controls": "控制",
+        "drag_to_pan": "🖱️ 拖动平移",
+        "scroll_to_zoom": "🔍 滚动缩放",
+        "click_island": "🖱️ 点击岛屿选择",
+        "hover_details": "👆 悬停查看详情"
+    },
+    "achievements": {
+        "title": "成就",
+        "unlocked": "成就解锁！",
+        "progress": "进度",
+        "total_points": "总积分",
+        "points": "积分",
+        "unlocked_status": "✓ 已解锁",
+        "explorer": {
+            "name": "探索者",
+            "description": "访问你的第一个项目岛屿"
+        },
+        "demo_master": {
+            "name": "演示大师",
+            "description": "完成3个交互式演示"
+        },
+        "tech_enthusiast": {
+            "name": "技术爱好者",
+            "description": "探索使用10种以上不同技术的项目"
+        },
+        "interaction_champion": {
+            "name": "互动冠军",
+            "description": "在作品集中执行50次互动"
+        },
+        "completionist": {
+            "name": "完美主义者",
+            "description": "访问所有项目岛屿并完成所有演示"
+        },
+        "speed_runner": {
+            "name": "速通者",
+            "description": "在30秒内完成一个演示"
+        },
+        "social_butterfly": {
+            "name": "社交达人",
+            "description": "使用实时聊天功能"
+        },
+        "code_collaborator": {
+            "name": "代码协作者",
+            "description": "参与协作编码会话"
+        },
+        "rarity": {
+            "common": "普通",
+            "rare": "稀有",
+            "epic": "史诗",
+            "legendary": "传奇"
+        }
+    },
+    "planet_modal": {
+        "proficiency_level": "熟练度",
+        "overview": "概述",
+        "tech_stack": "技术栈",
+        "key_projects": "关键项目与经验",
+        "technologies": "技术",
+        "major_projects": "主要项目",
+        "years_experience": "年经验",
+        "mastery": "掌握度",
+        "expert_level": "专家级 - 行业领先",
+        "advanced_level": "高级 - 生产就绪",
+        "intermediate_level": "中级 - 扎实基础",
+        "growing_level": "成长级 - 持续学习"
+    },
+    "about": {
+        "title": "Ruby Wu",
+        "subtitle": "全栈软件工程师",
+        "gender": "女",
+        "location": "北京昌平",
+        "github": "GitHub",
+        "professional_summary": "职业概述",
+        "professional_summary_text": "资深前端架构师和AI解决方案专家，拥有7年设计和实施高性能、可扩展B2B企业解决方案的经验。在前端工程、性能优化和团队领导方面拥有丰富的专业知识。热衷于AI驱动开发的创新者，专注于低代码+LLM+AI Agent解决方案。成功构建了使用Dify、RAG和MCP技术的智能工作流，以自动化流程、增强风险控制并降低运营成本。",
+        "core_competencies": "核心能力",
+        "frontend_architecture": "前端架构",
+        "backend_fullstack": "后端与全栈",
+        "databases_caching": "数据库与缓存",
+        "devops_monorepo": "DevOps与Monorepo",
+        "ai_llms": "AI与大语言模型",
+        "ai_models": "模型：",
+        "ai_workflows": "工作流与技术：",
+        "ai_coding": "AI辅助编码：",
+        "web_automation": "Web自动化与测试",
+        "work_experience": "工作经历",
+        "position_title": "高级前端工程师 / AI解决方案架构师",
+        "company_duration": "企业公司 | 2015 - 至今",
+        "project_micro_frontend": "微前端架构",
+        "project_micro_frontend_1": "架构并主导了基于Wujie的微前端架构的大型企业云平台的0到1开发",
+        "project_micro_frontend_2": "成功集成了12个以上的子系统，确保了1000+日活用户和数万总用户的稳定高性能运行",
+        "project_micro_frontend_3": "解决了原有单体应用的关键痛点，包括代码库臃肿、团队协作效率低下以及技术升级困难",
+        "project_component_library": "企业组件库与Monorepo",
+        "project_component_library_1": "主导设计和实施企业级Monorepo（Turborepo），集中管理3个核心包和2个应用程序",
+        "project_component_library_2": "显著提高了团队开发效率，降低了跨项目维护成本",
+        "project_component_library_3": "实施Changeset进行自动化版本管理、变更日志生成和npm发布",
+        "project_component_library_4": "使用Jenkins建立完整的CI/CD流水线，自动化从开发到部署的整个工作流程",
+        "project_ai_automation": "AI自动化与RAG实施",
+        "project_ai_automation_1": "构建并推广低代码AI解决方案栈（N8n、LLMs、AI Agents、MCP），用于安全的本地工作流自动化",
+        "project_ai_automation_2": "主导使用Dify开发内部智能问答系统，提供即时的、基于知识库的响应",
+        "project_ai_automation_3": "应用先进的RAG技术，将文档向量化到向量数据库中，动态地向LLMs提供相关上下文",
+        "project_ai_automation_4": "设计AI Agents以理解复杂的用户意图并自动化多步骤、跨系统的业务流程",
+        "project_ai_development": "AI辅助开发与工作流优化",
+        "project_ai_development_1": "开创了高效工作流（Cursor + Figma + MCP），大幅缩短了从设计到交付的周期",
+        "project_ai_development_2": "利用AI驱动的编码工具和高级提示工程来提高开发速度和代码质量",
+        "project_ai_deployment": "AI解决方案部署（企业用例）",
+        "project_ai_deployment_1": "设计了用于风险控制的自动化交易监控工作流，具有实时异常检测和警报功能",
+        "project_ai_deployment_2": "开发了智能语音助手，自动化客户信息采集和数据提交，提供24/7服务",
+        "project_ai_deployment_3": "自动化重复性任务，包括财务对账和报告生成，与核心业务系统集成",
+        "project_realtime_communication": "全栈实时通信系统",
+        "project_realtime_communication_1": "开发了全栈实时聊天和协同浏览系统，扩展了现有的屏幕共享服务",
+        "project_realtime_communication_2": "使用Node.js、Express和Socket.IO构建后端以处理实时事件，使用Sequelize（MySQL）进行持久化，使用Redis进行会话缓存",
+        "project_realtime_communication_3": "通过使用PM2以集群模式部署Node.js应用程序，确保高可用性和并发处理",
+        "project_monitoring_sdk": "前端监控SDK开发",
+        "project_monitoring_sdk_1": "开发了自定义的内部前端监控SDK，用于错误跟踪和性能分析",
+        "project_monitoring_sdk_2": "使用Babel实现非侵入式日志记录，用于自动化代码插桩",
+        "project_monitoring_sdk_3": "集成了用户行为分析，包括会话录制/回放和热图",
+        "interactive_galaxy": "交互式技能星系",
+        "interactive_galaxy_subtitle": "通过交互式3D星系可视化探索我的技能和经验",
+        "how_to_navigate": "导航指南",
+        "nav_instruction_1": "点击星球以详细探索技能",
+        "nav_instruction_2": "拖动以旋转和缩放星系",
+        "nav_instruction_3": "经验时间线围绕中心轨道运行",
+        "personal_universe": "个人宇宙",
+        "3d_unavailable": "此设备上无法使用3D可视化",
+        "technologies_used": "使用的技术"
+    }
+}

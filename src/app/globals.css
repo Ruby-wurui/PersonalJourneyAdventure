@@ -1,0 +1,448 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* System font fallback */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+
+:root {
+  --foreground-rgb: 95, 90, 85;
+  --background-start-rgb: 250, 248, 245;
+  --background-end-rgb: 255, 253, 250;
+  
+  /* 莫兰迪色系调色板 - 清新自然、柔和舒适 */
+  --primary-blue: #A8C5D8;
+  --primary-purple: #C4B5D5;
+  --primary-green: #B8D4C0;
+  --primary-pink: #E5D3D1;
+  --primary-yellow: #E8DCC8;
+  --primary-gray: #C8C3BD;
+  --primary-beige: #E0D8CC;
+  --primary-sage: #A8BFA8;
+  --primary-mauve: #D5C8C8;
+  --primary-terracotta: #DCC8C0;
+  
+  /* Glassmorphism colors - 清新柔和风格 */
+  --glass-bg: rgba(255, 255, 255, 0.65);
+  --glass-border: rgba(200, 195, 189, 0.25);
+  --glass-shadow: rgba(95, 90, 85, 0.06);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 230, 225, 220;
+    --background-start-rgb: 55, 52, 50;
+    --background-end-rgb: 45, 42, 40;
+    
+    /* Dark theme glassmorphism - 柔和深色风格 */
+    --glass-bg: rgba(95, 90, 85, 0.3);
+    --glass-border: rgba(200, 195, 189, 0.15);
+    --glass-shadow: rgba(0, 0, 0, 0.2);
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+/* Custom scrollbar for webkit browsers - 清新柔和风格 */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F5F1EB;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #C8C3BD;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #A8C5D8;
+}
+
+@media (prefers-color-scheme: dark) {
+  ::-webkit-scrollbar-track {
+    background: #373432;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #7B7670;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #A8C5D8;
+  }
+}
+
+/* Stars animation for background - 清新柔和风格 */
+.stars-small {
+  width: 1px;
+  height: 1px;
+  background: transparent;
+  box-shadow: 
+    1541px 1046px #C8C3BD, 1446px 906px #E0D8CC, 1081px 1280px #C4B5D5, 1597px 1344px #A8C5D8,
+    1702px 1847px #B8D4C0, 1490px 1365px #E5D3D1, 1092px 1808px #E8DCC8, 1658px 1120px #C8C3BD,
+    1458px 1617px #D5C8C8, 1220px 1440px #A8BFA8, 1779px 1216px #DCC8C0, 1687px 1040px #C4B5D5,
+    1790px 1407px #A8C5D8, 1213px 1836px #B8D4C0, 1895px 1614px #E5D3D1, 1157px 1051px #E8DCC8,
+    1315px 1729px #C8C3BD, 1705px 1299px #E0D8CC, 1434px 1549px #D5C8C8, 1726px 1713px #A8BFA8;
+  animation: animStar 50s linear infinite;
+}
+
+.stars-medium {
+  width: 2px;
+  height: 2px;
+  background: transparent;
+  box-shadow: 
+    700px 400px #A8C5D8, 1200px 300px #C4B5D5, 300px 800px #B8D4C0, 1600px 700px #E5D3D1,
+    800px 1200px #E8DCC8, 1400px 500px #C8C3BD, 500px 1000px #E0D8CC, 1000px 900px #A8BFA8,
+    1800px 200px #D5C8C8, 200px 600px #DCC8C0, 1500px 1100px #A8C5D8, 900px 100px #C4B5D5,
+    1100px 1300px #B8D4C0, 400px 1400px #E5D3D1, 1700px 800px #E8DCC8, 600px 200px #C8C3BD;
+  animation: animStar 100s linear infinite;
+}
+
+.stars-large {
+  width: 3px;
+  height: 3px;
+  background: transparent;
+  box-shadow: 
+    1000px 500px #A8C5D8, 500px 1000px #C4B5D5, 1500px 200px #B8D4C0, 200px 1500px #E5D3D1,
+    800px 800px #E8DCC8, 1200px 1200px #C8C3BD, 300px 300px #E0D8CC, 1700px 600px #A8BFA8;
+  animation: animStar 150s linear infinite;
+}
+
+@keyframes animStar {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-2000px);
+  }
+}
+
+/* Enhanced animations for skill interactions */
+@keyframes scan {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInScale {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 5px currentColor;
+  }
+  50% {
+    box-shadow: 0 0 20px currentColor, 0 0 30px currentColor;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+/* Utility classes for animations */
+.animate-scan {
+  animation: scan 2s linear infinite;
+}
+
+.animate-slide-in-right {
+  animation: slideInFromRight 0.3s ease-out;
+}
+
+.animate-fade-in-scale {
+  animation: fadeInScale 0.3s ease-out;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* 3D Globe specific styles */
+.globe-container {
+  perspective: 1000px;
+}
+
+.skill-point-glow {
+  filter: drop-shadow(0 0 10px currentColor);
+}
+
+/* Particle system enhancements */
+.particle-trail {
+  position: absolute;
+  pointer-events: none;
+  border-radius: 50%;
+  animation: fadeOut 2s ease-out forwards;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+
+/* Interactive feedback */
+.interactive-element {
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.interactive-element:hover {
+  transform: scale(1.05);
+  filter: brightness(1.2);
+}
+
+.interactive-element:active {
+  transform: scale(0.95);
+}
+
+/* Code snippet styling */
+.code-window {
+  background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
+  border: 1px solid #30363d;
+}
+
+.code-window::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #58a6ff, transparent);
+  animation: scan 3s linear infinite;
+}
+
+/* Performance optimizations */
+.gpu-accelerated {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Responsive 3D adjustments */
+@media (max-width: 768px) {
+  .globe-container {
+    perspective: 800px;
+  }
+  
+  .skill-details-panel {
+    max-width: calc(100vw - 2rem);
+    right: 1rem;
+    left: 1rem;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .skill-point-glow {
+    filter: none;
+    border: 2px solid currentColor;
+  }
+  
+  .particle-trail {
+    border: 1px solid currentColor;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .animate-scan,
+  .animate-glow,
+  .animate-float,
+  .animate-pulse-glow {
+    animation: none;
+  }
+  
+  .interactive-element {
+    transition: none;
+  }
+}
+
+/* Modern glassmorphism utilities - 清新柔和风格 */
+.glass-morphism {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 4px 24px var(--glass-shadow);
+}
+
+.glass-morphism-light {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(200, 195, 189, 0.3);
+  box-shadow: 0 2px 12px rgba(95, 90, 85, 0.06);
+}
+
+.glass-morphism-dark {
+  background: rgba(95, 90, 85, 0.35);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(200, 195, 189, 0.2);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* Enhanced loading animations */
+.loading-pulse {
+  animation: loadingPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes loadingPulse {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(0.95);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+.loading-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Enhanced button styles - 清新柔和风格 */
+.btn-modern {
+  @apply px-6 py-3 rounded-lg font-medium transition-all duration-300 transform hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-offset-2;
+}
+
+.btn-primary {
+  @apply btn-modern bg-gradient-to-r from-[#A8C5D8] to-[#C4B5D5] text-white hover:from-[#93B0C3] hover:to-[#AFA0C0] focus:ring-[#A8C5D8] shadow-md hover:shadow-lg;
+}
+
+.btn-secondary {
+  @apply btn-modern bg-gradient-to-r from-[#C8C3BD] to-[#E0D8CC] text-[#5F5A55] hover:from-[#B3AEA8] hover:to-[#CBC3B7] focus:ring-[#C8C3BD] shadow-sm hover:shadow-md;
+}
+
+/* Enhanced card styles - 清新柔和风格 */
+.card-modern {
+  @apply rounded-xl border border-[#C8C3BD]/25 bg-white/85 backdrop-blur-sm transition-all duration-300 hover:border-[#A8C5D8]/40 hover:shadow-lg;
+}
+
+@media (prefers-color-scheme: dark) {
+  .card-modern {
+    @apply bg-[#373432]/85 border-[#7B7670]/25 hover:border-[#A8C5D8]/40;
+  }
+}
+
+.card-glass {
+  @apply glass-morphism rounded-xl transition-all duration-300 hover:shadow-xl hover:scale-[1.02];
+}
+
+/* Enhanced text styles - 清新柔和风格 */
+.text-gradient {
+  @apply bg-gradient-to-r from-[#A8C5D8] via-[#C4B5D5] to-[#E5D3D1] bg-clip-text text-transparent;
+}
+
+.text-glow {
+  text-shadow: 0 0 12px currentColor, 0 0 24px currentColor;
+}
+
+/* Enhanced mobile responsiveness */
+@media (max-width: 768px) {
+  .glass-morphism {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  
+  .btn-modern {
+    @apply px-4 py-2 text-sm;
+  }
+  
+  .card-modern {
+    @apply rounded-lg;
+  }
+}
+
+/* Focus visible improvements - 清新柔和风格 */
+.focus-visible-ring {
+  @apply focus:outline-none focus:ring-2 focus:ring-[#A8C5D8] focus:ring-offset-2 focus:ring-offset-white;
+}
+
+@media (prefers-color-scheme: dark) {
+  .focus-visible-ring {
+    @apply focus:ring-offset-[#373432];
+  }
+}
+
+/* Performance optimization for animations */
+@media (max-width: 768px) {
+  .performance-heavy {
+    transform: none;
+    transition: none;
+  }
+}

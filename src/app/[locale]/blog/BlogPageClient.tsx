@@ -1,0 +1,61 @@
+'use client';
+
+import { Suspense } from 'react';
+import BlogTimeline from '@/components/blog/BlogTimeline';
+import LoadingSpinner from '@/components/3d/LoadingSpinner';
+import NavigationBarI18n from '@/components/layout/NavigationBarI18n';
+import { useAuth } from '@/lib/auth-context';
+import { LoginModal } from '@/components/auth/LoginModal';
+import { useState } from 'react';
+
+import { Dictionary } from '@/i18n/get-dictionary';
+import { usePathname } from 'next/navigation';
+import { Locale } from '@/i18n/config';
+
+interface BlogPageClientProps {
+  dict: Dictionary
+}
+
+export default function BlogPageClient({ dict }: BlogPageClientProps) {
+  const pathname = usePathname();
+  const locale = pathname.split('/')[1] as Locale;
+  const { isAuthenticated, user, logout } = useAuth();
+  const [showLoginModal, setShowLoginModal] = useState(false);
+
+  const handleLogin = () => setShowLoginModal(true);
+  const handleRegister = () => setShowLoginModal(true);
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+      <NavigationBarI18n
+        locale={locale}
+        dict={dict}
+        isAuthenticated={isAuthenticated}
+        user={user}
+        onLogin={handleLogin}
+        onRegister={handleRegister}
+        onLogout={logout}
+      />
+
+      <div className="container mx-auto px-4 pt-24">
+        <div className="text-center mb-12">
+          <h1 className="text-5xl font-bold text-white mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+            {dict.blog.title}
+          </h1>
+          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+            {dict.blog.subtitle}
+          </p>
+        </div>
+
+        <Suspense fallback={<LoadingSpinner />}>
+          <BlogTimeline />
+        </Suspense>
+      </div>
+
+      <LoginModal
+        isOpen={showLoginModal}
+        onClose={() => setShowLoginModal(false)}
+      />
+    </div>
+  );
+}

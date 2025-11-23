@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//Users/yubh/workspace/personalSite/node-express-mysql/**)",
+      "Bash(npm run build:*)",
+      "Bash(pnpm build)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

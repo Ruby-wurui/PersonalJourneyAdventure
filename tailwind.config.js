@@ -1,0 +1,81 @@
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+  ],
+  theme: {
+    extend: {
+      animation: {
+        'particle-float': 'particleFloat 6s ease-in-out infinite',
+        'typewriter': 'typewriter 3s steps(40) 1s 1 normal both',
+        'portal-spin': 'portalSpin 2s linear infinite',
+        'shake': 'shake 0.5s ease-in-out',
+        'pulse-glow': 'pulseGlow 2s ease-in-out infinite',
+        'float-up': 'floatUp 3s ease-out forwards',
+      },
+      keyframes: {
+        particleFloat: {
+          '0%, 100%': { transform: 'translateY(0px)' },
+          '50%': { transform: 'translateY(-20px)' },
+        },
+        typewriter: {
+          'from': { width: '0' },
+          'to': { width: '100%' },
+        },
+        portalSpin: {
+          '0%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(360deg)' },
+        },
+        shake: {
+          '0%, 100%': { transform: 'translateX(0)' },
+          '10%, 30%, 50%, 70%, 90%': { transform: 'translateX(-2px)' },
+          '20%, 40%, 60%, 80%': { transform: 'translateX(2px)' },
+        },
+        pulseGlow: {
+          '0%, 100%': { 
+            boxShadow: '0 0 5px currentColor',
+            opacity: '0.5'
+          },
+          '50%': { 
+            boxShadow: '0 0 20px currentColor, 0 0 30px currentColor',
+            opacity: '1'
+          },
+        },
+        floatUp: {
+          '0%': { 
+            transform: 'translateY(0px) scale(1)',
+            opacity: '1'
+          },
+          '100%': { 
+            transform: 'translateY(-100px) scale(0)',
+            opacity: '0'
+          },
+        },
+      },
+      colors: {
+        // 莫兰迪色系 - 清新自然、柔和舒适
+        'morandi': {
+          'blue': '#A8C5D8',      // 清新天蓝 - 更明亮柔和
+          'purple': '#C4B5D5',    // 淡雅薰衣草紫
+          'pink': '#E5D3D1',      // 温柔粉 - 更淡雅
+          'green': '#B8D4C0',     // 清新薄荷绿
+          'yellow': '#E8DCC8',    // 柔和米黄
+          'gray': '#C8C3BD',      // 柔和灰
+          'beige': '#E0D8CC',     // 温暖米色
+          'sage': '#A8BFA8',      // 清新鼠尾草绿
+          'mauve': '#D5C8C8',     // 柔和紫灰
+          'terracotta': '#DCC8C0', // 温柔陶土色
+          'cream': '#F5F1EB',     // 奶油白
+          'sand': '#E8E0D5',      // 沙色
+        },
+        // 保留原有颜色作为备用
+        'cyber-blue': '#A8C5D8',
+        'cyber-purple': '#C4B5D5',
+        'cyber-green': '#B8D4C0',
+      },
+    },
+  },
+  plugins: [require('@tailwindcss/typography')],
+}

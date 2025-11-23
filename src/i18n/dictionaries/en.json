@@ -1,0 +1,271 @@
+{
+    "nav": {
+        "universe": "Universe",
+        "home": "Home",
+        "about": "About",
+        "projects": "Projects",
+        "blog": "Blog",
+        "universe_desc": "Skills Galaxy",
+        "home_desc": "Interactive 3D Skills",
+        "about_desc": "Personal Universe",
+        "projects_desc": "Project Islands",
+        "blog_desc": "Tech Blog & Timeline"
+    },
+    "auth": {
+        "login": "Login",
+        "register": "Register",
+        "logout": "Logout",
+        "admin_login": "Admin Login",
+        "user_registration": "User Registration",
+        "admin": "Admin",
+        "login_modal": {
+            "title": "ADMINISTRATOR ACCESS",
+            "subtitle": "Enter your credentials to access the control panel",
+            "username_placeholder": "Username",
+            "password_placeholder": "Password",
+            "authenticate_button": "AUTHENTICATE",
+            "authenticating": "AUTHENTICATING...",
+            "access_granted": "Access Granted. Welcome back.",
+            "initializing_session": "Initializing session...",
+            "access_denied": "Access Denied. Invalid credentials.",
+            "demo_credentials": "DEMO: admin / admin123",
+            "need_access": "Need access? Request credentials →",
+            "cancel_login": "Cancel Login"
+        },
+        "register_modal": {
+            "title": "IDENTITY REGISTRATION",
+            "subtitle": "Create your credentials to access the laboratory",
+            "username_placeholder": "Username",
+            "email_placeholder": "Email Address",
+            "password_placeholder": "Password",
+            "confirm_password_placeholder": "Confirm Password",
+            "create_identity_button": "CREATE IDENTITY",
+            "creating_identity": "CREATING IDENTITY...",
+            "registration_complete": "Registration Complete. Welcome to the Lab.",
+            "creating_your_identity": "Creating your identity...",
+            "password_mismatch": "Password confirmation does not match",
+            "password_too_short": "Password must be at least 6 characters",
+            "registration_failed": "Registration failed",
+            "minimum_characters": "MINIMUM 6 CHARACTERS",
+            "existing_identity": "Existing identity? Sign in here →",
+            "cancel_registration": "Cancel Registration"
+        }
+    },
+    "blog": {
+        "manage": "Manage",
+        "new_post": "New Post",
+        "manage_posts": "Manage Posts",
+        "create_new_post": "Create New Post",
+        "edit_organize": "Edit and organize blog content",
+        "write_publish": "Write and publish new content",
+        "title": "Tech Time Machine",
+        "subtitle": "Journey through my technical adventures, discoveries, and insights. Each post is an interactive experience with code sandboxes and challenges."
+    },
+    "common": {
+        "loading": "Loading...",
+        "error": "Error",
+        "success": "Success",
+        "cancel": "Cancel",
+        "save": "Save",
+        "delete": "Delete",
+        "edit": "Edit",
+        "back": "Back",
+        "next": "Next",
+        "previous": "Previous",
+        "close": "Close",
+        "view_details": "View Details"
+    },
+    "brand": {
+        "title": "Quadrant Ruby",
+        "subtitle": "Quadrant Ruby Digital Universe"
+    },
+    "homepage": {
+        "welcome": "Welcome to Ruby's Universe",
+        "intro_text": "Welcome to the Interactive Laboratory",
+        "intro_subtitle": "Where code meets creativity in three-dimensional space",
+        "preparing_experience": "Preparing immersive experience...",
+        "loading_text": "Initializing Interactive Laboratory...",
+        "unlock_placeholder": "Enter skill keyword...",
+        "unlock_hint": "Try a popular frontend framework (starts with 'r')",
+        "unlock_button": "Unlock",
+        "3d_unavailable": "3D visualization unavailable",
+        "click_to_continue": "Click anywhere to continue",
+        "explore_skills": "Explore Skills",
+        "view_projects": "View Projects",
+        "read_blog": "Read Blog",
+        "status_active": "Active"
+    },
+    "hero": {
+        "title": "Full Stack Developer & Creative Technologist",
+        "bio1": "Innovative full-stack developer focused on building immersive web experiences and interactive 3D applications.",
+        "bio2": "Creative Technologist passionate about creating beautiful, functional digital experiences that push the boundaries of web technology.",
+        "bio3": "Skilled at transforming complex technical concepts into intuitive, elegant user interfaces, passionate about exploring cutting-edge technologies and applying them to real-world projects.",
+        "stats_experience": "Years Experience",
+        "stats_projects": "Projects",
+        "stats_technologies": "Technologies",
+        "stats_creativity": "Creativity",
+        "btn_write_article": "Write Article",
+        "btn_explore_universe": "Explore Universe",
+        "btn_logout": "Logout",
+        "btn_admin_login": "Admin Login",
+        "btn_tech_blog": "Tech Blog",
+        "location": "Shanghai, China",
+        "availability": "Available for freelance"
+    },
+    "skills": {
+        "category": "Category",
+        "proficiency": "Proficiency",
+        "description": "Description",
+        "code_example": "Code Example",
+        "frontend": "Frontend",
+        "backend": "Backend",
+        "language": "Language",
+        "tools": "Tools",
+        "database": "Database"
+    },
+    "universe": {
+        "welcome": "Welcome to the Skills Galaxy",
+        "subtitle": "Explore the universe of technologies and skills",
+        "loading": "Loading Universe...",
+        "loading_galaxy": "Loading Galaxy Universe..."
+    },
+    "projects": {
+        "title": "Project Map",
+        "subtitle": "Explore my journey through enterprise-scale projects",
+        "loading": "Loading Adventure Map...",
+        "loading_subtitle": "Preparing interactive project showcase"
+    },
+    "map_navigation": {
+        "quick_navigation": "Quick Navigation",
+        "legend": "Legend",
+        "completed": "Completed",
+        "in_development": "In Development",
+        "maintained": "Maintained",
+        "featured_project": "Featured Project",
+        "controls": "Controls",
+        "drag_to_pan": "🖱️ Drag to pan",
+        "scroll_to_zoom": "🔍 Scroll to zoom",
+        "click_island": "🖱️ Click island to select",
+        "hover_details": "👆 Hover for details"
+    },
+    "achievements": {
+        "title": "Achievements",
+        "unlocked": "Achievement Unlocked!",
+        "progress": "Progress",
+        "total_points": "total points",
+        "points": "points",
+        "unlocked_status": "✓ Unlocked",
+        "explorer": {
+            "name": "Explorer",
+            "description": "Visit your first project island"
+        },
+        "demo_master": {
+            "name": "Demo Master",
+            "description": "Complete 3 interactive demos"
+        },
+        "tech_enthusiast": {
+            "name": "Tech Enthusiast",
+            "description": "Explore projects with 10+ different technologies"
+        },
+        "interaction_champion": {
+            "name": "Interaction Champion",
+            "description": "Perform 50 interactions across the portfolio"
+        },
+        "completionist": {
+            "name": "Completionist",
+            "description": "Visit all project islands and complete all demos"
+        },
+        "speed_runner": {
+            "name": "Speed Runner",
+            "description": "Complete a demo in under 30 seconds"
+        },
+        "social_butterfly": {
+            "name": "Social Butterfly",
+            "description": "Use the real-time chat feature"
+        },
+        "code_collaborator": {
+            "name": "Code Collaborator",
+            "description": "Participate in collaborative coding session"
+        },
+        "rarity": {
+            "common": "common",
+            "rare": "rare",
+            "epic": "epic",
+            "legendary": "legendary"
+        }
+    },
+    "planet_modal": {
+        "proficiency_level": "Proficiency Level",
+        "overview": "Overview",
+        "tech_stack": "Tech Stack",
+        "key_projects": "Key Projects & Experience",
+        "technologies": "Technologies",
+        "major_projects": "Major Projects",
+        "years_experience": "Years Experience",
+        "mastery": "Mastery",
+        "expert_level": "Expert Level - Industry Leading",
+        "advanced_level": "Advanced Level - Production Ready",
+        "intermediate_level": "Intermediate Level - Solid Foundation",
+        "growing_level": "Growing Level - Continuous Learning"
+    },
+    "about": {
+        "title": "Ruby Wu",
+        "subtitle": "Full Stack Software Engineer",
+        "gender": "Female",
+        "location": "Beijing Changping",
+        "github": "GitHub",
+        "professional_summary": "Professional Summary",
+        "professional_summary_text": "Senior Frontend Architect and AI Solutions Specialist with 7 years of experience designing and implementing high-performance, scalable B2B enterprise solutions. Proven expertise in frontend engineering, performance optimization, and team leadership. A passionate innovator in AI-driven development, specializing in \"Low-Code + LLM + AI Agent\" solutions. Successfully built intelligent workflows using Dify, RAG, and MCP technologies to automate processes, enhance risk control, and reduce operational costs.",
+        "core_competencies": "Core Competencies",
+        "frontend_architecture": "Frontend Architecture",
+        "backend_fullstack": "Backend & Full-Stack",
+        "databases_caching": "Databases & Caching",
+        "devops_monorepo": "DevOps & Monorepo",
+        "ai_llms": "AI & LLMs",
+        "ai_models": "Models:",
+        "ai_workflows": "Workflows & Techniques:",
+        "ai_coding": "AI-Assisted Coding:",
+        "web_automation": "Web Automation & Testing",
+        "work_experience": "Work Experience",
+        "position_title": "Senior Frontend Engineer / AI Solutions Architect",
+        "company_duration": "Enterprise Company | 2015 - Present",
+        "project_micro_frontend": "Micro-Frontend Architecture",
+        "project_micro_frontend_1": "Architected and led the 0-to-1 development of a large-scale enterprise cloud platform using a Wujie-based micro-frontend architecture",
+        "project_micro_frontend_2": "Successfully integrated over 12 subsystems, ensuring stable and high-performance operation for 1,000+ DAU and tens of thousands of total users",
+        "project_micro_frontend_3": "Resolved critical pain points of the original monolithic application, including code-base bloat, inefficient team collaboration, and difficulties in technology upgrades",
+        "project_component_library": "Enterprise Component Library & Monorepo",
+        "project_component_library_1": "Spearheaded the design and implementation of an enterprise-grade Monorepo (Turborepo), centralizing 3 core packages and 2 applications",
+        "project_component_library_2": "Significantly improved team development efficiency and reduced cross-project maintenance costs",
+        "project_component_library_3": "Implemented Changeset for automated version management, changelog generation, and npm publishing",
+        "project_component_library_4": "Established a complete CI/CD pipeline using Jenkins, automating the entire workflow from development to deployment",
+        "project_ai_automation": "AI Automation & RAG Implementation",
+        "project_ai_automation_1": "Built and championed a low-code AI solution stack (N8n, LLMs, AI Agents, MCP) for secure, on-premise workflow automation",
+        "project_ai_automation_2": "Led the development of an internal intelligent Q&A system using Dify, providing instant, knowledge-base-aware responses",
+        "project_ai_automation_3": "Applied advanced RAG techniques by vectorizing documents into a vector database, dynamically feeding relevant context to LLMs",
+        "project_ai_automation_4": "Engineered AI Agents to understand complex user intent and automate multi-step, cross-system business processes",
+        "project_ai_development": "AI-Assisted Development & Workflow Optimization",
+        "project_ai_development_1": "Pioneered a high-efficiency workflow (Cursor + Figma + MCP), drastically reducing the design-to-delivery cycle",
+        "project_ai_development_2": "Leveraged AI-powered coding tools and advanced prompt engineering to enhance development speed and code quality",
+        "project_ai_deployment": "AI Solution Deployment (Enterprise Use Cases)",
+        "project_ai_deployment_1": "Designed an automated transaction monitoring workflow for risk control with real-time anomaly detection and alerts",
+        "project_ai_deployment_2": "Developed an intelligent voice assistant to automate customer intake and data submission, providing 24/7 service",
+        "project_ai_deployment_3": "Automated repetitive tasks including financial reconciliation and report generation, integrating with core business systems",
+        "project_realtime_communication": "Full-Stack Real-Time Communication System",
+        "project_realtime_communication_1": "Developed a full-stack real-time chat and co-browsing system, extending an existing screen-sharing service",
+        "project_realtime_communication_2": "Built the backend using Node.js, Express, and Socket.IO for real-time events, with Sequelize (MySQL) for persistence and Redis for session caching",
+        "project_realtime_communication_3": "Ensured high availability and concurrency handling by deploying the Node.js application in cluster mode using PM2",
+        "project_monitoring_sdk": "Frontend Monitoring SDK Development",
+        "project_monitoring_sdk_1": "Developed a custom in-house frontend monitoring SDK for error tracking and performance analysis",
+        "project_monitoring_sdk_2": "Implemented non-intrusive logging using Babel for automated code instrumentation",
+        "project_monitoring_sdk_3": "Integrated user behavior analytics, including session recording/replay and heatmaps",
+        "interactive_galaxy": "Interactive Skills Galaxy",
+        "interactive_galaxy_subtitle": "Explore my skills and experience through an interactive 3D galaxy visualization",
+        "how_to_navigate": "How to Navigate",
+        "nav_instruction_1": "Click planets to explore skills in detail",
+        "nav_instruction_2": "Drag to rotate and zoom the galaxy",
+        "nav_instruction_3": "Experience timeline orbits around the center",
+        "personal_universe": "Personal Universe",
+        "3d_unavailable": "3D visualization is not available on this device",
+        "technologies_used": "Technologies Used"
+    }
+}
