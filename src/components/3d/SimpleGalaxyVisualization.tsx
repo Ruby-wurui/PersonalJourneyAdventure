@@ -166,22 +166,17 @@ function EnhancedPlanet({
             >
                 <div className="text-center">
                     <div
-                        className={`text-white font-bold whitespace-nowrap px-3 py-1 rounded-full backdrop-blur-sm transition-all duration-200 ${hovered || isSelected
-                            ? 'bg-gray-900/90 text-lg scale-110'
-                            : 'bg-gray-900/70 text-sm'
+                        className={`text-white font-bold whitespace-nowrap px-4 py-2 rounded-full backdrop-blur-sm transition-all duration-200 ${hovered || isSelected
+                            ? 'bg-black/90 text-2xl scale-125 border-2 border-white/50'
+                            : 'bg-black/60 text-sm border border-white/20'
                             }`}
                         style={{
                             textShadow: `0 0 10px ${planet.color}, 0 0 20px ${planet.color}`,
-                            border: `1px solid ${planet.color}40`
+                            boxShadow: hovered || isSelected ? `0 0 15px ${planet.color}40` : 'none'
                         }}
                     >
                         {planet.name}
                     </div>
-                    {(hovered || isSelected) && (
-                        <div className="text-xs text-gray-400 mt-1 bg-gray-900/80 px-2 py-0.5 rounded backdrop-blur-sm">
-                            {planet.proficiencyLevel}% Proficiency
-                        </div>
-                    )}
                 </div>
             </Html>
 
@@ -460,7 +455,7 @@ export default function SimpleGalaxyVisualization(props: GalaxyVisualizationProp
                     alpha: true,
                     powerPreference: 'high-performance'
                 }}
-                className="bg-gradient-to-b from-black via-purple-950 to-black"
+                className="bg-black"
             >
                 <EnhancedGalaxyScene
                     skillPlanets={props.skillPlanets}
