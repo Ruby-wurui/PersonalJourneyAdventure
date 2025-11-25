@@ -58,7 +58,7 @@ export default function GalaxyUniverseWrapper({ locale, dict }: GalaxyUniverseWr
         // Navigate to the corresponding page based on planet id
         const routeMap: Record<string, string> = {
             'about': `/${locale}/about`,
-            'tech': `/${locale}/tech`,
+            'tech': `/${locale}/skills`,
             'projects': `/${locale}/projects`,
             'blog': `/${locale}/blog`
         }

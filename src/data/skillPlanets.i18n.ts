@@ -27,8 +27,8 @@ export const getSkillPlanetsData = (locale: 'en' | 'zh'): SkillPlanet[] => {
                 }
             },
             projects: {
-                name: 'Projects',
-                category: 'Portfolio',
+                name: 'Portfolio',
+                category: 'Showcase',
                 description: 'Explore my portfolio of projects, from enterprise applications to innovative solutions.',
                 experience: {
                     title: 'Project Portfolio',
@@ -73,7 +73,7 @@ export const getSkillPlanetsData = (locale: 'en' | 'zh'): SkillPlanet[] => {
                 }
             },
             projects: {
-                name: '项目',
+                name: '作品集',
                 category: '作品集',
                 description: '探索我的项目作品集，从企业应用到创新解决方案。',
                 experience: {

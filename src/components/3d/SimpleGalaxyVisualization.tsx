@@ -7,21 +7,17 @@ import * as THREE from 'three'
 import { GalaxyVisualizationProps, SkillPlanet } from '@/types/3d'
 
 // Import local planet textures
-import planet1 from '@/assets/planet/image.png'
-import planet2 from '@/assets/planet/image copy.png'
-import planet3 from '@/assets/planet/image copy 2.png'
-import planet4 from '@/assets/planet/image copy 3.png'
-import planet5 from '@/assets/planet/image copy 4.png'
-import planet6 from '@/assets/planet/image copy 5.png'
-import planet7 from '@/assets/planet/image34.png'
+import earthLike from '@/assets/planet/earth_like.png'
+import cyberTech from '@/assets/planet/cyber_tech.png'
+import gasGiant from '@/assets/planet/gas_giant.png'
+import iceWorld from '@/assets/planet/ice_world.png'
 
 // Planet texture mapping using local images
 const PLANET_TEXTURES: Record<string, any> = {
-    frontend: planet1,      // Frontend Architecture
-    backend: planet2,       // Backend & Full-Stack
-    devops: planet3,        // DevOps & Monorepo
-    'ai-ml': planet4,       // AI & LLM Solutions
-    mobile: planet5,        // AI-Assisted Development
+    about: earthLike,       // About Me - Earth-like
+    tech: cyberTech,        // Technology - Cyber/Tech
+    projects: gasGiant,     // Projects - Gas Giant
+    blog: iceWorld,         // Blog - Ice World
 }
 
 // Enhanced Planet Component with Texture

@@ -4,11 +4,13 @@
         "home": "Home",
         "about": "About",
         "projects": "Projects",
+        "skills": "Skills",
         "blog": "Blog",
         "universe_desc": "Skills Galaxy",
         "home_desc": "Interactive 3D Skills",
         "about_desc": "Personal Universe",
         "projects_desc": "Project Islands",
+        "skills_desc": "Technical Arsenal",
         "blog_desc": "Tech Blog & Timeline"
     },
     "auth": {
@@ -215,7 +217,7 @@
         "location": "Beijing Changping",
         "github": "GitHub",
         "professional_summary": "Professional Summary",
-        "professional_summary_text": "Senior Front-End Engineer with 7 years of experience transitioning into Human-Computer Interaction. Possesses a unique \"T-shaped\" background combining a Bachelor's degree in Editing & Publishing (Content Strategy/Information Architecture) with extensive technical expertise in Web Development and AI Integration. Proven track record of bridging the gap between design concepts and technical implementation in EdTech and HealthTech sectors. Seeking to leverage rapid prototyping skills and user-centric mindset in the MHCI program at Carleton University.",
+        "professional_summary_text": "Senior Front-End Engineer with 7 years of experience transitioning into Human-Computer Interaction. Possesses a unique \"T-shaped\" background combining a Bachelor's degree in Editing & Publishing (Content Strategy/Information Architecture) with extensive technical expertise in Web Development and AI Integration. Proven track record of bridging the gap between design concepts and technical implementation in EdTech and HealthTech sectors.",
         "education": "EDUCATION",
         "education_degree": "Bachelor of Arts in Editing and Publishing",
         "education_university": "Shanxi Normal University, China",
