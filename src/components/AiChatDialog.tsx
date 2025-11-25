@@ -25,6 +25,7 @@ const AiChatDialog: React.FC<AiChatDialogProps> = ({ isOpen, onClose }) => {
         },
     ]);
     const [inputValue, setInputValue] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
     const messagesEndRef = useRef<HTMLDivElement>(null);
 
     const scrollToBottom = () => {
@@ -33,10 +34,10 @@ const AiChatDialog: React.FC<AiChatDialogProps> = ({ isOpen, onClose }) => {
 
     useEffect(() => {
         scrollToBottom();
-    }, [messages]);
+    }, [messages, isLoading]);
 
-    const handleSend = () => {
-        if (!inputValue.trim()) return;
+    const handleSend = async () => {
+        if (!inputValue.trim() || isLoading) return;
 
         const newUserMessage: Message = {
             id: Date.now().toString(),
@@ -47,17 +48,38 @@ const AiChatDialog: React.FC<AiChatDialogProps> = ({ isOpen, onClose }) => {
 
         setMessages((prev) => [...prev, newUserMessage]);
         setInputValue("");
+        setIsLoading(true);
 
-        // Mock AI response
-        setTimeout(() => {
+        try {
+            const response = await fetch("/api/chat", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ messages: [...messages, newUserMessage] }),
+            });
+
+            if (!response.ok) throw new Error("Failed to fetch response");
+
+            const data = await response.json();
+
             const newAiMessage: Message = {
                 id: (Date.now() + 1).toString(),
-                text: "I am currently under development, but I will be able to assist you with more features soon!",
+                text: data.text,
                 sender: "ai",
                 timestamp: new Date(),
             };
             setMessages((prev) => [...prev, newAiMessage]);
-        }, 1000);
+        } catch (error) {
+            console.error("Error:", error);
+            const errorMessage: Message = {
+                id: (Date.now() + 1).toString(),
+                text: "Sorry, I encountered an error. Please try again.",
+                sender: "ai",
+                timestamp: new Date(),
+            };
+            setMessages((prev) => [...prev, errorMessage]);
+        } finally {
+            setIsLoading(false);
+        }
     };
 
     const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -102,14 +124,23 @@ const AiChatDialog: React.FC<AiChatDialogProps> = ({ isOpen, onClose }) => {
                             >
                                 <div
                                     className={`max-w-[80%] p-3 rounded-2xl text-sm leading-relaxed ${msg.sender === "user"
-                                            ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-tr-none"
-                                            : "bg-white/10 text-gray-200 border border-white/5 rounded-tl-none"
+                                        ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-tr-none"
+                                        : "bg-white/10 text-gray-200 border border-white/5 rounded-tl-none"
                                         }`}
                                 >
                                     {msg.text}
                                 </div>
                             </div>
                         ))}
+                        {isLoading && (
+                            <div className="flex justify-start">
+                                <div className="bg-white/10 text-gray-200 border border-white/5 rounded-2xl rounded-tl-none p-3 flex items-center gap-2">
+                                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "0s" }} />
+                                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "0.2s" }} />
+                                    <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: "0.4s" }} />
+                                </div>
+                            </div>
+                        )}
                         <div ref={messagesEndRef} />
                     </div>
 
@@ -126,7 +157,7 @@ const AiChatDialog: React.FC<AiChatDialogProps> = ({ isOpen, onClose }) => {
                             />
                             <button
                                 onClick={handleSend}
-                                disabled={!inputValue.trim()}
+                                disabled={!inputValue.trim() || isLoading}
                                 className="p-2 rounded-full bg-blue-600 text-white disabled:opacity-50 disabled:cursor-not-allowed hover:bg-blue-500 transition-colors shadow-lg shadow-blue-500/20"
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

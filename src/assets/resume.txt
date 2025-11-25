@@ -1,0 +1,55 @@
+
+Wu, Rui (Ruby)
+address: Beijing, China
+email: wurui3458@gmail.com
+phone: +86 150-1046-2956
+github: https://github.com/Ruby-wurui
+Portfolio: http://149.88.88.205:3000/
+
+PROFESSIONAL SUMMARY
+Senior Front-End Engineer with 7 years of experience transitioning into Human-Computer Interaction. Possesses a unique "T-shaped" background combining a Bachelor’s degree in Editing & Publishing (Content Strategy/Information Architecture) with extensive technical expertise in Web Development and AI Integration. Proven track record of bridging the gap between design concepts and technical implementation in EdTech and HealthTech sectors. 
+Seeking to leverage rapid prototyping skills and user-centric mindset in the MHCI program at Carleton University.
+
+EDUCATION
+Bachelor of Arts in Editing and Publishing | Shanxi Normal University, China  Sep 2011 – Jul 2015
+GPA: 3.56 (WES Certified)
+Relevant Coursework: Educational Psychology, Communication Theory, Web Editing, Visual Aesthetics, Information Organization.
+Note: Developed a foundational understanding of how users consume information and the psychology behind content interaction.
+
+TECHNICAL & HCI SKILLS
+HCI & Design: Rapid Prototyping, Information Architecture, Accessibility (A11y), Responsive Design, User Flow Analysis, UI Implementation.
+Front-End Development: Vue.js ecosystem (VuePress, Element UI), JavaScript/TypeScript, HTML5/CSS3, WebRTC.
+Back-End & Database: Node.js, Express.js, PostgreSQL, MySQL, Redis.
+AI & Human-AI Interaction: LLM Integration (ChatGPT, Claude), RAG (Retrieval-Augmented Generation), Prompt Engineering, AI Agent Workflows (n8n, Dify).
+
+PROFESSIONAL EXPERIENCE
+Senior Front-End Engineer | Beijing Yimilan Technology Co., Ltd. (EdTech)
+Jun 2019 – Aug 2024
+Context: A leading K-12 reading education platform in China.
+
+User Experience Optimization: Led the front-end development of the "Yi Mi Reading" App (H5 pages),Yimi Reading Website and WeChat Mini Program. Collaborated closely with Product Managers and Designers to iterate on UI features, significantly improving user engagement for student users.
+Human-AI Interaction Project: Spearheaded the development of an internal AI-powered Q&A system based on Dify. Designed the interaction flow that allowed employees to retrieve corporate knowledge instantly, reducing information retrieval time by 30%。
+Performance & Accessibility: Refactored legacy codebases for the official website, improving page load speeds and ensuring smoother interactions across different devices (Mobile/Desktop).
+Visual Data Management: Developed the internal OA and BI (Business Intelligence) systems, transforming complex operational data into intuitive visual dashboards for decision-makers.
+
+Web Front-End Engineer | Qingying Medical Technology (Shenzhen) Co., Ltd. (HealthTech)
+Nov 2017 – May 2019
+Context: A medical imaging AI startup focused on cancer screening.
+
+Medical UI Implementation: Collaborated with medical professionals to develop the front-end interfaces for Lung CT and Breast Ultrasound diagnostic systems. Focused on high-fidelity rendering of medical images to support doctors in accurate diagnosis.
+Clinical Workflow Optimization: Developed a Ward Management System based on direct feedback from partner hospitals. Streamlined the digital workflow for nurses and doctors, reducing administrative friction.
+Cross-Disciplinary Collaboration: Acted as the bridge between AI algorithm engineers and clinical users, ensuring the technical output was presented in a user-friendly interface.
+
+Editor | Beijing Sandingjia Culture Co., Ltd.
+Jul 2015 – Oct 2017
+
+Managed the lifecycle of book publishing, from manuscript editing to final proofreading.
+Responsible for the information architecture and content updates of the company's official website, sparking an initial interest in web technologies.
+
+SELECTED PROJECTS
+Personal AI Knowledge Base: Built a customized knowledge management tool using RAG technology. Explored how AI Agents can assist in personal information organization. (Link: http://149.88.88.205:3000/)
+Chinese Language Learning Platform: Developed the front-end for Cloud Chinese (https://www.bravochinese.net), focusing on cross-cultural design patterns and accessibility for global learners.
+
+LANGUAGES
+English: IELTS 7.0
+Chinese: Native.
