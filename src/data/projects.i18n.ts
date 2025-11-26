@@ -43,7 +43,7 @@ export const getProjectsData = (locale: 'en' | 'zh'): ProjectData[] => {
                 description: 'A picture book borrowing platform dedicated to serving young readers. The mission is to allow more children to read more books for less money.',
                 image: yueluoImg,
                 tags: ['Platform', 'E-commerce', 'Social Impact'],
-                link: '#'
+                link: '/projects/yueluo'
             }
         ],
         zh: [
@@ -73,7 +73,7 @@ export const getProjectsData = (locale: 'en' | 'zh'): ProjectData[] => {
                 description: '这是一个专注为低龄读者服务的绘本借阅平台。让更多的孩子用更少的钱读到更多的书。',
                 image: yueluoImg,
                 tags: ['平台', '电商', '社会公益'],
-                link: '#'
+                link: '/projects/yueluo'
             }
         ]
     }

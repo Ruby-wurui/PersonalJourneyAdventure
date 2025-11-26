@@ -96,7 +96,7 @@ const AiChatDialog: React.FC<AiChatDialogProps> = ({ isOpen, onClose }) => {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 20, scale: 0.95 }}
                     transition={{ duration: 0.3, ease: "easeOut" }}
-                    className="fixed bottom-24 right-4 md:right-10 w-[350px] md:w-[400px] h-[500px] z-40 flex flex-col rounded-2xl overflow-hidden border border-white/10 shadow-2xl backdrop-blur-xl bg-gray-900/90"
+                    className="fixed bottom-24 right-4 md:right-10 w-[350px] md:w-[400px] h-[500px] z-[1000] flex flex-col rounded-2xl overflow-hidden border border-white/10 shadow-2xl backdrop-blur-xl bg-gray-900/90"
                 >
                     {/* Header */}
                     <div className="p-4 border-b border-white/10 bg-gradient-to-r from-blue-900/20 to-purple-900/20 flex justify-between items-center">

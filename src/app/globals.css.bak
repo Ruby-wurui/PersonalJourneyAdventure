@@ -446,11 +446,3 @@ body {
     transition: none;
   }
 }
-@keyframes sprite-wave {
-  from { background-position: 0 0; }
-  to { background-position: 100% 0; }
-}
-
-.animate-sprite-wave {
-  animation: sprite-wave 1s steps(6) infinite;
-}
