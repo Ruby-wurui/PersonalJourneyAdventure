@@ -1,16 +1,12 @@
-import React from 'react'
-import { getDictionary } from '@/i18n/get-dictionary'
-import { Locale } from '@/i18n/config'
+import { getDictionary, type Locale } from '@/i18n'
 import ProjectsPageClient from './ProjectsPageClient'
 
-interface ProjectsPageProps {
-    params: {
-        locale: Locale
-    }
-}
-
-export default async function ProjectsPage({ params: { locale } }: ProjectsPageProps) {
+export default async function ProjectsPage({
+    params: { locale }
+}: {
+    params: { locale: Locale }
+}) {
     const dict = await getDictionary(locale)
 
-    return <ProjectsPageClient dict={dict} />
+    return <ProjectsPageClient locale={locale} dict={dict} />
 }

@@ -2,6 +2,7 @@
 
 import { Suspense, useState } from 'react'
 import dynamic from 'next/dynamic'
+import { useRouter } from 'next/navigation'
 import NavigationBarI18n from '@/components/layout/NavigationBarI18n'
 import { useAuth } from '@/lib/auth-context'
 import { LoginModal } from '@/components/auth/LoginModal'
@@ -10,16 +11,15 @@ import type { Locale } from '@/i18n/config'
 import type { Dictionary } from '@/i18n/get-dictionary'
 import type { SkillPlanet } from '@/types/3d'
 import { getSkillPlanetsData, getExperiencesData } from '@/data/skillPlanets.i18n'
-import PlanetDetailModal from '@/components/3d/PlanetDetailModal'
 
 const SimpleGalaxyVisualization = dynamic(
     () => import('@/components/3d/SimpleGalaxyVisualization'),
     {
         ssr: false,
         loading: () => (
-            <div className="flex items-center justify-center min-h-screen bg-gradient-to-b from-gray-900 via-purple-900 to-black">
+            <div className="flex items-center justify-center min-h-screen bg-black">
                 <div className="text-white text-center">
-                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-500 mx-auto mb-4"></div>
+                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-4"></div>
                     <p>Loading Universe...</p>
                 </div>
             </div>
@@ -33,11 +33,10 @@ interface GalaxyUniverseWrapperProps {
 }
 
 export default function GalaxyUniverseWrapper({ locale, dict }: GalaxyUniverseWrapperProps) {
+    const router = useRouter()
     const { isAuthenticated, user, logout } = useAuth()
     const [showLoginModal, setShowLoginModal] = useState(false)
     const [showRegisterModal, setShowRegisterModal] = useState(false)
-    const [selectedPlanet, setSelectedPlanet] = useState<SkillPlanet | null>(null)
-    const [showPlanetModal, setShowPlanetModal] = useState(false)
 
     // Get localized data
     const skillPlanetsData = getSkillPlanetsData(locale)
@@ -45,7 +44,7 @@ export default function GalaxyUniverseWrapper({ locale, dict }: GalaxyUniverseWr
 
     if (!dict) {
         return (
-            <div className="flex items-center justify-center min-h-screen bg-gradient-to-b from-gray-900 via-purple-900 to-black">
+            <div className="flex items-center justify-center min-h-screen bg-black">
                 <div className="text-white text-center">
                     <div className="text-2xl mb-4">⚠️</div>
                     <p>Error: Translations not loaded</p>
@@ -56,12 +55,21 @@ export default function GalaxyUniverseWrapper({ locale, dict }: GalaxyUniverseWr
 
     const handleSkillClick = (skill: SkillPlanet) => {
         console.log('Skill clicked:', skill)
-        setSelectedPlanet(skill)
-        setShowPlanetModal(true)
+        // Navigate to the corresponding page based on planet id
+        const routeMap: Record<string, string> = {
+            'about': `/${locale}/about`,
+            'tech': `/${locale}/skills`,
+            'projects': `/${locale}/projects`,
+            'blog': `/${locale}/blog`
+        }
+        const route = routeMap[skill.id]
+        if (route) {
+            router.push(route)
+        }
     }
 
     return (
-        <div className="relative w-full min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-black overflow-hidden">
+        <div className="relative w-full min-h-screen bg-black overflow-hidden">
             {/* Navigation Bar */}
             <NavigationBarI18n
                 locale={locale}
@@ -79,7 +87,7 @@ export default function GalaxyUniverseWrapper({ locale, dict }: GalaxyUniverseWr
                     fallback={
                         <div className="flex items-center justify-center h-full">
                             <div className="text-white text-center">
-                                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-500 mx-auto mb-4"></div>
+                                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-4"></div>
                                 <p>{dict.universe.loading_galaxy}</p>
                             </div>
                         </div>
@@ -96,7 +104,7 @@ export default function GalaxyUniverseWrapper({ locale, dict }: GalaxyUniverseWr
 
             {/* Welcome Overlay */}
             <div className="absolute bottom-0 md:bottom-0 left-1/2 transform -translate-x-1/2 z-50 text-center w-[90%] md:w-auto max-w-4xl">
-                <div className="bg-black/50 backdrop-blur-md px-4 py-3 md:px-8 md:py-0 rounded-2xl border border-purple-500/30">
+                <div className="bg-black/50 backdrop-blur-md px-4 py-3 md:px-8 md:py-0 rounded-2xl border border-white/30">
                     {/* <h1 className="text-2xl md:text-5xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent mb-1 md:mb-2">
                         {dict.universe.welcome}
                     </h1> */}
@@ -126,16 +134,7 @@ export default function GalaxyUniverseWrapper({ locale, dict }: GalaxyUniverseWr
                 />
             )}
 
-            {/* Planet Detail Modal */}
-            <PlanetDetailModal
-                planet={selectedPlanet}
-                isOpen={showPlanetModal}
-                onClose={() => {
-                    setShowPlanetModal(false)
-                    setSelectedPlanet(null)
-                }}
-                dict={dict}
-            />
+
         </div>
     )
 }
