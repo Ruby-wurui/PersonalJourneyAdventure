@@ -12,6 +12,8 @@ export async function generateStaticParams() {
     return locales.map((locale) => ({ locale }))
 }
 
+import AiAssistantButton from '@/components/AiAssistantButton'
+
 export default function RootLayout({
     children,
     params: { locale }
@@ -24,6 +26,7 @@ export default function RootLayout({
             <body className="font-sans">
                 <AuthProvider>
                     {children}
+                    <AiAssistantButton />
                 </AuthProvider>
             </body>
         </html>
