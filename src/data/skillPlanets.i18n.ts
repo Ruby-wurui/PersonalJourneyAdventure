@@ -119,7 +119,12 @@ export const getSkillPlanetsData = (locale: 'en' | 'zh'): SkillPlanet[] => {
         }
     }
 
-    const t = translations[locale]
+    const t = translations[locale] || translations['en']
+
+    if (!t || !t.frontend) {
+        console.error('Translation not found for locale:', locale, 'Available:', Object.keys(translations))
+        return []
+    }
 
     return [
         {
@@ -289,7 +294,12 @@ export const getExperiencesData = (locale: 'en' | 'zh'): ExperienceEntry[] => {
         }
     }
 
-    const t = translations[locale]
+    const t = translations[locale] || translations['en']
+
+    if (!t || !t.exp1) {
+        console.error('Experience translation not found for locale:', locale)
+        return []
+    }
 
     return [
         {

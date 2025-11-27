@@ -63,6 +63,12 @@ const NavigationBarI18n: React.FC<NavigationBarI18nProps> = ({
             description: dict.nav.about_desc
         },
         {
+            name: dict.nav.skills,
+            href: `/${locale}/skills`,
+            icon: '⚡',
+            description: dict.nav.skills_desc
+        },
+        {
             name: dict.nav.projects,
             href: `/${locale}/projects`,
             icon: '🗺️',
