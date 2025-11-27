@@ -11,7 +11,7 @@ body {
   --foreground-rgb: 95, 90, 85;
   --background-start-rgb: 250, 248, 245;
   --background-end-rgb: 255, 253, 250;
-  
+
   /* 莫兰迪色系调色板 - 清新自然、柔和舒适 */
   --primary-blue: #A8C5D8;
   --primary-purple: #C4B5D5;
@@ -23,7 +23,7 @@ body {
   --primary-sage: #A8BFA8;
   --primary-mauve: #D5C8C8;
   --primary-terracotta: #DCC8C0;
-  
+
   /* Glassmorphism colors - 清新柔和风格 */
   --glass-bg: rgba(255, 255, 255, 0.65);
   --glass-border: rgba(200, 195, 189, 0.25);
@@ -35,7 +35,7 @@ body {
     --foreground-rgb: 230, 225, 220;
     --background-start-rgb: 55, 52, 50;
     --background-end-rgb: 45, 42, 40;
-    
+
     /* Dark theme glassmorphism - 柔和深色风格 */
     --glass-bg: rgba(95, 90, 85, 0.3);
     --glass-border: rgba(200, 195, 189, 0.15);
@@ -45,12 +45,9 @@ body {
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
+  background: linear-gradient(to bottom,
       transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
 }
 
 /* Custom scrollbar for webkit browsers - 清新柔和风格 */
@@ -75,11 +72,11 @@ body {
   ::-webkit-scrollbar-track {
     background: #373432;
   }
-  
+
   ::-webkit-scrollbar-thumb {
     background: #7B7670;
   }
-  
+
   ::-webkit-scrollbar-thumb:hover {
     background: #A8C5D8;
   }
@@ -90,7 +87,7 @@ body {
   width: 1px;
   height: 1px;
   background: transparent;
-  box-shadow: 
+  box-shadow:
     1541px 1046px #C8C3BD, 1446px 906px #E0D8CC, 1081px 1280px #C4B5D5, 1597px 1344px #A8C5D8,
     1702px 1847px #B8D4C0, 1490px 1365px #E5D3D1, 1092px 1808px #E8DCC8, 1658px 1120px #C8C3BD,
     1458px 1617px #D5C8C8, 1220px 1440px #A8BFA8, 1779px 1216px #DCC8C0, 1687px 1040px #C4B5D5,
@@ -103,7 +100,7 @@ body {
   width: 2px;
   height: 2px;
   background: transparent;
-  box-shadow: 
+  box-shadow:
     700px 400px #A8C5D8, 1200px 300px #C4B5D5, 300px 800px #B8D4C0, 1600px 700px #E5D3D1,
     800px 1200px #E8DCC8, 1400px 500px #C8C3BD, 500px 1000px #E0D8CC, 1000px 900px #A8BFA8,
     1800px 200px #D5C8C8, 200px 600px #DCC8C0, 1500px 1100px #A8C5D8, 900px 100px #C4B5D5,
@@ -115,7 +112,7 @@ body {
   width: 3px;
   height: 3px;
   background: transparent;
-  box-shadow: 
+  box-shadow:
     1000px 500px #A8C5D8, 500px 1000px #C4B5D5, 1500px 200px #B8D4C0, 200px 1500px #E5D3D1,
     800px 800px #E8DCC8, 1200px 1200px #C8C3BD, 300px 300px #E0D8CC, 1700px 600px #A8BFA8;
   animation: animStar 150s linear infinite;
@@ -125,6 +122,7 @@ body {
   from {
     transform: translateY(0px);
   }
+
   to {
     transform: translateY(-2000px);
   }
@@ -135,6 +133,7 @@ body {
   0% {
     transform: translateX(-100%);
   }
+
   100% {
     transform: translateX(100%);
   }
@@ -145,6 +144,7 @@ body {
     transform: translateX(100%);
     opacity: 0;
   }
+
   100% {
     transform: translateX(0);
     opacity: 1;
@@ -156,6 +156,7 @@ body {
     transform: scale(0.8);
     opacity: 0;
   }
+
   100% {
     transform: scale(1);
     opacity: 1;
@@ -163,27 +164,36 @@ body {
 }
 
 @keyframes glow {
-  0%, 100% {
+
+  0%,
+  100% {
     box-shadow: 0 0 5px currentColor;
   }
+
   50% {
     box-shadow: 0 0 20px currentColor, 0 0 30px currentColor;
   }
 }
 
 @keyframes float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0px);
   }
+
   50% {
     transform: translateY(-10px);
   }
 }
 
 @keyframes pulse-glow {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 0.4;
   }
+
   50% {
     opacity: 0.8;
   }
@@ -236,6 +246,7 @@ body {
     opacity: 1;
     transform: scale(1);
   }
+
   100% {
     opacity: 0;
     transform: scale(0);
@@ -285,7 +296,7 @@ body {
   .globe-container {
     perspective: 800px;
   }
-  
+
   .skill-details-panel {
     max-width: calc(100vw - 2rem);
     right: 1rem;
@@ -299,7 +310,7 @@ body {
     filter: none;
     border: 2px solid currentColor;
   }
-  
+
   .particle-trail {
     border: 1px solid currentColor;
   }
@@ -307,13 +318,14 @@ body {
 
 /* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
+
   .animate-scan,
   .animate-glow,
   .animate-float,
   .animate-pulse-glow {
     animation: none;
   }
-  
+
   .interactive-element {
     transition: none;
   }
@@ -350,10 +362,13 @@ body {
 }
 
 @keyframes loadingPulse {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 0.4;
     transform: scale(0.95);
   }
+
   50% {
     opacity: 1;
     transform: scale(1.05);
@@ -370,6 +385,7 @@ body {
   0% {
     background-position: -200% 0;
   }
+
   100% {
     background-position: 200% 0;
   }
@@ -418,11 +434,11 @@ body {
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
   }
-  
+
   .btn-modern {
     @apply px-4 py-2 text-sm;
   }
-  
+
   .card-modern {
     @apply rounded-lg;
   }
@@ -445,4 +461,180 @@ body {
     transform: none;
     transition: none;
   }
+}
+
+
+/* Markdown Code Block Styles */
+.prose pre {
+  position: relative;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(20, 20, 40, 0.6) 100%);
+  backdrop-filter: blur(10px);
+}
+
+.prose pre code {
+  background: transparent !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  font-size: 0.875rem;
+  line-height: 1.7;
+  color: #e5e7eb;
+  display: block;
+  overflow-x: auto;
+}
+
+.prose code {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;
+  font-weight: 400;
+}
+
+/* Inline code */
+.prose :not(pre)>code {
+  background: rgba(139, 92, 246, 0.1) !important;
+  color: #c084fc !important;
+  padding: 0.2em 0.4em !important;
+  border-radius: 0.25rem !important;
+  font-size: 0.875em;
+  border: 1px solid rgba(139, 92, 246, 0.2);
+}
+
+/* Code block scrollbar */
+.prose pre::-webkit-scrollbar {
+  height: 8px;
+}
+
+.prose pre::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+
+.prose pre::-webkit-scrollbar-thumb {
+  background: rgba(139, 92, 246, 0.3);
+  border-radius: 4px;
+}
+
+.prose pre::-webkit-scrollbar-thumb:hover {
+  background: rgba(139, 92, 246, 0.5);
+}
+
+/* Markdown Tables */
+.prose table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.5rem 0;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.prose th {
+  background: rgba(59, 130, 246, 0.1);
+  font-weight: 600;
+  text-align: left;
+}
+
+.prose td,
+.prose th {
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.prose tr:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* Markdown Blockquotes */
+.prose blockquote {
+  background: rgba(59, 130, 246, 0.05);
+  border-left: 4px solid #3b82f6;
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: 0 0.5rem 0.5rem 0;
+}
+
+/* Markdown Lists */
+.prose ul,
+.prose ol {
+  padding-left: 1.5rem;
+}
+
+.prose li {
+  margin: 0.5rem 0;
+}
+
+.prose li::marker {
+  color: #8b5cf6;
+}
+
+/* Markdown Horizontal Rule */
+.prose hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  margin: 2rem 0;
+}
+
+/* Markdown Images */
+.prose img {
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* M
+ermaid Diagram Styles */
+.mermaid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mermaid svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Mermaid node styles */
+.mermaid .node rect,
+.mermaid .node circle,
+.mermaid .node ellipse,
+.mermaid .node polygon {
+  stroke-width: 2px;
+}
+
+/* Mermaid edge styles */
+.mermaid .edgePath .path {
+  stroke-width: 2px;
+}
+
+/* Mermaid label styles */
+.mermaid .edgeLabel {
+  background-color: rgba(31, 41, 55, 0.9);
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+/* Mermaid flowchart styles */
+.mermaid .flowchart-link {
+  stroke: #a78bfa !important;
+}
+
+/* Mermaid sequence diagram styles */
+.mermaid .actor {
+  stroke: #8b5cf6 !important;
+  fill: #1f2937 !important;
+}
+
+.mermaid .messageLine0,
+.mermaid .messageLine1 {
+  stroke: #a78bfa !important;
+}
+
+/* Mermaid gantt chart styles */
+.mermaid .grid .tick {
+  stroke: #4b5563 !important;
+}
+
+.mermaid .today {
+  fill: rgba(139, 92, 246, 0.2) !important;
+  stroke: #8b5cf6 !important;
 }

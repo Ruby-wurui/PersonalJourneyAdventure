@@ -39,7 +39,7 @@ export default function BlogEditor({ initialData, onSave, isLoading, mode }: Blo
         tags: [],
         code_examples: [],
         challenge: null,
-        status: 'draft',
+        status: 'published',
         featured: false,
         ...initialData
     });
@@ -316,8 +316,8 @@ export default function BlogEditor({ initialData, onSave, isLoading, mode }: Blo
                             type="button"
                             onClick={() => setShowChallenge(!showChallenge)}
                             className={`px-4 py-2 rounded-lg transition-colors ${showChallenge
-                                    ? 'bg-red-600 hover:bg-red-700 text-white'
-                                    : 'bg-green-600 hover:bg-green-700 text-white'
+                                ? 'bg-red-600 hover:bg-red-700 text-white'
+                                : 'bg-green-600 hover:bg-green-700 text-white'
                                 }`}
                         >
                             {showChallenge ? 'Remove Challenge' : 'Add Challenge'}
