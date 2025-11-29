@@ -8,7 +8,7 @@ import { LoginModal } from '@/components/auth/LoginModal'
 import RegisterModal from '@/components/auth/RegisterModal'
 import { Dictionary } from '@/i18n/get-dictionary'
 import { Locale } from '@/i18n/config'
-import InteractiveGridBackground from '@/components/ui/InteractiveGridBackground'
+import Galaxy from '@/components/ui/Galaxy'
 import ProjectCard from '@/components/ui/ProjectCard'
 import { getProjectsData, getProjectsPageContent } from '@/data/projects.i18n'
 
@@ -27,7 +27,20 @@ export default function ProjectsPageClient({ locale, dict }: ProjectsPageClientP
 
   return (
     <div className="min-h-screen bg-[#050505] text-white overflow-x-hidden relative">
-      <InteractiveGridBackground />
+      {/* Background Effects */}
+      <div className="fixed inset-0 z-0">
+        <Galaxy
+          mouseRepulsion={true}
+          mouseInteraction={true}
+          density={1.3}
+          glowIntensity={0.45}
+          saturation={0.7}
+          hueShift={320}
+          twinkleIntensity={0.35}
+          rotationSpeed={0.04}
+          transparent={false}
+        />
+      </div>
 
       <NavigationBarI18n
         locale={locale}

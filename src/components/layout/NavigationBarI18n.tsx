@@ -6,6 +6,7 @@ import Link from 'next/link';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import type { Locale } from '@/i18n/config';
 import type { Dictionary } from '@/i18n/get-dictionary';
+import styles from './NavigationBarI18n.module.css';
 
 interface NavigationBarI18nProps {
     locale: Locale;
@@ -91,13 +92,7 @@ const NavigationBarI18n: React.FC<NavigationBarI18nProps> = ({
 
     return (
         <>
-            <nav className={`
-        fixed top-0 left-0 right-0 z-50 transition-all duration-300
-        ${isScrolled
-                    ? 'bg-gray-900/98 backdrop-blur-md border-b border-blue-500/30 shadow-xl shadow-blue-500/10'
-                    : 'bg-gradient-to-b from-gray-900/90 via-gray-900/70 to-transparent backdrop-blur-sm border-b border-blue-500/20'
-                }
-      `}>
+            <nav className={`${styles.nav} ${isScrolled ? styles.navScrolled : ''}`}>
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex items-center justify-between h-16 sm:h-20">
                         {/* Logo and Brand */}
@@ -188,12 +183,12 @@ const NavigationBarI18n: React.FC<NavigationBarI18nProps> = ({
                                     >
                                         {dict.auth.login}
                                     </button>
-                                    <button
+                                    {/* <button
                                         onClick={onRegister}
                                         className="px-4 py-2 bg-gradient-to-r from-blue-600/80 to-cyan-600/80 hover:from-blue-700 hover:to-cyan-700 text-white rounded-lg font-medium transition-all duration-200 transform hover:scale-105 backdrop-blur-sm border border-blue-500/50 shadow-lg shadow-blue-500/20"
                                     >
                                         {dict.auth.register}
-                                    </button>
+                                    </button> */}
                                 </div>
                             )}
                         </div>
@@ -303,12 +298,12 @@ const NavigationBarI18n: React.FC<NavigationBarI18nProps> = ({
                                         >
                                             🔐 {dict.auth.admin_login}
                                         </button>
-                                        <button
+                                        {/* <button
                                             onClick={onRegister}
                                             className="w-full px-4 py-3 bg-gradient-to-r from-blue-600/80 to-cyan-600/80 hover:from-blue-700 hover:to-cyan-700 text-white rounded-lg font-medium transition-all duration-200 backdrop-blur-sm border border-blue-500/50 shadow-lg shadow-blue-500/20"
                                         >
                                             📝 {dict.auth.user_registration}
-                                        </button>
+                                        </button> */}
                                     </div>
                                 )}
                             </div>

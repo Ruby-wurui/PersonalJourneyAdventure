@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
+import SparkleButton from '@/components/ui/SparkleButton';
 
 interface NavigationBarProps {
   isAuthenticated?: boolean;
@@ -170,20 +171,12 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
                 </div>
               ) : (
                 <div className="flex items-center space-x-2">
-                  <button
-                    onClick={onLogin}
-                    className="px-4 py-2 bg-gradient-to-r from-red-600/80 to-pink-600/80 hover:from-red-700 hover:to-pink-700 text-white rounded-lg font-medium transition-all duration-200 transform hover:scale-105 backdrop-blur-sm border border-red-500/50 shadow-lg shadow-red-500/20"
-                  >
-                    {/* 🔐  */}
+                  <SparkleButton onClick={onLogin}>
                     Login
-                  </button>
-                  <button
-                    onClick={onRegister}
-                    className="px-4 py-2 bg-gradient-to-r from-blue-600/80 to-cyan-600/80 hover:from-blue-700 hover:to-cyan-700 text-white rounded-lg font-medium transition-all duration-200 transform hover:scale-105 backdrop-blur-sm border border-blue-500/50 shadow-lg shadow-blue-500/20"
-                  >
-                    {/* 📝  */}
+                  </SparkleButton>
+                  <SparkleButton onClick={onRegister}>
                     Register
-                  </button>
+                  </SparkleButton>
                 </div>
               )}
             </div>
@@ -281,18 +274,12 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
                   </div>
                 ) : (
                   <div className="space-y-2">
-                    <button
-                      onClick={onLogin}
-                      className="w-full px-4 py-3 bg-gradient-to-r from-red-600/80 to-pink-600/80 hover:from-red-700 hover:to-pink-700 text-white rounded-lg font-medium transition-all duration-200 backdrop-blur-sm border border-red-500/50 shadow-lg shadow-red-500/20"
-                    >
+                    <SparkleButton onClick={onLogin} className="w-full">
                       🔐 Admin Login
-                    </button>
-                    <button
-                      onClick={onRegister}
-                      className="w-full px-4 py-3 bg-gradient-to-r from-blue-600/80 to-cyan-600/80 hover:from-blue-700 hover:to-cyan-700 text-white rounded-lg font-medium transition-all duration-200 backdrop-blur-sm border border-blue-500/50 shadow-lg shadow-blue-500/20"
-                    >
+                    </SparkleButton>
+                    <SparkleButton onClick={onRegister} className="w-full">
                       📝 User Registration
-                    </button>
+                    </SparkleButton>
                   </div>
                 )}
               </div>
