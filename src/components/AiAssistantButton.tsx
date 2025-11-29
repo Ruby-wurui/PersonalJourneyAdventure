@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import idleImg from "@/assets/astronaunt/astronaut_idle.png";
-import waveImg from "@/assets/astronaunt/astronaut_wave.png";
+import waveImg from "@/assets/astronaunt/astronaut_trans.png";
 import kissImg from "@/assets/astronaunt/astronaut_kiss.png";
 import AiChatDialog from "./AiChatDialog";
 
