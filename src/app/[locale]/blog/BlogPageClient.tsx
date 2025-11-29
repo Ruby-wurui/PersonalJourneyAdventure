@@ -71,9 +71,9 @@ export default function BlogPageClient({ dict }: BlogPageClientProps) {
           variants={staggerContainer}
           className="flex flex-col items-center text-center mb-20"
         >
-          <motion.div variants={fadeInUp} className="mb-6">
+          {/* <motion.div variants={fadeInUp} className="mb-6">
             <span className="text-6xl md:text-7xl">📝</span>
-          </motion.div>
+          </motion.div> */}
 
           <motion.h1 variants={fadeInUp} className="text-5xl md:text-8xl font-bold mb-6 tracking-tight">
             <span className="bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-gray-500 drop-shadow-sm">

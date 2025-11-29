@@ -198,7 +198,7 @@ export default function AboutPageClient({ dict }: AboutPageClientProps) {
                             />
                         </div>
 
-                        {/* Position 1 - Right Side */}
+                        {/* Freelance Position - Right Side (Latest) */}
                         <div className="relative grid md:grid-cols-2 gap-8 mb-24">
                             <div className="hidden md:block"></div>
                             <motion.div
@@ -207,12 +207,54 @@ export default function AboutPageClient({ dict }: AboutPageClientProps) {
                             >
                                 {/* Node & Connector */}
                                 <div className="hidden md:block absolute -left-[calc(50%+2rem)] top-10 w-8 h-8 z-20">
+                                    <div className="w-4 h-4 bg-cyan-500 rounded-full border-4 border-[#050505] shadow-[0_0_15px_rgba(6,182,212,0.8)] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 animate-pulse"></div>
+                                </div>
+                                <div className="hidden md:block absolute -left-[calc(50%+2rem)] top-10 w-[calc(50%+2rem)] h-[1px] bg-gradient-to-r from-cyan-500/50 to-transparent"></div>
+
+                                <TimelineCard className="border-l-4 border-l-cyan-500">
+                                    <div className="flex flex-col justify-between items-start mb-6">
+                                        <div>
+                                            <h3 className="text-2xl font-bold text-white mb-2">{dict.about.position_freelance_title}</h3>
+                                            <p className="text-cyan-400 text-lg font-medium">{dict.about.position_freelance_company}</p>
+                                        </div>
+                                        <span className="mt-3 px-4 py-1.5 rounded-full bg-cyan-500/10 text-cyan-300 text-sm border border-cyan-500/20 font-mono">
+                                            {dict.about.position_freelance_duration}
+                                        </span>
+                                    </div>
+                                    <p className="text-gray-400 italic mb-8 pl-4 border-l-2 border-white/5">
+                                        {dict.about.position_freelance_context}
+                                    </p>
+                                    <div className="space-y-5">
+                                        {[1, 2, 3, 4, 5].map((num) => (
+                                            <div key={num} className="group/item">
+                                                <h4 className="text-cyan-200 font-medium mb-2 group-hover/item:text-cyan-100 transition-colors flex items-center gap-2">
+                                                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-500"></span>
+                                                    {dict.about[`position_freelance_project_${num}_title` as keyof typeof dict.about]}
+                                                </h4>
+                                                <p className="text-gray-400 text-sm pl-4 leading-relaxed border-l border-white/5 ml-[3px]">
+                                                    {dict.about[`position_freelance_project_${num}_desc` as keyof typeof dict.about]}
+                                                </p>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </TimelineCard>
+                            </motion.div>
+                        </div>
+
+                        {/* Position 1 - Left Side */}
+                        <div className="relative grid md:grid-cols-2 gap-8 mb-24">
+                            <motion.div
+                                variants={fadeInUp}
+                                className="relative md:text-right"
+                            >
+                                {/* Node & Connector */}
+                                <div className="hidden md:block absolute -right-[calc(50%+2rem)] top-10 w-8 h-8 z-20">
                                     <div className="w-4 h-4 bg-blue-500 rounded-full border-4 border-[#050505] shadow-[0_0_15px_rgba(59,130,246,0.8)] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 animate-pulse"></div>
                                 </div>
-                                <div className="hidden md:block absolute -left-[calc(50%+2rem)] top-10 w-[calc(50%+2rem)] h-[1px] bg-gradient-to-r from-blue-500/50 to-transparent"></div>
+                                <div className="hidden md:block absolute -right-[calc(50%+2rem)] top-10 w-[calc(50%+2rem)] h-[1px] bg-gradient-to-l from-blue-500/50 to-transparent"></div>
 
-                                <TimelineCard className="border-l-4 border-l-blue-500">
-                                    <div className="flex flex-col justify-between items-start mb-6">
+                                <TimelineCard className="border-r-4 border-r-blue-500">
+                                    <div className="flex flex-col md:items-end justify-between items-start mb-6">
                                         <div>
                                             <h3 className="text-2xl font-bold text-white mb-2">{dict.about.position_1_title}</h3>
                                             <p className="text-blue-400 text-lg font-medium">{dict.about.position_1_company}</p>
@@ -221,17 +263,17 @@ export default function AboutPageClient({ dict }: AboutPageClientProps) {
                                             {dict.about.position_1_duration}
                                         </span>
                                     </div>
-                                    <p className="text-gray-400 italic mb-8 pl-4 border-l-2 border-white/5">
+                                    <p className="text-gray-400 italic mb-8 md:pr-4 md:pl-0 pl-4 md:border-r-2 md:border-l-0 border-l-2 border-white/5">
                                         {dict.about.position_1_context}
                                     </p>
                                     <div className="space-y-5">
                                         {[1, 2, 3, 4].map((num) => (
-                                            <div key={num} className="group/item">
-                                                <h4 className="text-blue-200 font-medium mb-2 group-hover/item:text-blue-100 transition-colors flex items-center gap-2">
+                                            <div key={num} className="group/item flex flex-col md:items-end">
+                                                <h4 className="text-blue-200 font-medium mb-2 group-hover/item:text-blue-100 transition-colors flex items-center gap-2 md:flex-row-reverse">
                                                     <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
                                                     {dict.about[`position_1_project_${num}_title` as keyof typeof dict.about]}
                                                 </h4>
-                                                <p className="text-gray-400 text-sm pl-4 leading-relaxed border-l border-white/5 ml-[3px]">
+                                                <p className="text-gray-400 text-sm pl-4 md:pl-0 md:pr-4 leading-relaxed md:border-r border-l md:border-l-0 border-white/5 md:mr-[3px] ml-[3px] md:text-right">
                                                     {dict.about[`position_1_project_${num}_desc` as keyof typeof dict.about]}
                                                 </p>
                                             </div>
@@ -239,22 +281,24 @@ export default function AboutPageClient({ dict }: AboutPageClientProps) {
                                     </div>
                                 </TimelineCard>
                             </motion.div>
+                            <div className="hidden md:block"></div>
                         </div>
 
-                        {/* Position 2 - Left Side */}
+                        {/* Position 2 - Right Side */}
                         <div className="relative grid md:grid-cols-2 gap-8 mb-24">
+                            <div className="hidden md:block"></div>
                             <motion.div
                                 variants={fadeInUp}
-                                className="relative md:text-right"
+                                className="relative"
                             >
                                 {/* Node & Connector */}
-                                <div className="hidden md:block absolute -right-[calc(50%+2rem)] top-10 w-8 h-8 z-20">
+                                <div className="hidden md:block absolute -left-[calc(50%+2rem)] top-10 w-8 h-8 z-20">
                                     <div className="w-4 h-4 bg-green-500 rounded-full border-4 border-[#050505] shadow-[0_0_15px_rgba(34,197,94,0.8)] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 animate-pulse"></div>
                                 </div>
-                                <div className="hidden md:block absolute -right-[calc(50%+2rem)] top-10 w-[calc(50%+2rem)] h-[1px] bg-gradient-to-l from-green-500/50 to-transparent"></div>
+                                <div className="hidden md:block absolute -left-[calc(50%+2rem)] top-10 w-[calc(50%+2rem)] h-[1px] bg-gradient-to-r from-green-500/50 to-transparent"></div>
 
-                                <TimelineCard className="border-r-4 border-r-green-500">
-                                    <div className="flex flex-col md:items-end justify-between items-start mb-6">
+                                <TimelineCard className="border-l-4 border-l-green-500">
+                                    <div className="flex flex-col justify-between items-start mb-6">
                                         <div>
                                             <h3 className="text-2xl font-bold text-white mb-2">{dict.about.position_2_title}</h3>
                                             <p className="text-green-400 text-lg font-medium">{dict.about.position_2_company}</p>
@@ -263,17 +307,17 @@ export default function AboutPageClient({ dict }: AboutPageClientProps) {
                                             {dict.about.position_2_duration}
                                         </span>
                                     </div>
-                                    <p className="text-gray-400 italic mb-8 md:pr-4 md:pl-0 pl-4 md:border-r-2 md:border-l-0 border-l-2 border-white/5">
+                                    <p className="text-gray-400 italic mb-8 pl-4 border-l-2 border-white/5">
                                         {dict.about.position_2_context}
                                     </p>
                                     <div className="space-y-5">
                                         {[1, 2, 3].map((num) => (
-                                            <div key={num} className="group/item flex flex-col md:items-end">
-                                                <h4 className="text-green-200 font-medium mb-2 group-hover/item:text-green-100 transition-colors flex items-center gap-2 md:flex-row-reverse">
+                                            <div key={num} className="group/item">
+                                                <h4 className="text-green-200 font-medium mb-2 group-hover/item:text-green-100 transition-colors flex items-center gap-2">
                                                     <span className="w-1.5 h-1.5 rounded-full bg-green-500"></span>
                                                     {dict.about[`position_2_project_${num}_title` as keyof typeof dict.about]}
                                                 </h4>
-                                                <p className="text-gray-400 text-sm pl-4 md:pl-0 md:pr-4 leading-relaxed md:border-r border-l md:border-l-0 border-white/5 md:mr-[3px] ml-[3px] md:text-right">
+                                                <p className="text-gray-400 text-sm pl-4 leading-relaxed border-l border-white/5 ml-[3px]">
                                                     {dict.about[`position_2_project_${num}_desc` as keyof typeof dict.about]}
                                                 </p>
                                             </div>
@@ -281,24 +325,22 @@ export default function AboutPageClient({ dict }: AboutPageClientProps) {
                                     </div>
                                 </TimelineCard>
                             </motion.div>
-                            <div className="hidden md:block"></div>
                         </div>
 
-                        {/* Position 3 - Right Side */}
+                        {/* Position 3 - Left Side */}
                         <div className="relative grid md:grid-cols-2 gap-8">
-                            <div className="hidden md:block"></div>
                             <motion.div
                                 variants={fadeInUp}
-                                className="relative"
+                                className="relative md:text-right"
                             >
                                 {/* Node & Connector */}
-                                <div className="hidden md:block absolute -left-[calc(50%+2rem)] top-10 w-8 h-8 z-20">
+                                <div className="hidden md:block absolute -right-[calc(50%+2rem)] top-10 w-8 h-8 z-20">
                                     <div className="w-4 h-4 bg-purple-500 rounded-full border-4 border-[#050505] shadow-[0_0_15px_rgba(168,85,247,0.8)] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 animate-pulse"></div>
                                 </div>
-                                <div className="hidden md:block absolute -left-[calc(50%+2rem)] top-10 w-[calc(50%+2rem)] h-[1px] bg-gradient-to-r from-purple-500/50 to-transparent"></div>
+                                <div className="hidden md:block absolute -right-[calc(50%+2rem)] top-10 w-[calc(50%+2rem)] h-[1px] bg-gradient-to-l from-purple-500/50 to-transparent"></div>
 
-                                <TimelineCard className="border-l-4 border-l-purple-500">
-                                    <div className="flex flex-col justify-between items-start mb-6">
+                                <TimelineCard className="border-r-4 border-r-purple-500">
+                                    <div className="flex flex-col md:items-end justify-between items-start mb-6">
                                         <div>
                                             <h3 className="text-2xl font-bold text-white mb-2">{dict.about.position_3_title}</h3>
                                             <p className="text-purple-400 text-lg font-medium">{dict.about.position_3_company}</p>
@@ -309,8 +351,8 @@ export default function AboutPageClient({ dict }: AboutPageClientProps) {
                                     </div>
                                     <div className="space-y-5">
                                         {[1, 2].map((num) => (
-                                            <div key={num} className="group/item">
-                                                <p className="text-gray-300 text-sm pl-4 border-l-2 border-purple-500/30 leading-relaxed">
+                                            <div key={num} className="group/item flex flex-col md:items-end">
+                                                <p className="text-gray-300 text-sm pl-4 md:pl-0 md:pr-4 md:border-r-2 border-l-2 md:border-l-0 border-purple-500/30 leading-relaxed md:text-right">
                                                     {dict.about[`position_3_project_${num}_desc` as keyof typeof dict.about]}
                                                 </p>
                                             </div>
@@ -318,6 +360,7 @@ export default function AboutPageClient({ dict }: AboutPageClientProps) {
                                     </div>
                                 </TimelineCard>
                             </motion.div>
+                            <div className="hidden md:block"></div>
                         </div>
                     </div>
                 </motion.section>
