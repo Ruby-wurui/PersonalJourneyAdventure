@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { TimelineData, BlogPostListItem, Tag } from '@/types/blog';
 import TimelineNavigation from './TimelineNavigation';
 import BlogPostCard from './BlogPostCard';
@@ -22,6 +22,15 @@ export default function BlogTimeline() {
   const [selectedYear, setSelectedYear] = useState<number | null>(null);
   const [selectedMonth, setSelectedMonth] = useState<number | null>(null);
   const timelineRef = useRef<HTMLDivElement>(null);
+
+  // Scroll progress for timeline line - must be called unconditionally
+  const { scrollYProgress } = useScroll({
+    target: timelineRef,
+    offset: ["start 20%", "end 80%"]
+  });
+
+  const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
 
   useEffect(() => {
     fetchTimelineData();
@@ -148,7 +157,12 @@ export default function BlogTimeline() {
   return (
     <div className="max-w-7xl mx-auto">
       {/* Navigation and Filters */}
-      <div className="mb-8 space-y-6">
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="mb-12 space-y-6"
+      >
         <TimelineNavigation
           years={years}
           selectedYear={selectedYear}
@@ -163,32 +177,42 @@ export default function BlogTimeline() {
           selectedTag={selectedTag}
           onTagSelect={handleTagSelect}
         />
-      </div>
+      </motion.div>
 
       {/* Timeline Content */}
       <div ref={timelineRef} className="relative">
-        {/* Timeline Line */}
-        <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-400 via-purple-400 to-pink-400 hidden md:block" />
+        {/* Animated Timeline Line */}
+        <div className="absolute left-8 top-0 bottom-0 w-[2px] bg-white/5 hidden md:block rounded-full overflow-hidden">
+          <motion.div
+            style={{ height: lineHeight, opacity }}
+            className="w-full bg-gradient-to-b from-blue-500 via-purple-500 to-pink-500 shadow-[0_0_20px_rgba(168,85,247,0.6)]"
+          />
+        </div>
 
-        {years.map(year => (
+        {years.map((year, yearIndex) => (
           <motion.div
             key={year}
             id={`year-${year}`}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="mb-12"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, delay: yearIndex * 0.1 }}
+            className="mb-20"
           >
             {/* Year Header */}
-            <div className="flex items-center mb-8">
-              <div className="hidden md:block w-4 h-4 bg-blue-400 rounded-full border-4 border-slate-900 relative z-10" />
-              <h2 className="text-3xl font-bold text-white ml-6 md:ml-8">
-                {year}
+            <div className="flex items-center mb-12 relative">
+              <div className="hidden md:block absolute left-8 w-6 h-6 -ml-3 z-20">
+                <div className="w-4 h-4 bg-blue-500 rounded-full border-4 border-[#050505] shadow-[0_0_15px_rgba(59,130,246,0.8)] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 animate-pulse"></div>
+              </div>
+              <h2 className="text-4xl md:text-5xl font-bold text-white ml-0 md:ml-20">
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">
+                  {year}
+                </span>
               </h2>
             </div>
 
             {/* Months */}
-            {Object.keys(timelineData[year] || {}).map(monthIndex => {
+            {Object.keys(timelineData[year] || {}).map((monthIndex, monthIdx) => {
               const month = parseInt(monthIndex);
               const monthPosts = timelineData[year][month];
 
@@ -203,18 +227,21 @@ export default function BlogTimeline() {
                 <motion.div
                   key={`${year}-${month}`}
                   initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.3, delay: 0.1 }}
-                  className="mb-8 ml-0 md:ml-16"
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.5, delay: monthIdx * 0.1 }}
+                  className="mb-12 ml-0 md:ml-20"
                 >
                   {/* Month Header */}
-                  <div className="flex items-center mb-4">
-                    <div className="w-3 h-3 bg-purple-400 rounded-full border-2 border-slate-900 hidden md:block" />
-                    <h3 className="text-xl font-semibold text-gray-300 ml-0 md:ml-4">
+                  <div className="flex items-center mb-6 relative">
+                    <div className="hidden md:block absolute -left-[4.5rem] w-4 h-4 z-20">
+                      <div className="w-3 h-3 bg-purple-400 rounded-full border-2 border-[#050505] shadow-[0_0_10px_rgba(192,132,252,0.6)] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
+                    </div>
+                    <h3 className="text-2xl md:text-3xl font-semibold text-gray-200">
                       {MONTHS[month]}
                     </h3>
-                    <span className="text-sm text-gray-500 ml-2">
-                      ({visiblePosts.length} post{visiblePosts.length !== 1 ? 's' : ''})
+                    <span className="ml-3 px-3 py-1 rounded-full bg-purple-500/10 text-purple-300 text-sm border border-purple-500/20 font-mono">
+                      {visiblePosts.length} post{visiblePosts.length !== 1 ? 's' : ''}
                     </span>
                   </div>
 
@@ -224,10 +251,10 @@ export default function BlogTimeline() {
                       {visiblePosts.map((post, index) => (
                         <motion.div
                           key={post.id}
-                          initial={{ opacity: 0, scale: 0.9 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          exit={{ opacity: 0, scale: 0.9 }}
-                          transition={{ duration: 0.3, delay: index * 0.1 }}
+                          initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                          animate={{ opacity: 1, scale: 1, y: 0 }}
+                          exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                          transition={{ duration: 0.4, delay: index * 0.05 }}
                         >
                           <BlogPostCard post={post} />
                         </motion.div>
@@ -243,17 +270,18 @@ export default function BlogTimeline() {
         {/* No Posts Message */}
         {filteredPosts.length === 0 && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="text-center py-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-center py-20"
           >
-            <div className="text-gray-400 text-xl mb-4">
+            <div className="text-6xl mb-6">📭</div>
+            <div className="text-gray-400 text-2xl mb-6 font-light">
               {selectedTag ? `No posts found with tag "${selectedTag}"` : 'No posts found'}
             </div>
             {selectedTag && (
               <button
                 onClick={() => setSelectedTag(null)}
-                className="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors"
+                className="px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white rounded-full transition-all duration-300 shadow-lg hover:shadow-purple-500/50 font-medium"
               >
                 Clear Filter
               </button>
