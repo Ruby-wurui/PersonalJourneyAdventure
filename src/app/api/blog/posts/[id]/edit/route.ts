@@ -10,11 +10,14 @@ export async function GET(
     const authError = requireAdmin(request);
     if (authError) return authError;
 
+    const authHeader = request.headers.get('Authorization');
+
     try {
         const response = await fetch(`${API_BASE_URL}/api/blog/posts/${params.id}/edit`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
+                ...(authHeader && { 'Authorization': authHeader }),
             },
         });
 

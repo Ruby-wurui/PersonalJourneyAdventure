@@ -102,7 +102,7 @@ const AiChatDialog: React.FC<AiChatDialogProps> = ({ isOpen, onClose }) => {
                     <div className="p-4 border-b border-white/10 bg-gradient-to-r from-blue-900/20 to-purple-900/20 flex justify-between items-center">
                         <div className="flex items-center gap-2">
                             <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                            <h3 className="text-white font-semibold text-lg tracking-wide">AI Assistant</h3>
+                            <h3 className="text-white font-semibold text-lg tracking-wide">I'm Ruby's AI Assistant.</h3>
                         </div>
                         <button
                             onClick={onClose}

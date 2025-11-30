@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { useAuth } from '@/lib/auth-context';
 import { motion } from 'framer-motion';
 import QuickNavigation from '@/components/layout/QuickNavigation';
 import LoadingSpinner from '@/components/3d/LoadingSpinner';
@@ -22,6 +23,7 @@ interface BlogPost {
 }
 
 export default function ManageBlogPage() {
+    const { token } = useAuth();
     const router = useRouter();
     const [posts, setPosts] = useState<BlogPost[]>([]);
     const [drafts, setDrafts] = useState<BlogPost[]>([]);
@@ -29,9 +31,11 @@ export default function ManageBlogPage() {
     const [activeTab, setActiveTab] = useState<'published' | 'drafts'>('published');
 
     useEffect(() => {
-        fetchPosts();
-        fetchDrafts();
-    }, []);
+        if (token) {
+            fetchPosts();
+            fetchDrafts();
+        }
+    }, [token]);
 
     const fetchPosts = async () => {
         try {
@@ -48,8 +52,13 @@ export default function ManageBlogPage() {
     };
 
     const fetchDrafts = async () => {
+        if (!token) return;
         try {
-            const response = await fetch('/api/blog/drafts?limit=50');
+            const response = await fetch('/api/blog/drafts?limit=50', {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
             if (response.ok) {
                 const result = await response.json();
                 if (result.success) {
@@ -68,9 +77,17 @@ export default function ManageBlogPage() {
             return;
         }
 
+        if (!token) {
+            alert('You must be logged in to delete posts');
+            return;
+        }
+
         try {
             const response = await fetch(`/api/blog/posts/${postId}`, {
                 method: 'DELETE',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
             });
 
             if (response.ok) {

@@ -15,6 +15,7 @@ import { BlogPost } from '@/types/blog';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import MermaidDiagram from '@/components/blog/MermaidDiagram';
+import CommentSection from '@/components/blog/CommentSection';
 
 interface BlogPostDetailClientProps {
     dict: Dictionary;
@@ -270,6 +271,13 @@ export default function BlogPostDetailClient({ dict, slug }: BlogPostDetailClien
                             Back to Blog
                         </button>
                     </div>
+
+                    {post.id && (
+                        <CommentSection
+                            postId={post.id}
+                            onLoginClick={() => setShowLoginModal(true)}
+                        />
+                    )}
                 </motion.article>
             </main>
 
