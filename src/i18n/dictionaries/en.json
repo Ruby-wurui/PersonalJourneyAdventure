@@ -17,7 +17,7 @@
         "login": "Login",
         "register": "Register",
         "logout": "Logout",
-        "admin_login": "Admin Login",
+        "admin_login": "Login",
         "user_registration": "User Registration",
         "admin": "Admin",
         "login_modal": {
@@ -109,7 +109,7 @@
         "btn_write_article": "Write Article",
         "btn_explore_universe": "Explore Universe",
         "btn_logout": "Logout",
-        "btn_admin_login": "Admin Login",
+        "btn_admin_login": "Login",
         "btn_tech_blog": "Tech Blog",
         "location": "Shanghai, China",
         "availability": "Available for freelance"

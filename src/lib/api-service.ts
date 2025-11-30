@@ -1,5 +1,5 @@
 // API service for backend requests
-const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:3001';
+const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:4001';
 
 class ApiService {
   private getAuthHeaders() {
@@ -9,7 +9,7 @@ class ApiService {
 
   async request(endpoint: string, options: RequestInit = {}) {
     const url = `${backendUrl}${endpoint}`;
-    
+
     const response = await fetch(url, {
       ...options,
       headers: {

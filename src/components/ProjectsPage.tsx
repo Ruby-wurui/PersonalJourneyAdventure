@@ -10,12 +10,14 @@ import { ProjectIsland } from '@/types/adventure-map'
 import NavigationBar from './layout/NavigationBar'
 import { useAuth } from '@/lib/auth-context'
 import { LoginModal } from './auth/LoginModal'
+import RegisterModal from './auth/RegisterModal'
 import enDict from '@/i18n/dictionaries/en.json'
 
 const ProjectsPage: React.FC = () => {
   const [showModal, setShowModal] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
   const [showLoginModal, setShowLoginModal] = useState(false)
+  const [showRegisterModal, setShowRegisterModal] = useState(false)
 
   const { isAuthenticated, user, logout } = useAuth()
 
@@ -31,7 +33,7 @@ const ProjectsPage: React.FC = () => {
   } = useAdventureMapStore()
 
   const handleLogin = () => setShowLoginModal(true)
-  const handleRegister = () => setShowLoginModal(true)
+  const handleRegister = () => setShowRegisterModal(true)
 
   // Initialize data on component mount
   useEffect(() => {
@@ -261,6 +263,20 @@ const ProjectsPage: React.FC = () => {
       <LoginModal
         isOpen={showLoginModal}
         onClose={() => setShowLoginModal(false)}
+        onSwitchToRegister={() => {
+          setShowLoginModal(false)
+          setShowRegisterModal(true)
+        }}
+      />
+
+      {/* Register Modal */}
+      <RegisterModal
+        isOpen={showRegisterModal}
+        onClose={() => setShowRegisterModal(false)}
+        onSwitchToLogin={() => {
+          setShowRegisterModal(false)
+          setShowLoginModal(true)
+        }}
       />
 
       {/* Enhanced Stats Panel */}

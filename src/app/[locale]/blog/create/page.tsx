@@ -40,7 +40,7 @@ export default function CreateBlogPage() {
                                 <h2 className="text-xl font-bold text-white">✍️ Create New Post</h2>
                             </div>
 
-                            <QuickNavigation currentPage="blog" />
+                            {/* <QuickNavigation currentPage="blog" /> */}
                         </div>
                     </div>
                 </div>

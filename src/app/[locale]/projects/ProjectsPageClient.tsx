@@ -85,6 +85,10 @@ export default function ProjectsPageClient({ locale, dict }: ProjectsPageClientP
         <LoginModal
           isOpen={showLoginModal}
           onClose={() => setShowLoginModal(false)}
+          onSwitchToRegister={() => {
+            setShowLoginModal(false)
+            setShowRegisterModal(true)
+          }}
         />
       )}
 

@@ -1,12 +1,15 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
 import NavigationBarI18n from '@/components/layout/NavigationBarI18n'
 import { Dictionary } from '@/i18n/get-dictionary'
+import { useAuth } from '@/lib/auth-context'
+import { LoginModal } from '@/components/auth/LoginModal'
+import RegisterModal from '@/components/auth/RegisterModal'
 
 // Import project images
 import avatarSystemImg from '@/assets/projects/yueluo/yueluo_v2_1.jpg'
@@ -29,6 +32,10 @@ interface YiMiReadingPageClientProps {
 }
 
 export default function YiMiReadingPageClient({ locale, dict }: YiMiReadingPageClientProps) {
+    const { isAuthenticated, user, logout } = useAuth()
+    const [showLoginModal, setShowLoginModal] = useState(false)
+    const [showRegisterModal, setShowRegisterModal] = useState(false)
+
     // Animation variants
     const fadeIn = {
         hidden: { opacity: 0, y: 20 },
@@ -48,7 +55,15 @@ export default function YiMiReadingPageClient({ locale, dict }: YiMiReadingPageC
     return (
         <div className="min-h-screen bg-black text-white font-sans selection:bg-blue-500 selection:text-white">
             {/* Navigation */}
-            <NavigationBarI18n locale={locale as any} dict={dict} />
+            <NavigationBarI18n
+                locale={locale as any}
+                dict={dict}
+                isAuthenticated={isAuthenticated}
+                user={user}
+                onLogin={() => setShowLoginModal(true)}
+                onRegister={() => setShowRegisterModal(true)}
+                onLogout={logout}
+            />
 
             <main className="pt-24 pb-20">
                 {/* Back Button */}
@@ -431,6 +446,26 @@ export default function YiMiReadingPageClient({ locale, dict }: YiMiReadingPageC
                 </section>
 
             </main>
+
+            {/* Login Modal */}
+            <LoginModal
+                isOpen={showLoginModal}
+                onClose={() => setShowLoginModal(false)}
+                onSwitchToRegister={() => {
+                    setShowLoginModal(false)
+                    setShowRegisterModal(true)
+                }}
+            />
+
+            {/* Register Modal */}
+            <RegisterModal
+                isOpen={showRegisterModal}
+                onClose={() => setShowRegisterModal(false)}
+                onSwitchToLogin={() => {
+                    setShowRegisterModal(false)
+                    setShowLoginModal(true)
+                }}
+            />
         </div>
     )
 }
