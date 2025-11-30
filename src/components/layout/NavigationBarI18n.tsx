@@ -93,7 +93,7 @@ const NavigationBarI18n: React.FC<NavigationBarI18nProps> = ({
     return (
         <>
             <nav className={`${styles.nav} ${isScrolled ? styles.navScrolled : ''}`}>
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex items-center justify-between h-16 sm:h-20">
                         {/* Logo and Brand */}
                         <div className="flex items-center space-x-3">
@@ -139,23 +139,7 @@ const NavigationBarI18n: React.FC<NavigationBarI18nProps> = ({
                         <div className="hidden lg:flex items-center space-x-4">
                             <LanguageSwitcher currentLocale={locale} />
 
-                            {/* Admin Section */}
-                            {isAuthenticated && user?.role === 'admin' && pathname.includes('/blog') && (
-                                <div className="flex items-center space-x-2">
-                                    <Link
-                                        href={`/${locale}/blog/manage`}
-                                        className="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors text-sm font-medium"
-                                    >
-                                        📝 {dict.blog.manage}
-                                    </Link>
-                                    <Link
-                                        href={`/${locale}/blog/create`}
-                                        className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors text-sm font-medium"
-                                    >
-                                        ✍️ {dict.blog.new_post}
-                                    </Link>
-                                </div>
-                            )}
+
 
                             {/* Auth Buttons */}
                             {isAuthenticated ? (
@@ -241,33 +225,7 @@ const NavigationBarI18n: React.FC<NavigationBarI18nProps> = ({
                                 <LanguageSwitcher currentLocale={locale} />
                             </div>
 
-                            {/* Mobile Admin Section */}
-                            {isAuthenticated && user?.role === 'admin' && pathname.includes('/blog') && (
-                                <div className="border-t border-gray-700/50 pt-4 mt-4">
-                                    <div className="space-y-2">
-                                        <Link
-                                            href={`/${locale}/blog/manage`}
-                                            className="flex items-center space-x-3 px-4 py-3 bg-purple-600/25 text-purple-300 border border-purple-500/50 rounded-lg hover:bg-purple-600/40 transition-colors"
-                                        >
-                                            <span className="text-xl">📝</span>
-                                            <div>
-                                                <div className="font-medium">{dict.blog.manage_posts}</div>
-                                                <div className="text-xs text-purple-400">{dict.blog.edit_organize}</div>
-                                            </div>
-                                        </Link>
-                                        <Link
-                                            href={`/${locale}/blog/create`}
-                                            className="flex items-center space-x-3 px-4 py-3 bg-green-600/25 text-green-300 border border-green-500/50 rounded-lg hover:bg-green-600/40 transition-colors"
-                                        >
-                                            <span className="text-xl">✍️</span>
-                                            <div>
-                                                <div className="font-medium">{dict.blog.create_new_post}</div>
-                                                <div className="text-xs text-green-400">{dict.blog.write_publish}</div>
-                                            </div>
-                                        </Link>
-                                    </div>
-                                </div>
-                            )}
+
 
                             {/* Mobile Auth Section */}
                             <div className="border-t border-gray-700/50 pt-4 mt-4">
@@ -276,7 +234,7 @@ const NavigationBarI18n: React.FC<NavigationBarI18nProps> = ({
                                         <div className="bg-green-600/25 border border-green-500/50 rounded-lg px-4 py-3 shadow-lg shadow-green-500/10">
                                             <div className="flex items-center justify-between">
                                                 <div className="flex items-center space-x-2">
-                                                    <span className="text-green-400">🔐 {user?.username}</span>
+                                                    {/* <span className="text-green-400">🔐 {user?.username}</span> */}
                                                     {user?.role === 'admin' && (
                                                         <span className="text-xs text-green-300 bg-green-600/30 px-2 py-1 rounded">{dict.auth.admin}</span>
                                                     )}

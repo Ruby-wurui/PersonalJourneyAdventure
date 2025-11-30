@@ -14,8 +14,7 @@
     background-size: 4px 4px;
     backdrop-filter: blur(3px);
     -webkit-backdrop-filter: blur(3px);
-    mask: linear-gradient(#000 calc(100% - 20px), #0000);
-    -webkit-mask: linear-gradient(#000 calc(100% - 20px), #0000);
+
     transition: all 0.3s ease-in-out;
 }
 
