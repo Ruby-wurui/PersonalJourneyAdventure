@@ -60,8 +60,8 @@ export default function SkillsPageClient({ dict }: SkillsPageClientProps) {
             category: dict.about.skills_frontend,
             items: [
                 { title: "Vue.js Ecosystem", content: "VuePress, Element UI", icon: "🟢", color: "green", gradient: "from-green-500/20 to-emerald-500/20" },
-                { title: "Core Stack", content: "JavaScript/TypeScript, HTML5/CSS3", icon: "💻", color: "green", gradient: "from-emerald-500/20 to-teal-500/20" },
-                { title: "Real-time", content: "WebRTC", icon: "📡", color: "green", gradient: "from-teal-500/20 to-green-500/20" },
+                { title: "react Ecosystem", content: "react, next.js, redux", icon: "📡", color: "green", gradient: "from-teal-500/20 to-green-500/20" },
+                { title: "Core Stack", content: "JavaScript/TypeScript, HTML5/CSS3, webpack, vite, scss, less", icon: "💻", color: "green", gradient: "from-emerald-500/20 to-teal-500/20" },
             ]
         },
         {

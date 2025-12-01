@@ -33,7 +33,6 @@ export const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSwitc
     access_granted: dict?.auth?.login_modal?.access_granted || 'Access Granted. Welcome back.',
     initializing_session: dict?.auth?.login_modal?.initializing_session || 'Initializing session...',
     access_denied: dict?.auth?.login_modal?.access_denied || 'Access Denied. Invalid credentials.',
-    demo_credentials: dict?.auth?.login_modal?.demo_credentials || 'DEMO: admin / admin123',
     need_access: dict?.auth?.login_modal?.need_access || 'Need access? Request credentials →',
     cancel_login: dict?.auth?.login_modal?.cancel_login || 'Cancel Login'
   };
@@ -203,7 +202,6 @@ export const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSwitc
             <div className="text-center">
               <div className="flex items-center justify-center space-x-2 text-xs text-gray-500">
                 <div className="w-1 h-1 bg-green-500 rounded-full animate-pulse" />
-                {/* <span>{t.demo_credentials}</span> */}
                 <div className="w-1 h-1 bg-green-500 rounded-full animate-pulse" />
               </div>
             </div>
