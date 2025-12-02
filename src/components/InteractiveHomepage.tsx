@@ -273,7 +273,7 @@ const InteractiveHomepage: React.FC<InteractiveHomepageProps> = ({ locale, dict 
         clearInterval(interval)
         clearInterval(cleanupInterval)
       }
-    } 7 +
+    }
   }, [isUnlocked, generateRandomParticles])
 
   // Safety check for dict
