@@ -13,6 +13,7 @@ export async function generateStaticParams() {
 }
 
 import AiAssistantButton from '@/components/AiAssistantButton'
+import CodeInspector from '@/components/home/CodeInspector'
 
 export default function RootLayout({
     children,
@@ -27,6 +28,7 @@ export default function RootLayout({
                 <AuthProvider>
                     {children}
                     <AiAssistantButton />
+                    <CodeInspector />
                 </AuthProvider>
             </body>
         </html>

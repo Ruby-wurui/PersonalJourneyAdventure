@@ -416,32 +416,20 @@ export default function SimpleGalaxyVisualization(props: GalaxyVisualizationProp
     return (
         <div className="w-full h-full relative">
             {/* Ruby's Universe Logo - Top Left */}
-            <div className="absolute top-27 left-6 z-10 pointer-events-none">
+            {/* <div className="absolute top-27 left-6 z-10 pointer-events-none">
                 <div className="flex item-center gap-4">
-                    {/* Animated Planet Logo */}
-                    <div className="relative">
+=                    <div className="relative">
                         <div className="w-16 h-16 rounded-full bg-gradient-to-br from-purple-500 via-pink-500 to-orange-500 animate-pulse shadow-2xl flex items-center justify-center">
                             <div className="w-14 h-14 rounded-full bg-gradient-to-br from-purple-600 via-pink-600 to-orange-600 flex items-center justify-center">
                                 <span className="text-2xl">🪐</span>
                             </div>
                         </div>
-                        {/* Orbit ring */}
                         <div className="absolute inset-0 rounded-full border-2 border-purple-400/30 animate-spin" style={{ animationDuration: '8s' }}>
                             <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-blue-400 rounded-full shadow-lg shadow-blue-400/50"></div>
                         </div>
                     </div>
-
-                    {/* Text Logo */}
-                    <div className="text-left">
-                        <h1 className="text-3xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-orange-400 bg-clip-text text-transparent drop-shadow-lg">
-                            Ruby&apos;s Universe
-                        </h1>
-                        <p className="text-sm text-gray-300 mt-1 font-medium tracking-wide">
-                            ✨ Explore Skills & Experience 111
-                        </p>
-                    </div>
                 </div>
-            </div>
+            </div> */}
 
             {/* 3D Canvas */}
             <Canvas

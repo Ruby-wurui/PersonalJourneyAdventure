@@ -241,10 +241,10 @@ const NavigationBarI18n: React.FC<NavigationBarI18nProps> = ({
                                         }
                   `}
                                 >
-                                    <span className="text-xl">{item.icon}</span>
+                                    {/* <span className="text-xl">{item.icon}</span> */}
                                     <div>
                                         <div className="font-medium">{item.name}</div>
-                                        <div className="text-xs text-gray-400">{item.description}</div>
+                                        {/* <div className="text-xs text-gray-400">{item.description}</div> */}
                                     </div>
                                 </Link>
                             ))}
@@ -291,7 +291,7 @@ const NavigationBarI18n: React.FC<NavigationBarI18nProps> = ({
                                             onClick={onLogin}
                                             className="w-full px-4 py-3 rounded-lg font-medium transition-all duration-200 bg-white/5 hover:bg-white/10 text-gray-300 hover:text-white border border-white/10 hover:border-white/30 backdrop-blur-sm flex items-center justify-center gap-2"
                                         >
-                                            🔐 {dict.auth.admin_login}
+                                            {dict.auth.admin_login}
                                         </button>
                                         {/* <button
                                             onClick={onRegister}
