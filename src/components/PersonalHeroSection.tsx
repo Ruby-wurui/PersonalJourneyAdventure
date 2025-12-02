@@ -71,7 +71,7 @@ const PersonalHeroSection: React.FC<PersonalHeroSectionProps> = ({
                                 transition={{ duration: 0.6, delay: 0.3 }}
                                 className="text-lg text-blue-400 mb-3"
                             >
-                                {dict?.hero?.title || 'Full Stack Developer & Creative Technologist'}
+                                {dict?.hero?.title || 'Full Stack Developer'}
                             </motion.p>
                             <motion.div
                                 initial={{ y: 20, opacity: 0 }}
@@ -136,7 +136,7 @@ const PersonalHeroSection: React.FC<PersonalHeroSectionProps> = ({
                         className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8"
                     >
                         <div className="text-center p-4 bg-gray-800/50 rounded-lg border border-gray-700/50">
-                            <div className="text-2xl font-bold text-blue-400 mb-1">5+</div>
+                            <div className="text-2xl font-bold text-blue-400 mb-1">7+</div>
                             <div className="text-sm text-gray-400">{dict?.hero?.stats_experience || 'Years Experience'}</div>
                         </div>
                         <div className="text-center p-4 bg-gray-800/50 rounded-lg border border-gray-700/50">

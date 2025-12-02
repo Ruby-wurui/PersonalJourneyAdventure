@@ -5,6 +5,7 @@ import yimiAppImg from '@/assets/projects/yimi_app.png'
 import yimiWebImg from '@/assets/projects/yimi_web.png'
 import cloudChineseImg from '@/assets/projects/cloud_chinese.png'
 import yueluoImg from '@/assets/projects/yueluo.jpg'
+import readingReportLogo from '@/assets/projects/reading_report_logo.png'
 
 export interface ProjectData {
     title: string
@@ -17,6 +18,13 @@ export interface ProjectData {
 export const getProjectsData = (locale: 'en' | 'zh'): ProjectData[] => {
     const translations = {
         en: [
+            {
+                title: 'Student Reading Report',
+                description: 'Transforming complex data into insights understandable by ordinary people (parents/teachers).',
+                image: readingReportLogo,
+                tags: ['Data Visualization', 'Education', 'User Insight'],
+                link: '/projects/reading_report'
+            },
             {
                 title: 'YiMi Reading (APP)',
                 description: 'A fun reading tool designed to make reading engaging for young readers. It provides rich reading resources and interactive elements that encourage children to think while they read, completing a meaningful reading journey.',
@@ -47,6 +55,13 @@ export const getProjectsData = (locale: 'en' | 'zh'): ProjectData[] => {
             }
         ],
         zh: [
+            {
+                title: '学生阅读报告',
+                description: '把复杂的数据变成普通人（家长/老师）能看懂的洞察',
+                image: readingReportLogo,
+                tags: ['数据可视化', '教育', '用户洞察'],
+                link: '/projects/reading_report'
+            },
             {
                 title: '一米阅读 (APP)',
                 description: '这是一款趣味阅读工具，丰富的阅读资源让阅读不再枯燥，小读者们可以边读边思考完成阅读之旅。',

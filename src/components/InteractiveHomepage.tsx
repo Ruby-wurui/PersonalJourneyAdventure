@@ -97,7 +97,7 @@ const InteractiveHomepage: React.FC<InteractiveHomepageProps> = ({ locale, dict 
   const [selectedSkill, setSelectedSkill] = useState<SkillPoint | null>(null)
   const [particles, setParticles] = useState<ParticleData[]>(() => generateParticles(50))
   const [skills, setSkills] = useState<SkillPoint[]>(sampleSkills)
-  const [isUnlocked, setIsUnlocked] = useState(false)
+  const [isUnlocked, setIsUnlocked] = useState(true)
   const [isLoading, setIsLoading] = useState(true)
   const [showIntro, setShowIntro] = useState(true)
   const [introComplete, setIntroComplete] = useState(false)
@@ -273,7 +273,7 @@ const InteractiveHomepage: React.FC<InteractiveHomepageProps> = ({ locale, dict 
         clearInterval(interval)
         clearInterval(cleanupInterval)
       }
-    }
+    } 7 +
   }, [isUnlocked, generateRandomParticles])
 
   // Safety check for dict
@@ -363,7 +363,7 @@ const InteractiveHomepage: React.FC<InteractiveHomepageProps> = ({ locale, dict 
       )}
 
       {/* Loading Screen */}
-      {isLoading && (
+      {/* {isLoading && (
         <div className="absolute inset-0 z-50 bg-black/90 flex items-center justify-center">
           <div className="text-center">
             <div className="w-16 h-16 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mb-4 mx-auto" />
@@ -374,7 +374,7 @@ const InteractiveHomepage: React.FC<InteractiveHomepageProps> = ({ locale, dict 
             />
           </div>
         </div>
-      )}
+      )} */}
 
       {/* Intro Screen */}
       {!isLoading && showIntro && !introComplete && (
@@ -399,7 +399,7 @@ const InteractiveHomepage: React.FC<InteractiveHomepageProps> = ({ locale, dict 
       )}
 
       {/* Password Unlock Screen */}
-      {!isLoading && showPasswordUnlock && !isUnlocked && (
+      {/* {!isLoading && showPasswordUnlock && !isUnlocked && (
         <div className="absolute inset-0 z-30 bg-black/90 flex items-center justify-center">
           <PasswordUnlock
             onUnlock={handleUnlock}
@@ -408,7 +408,7 @@ const InteractiveHomepage: React.FC<InteractiveHomepageProps> = ({ locale, dict 
             hint={dict.homepage.unlock_hint}
           />
         </div>
-      )}
+      )} */}
 
       {/* Main UI Overlay - Only show when unlocked */}
 
