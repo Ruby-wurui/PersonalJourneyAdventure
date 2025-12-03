@@ -95,6 +95,12 @@ const NavigationBarI18n: React.FC<NavigationBarI18nProps> = ({
             href: `/${locale}/blog`,
             icon: '📚',
             description: dict.nav.blog_desc
+        },
+        {
+            name: dict.nav.ai_news,
+            href: `/${locale}/ai-news`,
+            icon: '🤖',
+            description: dict.nav.ai_news_desc
         }
     ];
 

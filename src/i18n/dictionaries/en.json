@@ -11,7 +11,9 @@
         "about_desc": "Personal Universe",
         "projects_desc": "Project Islands",
         "skills_desc": "Technical Arsenal",
-        "blog_desc": "Tech Blog & Timeline"
+        "blog_desc": "Tech Blog & Timeline",
+        "ai_news": "AI News",
+        "ai_news_desc": "Latest AI Updates"
     },
     "auth": {
         "login": "Login",
@@ -111,7 +113,7 @@
         "btn_logout": "Logout",
         "btn_admin_login": "Login",
         "btn_tech_blog": "Tech Blog",
-        "location": "Shanghai, China",
+        "location": "Beijing, China",
         "availability": "Available for freelance"
     },
     "skills": {

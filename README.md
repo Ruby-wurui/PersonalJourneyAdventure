@@ -2,6 +2,28 @@
 
 An immersive full-stack portfolio experience that transforms traditional resume-style designs into a "tech adventure journey" with interactive 3D elements, real-time features, and engaging storytelling.
 
+
+
+## 🔄 数据流
+
+```
+用户访问 /en
+    ↓
+middleware 检测并允许通过
+    ↓
+app/[locale]/page.tsx (服务端)
+    ↓
+getDictionary('en') 加载英文翻译
+    ↓
+传递给 InteractiveHomepageWrapper (客户端)
+    ↓
+传递给 InteractiveHomepage (客户端)
+    ↓
+传递给 NavigationBarI18n (客户端)
+    ↓
+渲染英文界面
+```
+
 ## 🚀 Features
 
 - **Interactive 3D Homepage**: Globe with skill points and particle systems using React Three Fiber

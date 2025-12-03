@@ -11,7 +11,9 @@
         "about_desc": "个人宇宙",
         "projects_desc": "项目岛屿",
         "skills_desc": "技术军火库",
-        "blog_desc": "技术博客与时间线"
+        "blog_desc": "技术博客与时间线",
+        "ai_news": "AI 资讯",
+        "ai_news_desc": "最新 AI 动态"
     },
     "auth": {
         "login": "登录",
@@ -111,7 +113,7 @@
         "btn_logout": "退出登录",
         "btn_admin_login": "登录",
         "btn_tech_blog": "技术博客",
-        "location": "中国，上海",
+        "location": "中国，北京",
         "availability": "接受自由职业"
     },
     "skills": {
