@@ -71,15 +71,12 @@ export default function BlogPageClient({ dict }: BlogPageClientProps) {
           variants={staggerContainer}
           className="flex flex-col items-center text-center mb-20"
         >
-          {/* <motion.div variants={fadeInUp} className="mb-6">
-            <span className="text-6xl md:text-7xl">📝</span>
-          </motion.div> */}
 
-          <motion.h1 variants={fadeInUp} className="text-5xl md:text-8xl font-bold mb-6 tracking-tight">
+          {/* <motion.h1 variants={fadeInUp} className="text-5xl md:text-8xl font-bold mb-6 tracking-tight">
             <span className="bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-gray-500 drop-shadow-sm">
               {dict.blog.title}
             </span>
-          </motion.h1>
+          </motion.h1> */}
 
           <motion.p variants={fadeInUp} className="text-xl md:text-2xl text-gray-400 mb-10 font-light tracking-wide max-w-2xl mx-auto leading-relaxed">
             {dict.blog.subtitle}

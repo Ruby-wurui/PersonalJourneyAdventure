@@ -76,7 +76,7 @@ export default function LanguageSwitcher({ currentLocale }: { currentLocale: Loc
             {/* Dropdown Menu */}
             {isOpen && (
                 <div className="absolute right-0 mt-2 w-40 rounded-lg bg-gray-900/95 backdrop-blur-sm 
-                              border border-gray-700/50 shadow-xl overflow-hidden z-50">
+                              border border-gray-700/50 shadow-xl overflow-hidden z-[100]">
                     {locales.map((locale) => (
                         <button
                             key={locale}

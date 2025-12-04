@@ -3,10 +3,19 @@ import { NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "");
 
 export async function POST(req: Request) {
     try {
+        const apiKey = process.env.GEMINI_API_KEY || process.env.NEXT_PUBLIC_GEMINI_API_KEY;
+        if (!apiKey) {
+            console.error("GEMINI_API_KEY (or NEXT_PUBLIC_GEMINI_API_KEY) is not defined in environment variables");
+            return NextResponse.json(
+                { error: "Server configuration error: API key missing" },
+                { status: 500 }
+            );
+        }
+
+        const genAI = new GoogleGenerativeAI(apiKey);
         const { messages } = await req.json();
         const prompt = messages[messages.length - 1].text;
 

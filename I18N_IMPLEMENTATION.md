@@ -163,25 +163,7 @@ export default function ClientComponent({ locale, dict }: Props) {
 }
 ```
 
-## 🔄 数据流
 
-```
-用户访问 /en
-    ↓
-middleware 检测并允许通过
-    ↓
-app/[locale]/page.tsx (服务端)
-    ↓
-getDictionary('en') 加载英文翻译
-    ↓
-传递给 InteractiveHomepageWrapper (客户端)
-    ↓
-传递给 InteractiveHomepage (客户端)
-    ↓
-传递给 NavigationBarI18n (客户端)
-    ↓
-渲染英文界面
-```
 
 ## 🎨 界面效果
 

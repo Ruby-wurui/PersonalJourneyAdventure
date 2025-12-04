@@ -5,6 +5,7 @@ import yimiAppImg from '@/assets/projects/yimi_app.png'
 import yimiWebImg from '@/assets/projects/yimi_web.png'
 import cloudChineseImg from '@/assets/projects/cloud_chinese.png'
 import yueluoImg from '@/assets/projects/yueluo.jpg'
+import readingReportLogo from '@/assets/projects/reading_report_logo.png'
 
 export interface ProjectData {
     title: string
@@ -18,25 +19,32 @@ export const getProjectsData = (locale: 'en' | 'zh'): ProjectData[] => {
     const translations = {
         en: [
             {
+                title: 'Student Reading Report',
+                description: 'Transforming complex data into insights understandable by ordinary people (parents/teachers).',
+                image: readingReportLogo,
+                tags: ['Data Visualization', 'Education', 'User Insight'],
+                link: '/projects/reading_report'
+            },
+            {
                 title: 'YiMi Reading (APP)',
                 description: 'A fun reading tool designed to make reading engaging for young readers. It provides rich reading resources and interactive elements that encourage children to think while they read, completing a meaningful reading journey.',
                 image: yimiAppImg,
                 tags: ['Mobile App', 'Education', 'Gamification'],
-                link: '#'
+                link: '/projects/yimireading'
             },
             {
                 title: 'YiMi Reading (Website)',
                 description: 'Refactored the website to align with the company\'s strategic goals. Shifted the target audience from students to teachers, providing resources specifically tailored to educators\' needs.',
                 image: yimiWebImg,
                 tags: ['Web Development', 'Refactoring', 'B2B'],
-                link: '#'
+                link: '/projects/yimi_teacher'
             },
             {
                 title: 'Cloud Chinese',
                 description: 'A bridge connecting Chinese and foreign schools. It serves as a witness to the friendship between students from different cultures and a platform for mutual cultural learning and exchange.',
                 image: cloudChineseImg,
                 tags: ['Platform', 'Cultural Exchange', 'Education'],
-                link: '#'
+                link: '/projects/cloud_chinese'
             },
             {
                 title: 'Yue Luo Children\'s Book Club',
@@ -48,25 +56,32 @@ export const getProjectsData = (locale: 'en' | 'zh'): ProjectData[] => {
         ],
         zh: [
             {
+                title: '学生阅读报告',
+                description: '把复杂的数据变成普通人（家长/老师）能看懂的洞察',
+                image: readingReportLogo,
+                tags: ['数据可视化', '教育', '用户洞察'],
+                link: '/projects/reading_report'
+            },
+            {
                 title: '一米阅读 (APP)',
                 description: '这是一款趣味阅读工具，丰富的阅读资源让阅读不再枯燥，小读者们可以边读边思考完成阅读之旅。',
                 image: yimiAppImg,
                 tags: ['移动应用', '教育', '游戏化'],
-                link: '#'
+                link: '/projects/yimireading'
             },
             {
                 title: '一米阅读 (网站)',
                 description: '跟随公司运营方向和战略目标重构网站，目标用户由学生转为老师，网站资源更换为老师所需要的资源。',
                 image: yimiWebImg,
                 tags: ['网站开发', '重构', 'B2B'],
-                link: '#'
+                link: '/projects/yimi_teacher'
             },
             {
                 title: '云上华文',
                 description: '一个沟通中外学校的桥梁，是中外学生友谊的见证，也是中外文化互相学习的平台。',
                 image: cloudChineseImg,
                 tags: ['平台', '文化交流', '教育'],
-                link: '#'
+                link: '/projects/cloud_chinese'
             },
             {
                 title: '阅落童书会',

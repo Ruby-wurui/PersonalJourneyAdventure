@@ -41,10 +41,13 @@ export async function PUT(
     try {
         const body = await request.json();
 
+        const authHeader = request.headers.get('Authorization');
+
         const response = await fetch(`${API_BASE_URL}/api/blog/posts/${params.id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
+                ...(authHeader && { 'Authorization': authHeader }),
             },
             body: JSON.stringify(body),
         });
@@ -72,11 +75,14 @@ export async function DELETE(
     const authError = requireAdmin(request);
     if (authError) return authError;
 
+    const authHeader = request.headers.get('Authorization');
+
     try {
         const response = await fetch(`${API_BASE_URL}/api/blog/posts/${params.id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
+                ...(authHeader && { 'Authorization': authHeader }),
             },
         });
 

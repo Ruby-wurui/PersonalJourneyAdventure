@@ -27,9 +27,12 @@ interface Post {
     featured: boolean;
 }
 
+import { useAuth } from '@/lib/auth-context';
+
 export default function EditBlogPage() {
     const router = useRouter();
     const params = useParams();
+    const { token } = useAuth();
     const [post, setPost] = useState<Post | null>(null);
     const [isLoading, setIsLoading] = useState(false);
     const [isLoadingPost, setIsLoadingPost] = useState(true);
@@ -70,6 +73,7 @@ export default function EditBlogPage() {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`,
                 },
                 body: JSON.stringify(postData),
             });
@@ -103,6 +107,9 @@ export default function EditBlogPage() {
         try {
             const response = await fetch(`/api/blog/posts/${post.id}`, {
                 method: 'DELETE',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                },
             });
 
             if (!response.ok) {
