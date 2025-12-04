@@ -66,12 +66,12 @@ const NavigationBarI18n: React.FC<NavigationBarI18nProps> = ({
             icon: '🌌',
             description: dict.nav.universe_desc
         },
-        {
-            name: dict.nav.home,
-            href: `/${locale}/laboratory`,
-            icon: '🏠',
-            description: dict.nav.home_desc
-        },
+        // {
+        //     name: dict.nav.home,
+        //     href: `/${locale}/laboratory`,
+        //     icon: '🏠',
+        //     description: dict.nav.home_desc
+        // },
         {
             name: dict.nav.about,
             href: `/${locale}/about`,
