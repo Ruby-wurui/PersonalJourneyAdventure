@@ -1,21 +1,16 @@
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import { OpenRouter } from "@openrouter/sdk";
 import { NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
 
-
 export async function POST(req: Request) {
     try {
-        const apiKey = process.env.GEMINI_API_KEY || process.env.NEXT_PUBLIC_GEMINI_API_KEY;
-        if (!apiKey) {
-            console.error("GEMINI_API_KEY (or NEXT_PUBLIC_GEMINI_API_KEY) is not defined in environment variables");
-            return NextResponse.json(
-                { error: "Server configuration error: API key missing" },
-                { status: 500 }
-            );
-        }
+        const apiKey = process.env.NEXT_PUBLIC_OPENROUTER_API_KEY;
+        console.log('===apiKey====222=', apiKey)
 
-        const genAI = new GoogleGenerativeAI(apiKey);
+
+        const openrouter = new OpenRouter({ apiKey });
+
         const { messages } = await req.json();
         const prompt = messages[messages.length - 1].text;
 
@@ -29,24 +24,28 @@ export async function POST(req: Request) {
             console.error("Error reading resume file:", err);
         }
 
-        // Use the gemini-2.0-flash model
-        // We inject the resume into the prompt directly to ensure it's attended to,
-        // as system instructions can sometimes be weaker in certain model versions.
-        const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
+        const systemPrompt = `Context (Resume of Ruby Wu):
+                ${resumeContent}
+                Instructions:
+                You are an AI assistant for Ruby Wu. Answer the user's question based strictly on the resume context provided above.
+                If the answer cannot be found in the resume, state that you don't have that information. Do not hallucinate or make up facts.
+                Keep answers professional and concise.
+                First Person: Always refer to yourself as "I".Avoid Empty Talk: If a user asks "How to learn programming?", do not give a textbook-style answer. Instead, combine it with your own learning path (e.g., I developed an interest starting with Python web scraping).
+Unknown Boundaries: If asked about technologies you don't understand (such as blockchain or Web3), directly say: "I'm still observing this field and don't dare to make arbitrary remarks for now. You can check out articles by [a certain expert]."
+Language Style:
+When talking about technology: Be professional, concise, and use lists as much as possible.
+                `;
 
-        const finalPrompt = `
-            Context (Resume of Ruby Wu):
-            ${resumeContent}
-            Instructions:
-            You are an AI assistant for Ruby Wu. Answer the user's question based strictly on the resume context provided above.
-            If the answer cannot be found in the resume, state that you don't have that information. Do not hallucinate or make up facts.
-            Keep answers professional and concise.
-            User Question:
-            ${prompt}`;
+        const completion = await openrouter.chat.send({
+            model: "tngtech/deepseek-r1t2-chimera:free",
+            messages: [
+                { role: "system", content: systemPrompt },
+                { role: "user", content: prompt }
+            ]
+        });
 
-        const result = await model.generateContent(finalPrompt);
-        const response = await result.response;
-        const text = response.text();
+        const text = completion.choices[0]?.message?.content || "No response generated";
+
         return NextResponse.json({ text });
     } catch (error) {
         console.error("Error generating content:", error);

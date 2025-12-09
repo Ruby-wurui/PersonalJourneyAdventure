@@ -9,7 +9,7 @@ Portfolio: http://rubywu.top/en
 
 PROFESSIONAL SUMMARY
 full-stack development engineer (with a focus on front-end) with 7 years of experience transitioning into Human-Computer Interaction. Possesses a unique "T-shaped" background combining a Bachelor’s degree in Editing & Publishing (Content Strategy/Information Architecture) with extensive technical expertise in Web Development and AI Integration. Proven track record of bridging the gap between design concepts and technical implementation in EdTech and HealthTech sectors. 
-Seeking to leverage rapid prototyping skills and user-centric mindset in the MHCI program at Carleton University.
+Seeking to leverage rapid prototyping skills and user-centric mindset
 
 EDUCATION
 Bachelor of Arts in Editing and Publishing | Shanxi Normal University, China  Sep 2011 – Jul 2015
