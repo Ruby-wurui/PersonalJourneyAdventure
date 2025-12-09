@@ -1,17 +1,49 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
-import idleImg from "@/assets/astronaunt/astronaut_idle.png";
-import waveImg from "@/assets/astronaunt/astronaut_trans.png";
-import kissImg from "@/assets/astronaunt/astronaut_kiss.png";
 import AiChatDialog from "./AiChatDialog";
+
+// Sprite configuration: 12 frames in 4x3 grid (582x582 image)
+const SPRITE_COLS = 4;
+const SPRITE_ROWS = 3;
+const SPRITE_FRAMES = 12;
+const FRAME_DURATION = 600; // ms per frame
+const DISPLAY_SIZE = 80; // display size in pixels
 
 const AiAssistantButton = () => {
     const [isHovered, setIsHovered] = useState(false);
     const [isChatOpen, setIsChatOpen] = useState(false);
     const [isWaving, setIsWaving] = useState(false);
+    const [currentFrame, setCurrentFrame] = useState(0);
+    const animationRef = useRef<NodeJS.Timeout | null>(null);
+
+    // Sprite animation loop - pause when chat is open
+    useEffect(() => {
+        if (isChatOpen) {
+            // Stop animation when chat is open
+            if (animationRef.current) {
+                clearInterval(animationRef.current);
+                animationRef.current = null;
+            }
+            return;
+        }
+
+        // Start animation when chat is closed
+        animationRef.current = setInterval(() => {
+            setCurrentFrame((prev) => (prev + 1) % SPRITE_FRAMES);
+        }, FRAME_DURATION);
+
+        return () => {
+            if (animationRef.current) {
+                clearInterval(animationRef.current);
+            }
+        };
+    }, [isChatOpen]);
+
+    // Calculate sprite position based on current frame (4x3 grid)
+    const col = currentFrame % SPRITE_COLS;
+    const row = Math.floor(currentFrame / SPRITE_COLS);
 
     // Random interval for appearing
     useEffect(() => {
@@ -22,7 +54,6 @@ const AiAssistantButton = () => {
 
         const showAssistant = () => {
             setIsWaving(true);
-            // Hide after 4 seconds
             setTimeout(() => {
                 if (!isChatOpen && !isHovered) {
                     setIsWaving(false);
@@ -30,15 +61,12 @@ const AiAssistantButton = () => {
             }, 4000);
         };
 
-        // Initial show
-        const initialTimer = setTimeout(showAssistant, 1000);
-
-        // Loop
+        const initialTimer = setTimeout(showAssistant, 12000);
         const loopInterval = setInterval(() => {
             if (!isChatOpen && !isHovered) {
                 showAssistant();
             }
-        }, 60000); // Every 60 seconds
+        }, 6000);
 
         return () => {
             clearTimeout(initialTimer);
@@ -46,44 +74,21 @@ const AiAssistantButton = () => {
         };
     }, [isChatOpen, isHovered]);
 
-    // Container variants
     const containerVariants = {
         peeking: {
-            x: 40, // Push right to show only half head
-            y: "-50%", // Keep vertically centered
+            x: 40,
+            y: "-50%",
             opacity: 1,
             transition: { type: "spring", stiffness: 200, damping: 20 }
         },
         visible: {
             x: 0,
-            y: "-50%", // Keep vertically centered
+            y: "-50%",
             opacity: 1,
             transition: { type: "spring", stiffness: 200, damping: 20 }
         }
     };
 
-    const waveVariants = {
-        wave: {
-            rotate: [0, 15, -10, 10, -5, 0],
-            transition: {
-                duration: 1.5,
-                repeat: Infinity,
-                repeatDelay: 1,
-                ease: "easeInOut"
-            }
-        },
-        idle: {
-            rotate: 0,
-            y: [0, -5, 0],
-            transition: {
-                duration: 2,
-                repeat: Infinity,
-                ease: "easeInOut"
-            }
-        }
-    };
-
-    // Determine current state
     const currentState = (isWaving || isChatOpen || isHovered) ? "visible" : "peeking";
 
     return (
@@ -115,20 +120,19 @@ const AiAssistantButton = () => {
                     )}
                 </AnimatePresence>
 
-                {/* Character */}
-                <motion.div
-                    className="relative w-20 h-20 md:w-20 md:h-20"
-                    animate={isChatOpen ? "idle" : "wave"}
-                    variants={waveVariants}
-                >
-                    <Image
-                        src={waveImg}
-                        alt="AI Assistant"
-                        fill
-                        className="object-contain drop-shadow-2xl"
-                        priority
+                {/* Sprite Animation Character - 4x3 grid */}
+                <div className="relative w-20 h-20 md:w-20 md:h-20 overflow-hidden drop-shadow-2xl">
+                    <div
+                        className="absolute"
+                        style={{
+                            width: `${SPRITE_COLS * DISPLAY_SIZE}px`,
+                            height: `${SPRITE_ROWS * DISPLAY_SIZE}px`,
+                            backgroundImage: `url('/Weixin Image_2025-12-09_231455_266.jpg')`,
+                            backgroundSize: '100% 100%',
+                            transform: `translate(-${col * DISPLAY_SIZE}px, -${row * DISPLAY_SIZE}px)`,
+                        }}
                     />
-                </motion.div>
+                </div>
             </motion.div>
         </>
     );
