@@ -35,22 +35,18 @@ export async function POST(req: Request) {
         const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
 
         const finalPrompt = `
-Context (Resume of Ruby Wu):
-${resumeContent}
-
-Instructions:
-You are an AI assistant for Ruby Wu. Answer the user's question based strictly on the resume context provided above.
-If the answer cannot be found in the resume, state that you don't have that information. Do not hallucinate or make up facts.
-Keep answers professional and concise.
-
-User Question:
-${prompt}
-`;
+            Context (Resume of Ruby Wu):
+            ${resumeContent}
+            Instructions:
+            You are an AI assistant for Ruby Wu. Answer the user's question based strictly on the resume context provided above.
+            If the answer cannot be found in the resume, state that you don't have that information. Do not hallucinate or make up facts.
+            Keep answers professional and concise.
+            User Question:
+            ${prompt}`;
 
         const result = await model.generateContent(finalPrompt);
         const response = await result.response;
         const text = response.text();
-
         return NextResponse.json({ text });
     } catch (error) {
         console.error("Error generating content:", error);

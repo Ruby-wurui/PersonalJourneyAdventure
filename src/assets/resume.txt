@@ -4,7 +4,7 @@ address: Beijing, China
 email: wurui3458@gmail.com
 phone: +86 150-1046-2956
 github: https://github.com/Ruby-wurui
-Portfolio: http://149.88.88.205:3000/
+Portfolio: http://rubywu.top/en
 
 
 PROFESSIONAL SUMMARY
@@ -13,22 +13,21 @@ Seeking to leverage rapid prototyping skills and user-centric mindset in the MHC
 
 EDUCATION
 Bachelor of Arts in Editing and Publishing | Shanxi Normal University, China  Sep 2011 – Jul 2015
-GPA: 3.56 (WES Certified)
-Relevant Coursework: Educational Psychology, Communication Theory, Web Editing, Visual Aesthetics, Information Organization.
-Note: Developed a foundational understanding of how users consume information and the psychology behind content interaction.
+GPA: 3.56 (WES Certified)
+Relevant Coursework: Educational Psychology, Communication Theory, Web Editing, Visual Aesthetics, Information Organization.
+Note: Developed a foundational understanding of how users consume information and the psychology behind content interaction.
 
 TECHNICAL & HCI SKILLS
-HCI & Design: Rapid Prototyping, Information Architecture, Accessibility (A11y), Responsive Design, User Flow Analysis, UI Implementation.
-Front-End Development: Vue.js  ecosystem (VuePress, Element UI), react next.js redux ecosystem, JavaScript/TypeScript, HTML5/CSS3, WebRTC.
-Back-End & Database: Node.js, Express.js, PostgreSQL, MySQL, Redis.
-AI & Human-AI Interaction: LLM Integration (ChatGPT, Claude), RAG (Retrieval-Augmented Generation), Prompt Engineering, AI Agent Workflows (n8n, Dify).
+HCI & Design: Rapid Prototyping, Information Architecture, Accessibility (A11y), Responsive Design, User Flow Analysis, UI Implementation.
+Front-End Development: Vue.js  ecosystem (VuePress, Element UI), react next.js redux ecosystem, JavaScript/TypeScript, HTML5/CSS3, WebRTC.
+Back-End & Database: Node.js, Express.js, PostgreSQL, MySQL, Redis.
+AI & Human-AI Interaction: LLM Integration (ChatGPT, Claude), RAG (Retrieval-Augmented Generation), Prompt Engineering, AI Agent Workflows (n8n, Dify).
 
 PROFESSIONAL EXPERIENCE
 Senior Front-End Engineer | Beijing Yimilan Technology Co., Ltd. (EdTech)
 Jun 2019 – Aug 2024
 Context: A leading K-12 reading education platform in China.
-
-User Experience Optimization: Led the front-end development of the "Yi Mi Reading" App (H5 pages),Yimi Reading Website and WeChat Mini Program. Collaborated closely with Product Managers and Designers to iterate on UI features, significantly improving user engagement for student users.
+User Experience Optimization: Led the front-end development of the "Yi Mi Reading" App (H5 pages),Yimi Reading Website and WeChat Mini Program. Collaborated closely with Product Managers and Designers to iterate on UI features, significantly improving user engagement for student users.
 Human-AI Interaction Project: Spearheaded the development of an internal AI-powered Q&A system based on Dify. Designed the interaction flow that allowed employees to retrieve corporate knowledge instantly, reducing information retrieval time by 30%。
 Performance & Accessibility: Refactored legacy codebases for the official website, improving page load speeds and ensuring smoother interactions across different devices (Mobile/Desktop).
 Visual Data Management: Developed the internal OA and BI (Business Intelligence) systems, transforming complex operational data into intuitive visual dashboards for decision-makers.
@@ -48,12 +47,12 @@ Jul 2015 – Oct 2017
 Responsible for the information architecture and content updates of the company's official website, sparking an initial interest in web technologies.
 
 SELECTED PROJECTS
-Personal AI Knowledge Base: Built a customized knowledge management tool using RAG technology. Explored how AI Agents can assist in personal information organization. (Link: http://149.88.88.205:3000/)
-Chinese Language Learning Platform: Developed the front-end for Cloud Chinese (https://www.bravochinese.net), focusing on cross-cultural design patterns and accessibility for global learners.
+Personal AI Knowledge Base: Built a customized knowledge management tool using RAG technology. Explored how AI Agents can assist in personal information organization. (Link: http://149.88.88.205:3000/)
+Chinese Language Learning Platform: Developed the front-end for Cloud Chinese (https://www.bravochinese.net), focusing on cross-cultural design patterns and accessibility for global learners.
 
 LANGUAGES
-English: IELTS 7.0
-Chinese: Native.
+English: IELTS 7.0
+Chinese: Native.
 
 PROFESSIONAL EXPERIENCE
 
@@ -97,3 +96,19 @@ Jul 2015 – Oct 2017
 Managed the lifecycle of book publishing, from manuscript editing to final proofreading.
 
 Responsible for the information architecture and content updates of the company's official website, sparking an initial interest in web technologies.
+
+My career path has been anything but traditional. **Although** I initially earned my degree in Editing and Publishing, my fascination with how information is consumed online led me to transition into technology. Over the past seven years, I have evolved from a self-taught coder into a Senior Front-End Engineer, specializing in the fast-paced EdTech and HealthTech sectors. 
+
+I have reached a ceiling in pure development and am eager to pivot from **"building the product"** to **"driving the digital strategy."**
+
+Throughout my career, I have often acted as the bridge between complex algorithms and human users. My tenure at a medical AI startup was a defining experience. We possessed cutting-edge algorithms for cancer screening, yet the doctors were reluctant to use our software due to its counterintuitive interface. **It dawned on me then that digital transformation is not merely about deploying the latest tech stack; it is about seamless integration into existing workflows.** Consequently, I took the initiative to overhaul the UI for the Lung CT system, working directly with clinicians to ensure the data visualization genuinely supported their diagnostic process.
+
+Currently, at Beijing Yimilan Technology, I have moved beyond writing code to solving systemic business inefficiencies. **While my official title is Senior Engineer, I often find myself wearing the hat of a Product Manager.** A recent example is when I architected an internal AI Q&A system using Dify and LLMs. By connecting our fragmented corporate knowledge base with a unified AI interface, I managed to cut down information retrieval time by 30%. This project was a microcosm of what I want to do on a larger scale: leveraging emerging technologies to eliminate organizational friction.
+
+**However, being "in the trenches" of coding has its limitations.** I possess the technical know-how to implement solutions, yet I often feel the need for a more robust theoretical framework to navigate high-level decision-making. I want to understand the "why" behind the "how."
+
+ Its interdisciplinary curriculum appeals to me because it treats technology as a means to an end, rather than the end itself.
+
+I am particularly excited to bring my practical experience from China’s highly competitive mobile internet market to your diverse cohort.
+
+I am ready to leverage my unique blend of humanities background and engineering expertise to help organizations navigate the complexities of the digital age.
