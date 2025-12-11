@@ -37,6 +37,20 @@ const staggerContainer = {
     }
 }
 
+// 从底部快速淡入向上微移
+const slideInFromBottom = {
+    hidden: { opacity: 0, y: 60 },
+    visible: (index: number) => ({
+        opacity: 1,
+        y: 0,
+        transition: {
+            duration: 0.5,
+            delay: index * 0.1,
+            ease: [0.25, 0.46, 0.45, 0.94]
+        }
+    })
+}
+
 
 
 export default function SkillsPageClient({ dict }: SkillsPageClientProps) {
@@ -127,13 +141,21 @@ export default function SkillsPageClient({ dict }: SkillsPageClientProps) {
                 {/* Skills Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
                     {skillsData.map((category, index) => (
-                        <div key={index} className="h-full">
+                        <motion.div
+                            key={index}
+                            className="h-full"
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, margin: "-50px" }}
+                            variants={slideInFromBottom}
+                            custom={index}
+                        >
                             <TechListCard
                                 category={category.category}
                                 items={category.items}
                                 index={index}
                             />
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
 

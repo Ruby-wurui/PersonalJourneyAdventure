@@ -127,7 +127,7 @@ const AiAssistantButton = () => {
                         style={{
                             width: `${SPRITE_COLS * DISPLAY_SIZE}px`,
                             height: `${SPRITE_ROWS * DISPLAY_SIZE}px`,
-                            backgroundImage: `url('/Weixin Image_2025-12-09_231455_266.jpg')`,
+                            backgroundImage: `url('/生成透明背景图片.png')`,
                             backgroundSize: '100% 100%',
                             transform: `translate(-${col * DISPLAY_SIZE}px, -${row * DISPLAY_SIZE}px)`,
                         }}

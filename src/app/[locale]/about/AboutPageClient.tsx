@@ -38,6 +38,32 @@ const staggerContainer = {
     }
 }
 
+// 从右侧滑入（用于右侧卡片）
+const slideInFromRight = {
+    hidden: { opacity: 0, x: 80 },
+    visible: {
+        opacity: 1,
+        x: 0,
+        transition: {
+            duration: 1.5,
+            ease: [0.25, 0.46, 0.45, 0.94]
+        }
+    }
+}
+
+// 从左侧滑入（用于左侧卡片）
+const slideInFromLeft = {
+    hidden: { opacity: 0, x: -80 },
+    visible: {
+        opacity: 1,
+        x: 0,
+        transition: {
+            duration: 1.5,
+            ease: [0.25, 0.46, 0.45, 0.94]
+        }
+    }
+}
+
 // --- 3D Tilt Card Component ---
 const TimelineCard = ({ children, className = "" }: { children: React.ReactNode, className?: string }) => {
     const mouseX = useMotionValue(0);
@@ -202,7 +228,10 @@ export default function AboutPageClient({ dict }: AboutPageClientProps) {
                         <div className="relative grid md:grid-cols-2 gap-8 mb-24">
                             <div className="hidden md:block"></div>
                             <motion.div
-                                variants={fadeInUp}
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ once: true, margin: "-50px" }}
+                                variants={slideInFromRight}
                                 className="relative"
                             >
                                 {/* Node & Connector */}
@@ -244,7 +273,10 @@ export default function AboutPageClient({ dict }: AboutPageClientProps) {
                         {/* Position 1 - Left Side */}
                         <div className="relative grid md:grid-cols-2 gap-8 mb-24">
                             <motion.div
-                                variants={fadeInUp}
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ once: true, margin: "-50px" }}
+                                variants={slideInFromLeft}
                                 className="relative md:text-right"
                             >
                                 {/* Node & Connector */}
@@ -288,7 +320,10 @@ export default function AboutPageClient({ dict }: AboutPageClientProps) {
                         <div className="relative grid md:grid-cols-2 gap-8 mb-24">
                             <div className="hidden md:block"></div>
                             <motion.div
-                                variants={fadeInUp}
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ once: true, margin: "-50px" }}
+                                variants={slideInFromRight}
                                 className="relative"
                             >
                                 {/* Node & Connector */}
@@ -330,7 +365,10 @@ export default function AboutPageClient({ dict }: AboutPageClientProps) {
                         {/* Position 3 - Left Side */}
                         <div className="relative grid md:grid-cols-2 gap-8">
                             <motion.div
-                                variants={fadeInUp}
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ once: true, margin: "-50px" }}
+                                variants={slideInFromLeft}
                                 className="relative md:text-right"
                             >
                                 {/* Node & Connector */}
