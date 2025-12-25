@@ -52,37 +52,41 @@ interface ClawProps {
 }
 
 /**
- * Metal material for claw body - 明亮版本
+ * Metal material for claw body - 超明亮版本
  */
 function useClawMetalMaterial() {
     return useMemo(() => new THREE.MeshStandardMaterial({
-        color: 0xccccdd, // 明亮的银色
-        roughness: 0.2,
-        metalness: 0.95,
+        color: 0xf0f0ff, // 非常明亮的银白色
+        emissive: 0x4444ff, // 添加蓝色发光
+        emissiveIntensity: 0.3, // 轻微发光
+        roughness: 0.15,
+        metalness: 0.98,
     }), []);
 }
 
 /**
- * Neon accent material for claw highlights - 更亮
+ * Neon accent material for claw highlights - 超亮
  */
 function useNeonAccentMaterial(color: number) {
     return useMemo(() => new THREE.MeshStandardMaterial({
         color: color,
         emissive: color,
-        emissiveIntensity: 3.0, // 增加发光强度
-        roughness: 0.1,
-        metalness: 0.5,
+        emissiveIntensity: 5.0, // 大幅增加发光强度
+        roughness: 0.05,
+        metalness: 0.6,
     }), [color]);
 }
 
 /**
- * Cable material - 明亮版本
+ * Cable material - 超明亮版本
  */
 function useCableMaterial() {
     return useMemo(() => new THREE.MeshStandardMaterial({
-        color: 0x888899, // 明亮的灰色
-        roughness: 0.4,
-        metalness: 0.8,
+        color: 0xaaaacc, // 更明亮的灰蓝色
+        emissive: 0x3333ff, // 添加蓝色发光
+        emissiveIntensity: 0.2, // 轻微发光
+        roughness: 0.3,
+        metalness: 0.85,
     }), []);
 }
 
@@ -327,7 +331,7 @@ export const Claw = forwardRef<ClawRef, ClawProps>(function Claw(
                     <meshStandardMaterial
                         color={isGrabbing ? neonColors.pink : neonColors.cyan}
                         emissive={isGrabbing ? neonColors.pink : neonColors.cyan}
-                        emissiveIntensity={2}
+                        emissiveIntensity={4}
                     />
                 </mesh>
             </group>
