@@ -1,0 +1,175 @@
+# Implementation Plan
+
+- [x] 1. Set up project structure and install dependencies
+  - Create game directory structure under `src/app/[locale]/game/`
+  - Install Three.js, React-Three-Fiber, @react-three/drei, @react-three/postprocessing
+  - Install cannon-es, @react-three/cannon for 3D physics
+  - Install MediaPipe Hands, Howler.js
+  - Configure TypeScript types for all libraries
+  - _Requirements: 1.1, 5.1_
+
+- [x] 2. Implement core game state and data models
+  - [x] 2.1 Create TypeScript interfaces and types
+    - Define GameState, Capsule, GameSession, SerializedGameState interfaces
+    - Define ClawState, ControlMode, GamePhase enums
+    - _Requirements: 1.1, 10.1_
+  - [x] 2.2 Implement game state serialization/deserialization functions
+    - Create `serializeGameState()` and `deserializeGameState()` functions
+    - Ensure JSON output is valid and parseable
+    - _Requirements: 10.1, 10.2, 10.3_
+  - [x] 2.3 Create Zustand store for game state management
+    - Implement state actions (startGame, moveClaw, triggerGrab, etc.)
+    - _Requirements: 1.1_
+
+- [x] 3. Implement Loot Table with pity system
+  - [x] 3.1 Create LootTable class with probability calculation
+    - Implement base success rate configuration (30%)
+    - Implement consecutive failure tracking
+    - Implement pity guarantee (100% after 5 fails)
+    - _Requirements: 4.2, 4.5_
+
+- [x] 4. Implement 3D Claw Machine Scene
+  - [x] 4.1 Create base Three.js scene with React-Three-Fiber
+    - Set up Canvas component with camera and lighting
+    - Configure dark background with neon accent colors
+    - _Requirements: 9.1_
+  - [x] 4.2 Create claw machine enclosure mesh
+    - Build transparent glass walls
+    - Create machine base and top rail
+    - Add neon light strips (pink/cyan PointLights)
+    - _Requirements: 9.1, 9.3_
+  - [x] 4.3 Create drop zone mesh
+    - Position drop zone at corner of machine
+    - Add glowing indicator for target area
+    - _Requirements: 5.1_
+
+- [x] 5. Implement 3D Claw Controller
+  - [x] 5.1 Create Claw mesh group
+    - Build claw base and three finger meshes
+    - Implement finger open/close animations
+    - _Requirements: 4.1, 4.3, 4.4_
+  - [x] 5.2 Implement claw movement logic
+    - Implement velocity-based movement with speed clamping
+    - Implement lerp smoothing for position updates
+    - Implement 3D boundary constraints
+    - _Requirements: 3.1, 3.2, 3.3, 3.4_
+  - [x] 5.3 Implement claw descent/ascent animations
+    - Animate Y-axis movement for grab sequence
+    - _Requirements: 4.1_
+
+- [x] 6. Implement Cannon.js Physics
+  - [x] 6.1 Set up physics world with @react-three/cannon
+    - Configure gravity and collision detection
+    - Create wall boundary bodies
+    - _Requirements: 7.1_
+  - [x] 6.2 Create capsule physics bodies
+    - Generate spherical capsule bodies with random positions
+    - Sync physics bodies with Three.js meshes
+    - Implement different rarity visuals (common/rare/epic)
+    - _Requirements: 7.1, 7.3_
+  - [x] 6.3 Implement capsule-to-claw attachment
+    - Create constraint for "magnetic" grab effect
+    - Implement detachment for release/slip animations
+    - _Requirements: 4.3, 4.4_
+
+- [x] 7. Implement Post-Processing Effects
+  - [x] 7.1 Add bloom effect for neon glow
+    - Configure UnrealBloomPass for neon lighting
+    - _Requirements: 9.1, 9.2_
+  - [x] 7.2 Add glitch effect
+    - Implement GlitchPass for cyberpunk aesthetic
+    - Trigger on special events
+    - _Requirements: 9.2_
+  - [x] 7.3 Implement screen shake effect
+    - Create camera shake on claw-capsule contact
+    - _Requirements: 7.2_
+  - [x] 7.4 Add particle effects
+    - Create success explosion particles
+    - Create glowing trail for grabbed capsules
+    - _Requirements: 4.6, 5.3_
+
+- [x] 8. Implement Hand Tracker with MediaPipe
+  - [x] 8.1 Create HandTracker class with MediaPipe integration
+    - Set up WebWorker for hand tracking processing
+    - Implement palm center coordinate extraction
+    - Implement gesture classification (palm/fist/unknown)
+    - _Requirements: 2.1, 2.2, 2.3, 2.4, 2.7_
+  - [x] 8.2 Implement gesture debounce logic
+    - Track consecutive fist frames
+    - Trigger grab only after 5 consecutive fist detections
+    - _Requirements: 2.5_
+  - [x] 8.3 Implement fist-to-palm release detection
+    - Track gesture state transitions
+    - Trigger release on fist-to-palm transition
+    - _Requirements: 2.6_
+  - [x] 8.4 Map palm coordinates to 3D claw position
+    - Map palm X to claw X-axis
+    - Map palm Y to claw Z-axis (depth)
+    - Apply lerp smoothing
+    - _Requirements: 2.4, 3.1_
+
+- [x] 9. Implement Score and Timer Managers
+  - [x] 9.1 Create ScoreManager
+    - Implement drop zone collision detection
+    - Implement score increment logic
+    - _Requirements: 5.1, 5.2_
+  - [x] 9.2 Create TimerManager
+    - Implement 30-second countdown
+    - Implement MM:SS format display
+    - _Requirements: 6.1, 6.2_
+
+- [x] 10. Implement Game State Machine
+  - [x] 10.1 Create GameStateMachine
+    - Implement state transitions (idle → calibrating → playing → grabbing → releasing → results)
+    - Integrate ClawController, LootTable, ScoreManager, TimerManager
+    - _Requirements: 1.1, 1.2, 1.3, 1.4, 1.5, 6.4, 6.5_
+  - [x] 10.2 Implement contextual prompts for each state
+    - Define prompt messages for each game phase
+    - _Requirements: 8.4_
+
+- [x] 11. Implement HUD Components
+  - [x] 11.1 Create HUD overlay with React components
+    - Implement score display (top-right)
+    - Implement timer display (top-center) with red color at 10s
+    - Implement status indicator (Ready/Lost)
+    - _Requirements: 8.1, 8.2, 8.5, 6.3_
+  - [x] 11.2 Implement contextual prompt display
+    - Show dynamic prompts based on game state
+    - Apply cyberpunk styling (neon text, glitch effects)
+    - _Requirements: 8.4_
+  - [x] 11.3 Implement picture-in-picture webcam feed
+    - Display webcam video in corner
+    - Overlay hand skeleton visualization
+    - _Requirements: 8.3_
+
+- [x] 12. Implement Audio Manager
+  - [x] 12.1 Create AudioManager class with Howler.js
+    - Set up BGM (synthwave style)
+    - Set up sound effects (servo, grab, success, fail, 8-bit coin)
+    - _Requirements: 9.4_
+  - [x] 12.2 Integrate audio triggers with game events
+    - Play servo sound on claw movement
+    - Play success/fail sounds on grab result
+    - _Requirements: 3.5, 5.3, 5.4_
+
+- [x] 13. Implement Main Game Page
+  - [x] 13.1 Create game page component
+    - Set up Next.js page at `src/app/[locale]/game/page.tsx`
+    - Create client component wrapper for Three.js
+    - Integrate all managers and 3D scene
+    - _Requirements: 1.1_
+  - [x] 13.2 Implement mode selection UI
+    - Create start screen with gesture/default mode buttons
+    - Handle webcam permission flow
+    - Style with cyberpunk theme
+    - _Requirements: 1.2, 1.3, 1.4, 1.5_
+  - [x] 13.3 Implement results screen
+    - Display final score with neon styling
+    - Provide play again option
+    - _Requirements: 6.5_
+
+- [-] 14. Implement mouse/keyboard controls for default mode
+  - [-] 14.1 Create input handlers
+    - Implement mouse X/Y position tracking with deadzone
+    - Implement keyboard controls (WASD/arrows for movement, space for grab)
+    - _Requirements: 1.5, 3.2_
