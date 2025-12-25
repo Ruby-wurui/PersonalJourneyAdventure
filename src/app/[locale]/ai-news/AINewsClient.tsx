@@ -44,11 +44,11 @@ export default function AINewsClient({ dict, locale }: AINewsClientProps) {
             setLoading(true);
             try {
                 // Fetch latest news
-                const latestResponse = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/ai-news?limit=50`);
+                const latestResponse = await fetch(`http://127.0.0.1:30001/api/ai-news?limit=50`);
                 const latestData = await latestResponse.json();
 
                 // Fetch hot news
-                const hotResponse = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/ai-news?limit=5&sort=hot`);
+                const hotResponse = await fetch(`http://127.0.0.1:30001/api/ai-news?limit=5&sort=hot`);
                 const hotData = await hotResponse.json();
 
                 if (latestData.success && hotData.success) {
