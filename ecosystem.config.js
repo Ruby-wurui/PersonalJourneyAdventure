@@ -8,8 +8,8 @@ module.exports = {
     env: {
       NODE_ENV: 'production',
       PORT: 3000,
-      NEXT_PUBLIC_BACKEND_URL: 'http://149.88.88.205:4001',
-      NEXT_PUBLIC_SOCKET_URL: 'http://149.88.88.205:4001'
+      NEXT_PUBLIC_BACKEND_URL: 'https://rubywu.top',
+      NEXT_PUBLIC_SOCKET_URL: 'https://rubywu.top'
     },
     error_file: './logs/pm2-error.log',
     out_file: './logs/pm2-out.log',
