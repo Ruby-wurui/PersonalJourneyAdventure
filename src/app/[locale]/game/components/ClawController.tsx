@@ -15,6 +15,7 @@ import { useRef, useEffect } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 import { Claw, ClawRef } from './Claw';
+import { ClawEffects } from './ClawEffects';
 import { useGameStore } from '../store/gameStore';
 import {
     DEFAULT_CLAW_CONFIG,
@@ -208,6 +209,14 @@ export function ClawController({
                 ref={clawRef}
                 clawState={clawState}
                 isGrabbing={clawState === 'descending' || clawState === 'holding'}
+            />
+            {/* Add claw effects */}
+            <ClawEffects
+                clawPosition={[
+                    currentPositionRef.current.x,
+                    currentPositionRef.current.y,
+                    currentPositionRef.current.z
+                ]}
             />
         </group>
     );

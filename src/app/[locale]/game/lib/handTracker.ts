@@ -26,7 +26,7 @@ export const DEFAULT_HAND_TRACKER_CONFIG: HandTrackerConfig = {
 };
 
 // Debounce threshold for fist gesture (Property 2)
-export const FIST_DEBOUNCE_FRAMES = 3;  // Reduced from 5 for faster response
+export const FIST_DEBOUNCE_FRAMES = 2;  // Reduced to 2 for faster response
 
 // Landmark indices for gesture detection
 const WRIST = 0;
@@ -97,26 +97,51 @@ export function classifyGesture(landmarks: NormalizedLandmarkList): GestureType 
     const ringDist = landmarkDistance(landmarks[RING_TIP], palmCenter);
     const pinkyDist = landmarkDistance(landmarks[PINKY_TIP], palmCenter);
 
+    // Also check MCP to fingertip distances for better curl detection
+    const indexCurl = landmarkDistance(landmarks[INDEX_TIP], landmarks[INDEX_MCP]);
+    const middleCurl = landmarkDistance(landmarks[MIDDLE_TIP], landmarks[MIDDLE_MCP]);
+    const ringCurl = landmarkDistance(landmarks[RING_TIP], landmarks[RING_MCP]);
+    const pinkyCurl = landmarkDistance(landmarks[PINKY_TIP], landmarks[PINKY_MCP]);
+
     // Thresholds for gesture classification (normalized coordinates)
-    // Lowered thresholds for higher sensitivity
-    const EXTENDED_THRESHOLD = 0.12; // Finger is extended if tip is far from palm
-    const CURLED_THRESHOLD = 0.13;   // Finger is curled if tip is close to palm
+    const EXTENDED_THRESHOLD = 0.12;  // Finger is extended if tip is far from palm
+    const CURL_LENGTH_THRESHOLD = 0.12; // Finger curl length threshold (increased for easier fist detection)
 
     // Count extended and curled fingers (excluding thumb for more reliable detection)
     const fingerDistances = [indexDist, middleDist, ringDist, pinkyDist];
+    const fingerCurls = [indexCurl, middleCurl, ringCurl, pinkyCurl];
+
     const extendedCount = fingerDistances.filter(d => d > EXTENDED_THRESHOLD).length;
-    const curledCount = fingerDistances.filter(d => d < CURLED_THRESHOLD).length;
+    const curledCount = fingerCurls.filter(d => d < CURL_LENGTH_THRESHOLD).length;
 
-    // Palm: At least 2 fingers extended (more lenient)
-    if (extendedCount >= 2) {
-        return 'palm';
-    }
+    // Calculate average distance for adaptive thresholding
+    const avgDistance = fingerDistances.reduce((sum, d) => sum + d, 0) / fingerDistances.length;
+    const avgCurl = fingerCurls.reduce((sum, d) => sum + d, 0) / fingerCurls.length;
 
-    // Fist: At least 2 fingers curled (more lenient)
-    if (curledCount >= 2) {
+    // Debug logging (can be removed in production)
+    console.log('[Gesture Detection]', {
+        extendedCount,
+        curledCount,
+        avgDistance: avgDistance.toFixed(3),
+        avgCurl: avgCurl.toFixed(3),
+        distances: fingerDistances.map(d => d.toFixed(3)),
+        curls: fingerCurls.map(d => d.toFixed(3)),
+    });
+
+    // Fist: At least 2 fingers curled OR average curl is small OR average distance is very low
+    // Check fist FIRST to prioritize grab action
+    if (curledCount >= 2 || avgCurl < 0.11 || avgDistance < 0.11) {
+        console.log('[Gesture] ✊ FIST detected');
         return 'fist';
     }
 
+    // Palm: At least 2 fingers extended OR average distance is high
+    if (extendedCount >= 2 || avgDistance > 0.13) {
+        console.log('[Gesture] ✋ PALM detected');
+        return 'palm';
+    }
+
+    console.log('[Gesture] ❓ UNKNOWN');
     return 'unknown';
 }
 
@@ -361,15 +386,25 @@ export class HandTrackerManager {
         const palmCenter = extractPalmCenter(landmarks);
         const gesture = classifyGesture(landmarks);
 
-        // Update debounce state
+        // Detect release transition BEFORE updating debounce state
+        // Use the CURRENT debounceState.lastGesture (from previous frame)
+        const previousGesture = this.debounceState.lastGesture;
+        const shouldTriggerRelease = detectReleaseTransition(previousGesture, gesture);
+
+        // Debug log for release detection
+        console.log('[HandTracker] Gesture transition check:', {
+            previousGesture,
+            currentGesture: gesture,
+            shouldTriggerRelease,
+        });
+
+        if (shouldTriggerRelease) {
+            console.log('[HandTracker] 🎯 RELEASE TRANSITION DETECTED!');
+        }
+
+        // Update debounce state AFTER checking release transition
         const { state: newDebounceState, shouldTriggerGrab } = updateDebounceState(
             this.debounceState,
-            gesture
-        );
-
-        // Detect release transition
-        const shouldTriggerRelease = detectReleaseTransition(
-            this.debounceState.lastGesture,
             gesture
         );
 
@@ -379,7 +414,13 @@ export class HandTrackerManager {
         const confidence = results.multiHandedness?.[0]?.score ?? 0.5;
 
         // Debug log
-        console.log('[HandTracker] Hand detected:', { palmCenter, gesture, confidence });
+        console.log('[HandTracker] Hand detected:', {
+            palmCenter,
+            gesture,
+            confidence,
+            shouldTriggerGrab,
+            shouldTriggerRelease,
+        });
 
         this.callback({
             detected: true,

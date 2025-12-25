@@ -18,6 +18,7 @@ const AUDIO_PATHS = {
     success: '/audio/game/success-coin.mp3',
     fail: '/audio/game/fail-slip.mp3',
     coin: '/audio/game/8bit-coin.mp3',
+    collision: '/audio/game/capsule-collision.mp3',
 };
 
 // Default volume levels
@@ -56,6 +57,7 @@ export class AudioManagerImpl implements AudioManager {
     private successSound: Howl | null = null;
     private failSound: Howl | null = null;
     private coinSound: Howl | null = null;
+    private collisionSound: Howl | null = null;
 
     private state: AudioManagerState = {
         isInitialized: false,
@@ -142,6 +144,17 @@ export class AudioManagerImpl implements AudioManager {
             preload: true,
             onloaderror: (_id, error) => {
                 console.warn('Coin sound load error:', error);
+            },
+        });
+
+        // Initialize collision sound - short, can overlap
+        this.collisionSound = new Howl({
+            src: [AUDIO_PATHS.collision],
+            volume: this.state.sfxVolume * 0.3, // Lower volume for collision
+            preload: true,
+            pool: 5, // Allow multiple instances for multiple collisions
+            onloaderror: (_id, error) => {
+                console.warn('Collision sound load error:', error);
             },
         });
 
@@ -258,6 +271,19 @@ export class AudioManagerImpl implements AudioManager {
     }
 
     /**
+     * Play collision sound (capsule-to-capsule impact)
+     */
+    public playCollisionSound(): void {
+        if (!this.state.isInitialized) {
+            this.initialize();
+        }
+
+        if (this.collisionSound && !this.state.isMuted) {
+            this.collisionSound.play();
+        }
+    }
+
+    /**
      * Set master volume (0-1)
      */
     public setVolume(volume: number): void {
@@ -289,6 +315,7 @@ export class AudioManagerImpl implements AudioManager {
         if (this.successSound) this.successSound.volume(clampedVolume);
         if (this.failSound) this.failSound.volume(clampedVolume);
         if (this.coinSound) this.coinSound.volume(clampedVolume);
+        if (this.collisionSound) this.collisionSound.volume(clampedVolume * 0.3); // Lower volume for collision
     }
 
     /**
@@ -369,6 +396,10 @@ export class AudioManagerImpl implements AudioManager {
         if (this.coinSound) {
             this.coinSound.unload();
             this.coinSound = null;
+        }
+        if (this.collisionSound) {
+            this.collisionSound.unload();
+            this.collisionSound = null;
         }
 
         this.state.isInitialized = false;

@@ -12,6 +12,7 @@
 
 import { useMemo } from 'react';
 import * as THREE from 'three';
+import { useTexture } from '@react-three/drei';
 import { DEFAULT_SCENE_CONFIG, DEFAULT_PHYSICS_CONFIG } from '../types';
 
 const { machineBounds } = DEFAULT_PHYSICS_CONFIG;
@@ -170,6 +171,34 @@ function FrameEdge({
 }
 
 /**
+ * Machine floor with capsulePoolBox texture   
+ */
+function MachineFloor() {
+    const texture = useTexture('/game/assets/imgs/capsulePoolBox.png');
+
+    // Configure texture
+    useMemo(() => {
+        texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+        texture.repeat.set(1, 1);
+    }, [texture]);
+
+    return (
+        <mesh
+            position={[0, BASE_HEIGHT + 0.01, 0]}
+            rotation={[-Math.PI / 2, 0, 0]}
+            receiveShadow
+        >
+            <planeGeometry args={[MACHINE_WIDTH - 0.1, MACHINE_DEPTH - 0.1]} />
+            <meshStandardMaterial
+                map={texture}
+                roughness={0.6}
+                metalness={0.1}
+            />
+        </mesh>
+    );
+}
+
+/**
  * Main ClawMachineEnclosure component
  */
 export function ClawMachineEnclosure() {
@@ -278,19 +307,8 @@ export function ClawMachineEnclosure() {
                 color={neonColors.pink}
             />
 
-            {/* Floor inside machine */}
-            <mesh
-                position={[0, BASE_HEIGHT + 0.01, 0]}
-                rotation={[-Math.PI / 2, 0, 0]}
-                receiveShadow
-            >
-                <planeGeometry args={[MACHINE_WIDTH - 0.1, MACHINE_DEPTH - 0.1]} />
-                <meshStandardMaterial
-                    color={0x0a0a15}
-                    roughness={0.8}
-                    metalness={0.2}
-                />
-            </mesh>
+            {/* Floor inside machine with capsulePoolBox texture */}
+            <MachineFloor />
         </group>
     );
 }

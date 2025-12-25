@@ -104,6 +104,7 @@ export function useHandTracking(
             // Get current values from store (real-time, not from closure)
             const currentControlMode = useGameStore.getState().controlMode;
             const currentPhase = useGameStore.getState().phase;
+            const currentClawState = useGameStore.getState().clawState;
             const { enabled: currentEnabled, lerpFactor: currentLerpFactor, boundsPadding: currentBoundsPadding } = optionsRef.current;
 
             // Only log when hand is detected (to avoid console spam)
@@ -112,6 +113,7 @@ export function useHandTracking(
                     gesture: result.gesture,
                     palmCenter: result.palmCenter,
                     currentPhase,
+                    currentClawState,
                 });
             }
 
@@ -121,13 +123,14 @@ export function useHandTracking(
             }
 
             // Handle grab trigger (from debounce logic)
-            if (result.triggerGrab && currentPhase === 'playing') {
+            if (result.triggerGrab && currentPhase === 'playing' && currentClawState === 'hovering') {
                 console.log('[useHandTracking] Triggering grab');
                 triggerGrab();
             }
 
             // Handle release trigger (from fist-to-palm transition)
-            if (result.triggerRelease && currentPhase === 'grabbing') {
+            // Check clawState instead of phase for more reliable release detection
+            if (result.triggerRelease && currentClawState === 'holding') {
                 console.log('[useHandTracking] Triggering release');
                 triggerRelease();
             }

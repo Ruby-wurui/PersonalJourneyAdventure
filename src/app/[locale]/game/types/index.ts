@@ -220,6 +220,7 @@ export interface AudioManager {
     playGrabSound: () => void;
     playSuccessSound: () => void;
     playFailSound: () => void;
+    playCollisionSound: () => void;
     setVolume: (volume: number) => void;
 }
 

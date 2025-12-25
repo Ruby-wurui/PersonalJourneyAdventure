@@ -14,6 +14,7 @@ The following audio files are expected by the AudioManager:
 | `success-coin.mp3` | Success sound - 8-bit coin style | MP3, short clip (~0.5s) |
 | `fail-slip.mp3` | Failure sound - slip/drop effect | MP3, short clip (~0.5s) |
 | `8bit-coin.mp3` | Scoring sound - 8-bit coin pickup | MP3, short clip (~0.3s) |
+| `capsule-collision.mp3` | Capsule collision sound - impact/bounce effect | MP3, short clip (~0.2s) |
 
 ## Audio Specifications
 

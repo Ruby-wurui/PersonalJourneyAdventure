@@ -1,9 +1,13 @@
 /**
  * Neon Claw Game - Neon Lighting Component
- * Requirements: 9.1, 9.3
+ * Requirements: 9.1, 9.3, 9.5, 9.6, 9.7
  * 
  * Sets up the cyberpunk neon lighting with pink and cyan accent colors.
  * Includes ambient light, point lights for neon glow, and spotlight for claw.
+ * Implements state-based lighting:
+ * - Breathing animation for idle/calibrating states
+ * - Yellow/red tension lighting for grabbing states
+ * - Dynamic color transitions based on game state
  */
 
 'use client';
@@ -12,18 +16,35 @@ import { useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 import { DEFAULT_SCENE_CONFIG } from '../types';
-import { useClawPosition } from '../store/gameStore';
+import { useClawPosition, useGamePhase, useClawState } from '../store/gameStore';
 
 /**
  * NeonLighting component
  * Creates the cyberpunk atmosphere with dynamic neon lights
+ * Implements state-based lighting effects:
+ * - Breathing animation for idle/calibrating
+ * - Tension colors (yellow/red) for grabbing
  */
 export function NeonLighting() {
     const spotlightRef = useRef<THREE.SpotLight>(null);
-    const clawPosition = useClawPosition();
+    const pinkLight1Ref = useRef<THREE.PointLight>(null);
+    const cyanLight1Ref = useRef<THREE.PointLight>(null);
+    const pinkLight2Ref = useRef<THREE.PointLight>(null);
+    const cyanLight2Ref = useRef<THREE.PointLight>(null);
 
-    // Update spotlight to follow claw position
-    useFrame(() => {
+    const clawPosition = useClawPosition();
+    const phase = useGamePhase();
+    const clawState = useClawState();
+
+    const { neonColors } = DEFAULT_SCENE_CONFIG;
+
+    // Base intensities for neon lights
+    const baseIntensity = 4;
+    const accentIntensity = 3;
+
+    // Update spotlight and apply state-based lighting effects
+    useFrame(({ clock }) => {
+        // Update spotlight to follow claw position
         if (spotlightRef.current) {
             spotlightRef.current.target.position.set(
                 clawPosition.x,
@@ -32,9 +53,79 @@ export function NeonLighting() {
             );
             spotlightRef.current.target.updateMatrixWorld();
         }
-    });
 
-    const { neonColors } = DEFAULT_SCENE_CONFIG;
+        // Determine lighting mode based on game state
+        const isIdle = phase === 'idle' || phase === 'calibrating';
+        const isGrabbing = clawState === 'descending' || phase === 'grabbing';
+
+        // Breathing animation for idle/calibrating states (Requirement 9.5)
+        if (isIdle) {
+            // Soft pulsing using sine wave
+            const breathingFactor = Math.sin(clock.getElapsedTime() * 1.5) * 0.3 + 1.0;
+
+            if (pinkLight1Ref.current) {
+                pinkLight1Ref.current.intensity = baseIntensity * breathingFactor;
+            }
+            if (cyanLight1Ref.current) {
+                cyanLight1Ref.current.intensity = baseIntensity * breathingFactor;
+            }
+            if (pinkLight2Ref.current) {
+                pinkLight2Ref.current.intensity = accentIntensity * breathingFactor;
+            }
+            if (cyanLight2Ref.current) {
+                cyanLight2Ref.current.intensity = accentIntensity * breathingFactor;
+            }
+        }
+        // Grabbing state lighting - yellow/red tension (Requirement 9.6)
+        else if (isGrabbing) {
+            // Transition to yellow/red colors with increased intensity
+            const yellowColor = new THREE.Color(0xffff00); // Yellow
+            const redColor = new THREE.Color(0xff0000); // Red
+
+            // Lerp factor for smooth transition
+            const lerpFactor = 0.1;
+
+            if (pinkLight1Ref.current) {
+                pinkLight1Ref.current.color.lerp(redColor, lerpFactor);
+                pinkLight1Ref.current.intensity = baseIntensity * 1.5;
+            }
+            if (cyanLight1Ref.current) {
+                cyanLight1Ref.current.color.lerp(yellowColor, lerpFactor);
+                cyanLight1Ref.current.intensity = baseIntensity * 1.5;
+            }
+            if (pinkLight2Ref.current) {
+                pinkLight2Ref.current.color.lerp(redColor, lerpFactor);
+                pinkLight2Ref.current.intensity = accentIntensity * 1.5;
+            }
+            if (cyanLight2Ref.current) {
+                cyanLight2Ref.current.color.lerp(yellowColor, lerpFactor);
+                cyanLight2Ref.current.intensity = accentIntensity * 1.5;
+            }
+        }
+        // Normal playing state - restore original colors
+        else {
+            const targetPinkColor = new THREE.Color(neonColors.pink);
+            const targetCyanColor = new THREE.Color(neonColors.cyan);
+            const lerpFactor = 0.05;
+
+            if (pinkLight1Ref.current) {
+                pinkLight1Ref.current.color.lerp(targetPinkColor, lerpFactor);
+                pinkLight1Ref.current.intensity = baseIntensity;
+            }
+            if (cyanLight1Ref.current) {
+                cyanLight1Ref.current.color.lerp(targetCyanColor, lerpFactor);
+                cyanLight1Ref.current.intensity = baseIntensity;
+            }
+            if (pinkLight2Ref.current) {
+                pinkLight2Ref.current.color.lerp(targetPinkColor, lerpFactor);
+                pinkLight2Ref.current.intensity = accentIntensity;
+            }
+            if (cyanLight2Ref.current) {
+                cyanLight2Ref.current.color.lerp(targetCyanColor, lerpFactor);
+                cyanLight2Ref.current.intensity = accentIntensity;
+            }
+        }
+    });
 
     return (
         <>
@@ -58,36 +149,40 @@ export function NeonLighting() {
 
             {/* Pink neon point light - left side */}
             <pointLight
+                ref={pinkLight1Ref}
                 position={[-3, 3, 2]}
                 color={neonColors.pink}
-                intensity={4}
+                intensity={baseIntensity}
                 distance={15}
                 decay={1.5}
             />
 
             {/* Cyan neon point light - right side */}
             <pointLight
+                ref={cyanLight1Ref}
                 position={[3, 3, 2]}
                 color={neonColors.cyan}
-                intensity={4}
+                intensity={baseIntensity}
                 distance={15}
                 decay={1.5}
             />
 
             {/* Additional pink accent - back left */}
             <pointLight
+                ref={pinkLight2Ref}
                 position={[-2, 1, -2]}
                 color={neonColors.pink}
-                intensity={3}
+                intensity={accentIntensity}
                 distance={10}
                 decay={1.5}
             />
 
             {/* Additional cyan accent - back right */}
             <pointLight
+                ref={cyanLight2Ref}
                 position={[2, 1, -2]}
                 color={neonColors.cyan}
-                intensity={3}
+                intensity={accentIntensity}
                 distance={10}
                 decay={1.5}
             />

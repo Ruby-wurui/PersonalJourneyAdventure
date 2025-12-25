@@ -88,6 +88,40 @@
     - Create glowing trail for grabbed capsules
     - _Requirements: 4.6, 5.3_
 
+- [x] 7.5 Implement state-based lighting system
+  - [x] 7.5.1 Create breathing light animation for idle state
+    - Implement soft pulsing animation on neon lights (pink/cyan) in NeonLighting component
+    - Use sine wave with useFrame for smooth breathing effect
+    - Apply animation only when phase is 'idle' or 'calibrating'
+    - _Requirements: 9.5_
+  - [x] 7.5.2 Implement grabbing state lighting
+    - Change neon point light colors to yellow/red during grab action in NeonLighting component
+    - Increase intensity to create tension when clawState is 'descending' or 'grabbing'
+    - Smoothly transition colors using lerp
+    - _Requirements: 9.6_
+  - [x] 7.5.3 Implement success state border flash
+    - Create border flash effect component with green/gold colors
+    - Trigger on successful grab (when capsule enters drop zone)
+    - Coordinate with existing particle explosion effect from ParticleEffects component
+    - Ensure border flash and fireworks trigger simultaneously via shared callback
+    - _Requirements: 9.7, 5.3_
+
+- [x] 7.6 Implement claw ground shadow projection
+  - Add ground shadow mesh to Claw component
+  - Create semi-transparent circular mesh positioned at y=0 (ground plane)
+  - Update shadow x/z position in useFrame to match claw position
+  - Add subtle cyan/pink glow effect to shadow edges using emissive material
+  - Scale shadow based on claw height (larger when higher)
+  - _Requirements: 9.8_
+
+- [x] 7.7 Enhance capsule collision physics feedback
+  - Update Capsule component physics configuration to increase restitution from 0.4 to 0.7
+  - Increase friction from 0.6 to 0.8 for better rolling behavior
+  - Add collision sound effect trigger in onCollide callback
+  - Integrate with AudioManager to play collision sound
+  - Test that capsules visibly bounce and separate after impact
+  - _Requirements: 7.5_
+
 - [x] 8. Implement Hand Tracker with MediaPipe
   - [x] 8.1 Create HandTracker class with MediaPipe integration
     - Set up WebWorker for hand tracking processing
@@ -168,8 +202,8 @@
     - Provide play again option
     - _Requirements: 6.5_
 
-- [-] 14. Implement mouse/keyboard controls for default mode
-  - [-] 14.1 Create input handlers
+- [x] 14. Implement mouse/keyboard controls for default mode
+  - [x] 14.1 Create input handlers
     - Implement mouse X/Y position tracking with deadzone
     - Implement keyboard controls (WASD/arrows for movement, space for grab)
     - _Requirements: 1.5, 3.2_

@@ -184,6 +184,8 @@ interface ClawConfig {
   ascentSpeed: number;
   clawOpenAngle: number;   // radians for finger spread
   clawCloseAngle: number;  // radians for finger close
+  shadowRadius: number;    // radius of ground projection
+  shadowOpacity: number;   // opacity of ground shadow
 }
 
 interface ClawController {
@@ -195,6 +197,7 @@ interface ClawController {
   getPosition(): { x: number; y: number; z: number };
   getState(): 'hovering' | 'descending' | 'ascending' | 'holding';
   getMesh(): THREE.Group;
+  getGroundShadow(): THREE.Mesh;
 }
 ```
 
@@ -242,7 +245,14 @@ interface PhysicsManager {
 ```typescript
 interface SceneConfig {
   backgroundColor: number;
-  neonColors: { pink: number; cyan: number };
+  neonColors: { 
+    pink: number; 
+    cyan: number;
+    yellow: number;
+    red: number;
+    green: number;
+    gold: number;
+  };
   bloomStrength: number;
   glitchIntensity: number;
 }
@@ -252,8 +262,10 @@ interface SceneManager {
   addMesh(mesh: THREE.Object3D): void;
   removeMesh(mesh: THREE.Object3D): void;
   updateLighting(clawPosition: THREE.Vector3): void;
+  setLightingMode(mode: 'idle' | 'grabbing' | 'success'): void;
   triggerScreenShake(intensity: number): void;
   triggerGlitchEffect(): void;
+  triggerBorderFlash(color: 'green' | 'gold'): void;
   render(): void;
 }
 ```
@@ -395,6 +407,24 @@ interface SerializedGameState {
 *For any* valid GameState object, serializing to JSON and then deserializing SHALL produce a GameState object equivalent to the original.
 
 **Validates: Requirements 10.1, 10.2, 10.3**
+
+### Property 13: Capsule Collision Feedback
+
+*For any* two capsules that collide, the Physics_Engine SHALL apply bounce forces that result in visible separation and movement of both capsules.
+
+**Validates: Requirements 7.5**
+
+### Property 14: State-Based Lighting Transitions
+
+*For any* game state transition (idle → grabbing, grabbing → success), the lighting system SHALL change colors within 100 milliseconds to match the target state's color scheme.
+
+**Validates: Requirements 9.5, 9.6, 9.7**
+
+### Property 15: Ground Shadow Position Tracking
+
+*For any* claw position (x, y, z), the ground shadow SHALL be positioned at coordinates (x, 0, z) directly below the claw.
+
+**Validates: Requirements 9.8**
 
 ## Error Handling
 

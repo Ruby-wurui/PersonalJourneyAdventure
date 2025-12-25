@@ -23,6 +23,8 @@ import { ClawPhysics } from './ClawPhysics';
 import { PostProcessingEffects, PostProcessingEffectsRef } from './PostProcessingEffects';
 import { ScreenShake, ScreenShakeRef } from './ScreenShake';
 import { ParticleEffects, ParticleEffectsRef } from './ParticleEffects';
+import { BorderFlash, BorderFlashRef } from './BorderFlash';
+import * as THREE from 'three';
 
 interface ClawMachineSceneProps {
     className?: string;
@@ -30,6 +32,8 @@ interface ClawMachineSceneProps {
     onAscentComplete?: () => void;
     onCapsuleCollide?: (capsuleId: string) => void;
     enablePostProcessing?: boolean;
+    borderFlashRef?: MutableRefObject<BorderFlashRef | null>;
+    particleEffectsRef?: MutableRefObject<ParticleEffectsRef | null>;
 }
 
 /**
@@ -53,12 +57,14 @@ function SceneContent({
     onCapsuleCollide,
     screenShakeRef,
     particleEffectsRef,
+    borderFlashRef,
 }: {
     onGrabComplete?: (success: boolean) => void;
     onAscentComplete?: () => void;
     onCapsuleCollide?: (capsuleId: string) => void;
     screenShakeRef: MutableRefObject<ScreenShakeRef | null>;
     particleEffectsRef: MutableRefObject<ParticleEffectsRef | null>;
+    borderFlashRef?: MutableRefObject<BorderFlashRef | null>;
 }) {
     // Handle capsule collision with screen shake
     const handleCapsuleCollide = (capsuleId: string) => {
@@ -73,6 +79,26 @@ function SceneContent({
             // Could trigger success particles here if we had position
         }
         onGrabComplete?.(success);
+    };
+
+    // Handle scoring with coordinated effects (Requirement 9.7, 5.3)
+    const handleScore = (capsule: any) => {
+        console.log('[ClawMachineScene] Score event - triggering effects');
+
+        // Trigger particle explosion at capsule position
+        if (particleEffectsRef?.current && capsule.position) {
+            const position = new THREE.Vector3(
+                capsule.position.x,
+                capsule.position.y,
+                capsule.position.z
+            );
+            particleEffectsRef.current.triggerExplosion(position, 0x00ff00); // Green explosion
+        }
+
+        // Trigger border flash simultaneously
+        if (borderFlashRef?.current) {
+            borderFlashRef.current.flash('green');
+        }
     };
 
     return (
@@ -109,9 +135,7 @@ function SceneContent({
                 onGrabFail={() => {
                     console.log('[ClawPhysics] Grab failed');
                 }}
-                onScore={(capsule) => {
-                    console.log('[ClawPhysics] SCORE! Capsule:', capsule.id);
-                }}
+                onScore={handleScore}
             />
         </PhysicsWorld>
     );
@@ -127,10 +151,15 @@ export function ClawMachineScene({
     onAscentComplete,
     onCapsuleCollide,
     enablePostProcessing = true,
+    borderFlashRef,
+    particleEffectsRef: externalParticleEffectsRef,
 }: ClawMachineSceneProps) {
     const postProcessingRef = useRef<any>(null);
     const screenShakeRef = useRef<any>(null);
-    const particleEffectsRef = useRef<any>(null);
+    const internalParticleEffectsRef = useRef<any>(null);
+
+    // Use external ref if provided, otherwise use internal ref
+    const particleEffectsRef = externalParticleEffectsRef || internalParticleEffectsRef;
 
     return (
         <div className={`w-full h-full ${className || ''}`}>
@@ -171,6 +200,7 @@ export function ClawMachineScene({
                         onCapsuleCollide={onCapsuleCollide}
                         screenShakeRef={screenShakeRef}
                         particleEffectsRef={particleEffectsRef}
+                        borderFlashRef={borderFlashRef}
                     />
                 </Suspense>
 

@@ -20,6 +20,8 @@ import { AudioProvider, useAudioContext } from './components/AudioProvider';
 import { HUDOverlay } from './components/HUD';
 import { ContextualPrompt } from './components/ContextualPrompt';
 import { WebcamPiP, HandLandmark } from './components/WebcamPiP';
+import { BorderFlash, BorderFlashRef } from './components/BorderFlash';
+import { ParticleEffectsRef } from './components/ParticleEffects';
 import { useHandTracking } from './hooks/useHandTracking';
 import { useDefaultControls } from './hooks/useDefaultControls';
 import { ControlMode } from './types';
@@ -222,6 +224,8 @@ function WebcamDeniedNotification({ onDismiss }: { onDismiss: () => void }) {
  */
 function GameContent() {
     const videoRef = useRef<HTMLVideoElement>(null);
+    const borderFlashRef = useRef<BorderFlashRef>(null);
+    const particleEffectsRef = useRef<ParticleEffectsRef>(null);
     const [landmarks] = useState<HandLandmark[] | null>(null);
     const [isRequestingWebcam, setIsRequestingWebcam] = useState(false);
     const [showWebcamDenied, setShowWebcamDenied] = useState(false);
@@ -396,8 +400,13 @@ function GameContent() {
                     onGrabComplete={handleGrabComplete}
                     onCapsuleCollide={handleCapsuleCollide}
                     enablePostProcessing={true}
+                    borderFlashRef={borderFlashRef}
+                    particleEffectsRef={particleEffectsRef}
                 />
             )}
+
+            {/* Border Flash Effect */}
+            <BorderFlash ref={borderFlashRef} duration={500} />
 
             {/* HUD Overlay */}
             <HUDOverlay />

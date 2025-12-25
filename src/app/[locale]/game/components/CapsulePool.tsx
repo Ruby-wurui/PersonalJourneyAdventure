@@ -3,6 +3,7 @@
 import { useRef, useEffect, useCallback, useMemo } from 'react';
 import { Capsule } from './Capsule';
 import { useGameStore } from '../store/gameStore';
+import { useAudioContext } from './AudioProvider';
 import {
     CapsuleRarity,
     DEFAULT_PHYSICS_CONFIG,
@@ -69,6 +70,9 @@ export function CapsulePool({ onCapsuleCollide }: CapsulePoolProps) {
     const clawState = useGameStore((state) => state.clawState);
     const phase = useGameStore((state) => state.phase);
 
+    // Get audio manager for collision sounds
+    const { audioManager } = useAudioContext();
+
     // Use ref to track if we've initialized capsules (avoids setState during render)
     const initializedRef = useRef(false);
     const initialCapsulesRef = useRef<CapsuleType[]>([]);
@@ -117,10 +121,13 @@ export function CapsulePool({ onCapsuleCollide }: CapsulePoolProps) {
     }, [displayCapsules, clawPosition.x, clawPosition.z, phase, clawState]);
 
     const handleCollide = useCallback((id: string) => {
+        // Play collision sound
+        audioManager.playCollisionSound();
+
         if (onCapsuleCollide) {
             onCapsuleCollide(id);
         }
-    }, [onCapsuleCollide]);
+    }, [audioManager, onCapsuleCollide]);
 
     // Don't render until we have capsules
     if (displayCapsules.length === 0) {

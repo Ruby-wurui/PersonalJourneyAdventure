@@ -105,6 +105,7 @@ Neon Claw (霓虹神手) is a web-based claw machine game with a cyberpunk aesth
 2. WHEN the Claw contacts the Prize_Pool THEN the Neon_Claw_System SHALL trigger a screen shake effect
 3. WHEN a Capsule is released THEN the Physics_Engine SHALL apply gravity causing the Capsule to fall naturally
 4. WHILE the Physics_Engine is running THEN the Neon_Claw_System SHALL maintain 60 frames per second rendering
+5. WHEN Capsules collide with each other THEN the Physics_Engine SHALL produce visible bounce and roll feedback with appropriate force response
 
 ### Requirement 8: User Interface and HUD Display
 
@@ -128,6 +129,10 @@ Neon Claw (霓虹神手) is a web-based claw machine game with a cyberpunk aesth
 2. WHEN visual effects trigger THEN the Neon_Claw_System SHALL apply glitch art effects to UI elements
 3. WHEN the Claw moves THEN the Neon_Claw_System SHALL update dynamic lighting and shadows based on Claw position
 4. WHEN audio plays THEN the Neon_Claw_System SHALL use synthwave-style electronic music and 8-bit sound effects
+5. WHILE the game is in idle or playing state THEN the Neon_Claw_System SHALL display soft breathing light animation on neon elements
+6. WHEN the Claw is in grabbing state THEN the Neon_Claw_System SHALL change lighting color to yellow or red to increase tension
+7. WHEN a grab succeeds THEN the Neon_Claw_System SHALL flash border lights in green or gold color
+8. WHILE the Claw is hovering THEN the Neon_Claw_System SHALL project a semi-transparent circular shadow or halo on the ground directly below the Claw
 
 ### Requirement 10: Game State Serialization
 

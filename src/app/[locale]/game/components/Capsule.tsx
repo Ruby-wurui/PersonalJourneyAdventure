@@ -14,9 +14,28 @@
 import { useRef, useMemo, useEffect } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { useSphere } from '@react-three/cannon';
+import { useTexture } from '@react-three/drei';
 import * as THREE from 'three';
 import { CapsuleRarity, DEFAULT_PHYSICS_CONFIG, DEFAULT_SCENE_CONFIG, Vector3D } from '../types';
 import { useGameStore } from '../store/gameStore';
+
+// 球体纹理图片列表
+const CAPSULE_TEXTURES = [
+    '/game/assets/imgs/生成特定图片.png',
+    '/game/assets/imgs/生成特定图片 (1).png',
+    '/game/assets/imgs/生成特定图片 (2).png',
+    '/game/assets/imgs/生成特定图片 (3).png',
+    '/game/assets/imgs/生成特定图片 (4).png',
+    '/game/assets/imgs/生成特定彩虹渐变色图片 (1).png',
+    '/game/assets/imgs/生成特定彩虹渐变色图片 (2).png',
+    '/game/assets/imgs/生成特定彩虹渐变色图片 (3).png',
+    '/game/assets/imgs/生成特定彩虹渐变色图片 (4).png',
+    '/game/assets/imgs/生成特定彩虹渐变色图片 (5).png',
+    '/game/assets/imgs/生成特定彩虹渐变色图片 (6).png',
+    '/game/assets/imgs/生成特定彩虹渐变色图片 (7).png',
+    '/game/assets/imgs/生成特定彩虹渐变色图片 (8).png',
+    '/game/assets/imgs/生成特定彩虹渐变色图片 (9).png',
+];
 
 const { capsuleRadius } = DEFAULT_PHYSICS_CONFIG;
 const { neonColors } = DEFAULT_SCENE_CONFIG;
@@ -49,6 +68,7 @@ interface CapsuleProps {
     rarity: CapsuleRarity;
     isGrabbed?: boolean;
     isTargeted?: boolean; // 机械臂对准时高亮
+    textureIndex?: number; // 纹理索引
     onCollide?: (id: string) => void;
 }
 
@@ -61,12 +81,24 @@ export function Capsule({
     rarity,
     isGrabbed = false,
     isTargeted = false,
+    textureIndex,
     onCollide,
 }: CapsuleProps) {
     const colors = RARITY_COLORS[rarity];
     const prevGrabbedRef = useRef(isGrabbed);
     const updateCapsulePosition = useGameStore((state) => state.updateCapsulePosition);
     const physicsPositionRef = useRef<[number, number, number]>([...position]);
+
+    // 根据 id 或 textureIndex 选择纹理
+    const actualTextureIndex = useMemo(() => {
+        if (textureIndex !== undefined) return textureIndex % CAPSULE_TEXTURES.length;
+        // 从 id 中提取数字作为索引
+        const match = id.match(/\d+/);
+        return match ? parseInt(match[0], 10) % CAPSULE_TEXTURES.length : 0;
+    }, [id, textureIndex]);
+
+    // 加载纹理
+    const texture = useTexture(CAPSULE_TEXTURES[actualTextureIndex]);
 
     // 使用 ref 存储 isGrabbed 的最新值，避免 useFrame 中的闭包问题
     const isGrabbedRef = useRef(isGrabbed);
@@ -94,8 +126,8 @@ export function Capsule({
         position,
         args: [capsuleRadius],
         material: {
-            friction: 0.6,
-            restitution: 0.4,
+            friction: 0.8,
+            restitution: 0.7,
         },
         linearDamping: 0.3,
         angularDamping: 0.3,
@@ -222,16 +254,16 @@ export function Capsule({
     const glowMaterialRef = useRef<THREE.MeshStandardMaterial | null>(null);
     const ringMaterialRef = useRef<THREE.MeshStandardMaterial | null>(null);
 
-    // 创建材质（只创建一次）
+    // 创建材质（只创建一次）- 使用纹理
     const baseMaterial = useMemo(() => {
         const mat = new THREE.MeshStandardMaterial({
-            color: colors.base,
+            map: texture,
             roughness: 0.3,
-            metalness: 0.7,
+            metalness: 0.5,
         });
         baseMaterialRef.current = mat;
         return mat;
-    }, [colors.base]);
+    }, [texture]);
 
     const glowMaterial = useMemo(() => {
         const mat = new THREE.MeshStandardMaterial({
@@ -255,7 +287,14 @@ export function Capsule({
             : (isGrabbed ? colors.emissiveIntensity * 2 : colors.emissiveIntensity);
 
         if (baseMaterialRef.current) {
-            baseMaterialRef.current.color.setHex(isTargeted ? 0x2a4a2a : colors.base);
+            // 纹理模式下通过 emissive 来显示高亮效果
+            if (isTargeted) {
+                baseMaterialRef.current.emissive = new THREE.Color(HIGHLIGHT_COLOR);
+                baseMaterialRef.current.emissiveIntensity = 0.3;
+            } else {
+                baseMaterialRef.current.emissive = new THREE.Color(0x000000);
+                baseMaterialRef.current.emissiveIntensity = 0;
+            }
         }
         if (glowMaterialRef.current) {
             glowMaterialRef.current.color.setHex(currentGlowColor);
@@ -268,9 +307,6 @@ export function Capsule({
             ringMaterialRef.current.emissiveIntensity = currentEmissiveIntensity * 1.5;
         }
     }, [isTargeted, isGrabbed, colors]);
-
-    // 计算当前颜色用于 ring 和 light
-    const currentGlowColor = isTargeted ? HIGHLIGHT_COLOR : colors.glow;
 
     // Ring 材质
     const ringMaterial = useMemo(() => {

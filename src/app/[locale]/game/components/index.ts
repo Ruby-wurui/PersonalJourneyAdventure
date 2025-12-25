@@ -11,6 +11,7 @@ export { NeonLighting } from './NeonLighting';
 export { Claw } from './Claw';
 export type { ClawRef } from './Claw';
 export { ClawController } from './ClawController';
+export { ClawEffects } from './ClawEffects';
 export { PhysicsWorld } from './PhysicsWorld';
 export { Capsule } from './Capsule';
 export { CapsulePool } from './CapsulePool';
@@ -27,6 +28,10 @@ export type { ScreenShakeRef, ScreenShakeConfig } from './ScreenShake';
 // Particle effects
 export { ParticleEffects, DEFAULT_PARTICLE_CONFIG } from './ParticleEffects';
 export type { ParticleEffectsRef, ParticleConfig } from './ParticleEffects';
+
+// Border flash effect
+export { BorderFlash } from './BorderFlash';
+export type { BorderFlashRef, BorderFlashColor } from './BorderFlash';
 
 // HUD Components
 export { HUDOverlay, ScoreDisplay, TimerDisplay, StatusIndicator } from './HUD';
