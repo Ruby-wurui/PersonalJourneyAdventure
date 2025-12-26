@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 import { useAuth } from '@/lib/auth-context'
 import { LoginModal } from '@/components/auth/LoginModal'
 import RegisterModal from '@/components/auth/RegisterModal'
-import avatarImg from '@/assets/imgs/avatar.png'
+import avatarImg from '@/assets/imgs/avatar.jpg'
 import type { Dictionary } from '@/i18n/get-dictionary'
 
 interface PersonalHeroSectionProps {
