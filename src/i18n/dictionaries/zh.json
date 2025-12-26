@@ -14,6 +14,8 @@
         "blog_desc": "技术博客与时间线",
         "ai_news": "AI 资讯",
         "ai_news_desc": "最新 AI 动态",
+        "games": "游戏中心",
+        "games_desc": "互动游戏体验",
         "game": "游戏",
         "game_desc": "霓虹抓娃娃机"
     },
@@ -597,5 +599,15 @@
         "personal_universe": "个人宇宙",
         "3d_unavailable": "此设备上无法使用3D可视化",
         "technologies_used": "使用的技术"
+    },
+    "games": {
+        "title": "游戏中心",
+        "subtitle": "探索使用前沿 Web 技术构建的交互式游戏",
+        "games_available": "款游戏可玩",
+        "powered_by": "技术支持",
+        "more_coming_soon": "更多游戏即将推出",
+        "stay_tuned": "敬请期待更多交互式体验",
+        "neon_claw_title": "霓虹抓娃娃机",
+        "neon_claw_desc": "一款赛博朋克风格的抓娃娃机游戏，支持 AI 手势控制"
     }
 }

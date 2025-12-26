@@ -103,10 +103,10 @@ const NavigationBarI18n: React.FC<NavigationBarI18nProps> = ({
             description: dict.nav.ai_news_desc
         },
         {
-            name: dict.nav.game,
-            href: `/${locale}/game`,
+            name: dict.nav.games,
+            href: `/${locale}/games`,
             icon: '🎮',
-            description: dict.nav.game_desc
+            description: dict.nav.games_desc
         }
     ];
 

@@ -14,6 +14,8 @@
         "blog_desc": "Tech Blog & Timeline",
         "ai_news": "AI News",
         "ai_news_desc": "Latest AI Updates",
+        "games": "Games",
+        "games_desc": "Interactive Game Experiences",
         "game": "Game",
         "game_desc": "Neon Claw Machine"
     },
@@ -597,5 +599,15 @@
         "personal_universe": "Personal Universe",
         "3d_unavailable": "3D visualization is not available on this device",
         "technologies_used": "Technologies Used"
+    },
+    "games": {
+        "title": "Game Center",
+        "subtitle": "Explore interactive games built with cutting-edge web technologies",
+        "games_available": "Games Available",
+        "powered_by": "Powered by",
+        "more_coming_soon": "More Games Coming Soon",
+        "stay_tuned": "Stay tuned for more interactive experiences",
+        "neon_claw_title": "Neon Claw Machine",
+        "neon_claw_desc": "A cyberpunk-style claw machine game with AI hand gesture control"
     }
 }
