@@ -21,8 +21,8 @@ export interface ScreenShakeConfig {
 }
 
 export const DEFAULT_SCREEN_SHAKE_CONFIG: ScreenShakeConfig = {
-    maxIntensity: 0.15,
-    decayRate: 12,
+    maxIntensity: 0.05, // 进一步降低最大强度
+    decayRate: 50, // 大幅增加衰减速度，晃动几乎瞬间消失
     frequency: 25,
 };
 

@@ -25,7 +25,8 @@ const RARITY_DISTRIBUTION = {
 function generateRandomPosition(): [number, number, number] {
     const padding = capsuleRadius * 2;
     const x = (Math.random() - 0.5) * (machineBounds.maxX - machineBounds.minX - padding * 2);
-    const y = BASE_HEIGHT + capsuleRadius + Math.random() * 1.5;
+    // 进一步降低初始高度，从 0.3 减少到 0.1，几乎贴地生成
+    const y = BASE_HEIGHT + capsuleRadius + Math.random() * 0.1;
     const z = (Math.random() - 0.5) * (machineBounds.maxZ - machineBounds.minZ - padding * 2);
     return [x, y, z];
 }

@@ -39,8 +39,57 @@ function SceneLoadingFallback() {
     return (
         <div className="w-full h-full flex items-center justify-center bg-[#0a0a0f]">
             <div className="text-center">
-                <div className="w-16 h-16 border-4 border-cyan-500 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
-                <p className="text-cyan-400 text-lg animate-pulse">Loading Neon Claw...</p>
+                {/* Neon loading spinner */}
+                <div className="relative w-24 h-24 mx-auto mb-6">
+                    <div
+                        className="absolute inset-0 border-4 border-cyan-500/30 rounded-full"
+                        style={{
+                            boxShadow: '0 0 20px rgba(0, 255, 255, 0.3)',
+                        }}
+                    />
+                    <div
+                        className="absolute inset-0 border-4 border-transparent border-t-cyan-500 rounded-full animate-spin"
+                        style={{
+                            boxShadow: '0 0 30px rgba(0, 255, 255, 0.8)',
+                            animationDuration: '1s',
+                        }}
+                    />
+                    <div
+                        className="absolute inset-2 border-4 border-transparent border-t-pink-500 rounded-full animate-spin"
+                        style={{
+                            boxShadow: '0 0 30px rgba(255, 0, 255, 0.8)',
+                            animationDuration: '1.5s',
+                            animationDirection: 'reverse',
+                        }}
+                    />
+                </div>
+
+                {/* Loading text with neon effect */}
+                <h2
+                    className="text-3xl font-bold mb-2 tracking-wider animate-pulse"
+                    style={{
+                        background: 'linear-gradient(135deg, #00ffff 0%, #ff00ff 100%)',
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent',
+                        textShadow: '0 0 20px rgba(0, 255, 255, 0.5)',
+                    }}
+                >
+                    LOADING
+                </h2>
+                <p className="text-cyan-400 text-sm tracking-widest opacity-70">
+                    Initializing Neon Claw Machine...
+                </p>
+
+                {/* Loading bar */}
+                <div className="mt-6 w-64 h-1 bg-gray-800 rounded-full overflow-hidden mx-auto">
+                    <div
+                        className="h-full bg-gradient-to-r from-cyan-500 to-pink-500 animate-pulse"
+                        style={{
+                            width: '100%',
+                            boxShadow: '0 0 10px rgba(0, 255, 255, 0.8)',
+                        }}
+                    />
+                </div>
             </div>
         </div>
     );

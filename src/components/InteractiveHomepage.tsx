@@ -234,7 +234,7 @@ const InteractiveHomepage: React.FC<InteractiveHomepageProps> = ({ locale, dict 
   // Generate random particle data from API
   const generateRandomParticles = useCallback(async () => {
     try {
-      const apiUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:3001'
+      const apiUrl = process.env.NEXT_PUBLIC_BACKEND_URL
       const response = await fetch(`${apiUrl}/api/particles/random`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

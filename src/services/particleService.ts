@@ -14,7 +14,7 @@ class ParticleService {
     private listeners: ((data: ParticleData[]) => void)[] = []
 
     constructor() {
-        this.baseUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:3001'
+        this.baseUrl = process.env.NEXT_PUBLIC_BACKEND_URL as string
     }
 
     // Generate random particle data (fallback when API is not available)

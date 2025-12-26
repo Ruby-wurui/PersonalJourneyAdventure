@@ -14,7 +14,7 @@ class SkillService {
     private cacheTimeout = 5 * 60 * 1000 // 5 minutes
 
     constructor() {
-        this.baseUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:3001'
+        this.baseUrl = process.env.NEXT_PUBLIC_BACKEND_URL as string
     }
 
     // Fallback skill data when API is not available
