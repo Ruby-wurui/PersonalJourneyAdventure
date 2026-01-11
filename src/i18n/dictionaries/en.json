@@ -608,6 +608,14 @@
         "more_coming_soon": "More Games Coming Soon",
         "stay_tuned": "Stay tuned for more interactive experiences",
         "neon_claw_title": "Neon Claw Machine",
-        "neon_claw_desc": "A cyberpunk-style claw machine game with AI hand gesture control"
+        "neon_claw_desc": "A cyberpunk-style claw machine game with AI hand gesture control",
+        "hanzi_shifter_title": "HanziShifter",
+        "hanzi_shifter_desc": "An interactive Chinese character learning game built with Unity",
+        "loading": "Loading",
+        "fullscreen": "Fullscreen",
+        "how_to_play": "How to Play",
+        "hanzi_shifter": {
+            "description": "An interactive Chinese character learning game"
+        }
     }
 }

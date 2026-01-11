@@ -1,0 +1,16 @@
+{
+  "enabled": false,
+  "name": "i18n Translation Sync",
+  "description": "Monitors changes to the main language file (src/i18n/index.ts) and change source files. When text changes are detected, identifies added or modified string keys, checks these keys across all language files, adds missing keys marked with \"NEEDS TRANSLATION\", and marks modified keys as \"NEEDS REVIEW\" to keep translations in sync.",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "src/**/*"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "A source file has been modified. Please analyze the changes and perform the following i18n synchronization tasks:\n\n1. Check if any translation keys were added or modified in the main language file (src/i18n/dictionaries/en.json)\n2. Identify all added string keys\n3. Identify all modified string keys\n4. For each language file in src/i18n/dictionaries/ (excluding the main language file):\n   - For missing keys: Add them with the value \"NEEDS TRANSLATION: [original English text]\"\n   - For modified keys: Update them with the value \"NEEDS REVIEW: [original English text]\"\n5. Ensure all language files maintain the same structure and key hierarchy\n6. Report which keys were added or marked for review in each language file\n\nPlease examine the file changes and update all translation files accordingly to maintain i18n consistency."
+  }
+}

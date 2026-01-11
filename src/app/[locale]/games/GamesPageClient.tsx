@@ -121,12 +121,30 @@ export default function GamesPageClient({ dict, locale }: GamesPageClientProps) 
             id: 'neon-claw',
             title: dict.games?.neon_claw_title || 'Neon Claw Machine',
             description: dict.games?.neon_claw_desc || 'A cyberpunk-style claw machine game with AI hand gesture control',
-            image: '/NeonClaw.jpg', // Using existing image as placeholder
+            image: '/NeonClaw.jpg',
             tags: ['3D', 'AI', 'Hand Tracking', 'WebGL'],
             path: `/${locale}/game`,
             gradient: 'from-cyan-500 via-purple-500 to-pink-500'
         },
-        // More games can be added here
+        {
+            id: 'hanzi-shifter',
+            title: dict.games?.hanzi_shifter_title || 'HanziShifter',
+            description: dict.games?.hanzi_shifter_desc || 'An interactive Chinese character learning game built with Unity',
+            image: '/HanziShifter.png',
+            tags: ['Unity', 'WebGL', 'Education', 'Chinese'],
+            path: `/${locale}/hanzi-shifter`,
+            gradient: 'from-orange-500 via-red-500 to-pink-500'
+        },
+        // 添加新游戏模板 - 取消注释并修改以下内容来添加新游戏
+        // {
+        //     id: 'your-game-id',
+        //     title: dict.games?.your_game_title || 'Your Game Title',
+        //     description: dict.games?.your_game_desc || 'Your game description',
+        //     image: '/path/to/your/game/image.jpg',
+        //     tags: ['Tag1', 'Tag2', 'Tag3'],
+        //     path: `/${locale}/your-game-route`,
+        //     gradient: 'from-blue-500 via-green-500 to-yellow-500'
+        // },
     ]
 
     const handleGameClick = (path: string) => {

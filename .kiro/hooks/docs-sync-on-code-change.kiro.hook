@@ -1,0 +1,25 @@
+{
+  "enabled": true,
+  "name": "Documentation Sync",
+  "description": "Monitors TypeScript/TSX source files, configuration files, and other relevant project files for changes. When changes are detected, prompts the agent to review the changes and update the README.md or documentation in the /note folder to keep documentation in sync with the codebase.",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "src/**/*.ts",
+      "src/**/*.tsx",
+      "src/**/*.jsx",
+      "src/**/*.js",
+      "*.config.js",
+      "*.config.ts",
+      "package.json",
+      "tsconfig.json"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Source code files have been modified. Please review the changes and update the documentation accordingly. Check if the README.md needs updates for new features, API changes, or architectural modifications. If there are specific documentation files in the /note folder that relate to these changes, update those as well. Ensure the documentation accurately reflects the current state of the codebase."
+  },
+  "workspaceFolderName": "journeyAdventure",
+  "shortName": "docs-sync-on-code-change"
+}

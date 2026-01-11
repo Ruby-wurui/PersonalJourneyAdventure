@@ -608,6 +608,14 @@
         "more_coming_soon": "更多游戏即将推出",
         "stay_tuned": "敬请期待更多交互式体验",
         "neon_claw_title": "霓虹抓娃娃机",
-        "neon_claw_desc": "一款赛博朋克风格的抓娃娃机游戏，支持 AI 手势控制"
+        "neon_claw_desc": "一款赛博朋克风格的抓娃娃机游戏，支持 AI 手势控制",
+        "hanzi_shifter_title": "汉字转换器",
+        "hanzi_shifter_desc": "一款使用 Unity 构建的互动式汉字学习游戏",
+        "loading": "加载中",
+        "fullscreen": "全屏",
+        "how_to_play": "游戏玩法",
+        "hanzi_shifter": {
+            "description": "一款互动式汉字学习游戏"
+        }
     }
 }
