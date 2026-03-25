@@ -254,13 +254,9 @@ export default function AboutPageClient({ dict }: AboutPageClientProps) {
                                         {dict.about.position_freelance_context}
                                     </p>
                                     <div className="space-y-5">
-                                        {[1, 2, 3, 4, 5].map((num) => (
+                                        {[1, 2, 3, 4, 5].filter((num) => !!dict.about[`position_freelance_project_${num}_desc` as keyof typeof dict.about]).map((num) => (
                                             <div key={num} className="group/item">
-                                                <h4 className="text-cyan-200 font-medium mb-2 group-hover/item:text-cyan-100 transition-colors flex items-center gap-2">
-                                                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-500"></span>
-                                                    {dict.about[`position_freelance_project_${num}_title` as keyof typeof dict.about]}
-                                                </h4>
-                                                <p className="text-gray-400 text-sm pl-4 leading-relaxed border-l border-white/5 ml-[3px]">
+                                                <p className="text-gray-400 text-sm pl-4 leading-relaxed border-l border-cyan-500/30 ml-[3px]">
                                                     {dict.about[`position_freelance_project_${num}_desc` as keyof typeof dict.about]}
                                                 </p>
                                             </div>
@@ -299,13 +295,9 @@ export default function AboutPageClient({ dict }: AboutPageClientProps) {
                                         {dict.about.position_1_context}
                                     </p>
                                     <div className="space-y-5">
-                                        {[1, 2, 3, 4].map((num) => (
+                                        {[1, 2, 3, 4].filter((num) => !!dict.about[`position_1_project_${num}_desc` as keyof typeof dict.about]).map((num) => (
                                             <div key={num} className="group/item flex flex-col md:items-end">
-                                                <h4 className="text-blue-200 font-medium mb-2 group-hover/item:text-blue-100 transition-colors flex items-center gap-2 md:flex-row-reverse">
-                                                    <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
-                                                    {dict.about[`position_1_project_${num}_title` as keyof typeof dict.about]}
-                                                </h4>
-                                                <p className="text-gray-400 text-sm pl-4 md:pl-0 md:pr-4 leading-relaxed md:border-r border-l md:border-l-0 border-white/5 md:mr-[3px] ml-[3px] md:text-right">
+                                                <p className="text-gray-400 text-sm pl-4 md:pl-0 md:pr-4 leading-relaxed md:border-r border-l md:border-l-0 border-blue-500/30 md:mr-[3px] ml-[3px] md:text-right">
                                                     {dict.about[`position_1_project_${num}_desc` as keyof typeof dict.about]}
                                                 </p>
                                             </div>
@@ -346,13 +338,9 @@ export default function AboutPageClient({ dict }: AboutPageClientProps) {
                                         {dict.about.position_2_context}
                                     </p>
                                     <div className="space-y-5">
-                                        {[1, 2, 3].map((num) => (
+                                        {[1, 2, 3].filter((num) => !!dict.about[`position_2_project_${num}_desc` as keyof typeof dict.about]).map((num) => (
                                             <div key={num} className="group/item">
-                                                <h4 className="text-green-200 font-medium mb-2 group-hover/item:text-green-100 transition-colors flex items-center gap-2">
-                                                    <span className="w-1.5 h-1.5 rounded-full bg-green-500"></span>
-                                                    {dict.about[`position_2_project_${num}_title` as keyof typeof dict.about]}
-                                                </h4>
-                                                <p className="text-gray-400 text-sm pl-4 leading-relaxed border-l border-white/5 ml-[3px]">
+                                                <p className="text-gray-400 text-sm pl-4 leading-relaxed border-l border-green-500/30 ml-[3px]">
                                                     {dict.about[`position_2_project_${num}_desc` as keyof typeof dict.about]}
                                                 </p>
                                             </div>
@@ -362,7 +350,46 @@ export default function AboutPageClient({ dict }: AboutPageClientProps) {
                             </motion.div>
                         </div>
 
-                        {/* Position 3 - Left Side */}
+                        {/* Position 3 - Right Side (Shanghai Kuyi) */}
+                        <div className="relative grid md:grid-cols-2 gap-8 mb-24">
+                            <div className="hidden md:block"></div>
+                            <motion.div
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ once: true, margin: "-50px" }}
+                                variants={slideInFromRight}
+                                className="relative"
+                            >
+                                {/* Node & Connector */}
+                                <div className="hidden md:block absolute -left-[calc(50%+2rem)] top-10 w-8 h-8 z-20">
+                                    <div className="w-4 h-4 bg-orange-500 rounded-full border-4 border-[#050505] shadow-[0_0_15px_rgba(249,115,22,0.8)] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 animate-pulse"></div>
+                                </div>
+                                <div className="hidden md:block absolute -left-[calc(50%+2rem)] top-10 w-[calc(50%+2rem)] h-[1px] bg-gradient-to-r from-orange-500/50 to-transparent"></div>
+
+                                <TimelineCard className="border-l-4 border-l-orange-500">
+                                    <div className="flex flex-col justify-between items-start mb-6">
+                                        <div>
+                                            <h3 className="text-2xl font-bold text-white mb-2">{dict.about.position_3_title}</h3>
+                                            <p className="text-orange-400 text-lg font-medium">{dict.about.position_3_company}</p>
+                                        </div>
+                                        <span className="mt-3 px-4 py-1.5 rounded-full bg-orange-500/10 text-orange-300 text-sm border border-orange-500/20 font-mono">
+                                            {dict.about.position_3_duration}
+                                        </span>
+                                    </div>
+                                    <div className="space-y-5">
+                                        {[1, 2, 3].map((num) => (
+                                            <div key={num} className="group/item">
+                                                <p className="text-gray-400 text-sm pl-4 leading-relaxed border-l border-orange-500/30 ml-[3px]">
+                                                    {dict.about[`position_3_project_${num}_desc` as keyof typeof dict.about]}
+                                                </p>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </TimelineCard>
+                            </motion.div>
+                        </div>
+
+                        {/* Position 4 - Left Side (Book Editor) */}
                         <div className="relative grid md:grid-cols-2 gap-8">
                             <motion.div
                                 initial="hidden"
@@ -373,25 +400,25 @@ export default function AboutPageClient({ dict }: AboutPageClientProps) {
                             >
                                 {/* Node & Connector */}
                                 <div className="hidden md:block absolute -right-[calc(50%+2rem)] top-10 w-8 h-8 z-20">
-                                    <div className="w-4 h-4 bg-purple-500 rounded-full border-4 border-[#050505] shadow-[0_0_15px_rgba(168,85,247,0.8)] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 animate-pulse"></div>
+                                    <div className="w-4 h-4 bg-amber-400 rounded-full border-4 border-[#050505] shadow-[0_0_15px_rgba(251,191,36,0.8)] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 animate-pulse"></div>
                                 </div>
-                                <div className="hidden md:block absolute -right-[calc(50%+2rem)] top-10 w-[calc(50%+2rem)] h-[1px] bg-gradient-to-l from-purple-500/50 to-transparent"></div>
+                                <div className="hidden md:block absolute -right-[calc(50%+2rem)] top-10 w-[calc(50%+2rem)] h-[1px] bg-gradient-to-l from-amber-400/50 to-transparent"></div>
 
-                                <TimelineCard className="border-r-4 border-r-purple-500">
+                                <TimelineCard className="border-r-4 border-r-amber-400">
                                     <div className="flex flex-col md:items-end justify-between items-start mb-6">
                                         <div>
-                                            <h3 className="text-2xl font-bold text-white mb-2">{dict.about.position_3_title}</h3>
-                                            <p className="text-purple-400 text-lg font-medium">{dict.about.position_3_company}</p>
+                                            <h3 className="text-2xl font-bold text-white mb-2">{dict.about.position_4_title}</h3>
+                                            <p className="text-amber-400 text-lg font-medium">{dict.about.position_4_company}</p>
                                         </div>
-                                        <span className="mt-3 px-4 py-1.5 rounded-full bg-purple-500/10 text-purple-300 text-sm border border-purple-500/20 font-mono">
-                                            {dict.about.position_3_duration}
+                                        <span className="mt-3 px-4 py-1.5 rounded-full bg-amber-400/10 text-amber-300 text-sm border border-amber-400/20 font-mono">
+                                            {dict.about.position_4_duration}
                                         </span>
                                     </div>
                                     <div className="space-y-5">
                                         {[1, 2].map((num) => (
                                             <div key={num} className="group/item flex flex-col md:items-end">
-                                                <p className="text-gray-300 text-sm pl-4 md:pl-0 md:pr-4 md:border-r-2 border-l-2 md:border-l-0 border-purple-500/30 leading-relaxed md:text-right">
-                                                    {dict.about[`position_3_project_${num}_desc` as keyof typeof dict.about]}
+                                                <p className="text-gray-400 text-sm pl-4 md:pl-0 md:pr-4 leading-relaxed md:border-r border-l md:border-l-0 border-amber-400/30 md:mr-[3px] ml-[3px] md:text-right">
+                                                    {dict.about[`position_4_project_${num}_desc` as keyof typeof dict.about]}
                                                 </p>
                                             </div>
                                         ))}
