@@ -47,6 +47,28 @@ export const getSkillPlanetsData = (locale: 'en' | 'zh'): SkillPlanet[] => {
                     duration: '2015-Present',
                     description: 'Articles and insights about web development, AI, and modern technologies.'
                 }
+            },
+            ai_news: {
+                name: 'AI News',
+                category: 'AI Consulting',
+                description: 'Stay up to date with the latest breakthroughs in artificial intelligence, curated insights, and industry trends.',
+                experience: {
+                    title: 'AI Intelligence Hub',
+                    company: 'AI Consulting & News',
+                    duration: '2024-Present',
+                    description: 'Curated AI news, research highlights, and consulting insights on the rapidly evolving AI landscape.'
+                }
+            },
+            games: {
+                name: 'Game Center',
+                category: 'Interactive Games',
+                description: 'Explore interactive games built with cutting-edge web technologies, from AI-powered experiences to classic arcade fun.',
+                experience: {
+                    title: 'Game Development Lab',
+                    company: 'Creative Tech',
+                    duration: '2023-Present',
+                    description: 'A collection of browser-based games showcasing innovation at the intersection of AI and interactive entertainment.'
+                }
             }
         },
         zh: {
@@ -92,6 +114,28 @@ export const getSkillPlanetsData = (locale: 'en' | 'zh'): SkillPlanet[] => {
                     company: '知识分享',
                     duration: '2015-至今',
                     description: '关于Web开发、AI和现代技术的文章和见解。'
+                }
+            },
+            ai_news: {
+                name: 'AI 资讯',
+                category: 'AI 咨询',
+                description: '追踪人工智能领域的最新突破、精选行业洞见与前沿趋势，保持对 AI 世界的敏锐感知。',
+                experience: {
+                    title: 'AI 智能资讯中心',
+                    company: 'AI 咨询与动态',
+                    duration: '2024-至今',
+                    description: '精选 AI 资讯、研究亮点及咨询洞察，深入探索快速演进的人工智能领域。'
+                }
+            },
+            games: {
+                name: '游戏中心',
+                category: '互动游戏',
+                description: '探索使用前沿 Web 技术构建的互动游戏，从 AI 驱动的体验到经典街机乐趣，尽在其中。',
+                experience: {
+                    title: '游戏开发实验室',
+                    company: '创意科技',
+                    duration: '2023-至今',
+                    description: '一系列基于浏览器的游戏，展示 AI 与互动娱乐交汇处的技术创新。'
                 }
             }
         }
@@ -193,6 +237,54 @@ export const getSkillPlanetsData = (locale: 'en' | 'zh'): SkillPlanet[] => {
                     description: t.blog.experience.description,
                     technologies: ['Writing', 'Sharing', 'Learning'],
                     startDate: new Date('2015-01-01')
+                }
+            ]
+        },
+        {
+            id: 'ai_news',
+            name: t.ai_news.name,
+            category: t.ai_news.category,
+            position: [0, 0, 0],
+            orbitRadius: 14,
+            orbitSpeed: 0.12,
+            size: 1.0,
+            color: '#a78bfa',
+            proficiencyLevel: 100,
+            description: t.ai_news.description,
+            technologies: ['AI', 'LLM', 'Research', 'Trends'],
+            experience: [
+                {
+                    id: 'exp5',
+                    title: t.ai_news.experience.title,
+                    company: t.ai_news.experience.company,
+                    duration: t.ai_news.experience.duration,
+                    description: t.ai_news.experience.description,
+                    technologies: ['GPT', 'Claude', 'Gemini', 'AI Agents'],
+                    startDate: new Date('2024-01-01')
+                }
+            ]
+        },
+        {
+            id: 'games',
+            name: t.games.name,
+            category: t.games.category,
+            position: [0, 0, 0],
+            orbitRadius: 16,
+            orbitSpeed: 0.1,
+            size: 1.2,
+            color: '#34d399',
+            proficiencyLevel: 100,
+            description: t.games.description,
+            technologies: ['WebGL', 'Canvas', 'Three.js', 'Unity'],
+            experience: [
+                {
+                    id: 'exp6',
+                    title: t.games.experience.title,
+                    company: t.games.experience.company,
+                    duration: t.games.experience.duration,
+                    description: t.games.experience.description,
+                    technologies: ['Game Dev', 'AI', 'WebXR', 'Interactive'],
+                    startDate: new Date('2023-01-01')
                 }
             ]
         }

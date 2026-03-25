@@ -60,7 +60,9 @@ export default function GalaxyUniverseWrapper({ locale, dict }: GalaxyUniverseWr
             'about': `/${locale}/about`,
             'tech': `/${locale}/skills`,
             'projects': `/${locale}/projects`,
-            'blog': `/${locale}/blog`
+            'blog': `/${locale}/blog`,
+            'ai_news': `/${locale}/ai-news`,
+            'games': `/${locale}/games`
         }
         const route = routeMap[skill.id]
         if (route) {

@@ -11,6 +11,8 @@ import earthLike from '@/assets/planet/earth_like.png'
 import cyberTech from '@/assets/planet/cyber_tech.png'
 import gasGiant from '@/assets/planet/gas_giant.png'
 import iceWorld from '@/assets/planet/ice_world.png'
+import lavaPlanet from '@/assets/planet/image copy 2.png'
+import ringPlanet from '@/assets/planet/image copy 3.png'
 
 // Planet texture mapping using local images
 const PLANET_TEXTURES: Record<string, any> = {
@@ -18,6 +20,8 @@ const PLANET_TEXTURES: Record<string, any> = {
     tech: cyberTech,        // Technology - Cyber/Tech
     projects: gasGiant,     // Projects - Gas Giant
     blog: iceWorld,         // Blog - Ice World
+    ai_news: lavaPlanet,    // AI News - Lava/Energy Planet
+    games: ringPlanet,      // Game Center - Saturn-ring Planet
 }
 
 // Enhanced Planet Component with Texture
