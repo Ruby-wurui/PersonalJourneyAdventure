@@ -6,6 +6,8 @@ import yimiWebImg from '@/assets/projects/yimi_web.png'
 import cloudChineseImg from '@/assets/projects/cloud_chinese.png'
 import yueluoImg from '@/assets/projects/yueluo.jpg'
 import readingReportLogo from '@/assets/projects/reading_report_logo.png'
+import lingoSliceLogo from '@/assets/projects/lingo_slice_logo.png'
+import iwritingLogo from '@/assets/projects/iwriting_logo.png'
 
 export interface ProjectData {
     title: string
@@ -18,6 +20,20 @@ export interface ProjectData {
 export const getProjectsData = (locale: 'en' | 'zh'): ProjectData[] => {
     const translations = {
         en: [
+            {
+                title: 'LingoSlice',
+                description: 'A mobile language-learning app that connects audio and transcripts into a focused learning flow, helping learners move smoothly from listening and understanding to marking and reviewing.',
+                image: lingoSliceLogo,
+                tags: ['Mobile App', 'Language Learning', 'Interaction Design'],
+                link: '/projects/lingoslice'
+            },
+            {
+                title: 'iWriting',
+                description: 'An AI-assisted IELTS writing platform that turns writing practice into a continuous learning loop through structured feedback, personalised exercises, and targeted rewriting.',
+                image: iwritingLogo,
+                tags: ['AI', 'Education', 'Personalised Learning'],
+                link: '/projects/iwriting'
+            },
             {
                 title: 'Student Reading Report',
                 description: 'Transforming complex data into insights understandable by ordinary people (parents/teachers).',
@@ -40,21 +56,35 @@ export const getProjectsData = (locale: 'en' | 'zh'): ProjectData[] => {
                 link: '/projects/yimi_teacher'
             },
             {
-                title: 'Cloud Chinese',
-                description: 'A bridge connecting Chinese and foreign schools. It serves as a witness to the friendship between students from different cultures and a platform for mutual cultural learning and exchange.',
-                image: cloudChineseImg,
-                tags: ['Platform', 'Cultural Exchange', 'Education'],
-                link: '/projects/cloud_chinese'
-            },
-            {
                 title: 'Yue Luo Children\'s Book Club',
                 description: 'A picture book borrowing platform dedicated to serving young readers. The mission is to allow more children to read more books for less money.',
                 image: yueluoImg,
                 tags: ['Platform', 'E-commerce', 'Social Impact'],
                 link: '/projects/yueluo'
+            },
+            {
+                title: 'Cloud Chinese',
+                description: 'A bridge connecting Chinese and foreign schools. It serves as a witness to the friendship between students from different cultures and a platform for mutual cultural learning and exchange.',
+                image: cloudChineseImg,
+                tags: ['Platform', 'Cultural Exchange', 'Education'],
+                link: '/projects/cloud_chinese'
             }
         ],
         zh: [
+            {
+                title: 'LingoSlice',
+                description: '一款围绕音频与文本学习设计的移动语言学习应用，让用户在听、理解、标记和复习之间自然衔接，减少学习过程中的操作打断。',
+                image: lingoSliceLogo,
+                tags: ['移动应用', '语言学习', '交互设计'],
+                link: '/projects/lingoslice'
+            },
+            {
+                title: 'iWriting',
+                description: '一款 AI 辅助的雅思写作学习平台，通过结构化反馈、个性化练习和针对性改写，将一次写作练习延伸为持续的学习闭环。',
+                image: iwritingLogo,
+                tags: ['人工智能', '教育', '个性化学习'],
+                link: '/projects/iwriting'
+            },
             {
                 title: '学生阅读报告',
                 description: '把复杂的数据变成普通人（家长/老师）能看懂的洞察',
@@ -77,18 +107,18 @@ export const getProjectsData = (locale: 'en' | 'zh'): ProjectData[] => {
                 link: '/projects/yimi_teacher'
             },
             {
-                title: '云上华文',
-                description: '一个沟通中外学校的桥梁，是中外学生友谊的见证，也是中外文化互相学习的平台。',
-                image: cloudChineseImg,
-                tags: ['平台', '文化交流', '教育'],
-                link: '/projects/cloud_chinese'
-            },
-            {
                 title: '阅落童书会',
                 description: '这是一个专注为低龄读者服务的绘本借阅平台。让更多的孩子用更少的钱读到更多的书。',
                 image: yueluoImg,
                 tags: ['平台', '电商', '社会公益'],
                 link: '/projects/yueluo'
+            },
+            {
+                title: '云上华文',
+                description: '一个沟通中外学校的桥梁，是中外学生友谊的见证，也是中外文化互相学习的平台。',
+                image: cloudChineseImg,
+                tags: ['平台', '文化交流', '教育'],
+                link: '/projects/cloud_chinese'
             }
         ]
     }
