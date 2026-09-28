@@ -13,11 +13,7 @@
         "skills_desc": "技术军火库",
         "blog_desc": "技术博客与时间线",
         "ai_news": "AI 资讯",
-        "ai_news_desc": "最新 AI 动态",
-        "games": "游戏中心",
-        "games_desc": "互动游戏体验",
-        "game": "游戏",
-        "game_desc": "霓虹抓娃娃机"
+        "ai_news_desc": "最新 AI 动态"
     },
     "auth": {
         "login": "登录",

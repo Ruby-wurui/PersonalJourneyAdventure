@@ -13,11 +13,7 @@
         "skills_desc": "Technical Arsenal",
         "blog_desc": "Tech Blog & Timeline",
         "ai_news": "AI News",
-        "ai_news_desc": "Latest AI Updates",
-        "games": "Games",
-        "games_desc": "Interactive Game Experiences",
-        "game": "Game",
-        "game_desc": "Neon Claw Machine"
+        "ai_news_desc": "Latest AI Updates"
     },
     "auth": {
         "login": "Login",
